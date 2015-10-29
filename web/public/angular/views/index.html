@@ -1,1 +1,66 @@
-<h1>Hello</h1>
+<div ng-controller="IndexController as ctrl">
+    <form ng-submit="ctrl.save()">
+        <fieldset>
+            <h2>Empresa</h2>
+            Nombre: <input type="text" ng-model="ctrl.nombre"/>
+            Logotipo: <input type="file" ng-model="ctrl.logotipo" accept="image/*"/>
+            Foto: <input type="file" ng-model="ctrl.foto" size="40" accept="image/jpeg"/>
+            Texto introductorio: <textarea rows="4" cols="50" ng-model="ctrl.txtIntroductorio">Escribe una breve introduccion</textarea>
+            <br />
+            <br />
+            <fieldset>
+                <h5>Direccion</h5>
+                Numero: <input type="number" ng-model="ctrl.numero"/>
+                Numero interior: <input type="numer" ng-model="ctrl.numInt"/>
+                Calle: <input type="text" ng-model="ctrl.calle"/>
+                Colonia: <input type="text" ng-model="ctrl.colonia"/>
+                C.P. : <input type="number" ng-model="ctrl.cp"/>
+                Municipio: <input type="text" ng-model="ctrl.municipio"/>
+                Estado: <input type="text" ng-model="ctrl.estado"/>
+            </fieldset>
+            <br />
+            <br />
+            Mapa: <map></map>
+            <br />
+            <br />
+            <fieldset>
+                <h5>Rubro</h5>
+                Nombre: <input type="text" ng-model="ctrl.rubro"/>
+            </fieldset>
+            <br />
+            <br />
+            Descripcion: <textarea rows="4" cols="50" ng-model="ctrl.descripcion">Describe brevemente l actividad de tu empresa</textarea>
+            Horario: <input type="datetime-local" ng-model="ctrl.horario"/>
+            Encargado: <input type="text" ng-model="ctrl.encargado"/>
+            Telefono: <input type="text" ng-model="ctrl.telefono"/>
+            Facebook: <input type="text" ng-model="ctrl.facebook"/>
+            Email: <input type="email" ng-model="ctrl.email"/>
+            <br />
+            <br />
+            <fieldset>
+                <h5>Producto</h5>
+                Titulo: <input type="text" ng-model="ctrl.titulo"/>
+                Parrafo: <textarea rows="4" cols="50" ng-model="ctrl.parrafo">Describe el producto o servicio</textarea>
+            </fieldset>
+            <br />
+            <br />
+            Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota">Haz una nota</textarea>
+            Email Mercado Upn. : <input type="email" ng-model="ctrl.emailMercadoUpn"/>
+            <br />
+            <br />
+            <fieldset>
+                <h5>Informacion del cliente</h5>
+                Num. de contrato: <input type="number" ng-model="ctrl.numContrato"/>
+                Direccion de pagina web: <input type="text" ng-model="ctrl.pagWebCliente"/>
+                Nombre del cliente: <input type="text" ng-model="ctrl.nombreCte"/>
+                Telefono: <input type="text" ng-model="ctrl.telefonoCte"/>
+                Correo: <input type="email" ng-model="ctrl.emailCte" />
+                Fecha de Contrato: <input type="text" ng-model="ctrl.fechaContrato"/>
+                Fecha de vencimiento: <input type="text" ng-model="ctrl.venceContrato"/>
+                Precio: <input type="number" ng-model="ctrl.precio"/>
+            </fieldset>
+            
+            <button type="submit">Send</button>
+        </fieldset>
+    </form>
+</div>
