@@ -4,8 +4,8 @@
     app.controller('IndexController', ['$http', '$location', function($http, $location) {
         var ctrl = this;
         ctrl.nombre = undefined;
-        //ctrl.logotipo = undefined;
-        //ctrl.foto = undefined;
+        ctrl.logotipo = undefined;
+        ctrl.foto = undefined;
         ctrl.txtIntroductorio = undefined;
         ctrl.numero = undefined;
         ctrl.numInt = undefined;
@@ -54,8 +54,7 @@
         ctrl.facebook = undefined;
         ctrl.email = undefined;
         ctrl.productos = [];
-        //ctrl.titulo = undefined;
-        //ctrl.parrafo = undefined;
+        ctrl.producto = undefined;
         ctrl.nota = undefined;
         ctrl.emailMercadoUpn = undefined;
         ctrl.numContrato = undefined;

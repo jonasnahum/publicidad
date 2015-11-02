@@ -4,8 +4,8 @@
     app.controller('ProductosController', ['$http', '$location', function($http, $location) {
         var ctrl = this;
         ctrl.nombre = undefined;
-        //ctrl.logotipo = undefined;
-        //ctrl.foto = undefined;
+        ctrl.logotipo = undefined;
+        ctrl.foto = undefined;
         ctrl.txtIntroductorio = undefined;
         ctrl.numero = undefined;
         ctrl.numInt = undefined;

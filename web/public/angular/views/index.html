@@ -4,7 +4,7 @@
             <h2>Empresa</h2>
             Nombre: <input type="text" ng-model="ctrl.nombre"/>
             Logotipo: <input type="file" ng-model="ctrl.logotipo" accept="image/*"/>
-            Foto: <input type="file" ng-model="ctrl.foto" size="40" accept="image/jpeg"/>
+            Foto: <input type="file" ng-model="ctrl.foto" accept="image/*"/>
             Texto introductorio: <textarea rows="4" cols="50" ng-model="ctrl.txtIntroductorio">Escribe una breve introduccion</textarea>
             <br />
             <br />
@@ -27,7 +27,7 @@
             <br />
             <br />
             Descripcion: <textarea rows="4" cols="50" ng-model="ctrl.descripcion">Describe brevemente l actividad de tu empresa</textarea>
-            Horario: <input type="datetime-local" ng-model="ctrl.horario"/>
+            Horario: <input type="text" ng-model="ctrl.horario"/>
             Encargado: <input type="text" ng-model="ctrl.encargado"/>
             Telefono: <input type="text" ng-model="ctrl.telefono"/>
             Facebook: <input type="text" ng-model="ctrl.facebook"/>
