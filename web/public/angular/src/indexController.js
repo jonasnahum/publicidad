@@ -53,8 +53,9 @@
         ctrl.telefono = undefined;
         ctrl.facebook = undefined;
         ctrl.email = undefined;
-        ctrl.titulo = undefined;
-        ctrl.parrafo = undefined;
+        ctrl.productos = [];
+        //ctrl.titulo = undefined;
+        //ctrl.parrafo = undefined;
         ctrl.nota = undefined;
         ctrl.emailMercadoUpn = undefined;
         ctrl.numContrato = undefined;
@@ -65,7 +66,12 @@
         ctrl.fechaContrato = undefined;
         ctrl.venceContrato = undefined;
         ctrl.precio = undefined;
-                
+        
+   
+        ctrl.agregarProducto = function() {
+           ctrl.productos.push(ctrl.producto);
+           ctrl.producto = {};
+        };   
         ctrl.save = function() {
             console.dir(ctrl);
             $http({

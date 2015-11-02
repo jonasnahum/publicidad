@@ -36,8 +36,11 @@
             <br />
             <fieldset>
                 <h5>Producto</h5>
-                Titulo: <input type="text" ng-model="ctrl.titulo"/>
-                Parrafo: <textarea rows="4" cols="50" ng-model="ctrl.parrafo">Describe el producto o servicio</textarea>
+                Titulo: <input type="text" ng-model="ctrl.producto.titulo"/>
+                Parrafo: <textarea rows="4" cols="50" ng-model="ctrl.producto.parrafo">Describe el producto o servicio</textarea>
+                <a class="btn btn-lg btn-warning" href ng-click="ctrl.agregarProducto()" role="button">Push</a>
+                {{ctrl.producto}}
+                {{ctrl.productos}}
             </fieldset>
             <br />
             <br />
