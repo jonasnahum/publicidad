@@ -34,7 +34,7 @@ var ImagenesApi = (function() {
         req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
             var bufs = [];
             
-            file.on('data', function(data) {
+            file.on('data', function(data) {//data is type stream, ver si se puede agregar directo a imagen.imagen.data.
                 //imagen.imagen.data = Buffer.concat(imagen.imagen.data, data);
                 bufs.push(data);                
             });
