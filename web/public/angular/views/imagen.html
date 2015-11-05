@@ -1,0 +1,16 @@
+<div  ng-controller="MyCtrl as ctrl">
+  <h4>Upload on file select</h4>
+    <!--height = altura de la imagen en pixeles-->
+      <button type="file" ngf-select="ctrl.uploadFiles($file, $invalidFiles)"
+              accept="image/*" ngf-max-height="3000" ngf-max-width="3000"  ngf-max-size="1MB">
+          Select File</button>
+      <br><br>
+      File:
+      <div style="font:smaller">{{ctrl.f.name}} {{ctrl.errFile.name}} {{ctrl.errFile.$error}} {{ctrl.errFile.$errorParam}}
+          <span class="progress" ng-show="ctrl.f.progress >= 0">
+              <div style="width:{{ctrl.f.progress}}%"  
+                   ng-bind="ctrl.f.progress + '%'"></div>
+          </span>
+      </div>     
+      {{ctrl.errorMsg}}
+</div>
