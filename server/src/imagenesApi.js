@@ -21,13 +21,13 @@ var ImagenesApi = (function() {
         that.models.imagen.findOne({ _id: req.params.id })
         .exec(function (err, imagen) {
             if (err) return next(err);
+            console.log(imagen);
             var buffer = imagen.imagen.data;
             var base64 = (buffer.toString('base64'));
             res.json(base64);        
         });
     };
     //curl -i -H "Content-Type: application/json" -d '{ "username": "rodrigo", "password": "test", "id": 1 }' http://localhost:3000/imagenes/api/post
-    
     ImagenesApi.prototype.save = function(req, res, next){
         var that = this;
         var imagen = that.imagenFactory.get();
@@ -60,6 +60,15 @@ var ImagenesApi = (function() {
         })
         req.pipe(req.busboy);
     };
+    //curl -X "DELETE" http://localhost:3000/imagenes/api/borrar/563b7f43b25fd8a70f740b74
+    ImagenesApi.prototype.delete = function(req, res, next) {
+        var that = this;
+        
+        that.models.imagen.remove({ _id: req.params.id }, function(err, imagen) {
+            if(err) return next(err);
+            res.json(imagen);
+        }); 
+    };    
     
     return ImagenesApi;
 })();
