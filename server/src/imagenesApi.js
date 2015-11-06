@@ -22,7 +22,7 @@ var ImagenesApi = (function() {
         .exec(function (err, imagen) {
             if (err) return next(err);
             console.log(imagen);
-            var buffer = imagen.imagen.data;
+            var buffer = imagen.data;
             var base64 = (buffer.toString('base64'));
             res.json(base64);        
         });
