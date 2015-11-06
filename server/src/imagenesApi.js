@@ -33,15 +33,16 @@ var ImagenesApi = (function() {
         var imagen = that.imagenFactory.get();
         console.log("entró al post en el servidor");
         req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-            //var bufs = [];
+            var bufs = [];
             
             file.on('data', function(data) {//data is type stream, ver si se puede agregar directo a imagen.imagen.data.
-                //bufs.push(data);
-                imagen.imagen.data = data;
+                bufs.push(data);
+                //imagen.imagen.data = data;
             });
             
             file.on('end', function() {
-                //imagen.imagen.data = Buffer.concat(bufs);
+                imagen.imagen.data = Buffer.concat(bufs);
+                imagen.imagen.contentType = 'image/png';
                 console.log('File' + filename + 'is ended');
                 imagen.save(function(err, imagen) {
                     if(err){
