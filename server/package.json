@@ -16,6 +16,7 @@
     "intravenous": "^0.1.4-beta",
     "mongoose": "^4.2.4",
     "morgan": "~1.6.1",
+    "nodemailer": "^1.8.0",
     "serve-favicon": "~2.3.0"
   }
 }
