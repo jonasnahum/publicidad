@@ -1,0 +1,12 @@
+<div ng-controller="CorreoController as ctrl">
+    <form   ng-submit="ctrl.sendEmail()">
+        from:
+        <input type="email" ng-model="ctrl.from">
+        subject:
+        <input type="text" ng-model="ctrl.subject">
+        text:
+        <input type="text" ng-model="ctrl.text">
+        <br>
+        <button type="submit">Send</button>
+    </form> 
+</div>

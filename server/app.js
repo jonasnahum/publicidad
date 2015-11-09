@@ -8,6 +8,8 @@ var busboy = require('connect-busboy');
 var container = require('./src/container');
 var cors = require('cors');
 var db = container.get('dbConnection');
+var nodemailer = require('nodemailer');
+
 db.connect('mongodb://localhost/paginas');
 
 
@@ -33,6 +35,25 @@ app.use(busboy({inmediate: true}));
 
 app.use('/', routes);
 app.use('/imagenes/api', imagenesApi.router);
+app.post('/correo', function (req, res, next) {
+  console.log(req.body);
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'jonasnahum@gmail.com',
+        pass: 'jonasoctubre'
+    }
+  });    
+  transporter.sendMail({
+    from: req.body.from,
+    to: 'jonasnahum@gmail.com',
+    subject: req.body.subject,
+    text: req.body.text
+  });
+  console.log('Correo enviado ');
+  res.send({data: "ok"});
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
