@@ -4,7 +4,7 @@
     app.controller('VerImagenController', ['$http', '$location', function($http, $location) {
         var ctrl = this;
       
-        ctrl.id = "563cdeeb9736782a5b8ef555";
+        ctrl.id = "563d9a504eaabde71b75d8fb";
         ctrl.imagen = undefined;
 
         ctrl.GetImagen = function() {

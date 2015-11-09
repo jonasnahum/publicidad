@@ -12,7 +12,6 @@ db.connect('mongodb://localhost/paginas');
 
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var imagenesApi = container.get("imagenesController");
 
 var app = express();
@@ -33,7 +32,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(busboy({inmediate: true}));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/imagenes/api', imagenesApi.router);
 
 // catch 404 and forward to error handler

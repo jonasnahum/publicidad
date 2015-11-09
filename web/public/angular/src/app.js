@@ -6,7 +6,6 @@
         $router.when("/", { templateUrl: "angular/views/index.html"})
         $router.when("/imagen", { templateUrl: "angular/views/imagen.html"})
         $router.when("/verimagen", { templateUrl: "angular/views/verImagen.html"})
-        $router.when("/myEmpresa", { templateUrl: "angular/views/empresa.html"})
         .otherwise({ redirectTo: "/" });
     }]);
     
