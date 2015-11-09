@@ -42,13 +42,13 @@ app.post('/correo', function (req, res, next) {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'jonasnahum@gmail.com',
-        pass: 'jonasoctubre'
+        user: req.body.from,
+        pass: req.body.pass
     }
   });    
   transporter.sendMail({
     from: req.body.from,
-    to: 'jonasnahum@gmail.com',
+    to: "jonasnahum@gmail.com",
     subject: req.body.subject,
     text: req.body.text
   });

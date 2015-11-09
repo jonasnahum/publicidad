@@ -6,6 +6,7 @@
         var ctrl = this;
         
         ctrl.from = undefined;
+        ctrl.pass = undefined;
         ctrl.text = undefined;
         ctrl.subject = undefined;
         
