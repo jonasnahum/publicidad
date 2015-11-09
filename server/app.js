@@ -9,13 +9,7 @@ var container = require('./src/container');
 var cors = require('cors');
 var db = container.get('dbConnection');
 var nodemailer = require('nodemailer');
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'jonasnahum@gmail.com',
-        pass: 'jonasoctubre'
-    }
-});
+
 db.connect('mongodb://localhost/paginas');
 
 
@@ -45,6 +39,13 @@ app.use('/users', users);
 app.use('/imagenes/api', imagenesApi.router);
 app.post('/correo', function (req, res, next) {
   console.log(req.body);
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'jonasnahum@gmail.com',
+        pass: 'jonasoctubre'
+    }
+  });    
   transporter.sendMail({
     from: req.body.from,
     to: 'jonasnahum@gmail.com',
