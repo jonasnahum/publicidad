@@ -8,6 +8,7 @@
         ctrl.f = undefined;
         ctrl.errFile = undefined;
         ctrl.errorMsg = undefined;
+        ctrl.serial = undefined;
         
         ctrl.uploadFiles = function(file, errFiles) {
             ctrl.f = file;
@@ -19,10 +20,7 @@
                 });
 
                 ctrl.f.upload.then(function (response) {
-                    alert("archivo cargado satisfactoriamente");
-                    $timeout(function () {
-                        ctrl.f.result = response.data;
-                    });
+                    ctrl.serial = response.data;
                 }, function (response) {
                     if (response.status > 0)
                         ctrl.errorMsg = response.status + ': ' + response.data;
