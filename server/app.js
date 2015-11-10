@@ -15,6 +15,7 @@ db.connect('mongodb://localhost/paginas');
 
 var routes = require('./routes/index');
 var imagenesApi = container.get("imagenesController");
+var empresasApi = container.get("empresasController");
 
 var app = express();
 
@@ -35,18 +36,19 @@ app.use(busboy({inmediate: true}));
 
 app.use('/', routes);
 app.use('/imagenes/api', imagenesApi.router);
+app.use('/empresas/api', empresasApi.router);
 app.post('/correo', function (req, res, next) {
   console.log(req.body);
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'jonasnahum@gmail.com',
-        pass: 'jonasoctubre'
+        user: req.body.from,
+        pass: req.body.pass
     }
   });    
   transporter.sendMail({
     from: req.body.from,
-    to: 'jonasnahum@gmail.com',
+    to: "jonasnahum@gmail.com",
     subject: req.body.subject,
     text: req.body.text
   });
