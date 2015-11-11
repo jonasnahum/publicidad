@@ -17,6 +17,9 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var imagenesApi = container.get("imagenesController");
 var empresasApi = container.get("empresasController");
+var direccionesApi = container.get("direccionController");
+var rubrosApi = container.get("rubrosController");
+var informacionApi = container.get("informacionController");
 
 var app = express();
 
@@ -39,6 +42,9 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/imagenes/api', imagenesApi.router);
 app.use('/empresas/api', empresasApi.router);
+app.use('/direcciones/api', direccionesApi.router);
+app.use('/rubros/api', rubrosApi.router);
+app.use('/informacion/api', informacionApi.router);
 app.post('/correo', function (req, res, next) {
   console.log(req.body);
   var transporter = nodemailer.createTransport({
