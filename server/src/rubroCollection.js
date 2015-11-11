@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var schema = mongoose.Schema({
-    nombre: String,
+    rubro: String,
     _empresaId:  { type: Schema.Types.ObjectId, required: true, ref: 'Empresa' }
 });
 

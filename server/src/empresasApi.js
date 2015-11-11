@@ -17,7 +17,7 @@ var EmpresasApi = (function() {
             });   
     };    
     
-//curl -i -H "Content-Type: application/json" -d '{"nombre":"cocacolaSolouna","logotipo":"rojoyblanco","foto":"unamuchacha","textoIntro":"bienvenidos","lat":"01","long":"02","descripcion":"refresqueramasgrandedelmundo","horario":"todoslosdias","encargado":"ellic","tel":"33333","face":"elface","email":"cocacola@gmail.com","productos": [{"lata":"de 500ml"},{"botella":"de 600ml"}] ,"nota":"servicio a domicilio","calle":"zumpimito","rubro":"bebidas","noContrato":"23324","url":"cocacola.com","cliente":"patty","telCliente":"23324","correoCliente":"patty@gmail","pago":"23324"}' http://localhost:3000/empresas/api/ 
+//curl -i -H "Content-Type: application/json" -d '{"nombre":"CHECARRUBRO","logotipo":"rojoyblanco","foto":"unamuchacha","textoIntro":"bienvenidos","lat":"01","long":"02","descripcion":"refresqueramasgrandedelmundo","horario":"todoslosdias","encargado":"ellic","tel":"33333","face":"elface","email":"cocacola@gmail.com","productos": [{"lata":"de 500ml"},{"botella":"de 600ml"}] ,"nota":"servicio a domicilio","numero":"2","numeroInt":"1A","calle":"zumpimito","colonia":"zumpimito","cp":"607400","municipio":"uruapan","estado":"michoacan","rubro":"Rubroexitoso","noContrato":"23324","url":"cocacola.com","cliente":"patty","telCliente":"23324","correoCliente":"patty@gmail","pago":"23324"}' http://localhost:3000/empresas/api/ 
 
     EmpresasApi.prototype.save = function(req, res, next){
         var that = this;
@@ -41,7 +41,13 @@ var EmpresasApi = (function() {
             console.log("empresa guardada");
             console.log(empresa);
             var direccion = that.direccionFactory.get();
+            direccion.numero = req.body.numero;
+            direccion.numeroInt = req.body.numeroInt;
             direccion.calle = req.body.calle;
+            direccion.colonia = req.body.colonia;
+            direccion.cp = req.body.cp;
+            direccion.municipio = req.body.municipio;
+            direccion.estado = req.body.estado;
             direccion._empresaId = empresa._id;
             direccion.save(function(err, direccion){
                 if(err) return console.log(err);
@@ -49,7 +55,7 @@ var EmpresasApi = (function() {
                 console.log(direccion);
             });
             var rubro = that.rubroFactory.get();
-            rubro.nombre = req.body.rubro;
+            rubro.rubro = req.body.rubro;
             rubro._empresaId = empresa._id;
             rubro.save(function(err, rubro){
                 if(err) return console.log(err);
@@ -74,7 +80,7 @@ var EmpresasApi = (function() {
         }); 
         res.json(empresa);
     };
-// curl http://localhost:3000/empresas/api/56439d1978ee1c25399db5ec
+// curl http://localhost:3000/empresas/api/5643b5025d06c07f3e3bcd94
     EmpresasApi.prototype.getOne = function(req, res, next) {
         var that = this;
         var empresa = {};
