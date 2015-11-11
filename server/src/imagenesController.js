@@ -13,7 +13,12 @@ module.exports = (function() {
         router.get('/oneImagen/:id', imagenesApi.getOne.bind(imagenesApi));
         
         router.delete('/borrar/:id', imagenesApi.delete.bind(imagenesApi));
+
         
+        
+        router.post('/logo', imagenesApi.save.bind(imagenesApi));
+        router.post('/foto', imagenesApi.save.bind(imagenesApi));
+
     }
     
     return ImagenesController;

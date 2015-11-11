@@ -3,6 +3,7 @@
         this.models = models;
         this.imagenFactory = imagenFactory;
         this.fs = fs.module;
+        
     };
     //curl http://localhost:3000/imagenes/api/getAll
     ImagenesApi.prototype.getAll = function(req, res, next) {
@@ -74,8 +75,9 @@
     return ImagenesApi;
 })();
 
-module.exports = ImagenesApi;*/
+module.exports = ImagenesApi;
 
+*/
 
 
 var ImagenesApi = (function() {
@@ -144,4 +146,4 @@ var ImagenesApi = (function() {
     return ImagenesApi;
 })();
 
-module.exports = ImagenesApi;
+module.exports = ImagenesApi; 

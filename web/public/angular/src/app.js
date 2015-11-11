@@ -7,6 +7,8 @@
         $router.when("/imagen", { templateUrl: "angular/views/imagen.html"})
         $router.when("/correo", { templateUrl: "angular/views/correo.html"})
         $router.when("/verimagen", { templateUrl: "angular/views/verImagen.html"})
+        
+        $router.when("/empresa", { templateUrl: "angular/views/empresa.html"})
         .otherwise({ redirectTo: "/" });
     }]);
     

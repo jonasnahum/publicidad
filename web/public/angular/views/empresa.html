@@ -1,0 +1,144 @@
+<div ng-controller="PruebaController as ctrl">
+    <form ng-submit="ctrl.save()">
+        <fieldset>
+            <h2>Empresa</h2>
+            Nombre: <input type="text" ng-model="ctrl.nombre"/>
+            
+            Logotipo: <button type="file"  
+                       ngf-select="ctrl.logo($file, $invalidFiles)"
+                       accept="image/*" ngf-max-height="3000" 
+                       ngf-max-width="3000" ngf-max-size="1MB"
+                      >Select File</button>
+            <br><br>
+            <!-- Barra de progreso-->
+            File: 
+            <div style="font:smaller">
+                {{ctrl.f.name}} {{ctrl.errFile.name}}
+                {{ctrl.errFile.$error}} {{ctrl.errFile.$errorParam}}
+                <span class="progress" ng-show="ctrl.f.progress >= 0">
+                    <div style="width:{{ctrl.f.progress}}%"  
+                         ng-bind="ctrl.f.progress + '%'"></div>
+                </span>
+            </div>     
+            {{ctrl.errorMsg}}
+            <div>
+                <img src="data:image/*;base64,{{ctrl.serial}}" width="50%"
+                     height="50%" alt="embedded folder icon">
+            </div>
+        
+            
+            Foto:
+            <button type="file" 
+                    ngf-select="ctrl.uploadFiles($file, $invalidFiles)"
+                    accept="image/*" ngf-max-height="3000" 
+                    ngf-max-width="3000" ngf-max-size="1MB"
+                    >Select File</button>
+            <br><br>
+            <!-- Barra de progreso-->
+            File: 
+            <div style="font:smaller">
+                {{ctrl.f.name}} {{ctrl.errFile.name}}
+                {{ctrl.errFile.$error}} {{ctrl.errFile.$errorParam}}
+                <span class="progress" ng-show="ctrl.f.progress >= 0">
+                    <div style="width:{{ctrl.f.progress}}%"  
+                         ng-bind="ctrl.f.progress + '%'"></div>
+                </span>
+            </div>     
+            {{ctrl.errorMsg}}
+            <div>
+                <img src="data:image/*;base64,{{ctrl.serial}}" width="50%"
+                     height="50%" alt="embedded folder icon">
+            </div>
+            
+            
+            
+            Texto introductorio: <textarea rows="4" cols="50" ng-model="ctrl.textoIntroductorio">Escribe una breve introduccion</textarea>
+            <br />
+            <br />
+        </fieldset>
+        <fieldset>
+            Fecha de Contrato: <input type="text" ng-model="ctrl.fechaContrato"/>
+            Fecha de vencimiento: <input type="text" ng-model="ctrl.fechaVencimiento"/>
+        </fieldset>
+                <button type="submit">Send</button>
+    </form>
+</div>
+<!--<br />
+            <br />
+            
+            <fieldset>
+                <h5>Direccion</h5>
+                <br />
+                Numero: <input type="text" ng-model="ctrl.numero"/>
+                <br />
+                Numero interior: <input type="text" ng-model="ctrl.numeroInt"/>
+                <br />
+                Calle: <input type="text" ng-model="ctrl.calle"/>
+                <br />
+                Colonia: <input type="text" ng-model="ctrl.colonia"/>
+                <br />
+                C.P. : <input type="number" ng-model="ctrl.cp"/>
+                <br />
+                Municipio: <input type="text" ng-model="ctrl.municipio"/>
+                <br />
+                Estado: <input type="text" ng-model="ctrl.estado"/>
+                <br />
+                Mapa: <div id="googleMap" style="width:500px;height:380px;"></div>
+            </fieldset>
+            <br />
+            <fieldset>
+                <h5>Rubro</h5>
+                <br />
+                Nombre: <input type="text" ng-model="ctrl.rubro"/>
+            </fieldset>
+            <br />
+            <br />
+            Descripcion: <textarea rows="4" cols="50" ng-model="ctrl.descripcion">Describe brevemente l actividad de tu empresa</textarea>
+            <br />
+            Horario: <input type="text" ng-model="ctrl.horario"/>
+            <br />
+            Encargado: <input type="text" ng-model="ctrl.encargado"/>
+            <br />
+            Telefono: <input type="text" ng-model="ctrl.tel"/>
+            <br />
+            Facebook: <input type="text" ng-model="ctrl.face"/>
+            <br />
+            Email: <input type="email" ng-model="ctrl.email"/>
+            <br />
+            <br />
+            <fieldset>
+                <h5>Producto</h5>
+                <br />
+                Titulo: <input type="text" ng-model="ctrl.producto.titulo"/>
+                <br />
+                Parrafo: <textarea rows="4" cols="50" ng-model="ctrl.producto.parrafo">Describe el producto o servicio</textarea>
+                <a class="btn btn-lg btn-warning" href ng-click="ctrl.agregarProducto()" role="button">Push</a>
+                {{ctrl.producto}}
+                {{ctrl.productos}}
+            </fieldset>
+            <br />
+            <br />
+            Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota">Haz una nota</textarea>
+            <br />
+            Email Mercado Upn. : <input type="email" ng-model="ctrl.emailMercadoUpn"/>
+            <br />
+            <br />
+            <fieldset>
+                <h5>Informacion del cliente</h5>
+                <br />
+                Num. de contrato: <input type="number" ng-model="ctrl.noDeContrato"/>
+                <br />
+                Direccion de pagina web: <input type="text" ng-model="ctrl.direcciondePaginaWeb"/>
+                <br />
+                Nombre del cliente: <input type="text" ng-model="ctrl.nombreCliente"/>
+                <br />
+                Telefono: <input type="text" ng-model="ctrl.telCliente"/>
+                <br />Correo: <input type="email" ng-model="ctrl.correoCliente" />
+                <br />
+                Fecha de Contrato: <input type="text" ng-model="ctrl.fechaContrato"/>
+                <br />    
+                Fecha de vencimiento: <input type="text" ng-model="ctrl.fechaVencimiento"/>
+                <br />
+                Precio: <input type="number" ng-model="ctrl.precio"/>
+            </fieldset>
+    -->        

@@ -1,4 +1,4 @@
-module.exports = (function() {
+/*module.exports = (function() {
     var EmpresasController = function(express, empresasApi) {
         this.express = express.module;
         this.empresasApi = empresasApi;
@@ -18,5 +18,6 @@ module.exports = (function() {
         
     }
     
-    return BalancesController;
+    return EmpresasController;
 })();
+*/
