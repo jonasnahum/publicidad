@@ -4,13 +4,20 @@
             <h2>Empresa</h2>
             Nombre: <input type="text" ng-model="ctrl.nombre"/>
             
-            Logotipo: <button type="file"  
-                       ngf-select="ctrl.logo($file, $invalidFiles)"
-                       accept="image/*" ngf-max-height="3000" 
-                       ngf-max-width="3000" ngf-max-size="1MB"
-                      >Select File</button>
-            <br><br>
-            <!-- Barra de progreso-->
+            Logotipo: <button ngf-select="ctrl.uploadFiles($files)" multiple 
+            accept="image/*">Select Files</button>
+            <br>
+    <br>Files:
+    <ul>
+        <li ng-repeat="f in files" style="font:smaller">
+            {{f.name}}
+        </li>
+    </ul>
+    <span class="progress" ng-show="progress >= 0">
+        <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+    </span>
+    {{errorMsg}}
+            <!-- Barra de progreso
             File: 
             <div style="font:smaller">
                 {{ctrl.f.name}} {{ctrl.errFile.name}}
@@ -26,15 +33,15 @@
                      height="50%" alt="embedded folder icon">
             </div>
         
-            
-            Foto:
+        -->    
+          <!--  Foto:
             <button type="file" 
                     ngf-select="ctrl.uploadFiles($file, $invalidFiles)"
                     accept="image/*" ngf-max-height="3000" 
                     ngf-max-width="3000" ngf-max-size="1MB"
                     >Select File</button>
             <br><br>
-            <!-- Barra de progreso-->
+            <!-- Barra de progreso--
             File: 
             <div style="font:smaller">
                 {{ctrl.f.name}} {{ctrl.errFile.name}}
@@ -49,7 +56,7 @@
                 <img src="data:image/*;base64,{{ctrl.serial}}" width="50%"
                      height="50%" alt="embedded folder icon">
             </div>
-            
+            -->
             
             
             Texto introductorio: <textarea rows="4" cols="50" ng-model="ctrl.textoIntroductorio">Escribe una breve introduccion</textarea>

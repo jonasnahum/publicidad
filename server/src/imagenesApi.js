@@ -114,7 +114,6 @@ var ImagenesApi = (function() {
         var that = this;
         var bufs = [];
         var serialized = [];
-            
         req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
 
             file.on('data', function(data) {//data is type stream, ver si se puede agregar directo a imagen.imagen.data.
