@@ -6,7 +6,7 @@ var schema = mongoose.Schema({
     url: String,
     cliente: String,
     telCliente: String,
-    correo: String,
+    correoCliente: String,
     fechaContrato: Date,
     fechaVencimiento: Date,
     pago: String,

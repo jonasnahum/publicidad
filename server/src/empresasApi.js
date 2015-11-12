@@ -80,7 +80,7 @@ var EmpresasApi = (function() {
         }); 
         res.json(empresa);
     };
-// curl http://localhost:3000/empresas/api/5643b5025d06c07f3e3bcd94
+// curl http://localhost:3000/empresas/api/5644ddce1aa8169044c95568
     EmpresasApi.prototype.getOne = function(req, res, next) {
         var that = this;
         var empresa = {};

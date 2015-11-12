@@ -77,7 +77,7 @@
             //console.dir(ctrl.productos);
             console.dir(ctrl);
             $http({
-                url: 'http://localhost:3000/imagenes/api/prueba',
+                url: 'http://localhost:3000/empresas/api/',
                 method: "POST",
                 data: ctrl
             }).success(function(data, status, headers, config){
