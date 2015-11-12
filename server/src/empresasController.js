@@ -19,4 +19,6 @@ module.exports = (function() {
     }
     
     return EmpresasController;
+
 })();
+

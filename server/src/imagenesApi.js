@@ -3,6 +3,7 @@
         this.models = models;
         this.imagenFactory = imagenFactory;
         this.fs = fs.module;
+        
     };
     //curl http://localhost:3000/imagenes/api/getAll
     ImagenesApi.prototype.getAll = function(req, res, next) {
@@ -74,8 +75,9 @@
     return ImagenesApi;
 })();
 
-module.exports = ImagenesApi;*/
+module.exports = ImagenesApi;
 
+*/
 
 
 var ImagenesApi = (function() {
@@ -112,7 +114,6 @@ var ImagenesApi = (function() {
         var that = this;
         var bufs = [];
         var serialized = [];
-            
         req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
 
             file.on('data', function(data) {//data is type stream, ver si se puede agregar directo a imagen.imagen.data.
@@ -141,7 +142,21 @@ var ImagenesApi = (function() {
         }); 
     };    
     
+    
+    
+    
+    
+    
+    
+    ImagenesApi.prototype.prueba = function(req, res, next) {
+        console.log(req.body);
+        res.send("Se Guardo");    
+    };
+    
+    
+    
+    
     return ImagenesApi;
 })();
 
-module.exports = ImagenesApi;
+module.exports = ImagenesApi; 

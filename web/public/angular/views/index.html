@@ -5,13 +5,13 @@
             Nombre: <input type="text" ng-model="ctrl.nombre"/>
             Logotipo: <input type="file" ng-model="ctrl.logotipo" accept="image/*"/>
             Foto: <input type="file" ng-model="ctrl.foto" accept="image/*"/>
-            Texto introductorio: <textarea rows="4" cols="50" ng-model="ctrl.txtIntroductorio">Escribe una breve introduccion</textarea>
+            Texto introductorio: <textarea rows="4" cols="50" ng-model="ctrl.textoIntroductorio">Escribe una breve introduccion</textarea>
             <br />
             <br />
             <fieldset>
                 <h5>Direccion</h5>
-                Numero: <input type="number" ng-model="ctrl.numero"/>
-                Numero interior: <input type="numer" ng-model="ctrl.numInt"/>
+                Numero: <input type="text" ng-model="ctrl.numero"/>
+                Numero interior: <input type="text" ng-model="ctrl.numeroInt"/>
                 Calle: <input type="text" ng-model="ctrl.calle"/>
                 Colonia: <input type="text" ng-model="ctrl.colonia"/>
                 C.P. : <input type="number" ng-model="ctrl.cp"/>
@@ -29,8 +29,8 @@
             Descripcion: <textarea rows="4" cols="50" ng-model="ctrl.descripcion">Describe brevemente l actividad de tu empresa</textarea>
             Horario: <input type="text" ng-model="ctrl.horario"/>
             Encargado: <input type="text" ng-model="ctrl.encargado"/>
-            Telefono: <input type="text" ng-model="ctrl.telefono"/>
-            Facebook: <input type="text" ng-model="ctrl.facebook"/>
+            Telefono: <input type="text" ng-model="ctrl.tel"/>
+            Facebook: <input type="text" ng-model="ctrl.face"/>
             Email: <input type="email" ng-model="ctrl.email"/>
             <br />
             <br />
@@ -45,21 +45,20 @@
             <br />
             <br />
             Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota">Haz una nota</textarea>
-            Email Mercado Upn. : <input type="email" ng-model="ctrl.emailMercadoUpn"/>
+            Email Mercado Upn. : <input type="email" ng-model="ctrl.emailMercadoUruapan"/>
             <br />
             <br />
             <fieldset>
                 <h5>Informacion del cliente</h5>
-                Num. de contrato: <input type="number" ng-model="ctrl.numContrato"/>
-                Direccion de pagina web: <input type="text" ng-model="ctrl.pagWebCliente"/>
-                Nombre del cliente: <input type="text" ng-model="ctrl.nombreCte"/>
-                Telefono: <input type="text" ng-model="ctrl.telefonoCte"/>
-                Correo: <input type="email" ng-model="ctrl.emailCte" />
+                Num. de contrato: <input type="number" ng-model="ctrl.noDeContrato"/>
+                Direccion de pagina web: <input type="text" ng-model="ctrl.direcciondePaginaWeb"/>
+                Nombre del cliente: <input type="text" ng-model="ctrl.nombreCliente"/>
+                Telefono: <input type="text" ng-model="ctrl.telCliente"/>
+                Correo: <input type="email" ng-model="ctrl.correoCliente" />
                 Fecha de Contrato: <input type="text" ng-model="ctrl.fechaContrato"/>
-                Fecha de vencimiento: <input type="text" ng-model="ctrl.venceContrato"/>
-                Precio: <input type="number" ng-model="ctrl.precio"/>
-            </fieldset>
-            
+                Fecha de vencimiento: <input type="text" ng-model="ctrl.fechaVencimiento"/>
+                Precio: <input type="text" ng-model="ctrl.precio"/>
+                
             <button type="submit">Send</button>
         </fieldset>
     </form>
