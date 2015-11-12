@@ -1,16 +1,16 @@
 <div ng-controller="PruebaController as ctrl">
     <form ng-submit="ctrl.save()">
         <fieldset>
-            <h2>Empresa</h2>
+            <h2>Empresa</h2> 
             Nombre: <input type="text" ng-model="ctrl.nombre"/>
-            
-            Logotipo: 
+            <br />
+<!--            Logotipo:
+            <br />
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')"
                     accept="image/*" ngf-max-height="3000"
                     ngf-max-width="3000" ngf-max-size="1MB"
                     >Select Files</button>
-            <br><br>
-            Logo:
+            <br>
             <div style="font:smaller">
                 <ul>
                     <li ng-repeat="f in files" style="font:smaller">
@@ -32,14 +32,13 @@
                      height="50%" alt="embedded folder icon">
             </div>
             
-            
+            <br /><br />
             Foto:
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'foto')"
                     accept="image/*" ngf-max-height="3000"
                     ngf-max-width="3000" ngf-max-size="1MB"
                     >Select Files</button>
-            <br><br>
-            Local:
+            <br />
             <div style="font:smaller">
                 <ul>
                     <li ng-repeat="f in files" style="font:smaller">
@@ -56,46 +55,24 @@
 
             </div>
             {{ctrl.errorMsg}}
+            <br />
             <div>
                 <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
                      height="50%" alt="embedded folder icon">
             </div>
-            
-            <!--
-              Foto:
-            <button type="file" 
-                    ngf-select="ctrl.uploadFiles($file, $invalidFiles, 'foto')"
-                    accept="image/*" ngf-max-height="3000" 
-                    ngf-max-width="3000" ngf-max-size="1MB"
-                    >Select File</button>
-            <br><br>
-            <!-- Barra de progreso--
-            File: 
-            <div style="font:smaller">
-                {{ctrl.f.name}} {{ctrl.errFile.name}}
-                {{ctrl.errFile.$error}} {{ctrl.errFile.$errorParam}}
-                <span class="progress" ng-show="ctrl.f.progress >= 0">
-                    <div style="width:{{ctrl.f.progress}}%"  
-                         ng-bind="ctrl.f.progress + '%'"></div>
-                </span>
-            </div>     
-            {{ctrl.errorMsg}}
-            <div>
-                <img src="data:image/*;base64,{{ctrl.serial}}" width="50%"
-                     height="50%" alt="embedded folder icon">
-            </div>
-            -->
-            
-            
-            
+                        
+-->            
             Texto introductorio: <textarea rows="4" cols="50" ng-model="ctrl.textoIntroductorio">Escribe una breve introduccion</textarea>
             <br />
             <br />
-        </fieldset>
+        </fieldset><!--
         <fieldset>
-            Fecha de Contrato: <input type="text" ng-model="ctrl.fechaContrato"/>
+            <p>Fecha de Contrato: <input type="text" 
+                                      ng-model="ctrl.fechaContrato" 
+                                      id="datepicker" />
+                </p>
             Fecha de vencimiento: <input type="text" ng-model="ctrl.fechaVencimiento"/>
-        </fieldset>
+        </fieldset>-->
                 <button type="submit">Send</button>
     </form>
 </div>
