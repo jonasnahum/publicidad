@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('PruebaController', ['Upload', '$timeout', '$http', '$location', function(Upload, $timeout, $http, $location) {
+    app.controller('FormularioController', ['Upload', '$timeout', '$http', '$location', function(Upload, $timeout, $http, $location) {
         var ctrl = this;
         ctrl.nombre = undefined;
         ctrl.logotipo = undefined;

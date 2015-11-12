@@ -1,25 +1,12 @@
-<script type="text/javascript" src="./../../../js/calendar.js"></script>
-<div ng-controller="PruebaController as ctrl">
+<!-- http://localhost:3000/empresas/api/-->
+<script type="text/javascript" src="./../../../js/datepicker.js"></script>
+<div ng-controller="FormularioController as ctrl">
     <form ng-submit="ctrl.save()">
         <fieldset>
             <h2>Empresa</h2> 
             Nombre: <input type="text" ng-model="ctrl.nombre"/>
             <br />
-            
-            
-            <fieldset>
-                Fecha de Contrato: 
-                <input type="text" ng-model="ctrl.fechaContrato" 
-                   id="fechaContrato" />
-                Fecha de Vencimiento: 
-                <input type="text" ng-model="ctrl.fechaVencimiento" 
-                   id="fechaVencimiento" />
-            </fieldset>
-            
-            
-            
-            
-<!--            Logotipo:
+            Logotipo:
             <br />
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')"
                     accept="image/*" ngf-max-height="3000"
@@ -75,20 +62,20 @@
                 <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
                      height="50%" alt="embedded folder icon">
             </div>
-                        
--->            
+            <br />   
             Texto introductorio: <textarea rows="4" cols="50" ng-model="ctrl.textoIntroductorio">Escribe una breve introduccion</textarea>
             <br />
             <br />
-        </fieldset><!--
+        </fieldset>
         <fieldset>
-            <p>Fecha de Contrato: <input type="text" 
-                                      ng-model="ctrl.fechaContrato" 
-                                      id="datepicker" />
-                </p>
-            Fecha de vencimiento: <input type="text" ng-model="ctrl.fechaVencimiento"/>
-        </fieldset>-->
-                <button type="submit">Send</button>
+            Fecha de Contrato: 
+            <input type="text" ng-model="ctrl.fechaContrato" 
+               id="fechaContrato" />
+            Fecha de Vencimiento: 
+            <input type="text" ng-model="ctrl.fechaVencimiento" 
+               id="fechaVencimiento" />
+        </fieldset>
+        <button type="submit">Send</button>
     </form>
 </div>
 <!--<br />
