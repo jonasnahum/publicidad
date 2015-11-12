@@ -142,6 +142,20 @@ var ImagenesApi = (function() {
         }); 
     };    
     
+    
+    
+    
+    
+    
+    
+    ImagenesApi.prototype.prueba = function(req, res, next) {
+        console.log(req.body);
+        res.send("Se Guardo");    
+    };
+    
+    
+    
+    
     return ImagenesApi;
 })();
 

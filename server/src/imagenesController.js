@@ -14,6 +14,9 @@ module.exports = (function() {
         
         router.delete('/borrar/:id', imagenesApi.delete.bind(imagenesApi));
         
+        
+        router.post('/prueba', imagenesApi.prueba.bind(imagenesApi));
+        
     }
     
     return ImagenesController;
