@@ -32,8 +32,10 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cors());
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({limit: '50mb'}));
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // default options, immediately start reading from the request stream and parsing 
@@ -41,14 +43,11 @@ app.use(busboy({inmediate: true}));
 
 app.use('/', routes);
 app.use('/imagenes/api', imagenesApi.router);
-<<<<<<< HEAD
 app.use('/empresas/api', empresasApi.router);
 app.use('/direcciones/api', direccionesApi.router);
 app.use('/rubros/api', rubrosApi.router);
 app.use('/informacion/api', informacionApi.router);
-=======
-//app.use('/empresas/api', empresasApi.router);
->>>>>>> 0a227e6520152c036c52d1fa2b092a47f455cfb4
+
 app.post('/correo', function (req, res, next) {
   console.log(req.body);
   var transporter = nodemailer.createTransport({
