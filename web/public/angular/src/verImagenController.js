@@ -3,8 +3,8 @@
     
     app.controller('VerImagenController', ['$http', '$location', function($http, $location) {
         var ctrl = this;
-        
-        ctrl.id = "563d1147d22be9092b051f18";//"563cef40a8eed2aa24c67a80";//"563cef50a8eed2aa24c67a81"
+      
+        ctrl.id = "563d9a504eaabde71b75d8fb";
         ctrl.imagen = undefined;
 
         ctrl.GetImagen = function() {
@@ -14,7 +14,7 @@
             }).success(function(data, status, headers, config){
                 ctrl.imagen = data;
             }).error(function(data, status, headers, config) {
-                console.log(status);    
+                console.log("%s %s %s", data, status, config);    
             });
         };
         ctrl.GetImagen();

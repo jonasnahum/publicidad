@@ -6,9 +6,9 @@
         ctrl.nombre = undefined;
         ctrl.logotipo = undefined;
         ctrl.foto = undefined;
-        ctrl.txtIntroductorio = undefined;
+        ctrl.textoIntroductorio = undefined;
         ctrl.numero = undefined;
-        ctrl.numInt = undefined;
+        ctrl.numeroInt = undefined;
         ctrl.calle = undefined;
         ctrl.colonia = undefined;
         ctrl.cp = undefined;
@@ -16,6 +16,26 @@
         ctrl.estado = undefined;
         ctrl.latitud = 0;
         ctrl.longitud = 0;
+        
+        ctrl.rubro = undefined;
+        ctrl.descripcion = undefined;
+        ctrl.horario = undefined;
+        ctrl.encargado = undefined;
+        ctrl.tel = undefined;
+        ctrl.face = undefined;
+        ctrl.email = undefined;
+        ctrl.productos = [];
+        ctrl.producto = undefined;
+        ctrl.nota = undefined;
+        ctrl.emailMercadoUruapan = undefined;
+        ctrl.noDeContrato = undefined;
+        ctrl.direcciondePaginaWeb = undefined;
+        ctrl.nombreCliente = undefined;
+        ctrl.telCliente = undefined;
+        ctrl.correoCliente = undefined;
+        ctrl.fechaContrato = undefined;
+        ctrl.fechaVencimiento = undefined;
+        ctrl.precio = undefined;
         
         var map;
         var myCenter=new google.maps.LatLng(19.4096,-102.0520);
@@ -46,25 +66,6 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
         
-        ctrl.rubro = undefined;
-        ctrl.descripcion = undefined;
-        ctrl.horario = undefined;
-        ctrl.encargado = undefined;
-        ctrl.telefono = undefined;
-        ctrl.facebook = undefined;
-        ctrl.email = undefined;
-        ctrl.productos = [];
-        ctrl.producto = undefined;
-        ctrl.nota = undefined;
-        ctrl.emailMercadoUpn = undefined;
-        ctrl.numContrato = undefined;
-        ctrl.pagWebCliente = undefined;
-        ctrl.nombreCte = undefined;
-        ctrl.telefonoCte = undefined;
-        ctrl.emailCte = undefined;
-        ctrl.fechaContrato = undefined;
-        ctrl.venceContrato = undefined;
-        ctrl.precio = undefined;
         
    
         ctrl.agregarProducto = function() {

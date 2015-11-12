@@ -23,6 +23,7 @@ DbConnection.$inject = ["mongoose"];
 
 var ImagenesController = require("./imagenesController");
 ImagenesController.$inject = ["express", "imagenesApi"];
+
 var EmpresasController = require("./empresasController");
 EmpresasController.$inject = ["express", "empresasApi"];
 var DireccionController = require("./direccionController");
@@ -57,10 +58,14 @@ container.register("express", { module: require('express') });
 container.register("mongoose", { module: require('mongoose') });
 container.register("fs", { module: require('fs') });
 container.register("imagenesController", ImagenesController);
+<<<<<<< HEAD
 container.register("empresasController", EmpresasController);
 container.register("direccionController", DireccionController);
 container.register("rubrosController", RubrosController);
 container.register("informacionController", InformacionController);
+=======
+//container.register("empresasController", EmpresasController);
+>>>>>>> 0a227e6520152c036c52d1fa2b092a47f455cfb4
 container.register("imagenesApi", ImagenesApi);
 container.register("empresasApi", EmpresasApi);
 container.register("direccionApi", DireccionApi);
