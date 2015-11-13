@@ -12,7 +12,7 @@ module.exports = (function() {
 
         router.get('/:id', empresasApi.getOne.bind(empresasApi));
         
-        router.put('/', empresasApi.update.bind(empresasApi));
+        router.put('/:id', empresasApi.update.bind(empresasApi));
         
         router.delete('/:id', empresasApi.delete.bind(empresasApi));
         
