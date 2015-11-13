@@ -72,9 +72,7 @@
         };
         
         //SERVER Functions
-        //http://localhost:3000/empresas/api/
         ctrl.save = function() {
-            //console.dir(ctrl.productos);
             console.dir(ctrl);
             $http({
                 url: 'http://localhost:3000/empresas/api/',
