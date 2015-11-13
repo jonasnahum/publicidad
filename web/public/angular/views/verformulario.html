@@ -1,10 +1,10 @@
 <script type="text/javascript" src="./../../../js/datepicker.js"></script>
-<div ng-controller="FormularioController as ctrl">
-    <form ng-submit="ctrl.save()">
+<div ng-controller="VerFormularioController as ctrl">
+    <form>
         <fieldset>
             <h2>Empresa</h2> 
-            Nombre: <input type="text" ng-model="ctrl.nombre"/>
-            <br />
+            Nombre: {{ctrl.nombre}}
+    <!--        <br />
             Logotipo:
             <br />
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')"
@@ -61,68 +61,65 @@
                 <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
                      height="50%" alt="embedded folder icon">
             </div>
+-->
             <br />   
-            Texto introductorio: <textarea rows="4" cols="50" ng-model="ctrl.textoIntro">Escribe una breve introduccion</textarea>
+            Texto introductorio: {{ctrl.textoIntro}}
             <br /><br />
         </fieldset>
         <br /><br />
         <fieldset>
             <h5>Direccion</h5>
             <br />
-            Numero: <input type="text" ng-model="ctrl.numero"/>
+            Numero: {{ctrl.numero}}
             <br />
-            Numero interior: <input type="text" 
-                                    ng-model="ctrl.numeroInt"/>
+            Numero interior: {{ctrl.numeroInt}}
             <br />
-            Calle: <input type="text" ng-model="ctrl.calle"/>
+            Calle: {{ctrl.calle}}
             <br />
-            Colonia: <input type="text" ng-model="ctrl.colonia"/>
+            Colonia: {{ctrl.colonia}}
             <br />
-            C.P. : <input type="text" ng-model="ctrl.cp"/>
+            C.P. : {{ctrl.cp}}
             <br />
-            Municipio: <input type="text" ng-model="ctrl.municipio"/>
+            Municipio: {{ctrl.municipio}}
             <br />
-            Estado: <input type="text" ng-model="ctrl.estado"/>
+            Estado: {{ctrl.estado}}
             <br />
-
+<!--
             Mapa: 
             <div id="googleMap" style="width:500px;height:380px;"></div>
         </fieldset>
         <br />
+-->
         <fieldset>
             <h5>Rubro</h5>
             <br />
-            Nombre: <input type="text" ng-model="ctrl.rubro"/>
+            Nombre: {{ctrl.rubro}}
         </fieldset>
         <br /><br />
-        Descripcion: <textarea rows="4" cols="50" 
-                               ng-model="ctrl.descripcion"></textarea>
+        Descripcion: <textarea rows="4" cols="50" >{{ctrl.descripcion}}</textarea>
         <br />
-        Horario: <input type="text" ng-model="ctrl.horario"/>
+        Horario: {{ctrl.horario}}
         <br />
-        Encargado: <input type="text" ng-model="ctrl.encargado"/>
+        Encargado: {{ctrl.encargado}}
         <br />
-        Telefono: <input type="text" ng-model="ctrl.tel"/>
+        Telefono: {{ctrl.tel}}
         <br />
-        Facebook: <input type="text" ng-model="ctrl.face"/>
+        Facebook: {{ctrl.face}}
         <br />
         Email: <input type="email" ng-model="ctrl.email"/>
         <br /><br />
         <fieldset>
             <h5>Producto</h5>
             <br />
-            Titulo: <input type="text" ng-model="ctrl.producto.titulo"/>
-            <br />
-            Parrafo: <textarea rows="4" cols="50" 
-                               ng-model="ctrl.producto.parrafo">
-                               Describe el producto o servicio</textarea>
-            <a class="btn btn-lg btn-warning" href 
-               ng-click="ctrl.agregarProducto()" role="button">Push</a>
-            {{ctrl.producto}}
-            {{ctrl.productos}}
+            <ul>
+                <li ng-repeat="producto in ctrl.productos">
+                    Titulo: {{producto.titulo}} <br>
+                    Parrafo: {{producto.parrafo}}
+                </li>
+            </ul>
         </fieldset>
         <br /><br />
-        Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota"></textarea>
+        Nota: <textarea rows="4" cols="50">{{ctrl.nota}}</textarea>
         <br /><br />
         <fieldset>
             <h5>Informacion del cliente</h5>
@@ -130,27 +127,19 @@
             Num. de contrato: <input type="text" 
                                      ng-model="ctrl.noContrato"/>
             <br />
-            Direccion de pagina web: <input type="text" 
-                                            ng-model="ctrl.url"/>
+            Direccion de pagina web: {{ctrl.url}}
             <br />
-            Nombre del cliente: <input type="text" 
-                                       ng-model="ctrl.cliente"/>
+            Nombre del cliente: {{ctrl.cliente}}
             <br />
-            Telefono: <input type="text" ng-model="ctrl.telCliente"/>
-            <br />Correo: <input type="email" 
-                                 ng-model="ctrl.correoCliente" />
+            Telefono: {{ctrl.telCliente}}
             <br />
-            Fecha de Contrato: <input type="text" 
-                                      ng-model="ctrl.fechaContrato" 
-                                      id="fechaContrato" />
+            Correo: {{ctrl.correoCliente}}
+            <br />
+            Fecha de Contrato: {{ctrl.fechaContrato}}
             <br />    
-            Fecha de Vencimiento: <input type="text" 
-                                         ng-model="ctrl.fechaVencimiento" 
-                                         id="fechaVencimiento" />
+            Fecha de Vencimiento: {{ctrl.fechaVencimiento}}
             <br />
-            Precio: <input type="text" ng-model="ctrl.pago"/>
+            Precio: {{ctrl.pago}}
         </fieldset>
-        
-        <button type="submit">Send</button>
     </form>
 </div>
