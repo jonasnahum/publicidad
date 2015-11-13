@@ -36,95 +36,46 @@ var EmpresasApi = (function() {
         empresa.email = req.body.email;
         empresa.productos = req.body.productos;
         empresa.nota = req.body.nota;
+        empresa.direccion={
+            numero: req.body.numero,
+            numeroInt: req.body.numeroInt,
+            calle: req.body.calle,
+            colonia: req.body.colonia,
+            cp: req.body.cp,
+            municipio: req.body.municipio,
+            estado: req.body.estado
+        };
+        empresa.rubro={
+            rubro: req.body.rubro
+        };
+        empresa.informacion={
+            noContrato: req.body.noContrato,
+            url: req.body.url,
+            cliente: req.body.cliente,
+            telCliente: req.body.telCliente,
+            correoCliente: req.body.correoCliente,
+            fechaContrato: req.body.fechaContrato||Date.now(),
+            fechaVencimiento: req.body.fechaVencimiento||Date.now(),
+            pago: req.body.pago
+        };
         empresa.save(function(err, empresa) {
             if(err) return console.log(err);
             console.log("empresa guardada");
-            console.log(empresa);
-            var direccion = that.direccionFactory.get();
-            direccion.numero = req.body.numero;
-            direccion.numeroInt = req.body.numeroInt;
-            direccion.calle = req.body.calle;
-            direccion.colonia = req.body.colonia;
-            direccion.cp = req.body.cp;
-            direccion.municipio = req.body.municipio;
-            direccion.estado = req.body.estado;
-            direccion._empresaId = empresa._id;
-            direccion.save(function(err, direccion){
-                if(err) return console.log(err);
-                console.log("dirección guardada");
-                console.log(direccion);
-            });
-            var rubro = that.rubroFactory.get();
-            rubro.rubro = req.body.rubro;
-            rubro._empresaId = empresa._id;
-            rubro.save(function(err, rubro){
-                if(err) return console.log(err);
-                console.log("rubro guardado");
-                console.log(rubro);
-            });
-            var informacion = that.informacionFactory.get();
-            informacion.noContrato = req.body.noContrato;
-            informacion.url = req.body.url;
-            informacion.cliente = req.body.cliente;
-            informacion.telCliente = req.body.telCliente;
-            informacion.correoCliente = req.body.correoCliente;
-            informacion.fechaContrato = req.body.fechaContrato||Date.now();
-            informacion.fechaVencimiento = req.body.fechaVencimiento||Date.now();
-            informacion.pago = req.body.pago;
-            informacion._empresaId = empresa._id;
-            informacion.save(function(err, informacion) {
-                if(err) return console.log(err);
-                console.log("informacion guardada");
-                console.log(informacion);
-            }); 
+            console.log(empresa);  
         }); 
         res.json(empresa);
     };
-// curl http://localhost:3000/empresas/api/5644ddce1aa8169044c95568
+//curl http://localhost:3000/empresas/api/56461263510dc1af0f9a32bf
     EmpresasApi.prototype.getOne = function(req, res, next) {
         var that = this;
-        var empresa = {};
-        var promise1 = function(){
-            return that.models.empresa.findOne({ _id: req.params.id })
-            .exec(function(err, empresaMongoose){
-                if (err) return next(err);
-                empresa = empresaMongoose;
-                console.log("paso1");
-            });
-        };
-        var promise2 = function() {
-            return that.models.direccion.findOne({_empresaId: empresa._id})
-            .exec(function(err, direccion){
-                if (err) return next(err);
-                empresa.direccion = direccion;
-                console.log("paso2");
-            });
-        };
-        var promise3 = function() {
-            return that.models.rubro.findOne({_empresaId: empresa._id})
-            .exec(function(err, rubro){
-                if (err) return next(err);
-                empresa.rubro = rubro;
-                console.log("paso3");
-            });
-        };
-        var promise4 = function() {
-            return that.models.informacion.findOne({_empresaId: empresa._id})
-            .exec(function(err, informacion){
-                if (err) return next(err);
-                empresa.informacion = informacion;
-                console.log("paso4");
-            });
-        };
-        var promise5 = function(){
-            console.log("paso5");
+        
+        that.models.empresa.findOne({ _id: req.params.id })
+        .exec(function(err, empresa){
+            if (err) return next(err);
+            console.log("empresa encontrada")
             console.log(empresa);
-            console.log(empresa.direccion);
-            console.log(empresa.rubro);
-            console.log(empresa.informacion);
             return res.json(empresa);
-        };
-        promise1().then(promise2).then(promise3).then(promise4).then(promise5);
+        });
     };
 //curl -X PUT -d id=56420ae051fed7100d8465d0 -d nombre=jonas2 http://localhost:3000/empresas/api/
     EmpresasApi.prototype.update = function(req, res, next) {
