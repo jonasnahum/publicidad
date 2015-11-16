@@ -16,6 +16,8 @@ module.exports = (function() {
         
         router.delete('/:id', empresasApi.delete.bind(empresasApi));
         
+        router.delete('/', empresasApi.deleteDocs.bind(empresasApi));
+        
     }
     
     return EmpresasController;

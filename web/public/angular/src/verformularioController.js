@@ -4,13 +4,35 @@
     app.controller('VerFormularioController', ['$http', '$location', function($http, $location) {
         var ctrl = this;
       
-        ctrl.empresaId= "5645e902713f97c11f50d3aa";
-        ctrl.direccionId = "5645e906713f97c11f50d3ab";
-        ctrl.rubroId = "5645e906713f97c11f50d3ac";
-        ctrl.informacionId = "5645e906713f97c11f50d3ad";  
+        /*
+        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        ctrl.latitud = 19.4077;
+        ctrl.longitud = -102.0642;
+        var myMarkerPosition=new google.maps.LatLng(ctrl.latitud,ctrl.longitud);
+       
+        var map;
+        var myCenter=new google.maps.LatLng(19.4096,-102.0520);
+
+        function initialize(){
+            var mapOptions = {
+                  center:myCenter,
+                  zoom:13,
+                  mapTypeId:google.maps.MapTypeId.ROADMAP
+              };
+            map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+            var marker = new google.maps.Marker({
+                position: myMarkerPosition,
+                map: map,
+                icon: iconBase + 'schools_maps.png'
+            });
+        }
+               
         
-       // ctrl.lat = undefined;  
-        //ctrl.long = undefined;  
+        google.maps.event.addDomListener(window, 'load', initialize);
+        */
+        
+        
+        ctrl.empresaId= "564a329ada9695d034a07db5";
         
         var promise1 = function() {
             console.log('SE EJECUTO PROMISE 1');
@@ -18,8 +40,6 @@
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "GET",
             }).success(function(data, status, headers, config){
-                console.log(data.lat);
-                console.log(data.long);
                 ctrl.nombre = data.nombre;
                 ctrl.logotipo = data.logotipo;
                 ctrl.foto = data.foto;
@@ -34,70 +54,41 @@
                 ctrl.email = data.email;
                 ctrl.productos = data.productos;
                 ctrl.nota = data.nota;
-            }).error(function(data, status, headers, config) {
-                console.log("%s %s %s", data, status, config);    
-            });
-        };
-        
-        var promise2 = function() {
-            console.log('SE EJECUTO PROMISE 2');
-            return $http({
-                url: 'http://localhost:3000/direcciones/api/' + ctrl.direccionId,
-                method: "GET",
-            }).success(function(data, status, headers, config){
-                ctrl.numero = data.numero;
-                ctrl.numeroInt = data.numeroInt;
-                ctrl.calle = data.calle;
-                ctrl.colonia = data.colonia;
-                ctrl.cp = data.cp;
-                ctrl.municipio = data.municipio;
-                ctrl.estado = data.estado;
-            }).error(function(data, status, headers, config) {
-                console.log("%s %s %s", data, status, config);    
-            });
-        };
-        
-        var promise3 = function() {
-            console.log('SE EJECUTO PROMISE 3');
-            return $http({
-                url: 'http://localhost:3000/rubros/api/' + ctrl.rubroId,
-                method: "GET",
-            }).success(function(data, status, headers, config){
-                ctrl.rubro = data.rubro;
-            }).error(function(data, status, headers, config) {
-                console.log("%s %s %s", data, status, config);    
-            });
-        };
-        
-        var promise4 = function() {
-            console.log('SE EJECUTO PROMISE 4');
-            return $http({
-                url: 'http://localhost:3000/informacion/api/' + ctrl.informacionId,
-                method: "GET",
-            }).success(function(data, status, headers, config){
-                ctrl.noContrato = data.noContrato;
-                ctrl.url = data.url;
-                ctrl.cliente = data.cliente;
-                ctrl.telCliente = data.telCliente;
-                ctrl.correoCliente = data.correoCliente;
-                ctrl.fechaContrato = data.fechaContrato;
-                ctrl.fechaVencimiento = data.fechaVencimiento;
-                ctrl.pago = data.pago;
+                
+                ctrl.numero = data.direccion.numero;
+                ctrl.numeroInt = data.direccion.numeroInt;
+                ctrl.calle = data.direccion.calle;
+                ctrl.colonia = data.direccion.colonia;
+                ctrl.cp = data.direccion.cp;
+                ctrl.municipio = data.direccion.municipio;
+                ctrl.estado = data.direccion.estado;
+          
+                ctrl.rubro = data.rubro.rubro;
+                
+                ctrl.noContrato = data.informacion.noContrato;
+                ctrl.url = data.informacion.url;
+                ctrl.cliente = data.informacion.cliente;
+                ctrl.telCliente = data.informacion.telCliente;
+                ctrl.correoCliente = data.informacion.correoCliente;
+                ctrl.fechaContrato = data.informacion.fechaContrato;
+                ctrl.fechaVencimiento = data.informacion.fechaVencimiento;
+                ctrl.pago = data.informacion.pago;
             }).error(function(data, status, headers, config) {
                 console.log("%s %s %s", data, status, config);    
             });
         };
                 
-        promise1().then(promise2).then(promise3).then(promise4).then(
+        promise1().then(
             function() {
                 console.log('SE EJECUTO mapa');
-                console.log(ctrl.lat);//aparecen como undefined
-                console.log(ctrl.long);
-
+                
                 var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-                var latitud = ctrl.lat;
-                var longitud = ctrl.long;
+                var latitud = parseFloat(ctrl.lat);
+                var longitud = parseFloat(ctrl.long);
                 var myMarkerPosition=new google.maps.LatLng(latitud,longitud);
+
+                console.log(latitud);//aparecen como undefined
+                console.log(longitud);
 
                 var map;
                 var myCenter=new google.maps.LatLng(latitud,longitud);

@@ -13,6 +13,7 @@ var EmpresasApi = (function() {
         that.models.empresa.find({}, function (err, empresas) {
                 if (err) return console.log(err);
                 console.log(empresas);
+                //console.log(empresas._id);
                 res.json(empresas);
             });   
     };    
@@ -137,6 +138,16 @@ var EmpresasApi = (function() {
         }); 
     };      
     
+//DELETE ALL DOCUMENTS OF A COLLECTION    
+//curl -X "DELETE" http://localhost:3000/empresas/api/
+    EmpresasApi.prototype.deleteDocs = function(req, res, next) {
+        var that = this;
+        that.models.empresa.remove({}, function(err, empresa) {
+            if(err) return next(err);
+            console.log("Documents deleted");
+            res.json(empresa);
+        }); 
+    };
     return EmpresasApi;
 })();
 
