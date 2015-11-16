@@ -9,11 +9,12 @@
         ctrl.rubroId = "5645e906713f97c11f50d3ac";
         ctrl.informacionId = "5645e906713f97c11f50d3ad";  
         
-        ctrl.lat = undefined;  
-        ctrl.long = undefined;  
+       // ctrl.lat = undefined;  
+        //ctrl.long = undefined;  
         
-        ctrl.verEmpresa = function() {
-            $http({
+        var promise1 = function() {
+            console.log('SE EJECUTO PROMISE 1');
+            return $http({
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "GET",
             }).success(function(data, status, headers, config){
@@ -38,8 +39,9 @@
             });
         };
         
-        ctrl.verDireccion = function() {
-            $http({
+        var promise2 = function() {
+            console.log('SE EJECUTO PROMISE 2');
+            return $http({
                 url: 'http://localhost:3000/direcciones/api/' + ctrl.direccionId,
                 method: "GET",
             }).success(function(data, status, headers, config){
@@ -55,8 +57,9 @@
             });
         };
         
-        ctrl.verRubro = function() {
-            $http({
+        var promise3 = function() {
+            console.log('SE EJECUTO PROMISE 3');
+            return $http({
                 url: 'http://localhost:3000/rubros/api/' + ctrl.rubroId,
                 method: "GET",
             }).success(function(data, status, headers, config){
@@ -66,8 +69,9 @@
             });
         };
         
-        ctrl.verInformacion = function() {
-            $http({
+        var promise4 = function() {
+            console.log('SE EJECUTO PROMISE 4');
+            return $http({
                 url: 'http://localhost:3000/informacion/api/' + ctrl.informacionId,
                 method: "GET",
             }).success(function(data, status, headers, config){
@@ -84,39 +88,36 @@
             });
         };
                 
-        ctrl.verEmpresa();
-        ctrl.verDireccion();
-        ctrl.verRubro();
-        ctrl.verInformacion();    
-        
-        console.log(ctrl.lat);//aparecen como undefined
-        console.log(ctrl.long);
-        
-        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-        ctrl.latitud = ctrl.lat;
-        ctrl.longitud = ctrl.long;
-        var myMarkerPosition=new google.maps.LatLng(ctrl.latitud,ctrl.longitud);
-       
-        var map;
-        var myCenter=new google.maps.LatLng(ctrl.lat,ctrl.long);
+        promise1().then(promise2).then(promise3).then(promise4).then(
+            function() {
+                console.log('SE EJECUTO mapa');
+                console.log(ctrl.lat);//aparecen como undefined
+                console.log(ctrl.long);
 
-        function initialize(){
-            var mapOptions = {
-                  center:myCenter,
-                  zoom:13,
-                  mapTypeId:google.maps.MapTypeId.ROADMAP
-              };
-            map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
-            var marker = new google.maps.Marker({
-                position: myMarkerPosition,
-                map: map,
-                icon: iconBase + 'schools_maps.png'
+                var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+                var latitud = ctrl.lat;
+                var longitud = ctrl.long;
+                var myMarkerPosition=new google.maps.LatLng(latitud,longitud);
+
+                var map;
+                var myCenter=new google.maps.LatLng(latitud,longitud);
+
+                function initialize(){
+                    var mapOptions = {
+                          center:myCenter,
+                          zoom:13,
+                          mapTypeId:google.maps.MapTypeId.ROADMAP
+                      };
+                    map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+                    var marker = new google.maps.Marker({
+                        position: myMarkerPosition,
+                        map: map,
+                        icon: iconBase + 'schools_maps.png'
+                    });
+                }
+
+                google.maps.event.addDomListener(window, 'load', initialize);
             });
-        }
-               
-        
-        google.maps.event.addDomListener(window, 'load', initialize);
-        
     }]);
 })();
 
