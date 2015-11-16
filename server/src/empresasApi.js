@@ -17,7 +17,7 @@ var EmpresasApi = (function() {
             });   
     };    
     
-//curl -i -H "Content-Type: application/json" -d '{"nombre":"CHECARRUBRO","logotipo":"rojoyblanco","foto":"unamuchacha","textoIntro":"bienvenidos","lat":"01","long":"02","descripcion":"refresqueramasgrandedelmundo","horario":"todoslosdias","encargado":"ellic","tel":"33333","face":"elface","email":"cocacola@gmail.com","productos": [{"lata":"de 500ml"},{"botella":"de 600ml"}] ,"nota":"servicio a domicilio","numero":"2","numeroInt":"1A","calle":"zumpimito","colonia":"zumpimito","cp":"607400","municipio":"uruapan","estado":"michoacan","rubro":"Rubroexitoso","noContrato":"23324","url":"cocacola.com","cliente":"patty","telCliente":"23324","correoCliente":"patty@gmail","pago":"23324"}' http://localhost:3000/empresas/api/ 
+//curl -i -H "Content-Type: application/json" -d '{"nombre":"eeeeeeeeeewwwwwwwwwweeeeeeeeeewwwwwwwwwweeeeeeeeee lalfj","logotipo":"rojoyblanco","foto":"unamuchacha","textoIntro":"bienvenidos","lat":"01","long":"02","descripcion":"refresqueramasgrandedelmundo","horario":"todoslosdias","encargado":"ellic","tel":"33333","face":"elface","email":"cocacola@gmail.com","productos": [{"lata":"de 500ml"},{"botella":"de 600ml"}] ,"nota":"servicio a domicilio","numero":"2","numeroInt":"1A","calle":"zumpimito","colonia":"zumpimito","cp":"607400","municipio":"uruapan","estado":"michoacan","rubro":"Rubroexitoso","noContrato":"23324","url":"cocacola.com","cliente":"patty","telCliente":"23324","correoCliente":"patty@gmail","pago":"23324"}' http://localhost:3000/empresas/api/ 
 
     EmpresasApi.prototype.save = function(req, res, next){
         var that = this;
@@ -78,7 +78,7 @@ var EmpresasApi = (function() {
         });
     };
 
-//curl -X PUT -i -H "Content-Type: application/json" -d '{"nombre":"UPDATED","logotipo":"rojoyblanco","foto":"unamuchacha","textoIntro":"bienvenidos","lat":"01","long":"02","descripcion":"refresqueramasgrandedelmundo","horario":"todoslosdias","encargado":"ellic","tel":"33333","face":"elface","email":"cocacola@gmail.com","productos": [{"lata":"de 500ml"},{"botella":"de 600ml"}] ,"nota":"servicio a domicilio","numero":"UPDATED","numeroInt":"1A","calle":"zumpimito","colonia":"zumpimito","cp":"607400","municipio":"uruapan","estado":"michoacan","rubro":"UPDATED","noContrato":"UPDATED","url":"cocacola.com","cliente":"patty","telCliente":"23324","correoCliente":"patty@gmail","pago":"23324"}' http://localhost:3000/empresas/api/ 5646467e83540be61605d680
+//curl -X PUT -i -H "Content-Type: application/json" -d '{"nombre":"UPDATED","logotipo":"rojoyblanco","foto":"unamuchacha","textoIntro":"bienvenidos","lat":"01","long":"02","descripcion":"refresqueramasgrandedelmundo","horario":"todoslosdias","encargado":"ellic","tel":"33333","face":"elface","email":"cocacola@gmail.com","productos": [{"lata":"de 500ml"},{"botella":"de 600ml"}] ,"nota":"servicio a domicilio","numero":"UPDATED","numeroInt":"1A","calle":"zumpimito","colonia":"zumpimito","cp":"607400","municipio":"uruapan","estado":"michoacan","rubro":"UPDATED","noContrato":"UPDATED","url":"cocacola.com","cliente":"patty","telCliente":"23324","correoCliente":"patty@gmail","pago":"23324"}' http://localhost:3000/empresas/api/5646467e83540be61605d680
     
     EmpresasApi.prototype.update = function(req, res, next) {
         var that = this;
@@ -128,7 +128,7 @@ var EmpresasApi = (function() {
             }); 
         });
     };
-//curl -X "DELETE" http://localhost:3000/empresas/api/5646400628346fef1513c651
+//curl -X "DELETE" http://localhost:3000/empresas/api/5646467e83540be61605d680
     EmpresasApi.prototype.delete = function(req, res, next) {
         var that = this;
         that.models.empresa.findByIdAndRemove(req.params.id, function(err, empresa) {
