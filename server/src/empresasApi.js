@@ -18,7 +18,9 @@ var EmpresasApi = (function() {
             });   
     };    
     
-//curl -i -H "Content-Type: application/json" -d '{"nombre":"eeeeeeeeeewwwwwwwwwweeeeeeeeeewwwwwwwwwweeeeeeeeee lalfj","logotipo":"rojoyblanco","foto":"unamuchacha","textoIntro":"bienvenidos","lat":"01","long":"02","descripcion":"refresqueramasgrandedelmundo","horario":"todoslosdias","encargado":"ellic","tel":"33333","face":"elface","email":"cocacola@gmail.com","productos": [{"lata":"de 500ml"},{"botella":"de 600ml"}] ,"nota":"servicio a domicilio","numero":"2","numeroInt":"1A","calle":"zumpimito","colonia":"zumpimito","cp":"607400","municipio":"uruapan","estado":"michoacan","rubro":"Rubroexitoso","noContrato":"23324","url":"cocacola.com","cliente":"patty","telCliente":"23324","correoCliente":"patty@gmail","pago":"23324"}' http://localhost:3000/empresas/api/ 
+//curl -i -H "Content-Type: application/json" -d '{"nombre":"eeeeeeeeeewwwwwwwwwweeeeeeeeeewwwww","logotipo":"rojoyblanco","foto":"unamuchacha","textoIntro":"bienvenidos","lat":"01","long":"02","descripcion":"refresqueramasgrandedelmundo","horario":"todoslosdias","encargado":"ellic","tel":"33333","face":"elface","email":"cocacola@gmail.com","productos": [{"lata":"de 500ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"}] ,"nota":"servicio a domicilio","numero":"2","numeroInt":"1A","calle":"zumpimito","colonia":"zumpimito","cp":"60740","municipio":"uruapan","estado":"michoacan","rubro":"Rubroexitoso","noContrato":"23324","url":"cocacola.com","cliente":"patty","telCliente":"23324","correoCliente":"patty@gmail.com","pago":"23324"}' http://localhost:3000/empresas/api/ 
+
+
 
     EmpresasApi.prototype.save = function(req, res, next){
         var that = this;
@@ -60,8 +62,12 @@ var EmpresasApi = (function() {
             pago: req.body.pago
         };
         empresa.save(function(err, empresa) {
-            if(err) return console.log(err);
-            console.log("empresa guardada");
+            if(err){
+                Object.keys(err.errors).forEach(function(key) {
+                    var message = err.errors[key].message;
+                    console.log('Validation error for "%s": %s', key, message);
+                });
+            }
             console.log(empresa);  
         }); 
         res.json(empresa);

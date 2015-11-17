@@ -1,156 +1,102 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var minFive = function(val) {
-    if (val && val.length >= 5 ){
-        return true;
-    }
-    return false;
-};
-var minTen = function(val) {
-    if (val && val.length >= 10 ){
-        return true;
-    }
-    return false;
-};
-var maxForty = function(val) {
-    if (val && val.length <= 40 ){
-        return true;
-    }
-    return false;
-};
-var maxEighty = function(val) {
-    if (val && val.length <= 80 ){
-        return true;
-    }
-    return false;
-};
-var maxFiveTeen = function(val) {
-    if (val && val.length <= 15 ){
-        return true;
-    }
-    return false;
-};
-var  maxOeighty = function(val) {
-    if (val && val.length <= 180 ){
-        return true;
-    }
-    return false;
-};
-var  maxO = function(val) {
-    if (val && val.length <= 100 ){
-        return true;
-    }
-    return false;
-};
-
 var letrasEspacios = {validator: /^[A-Za-z ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
 var numeros = {validator: /^[0-9]*$/, msg: 'Este campo sólo acepta letras y espacios'};
+var email = {validator: /^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/, msg: 'Este campo sólo acepta correos válidos'};
+var productos = function(val) {
+    if (val && val.length <= 10){
+        return true;
+    }
+    return false;
+};
 
 var validateNombre = [
-    {validator: minTen, msg: 'Demasiado corto'} ,
-    {validator: maxForty, msg: 'Demasiado largo'} ,
     letrasEspacios
 ];
-var validateTextoIntro = [
-    {validator: maxEighty, msg: 'Demasiado largo'} ,
-];
+
 var validateDescripcion = [
-    letrasEspacios,
-    {validator: maxOeighty, msg: 'Demasiado largo'} ,
+    letrasEspacios
 ];
-var validateHorario = [
-    {validator: maxO, msg: 'Demasiado largo'} ,
-];
+
 var validateTel = [
-    {validator: minFive, msg: 'Demasiado corto'} ,
-    {validator: maxFiveTeen, msg: 'largo corto'},
-    numeros,
+    numeros
 ];
+var validateEmail = [
+    email
+];
+var validateProductos = [
+    productos
+];
+var validateCalle = [
+    letrasEspacios
+];
+var validateColonia = [
+    letrasEspacios
+];
+var validateCp = [
+    numeros
+];
+var validateMunicipio = [
+    letrasEspacios
+];
+var validateEstado = [
+    letrasEspacios
+];
+var validateRubro = [
+    letrasEspacios
+];
+var validateContrato = [
+    numeros
+];
+var validatePago = [
+    numeros
+];
+
 var direccionSchema = mongoose.Schema({
-    numero: String,
-    numeroInt: String,
-    calle: String,
-    colonia: String,
-    cp: String,
-    municipio: String,
-    estado: String,
+    numero: { type: String, maxlength: 5 },
+    numeroInt: { type: String, maxlength: 5 },
+    calle: { type: String, required: true, maxlength: 40, validate: validateCalle },
+    colonia: { type: String, required: true, maxlength: 30, validate: validateColonia },
+    cp: { type: String, required: true, minlength: 5, maxlength: 5, validate: validateCp },
+    municipio: { type: String, required: true, minlength: 5, maxlength: 20, validate: validateMunicipio },
+    estado: { type: String, required: true, minlength: 5, maxlength: 20, validate: validateEstado },
 });
 
 var rubroSchema = mongoose.Schema({
-    rubro: String,
+    rubro: { type: String, required: true, minlength: 5, maxlength: 40, validate: validateRubro },
 });
 
 var informacionSchema = mongoose.Schema({
-    noContrato: String,
+    noContrato:  { type: String, required: true, validate: validateContrato },
     url: String,
-    cliente: String,
-    telCliente: String,
-    correoCliente: String,
+    cliente: { type: String, required: true,  minlength: 5, maxlength: 40,  validate: validateNombre },
+    telCliente: { type: String, required: true, validate: validateTel, minlength: 5, maxlength: 15 },
+    correoCliente:{ type: String, required: true, validate: validateEmail }, 
     fechaContrato: Date,
     fechaVencimiento: Date,
-    pago: String,
+    pago: { type: String, required: true, validate: validatePago}, 
 });
 
-var schema = mongoose.Schema({
-    nombre: { type: String, required: true, validate: validateNombre },
+var empresaSchema = mongoose.Schema({
+    nombre: { type: String, required: true,  minlength: 5, maxlength: 40,  validate: validateNombre },
     logotipo: String, 
     foto: String, 
-    textoIntro: { type: String, required: true, validate: validateTextoIntro }, 
+    textoIntro: { type: String, required: true, maxlength: 80}, 
     lat: String, 
     long: String, 
-    descripcion: { type: String, validate: validateDescripcion }, 
-    horario: { type: String, required: true, validate: validateHorario }, 
-    encargado: { type: String, required: true, validate: validateNombre }, 
-    tel: { type: String, required: true, validate: validateTel },
-    face: String, 
-    email: String, 
-    productos: [],
-    nota: String,
+    descripcion: { type: String, validate: validateDescripcion,  maxlength: 180 }, 
+    horario: { type: String, required: true,  maxlength: 100 }, 
+    encargado: { type: String, required: true, validate: validateNombre, minlength: 5, maxlength: 40 }, 
+    tel: { type: String, required: true, validate: validateTel, minlength: 5, maxlength: 15 },
+    face: { type: String, maxlength: 20}, 
+    email: { type: String, required: true, validate: validateEmail}, 
+    productos: { type: Array, validate: validateProductos},
+    nota: { type: String, maxlength: 180}, 
     direccion: direccionSchema,
     rubro: rubroSchema,
     informacion: informacionSchema,
 });
 
-module.exports = mongoose.model('Empresa', schema);
+module.exports = mongoose.model('Empresa', empresaSchema);
 
-/*
-
-var lengthValidator = function(val) {
-    if (val && val.length >= 3){
-        return true;
-    }
-    return false;
-};
-var dosOpciones = function(val) {
-    if ( val === "ingreso" || val === "egreso"  ){
-        return true;
-    }
-    return false;
-};
-
-var validateNombre = [
-    {validator: lengthValidator, msg: 'mongoose requiere nombre completo.'}
-];
-var validateTipo = [
-    {validator: dosOpciones, msg: 'mongoose requiere la palabra ingreso o egreso.'}
-];
-var validateDecimal = [
-    {validator: /^[0-9]{1,7}(\.[0-9]+)?$/, msg: 'mongoose requiere un número o numero con decimal.'}
-];
-
-var schema = Schema({
-    fecha: { type: Date, default: Date.now },
-    nombre: { type: String, required: true, validate: validateNombre },
-    _rubro:  { type: Schema.Types.ObjectId, required: true, ref: 'Rubro' },
-    _balanceId:  { type: Schema.Types.ObjectId, required: true, ref: 'Balance' },
-    tipo: { type: String, required: true, validate: validateTipo },
-    cantidad: { type: String, required: true, validate: validateDecimal },
-    comentarios: { type: String },
-    balance: { type: Number, required: 'mongoose requiere balance' },
-});
-
-module.exports = mongoose.model('Producto', schema);
-
-
-*/
