@@ -4,7 +4,7 @@
     app.controller('VerFormularioController', ['$http', '$location', function($http, $location) {
         var ctrl = this;
         
-        ctrl.empresaId= "564a329ada9695d034a07db5";
+        ctrl.empresaId= "564b53a45139d10369f1698e";
 
         var promise1 = function() {
             return $http({
@@ -56,10 +56,6 @@
 
         promise1();
 
- 
-        
-    
-
         ctrl.initialize = function (latitud, longitud){
             var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
             var myMarkerPosition=new google.maps.LatLng(latitud,longitud);
@@ -77,8 +73,6 @@
                 icon: iconBase + 'schools_maps.png'
             });
         }
-
-//            google.maps.event.addDomListener(window, 'load', initialize);
 
     }]);
 })();
