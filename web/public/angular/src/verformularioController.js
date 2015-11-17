@@ -3,10 +3,10 @@
     
     app.controller('VerFormularioController', ['$http', '$location', function($http, $location) {
         var ctrl = this;
+        
         ctrl.empresaId= "564a329ada9695d034a07db5";
         
         var promise1 = function() {
-            console.log('SE EJECUTO PROMISE 1');
             return $http({
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "GET",
@@ -44,13 +44,18 @@
                 ctrl.fechaContrato = data.informacion.fechaContrato;
                 ctrl.fechaVencimiento = data.informacion.fechaVencimiento;
                 ctrl.pago = data.informacion.pago;
+                
+                var latitud = parseFloat(ctrl.lat);
+                var longitud = parseFloat(ctrl.long);
+                
+                ctrl.initialize(latitud, longitud);
             }).error(function(data, status, headers, config) {
                 console.log("%s %s %s", data, status, config);    
             });
         };
                   
         //MAPA NO SE MUESTRA
-        promise1().then(
+    /*    promise1().then(
             function() {
                 console.log('SE EJECUTO mapa');
                 
@@ -81,35 +86,30 @@
 
                 google.maps.event.addDomListener(window, 'load', initialize);
             });
-        
+      */  
         //CODIGO DEL EMAIL 
-        /*
+        
         promise1();
-        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-        ctrl.latitud = 19.4077;
-        ctrl.longitud = -102.0642;
-        var myMarkerPosition=new google.maps.LatLng(ctrl.latitud,ctrl.longitud);
-       
-        var map;
-        var myCenter=new google.maps.LatLng(19.4096,-102.0520);
-
-        function initialize(){
+        
+        ctrl.initialize = function(latitud, longitud) {
+            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+            var myMarkerPosition=new google.maps.LatLng(latitud,longitud);
+            var map;
+            var myCenter=new google.maps.LatLng(latitud, longitud);
             var mapOptions = {
                   center:myCenter,
                   zoom:13,
                   mapTypeId:google.maps.MapTypeId.ROADMAP
-              };
+            };
             map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
             var marker = new google.maps.Marker({
                 position: myMarkerPosition,
                 map: map,
                 icon: iconBase + 'schools_maps.png'
             });
-        }
-               
-        
-        google.maps.event.addDomListener(window, 'load', initialize);
-        */
+        };
+       // google.maps.event.addDomListener(window, 'load', initialize);
+
         
     }]);
 })();
