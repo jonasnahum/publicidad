@@ -17,6 +17,5 @@ module.exports = (function() {
         router.delete('/:id', direccionApi.delete.bind(direccionApi));
         
     }
-    
     return DireccionController;
 })();

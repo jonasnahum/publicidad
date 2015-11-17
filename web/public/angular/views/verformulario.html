@@ -80,6 +80,21 @@
         Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota"></textarea>
         <br /><br />
         <fieldset>
+            <h5>Contacto</h5>
+                <form   ng-submit="ctrl.sendEmail()">
+                    from:
+                    <input type="email" ng-model="ctrl.from">
+                    pass:
+                    <input type="password" ng-model="ctrl.pass">
+                    subject:
+                    <input type="text" ng-model="ctrl.subject">
+                    text:
+                    <input type="text" ng-model="ctrl.text">
+                    <br>
+                    <button type="submit">Send</button>
+                </form> 
+        </fieldset>
+        <fieldset>
             <h5>Informacion del cliente</h5>
             <br />
             Num. de contrato: <input type="text" 
