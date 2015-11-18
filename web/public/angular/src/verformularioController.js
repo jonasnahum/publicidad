@@ -5,21 +5,7 @@
         var ctrl = this;
         
         ctrl.empresaId= "564b96f779dce61119628f12";
-        ctrl.from =  undefined;
-        ctrl.pass =  undefined;
-        ctrl.subject = undefined;
-        ctrl.text = undefined;
-        ctrl.sendEmail = function(){
-            $http({
-                url: 'http://localhost:3000/correo',
-                method: "POST",
-                data: {from:ctrl.from,pass:ctrl.pass,subject:ctrl.subject,text:ctrl.text}
-            }).success(function(data, status, headers, config){
-                alert("se envió el correo");
-            }).error(function(data, status, headers, config) {
-                alert("hubo error al mandar el correo");    
-            });
-        };
+
         var promise1 = function() {
             return $http({
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
