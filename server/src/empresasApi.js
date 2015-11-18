@@ -89,8 +89,11 @@ var EmpresasApi = (function() {
     
     EmpresasApi.prototype.update = function(req, res, next) {
         var that = this;
+        console.log("llego 1");
+        console.log(req.params.id);
         that.models.empresa.findById(req.params.id, function (err, empresa) {
             if(err) return next(err);
+            console.log("se buscó y encontró la empresa");
             empresa.nombre = req.body.nombre;
             empresa.logotipo = req.body.logotipo;
             empresa.foto = req.body.foto;
@@ -130,7 +133,6 @@ var EmpresasApi = (function() {
             empresa.save(function(err, empresa) {
                 if(err) return next(err);
                 console.log ("empresa cambiada");
-                console.log(empresa);
                 res.json(empresa);
             }); 
         });

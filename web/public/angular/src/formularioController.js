@@ -73,14 +73,13 @@
         
         //SERVER Functions
         ctrl.save = function() {
-            console.dir(ctrl);
             $http({
                 url: 'http://localhost:3000/empresas/api/',
                 method: "POST",
                 data: ctrl
             }).success(function(data, status, headers, config){
                 alert("Info enviada");
-                $location.path('/');
+                $location.path('/todos');
             }).error(function(data, status, headers, config) {
                 alert("UPS there's an error");
                 console.log("%s %s", status, data);

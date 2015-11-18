@@ -1,10 +1,10 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('VerFormularioController', ['$http', '$location', function($http, $location) {
+    app.controller('VerFormularioController', ['$http', '$routeParams', '$location', function($http, $route, $location) {
         var ctrl = this;
         
-        ctrl.empresaId= "564b96f779dce61119628f12";
+        ctrl.empresaId= $route.id;
 
         var promise1 = function() {
             return $http({

@@ -111,6 +111,7 @@ var ImagenesApi = (function() {
     };
     //curl -i -H "Content-Type: application/json" -d '{ "username": "rodrigo", "password": "test", "id": 1 }' http://localhost:3000/imagenes/api/post
     ImagenesApi.prototype.save = function(req, res, next){
+        console.log("entró al endpoint");
         var that = this;
         var bufs = [];
         var serialized = [];

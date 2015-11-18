@@ -14,6 +14,10 @@
                      { templateUrl: "angular/views/verformulario.html"})
         $router.when("/todos", 
                      { templateUrl: "angular/views/todos.html"})
+        $router.when('/ver/:id', 
+                     { templateUrl: "angular/views/verformulario.html" })
+        $router.when('/editar/:id', 
+                     { templateUrl: "angular/views/editarFormulario.html" })
         .otherwise({ redirectTo: "/todos" });
     }]);
     
