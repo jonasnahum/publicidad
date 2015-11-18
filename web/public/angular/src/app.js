@@ -12,7 +12,9 @@
                      { templateUrl: "angular/views/formulario.html"})
         $router.when("/verformulario", 
                      { templateUrl: "angular/views/verformulario.html"})
-        .otherwise({ redirectTo: "/" });
+        $router.when("/todos", 
+                     { templateUrl: "angular/views/todos.html"})
+        .otherwise({ redirectTo: "/todos" });
     }]);
     
 })();
