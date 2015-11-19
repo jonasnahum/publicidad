@@ -131,7 +131,12 @@ var EmpresasApi = (function() {
                 pago: req.body.pago
             };
             empresa.save(function(err, empresa) {
-                if(err) return next(err);
+                if(err){
+                    Object.keys(err.errors).forEach(function(key) {
+                        var message = err.errors[key].message;
+                        console.log('Validation error for "%s": %s', key, message);
+                    });
+                }
                 console.log ("empresa cambiada");
                 res.json(empresa);
             }); 

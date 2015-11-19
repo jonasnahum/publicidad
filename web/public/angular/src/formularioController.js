@@ -64,7 +64,7 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
 
-        
+
         //Productos Function
         ctrl.agregarProducto = function() {
             ctrl.productos.push(ctrl.producto);

@@ -147,6 +147,19 @@
             infowindow.open(map,marker);
             
         }
+        
+        ctrl.remover = undefined;
+        ctrl.removerProducto = function(){
+            ctrl.productos = ctrl.productos.filter(function (el) {
+                        return el.titulo !== ctrl.remover;
+                 });
+        };
+                                                  
+        //Productos Function
+        ctrl.agregarProducto = function() {
+            ctrl.productos.push(ctrl.producto);
+            ctrl.producto = {};
+        };
 
         
         ctrl.editar = function() {
