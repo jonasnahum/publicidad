@@ -8,19 +8,14 @@ var busboy = require('connect-busboy');
 var container = require('./src/container');
 var cors = require('cors');
 var db = container.get('dbConnection');
-var nodemailer = require('nodemailer');
 
 db.connect('mongodb://localhost/paginas');
 
 
 var routes = require('./routes/index');
 var imagenesApi = container.get("imagenesController");
-
 var empresasApi = container.get("empresasController");
-var direccionesApi = container.get("direccionController");
-var rubrosApi = container.get("rubrosController");
-var informacionApi = container.get("informacionController");
-
+var correoApi = container.get("correoController")
 
 var app = express();
 
@@ -44,29 +39,7 @@ app.use(busboy({inmediate: true}));
 app.use('/', routes);
 app.use('/imagenes/api', imagenesApi.router);
 app.use('/empresas/api', empresasApi.router);
-app.use('/direcciones/api', direccionesApi.router);
-app.use('/rubros/api', rubrosApi.router);
-app.use('/informacion/api', informacionApi.router);
-
-app.post('/correo', function (req, res, next) {
-  console.log(req.body);
-  var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: req.body.from,
-        pass: req.body.pass
-    }
-  });    
-  transporter.sendMail({
-    from: req.body.from,
-    to: "jonasnahum@gmail.com",
-    subject: req.body.subject,
-    text: req.body.text
-  });
-  console.log('Correo enviado ');
-  res.send({data: "ok"});
-});
-
+app.use('/correo', correoApi.router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -62,7 +62,8 @@
             });
             infowindow.open(map,marker);
         }
-        google.maps.event.addDomListener(window, 'load', initialize);
+        initialize();
+        //google.maps.event.addDomListener(window, 'load', initialize);
 
 
         //Productos Function
@@ -109,7 +110,5 @@
                 });
             }
         };       
-                
-        
     }]);//end of the controller
 })();
