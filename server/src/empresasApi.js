@@ -1,26 +1,17 @@
 var EmpresasApi = (function() {
-    var EmpresasApi = function(models, empresaFactory, direccionFactory, rubroFactory, informacionFactory) {
+    var EmpresasApi = function(models, empresaFactory) {
         this.models = models;
         this.empresaFactory = empresaFactory;
-        this.direccionFactory = direccionFactory;
-        this.rubroFactory = rubroFactory;
-        this.informacionFactory = informacionFactory;
     };
-// curl http://localhost:3000/empresas/api/
+
     EmpresasApi.prototype.getAll = function(req, res, next) {
         var that = this;       
         
         that.models.empresa.find({}, function (err, empresas) {
                 if (err) return console.log(err);
-                console.log(empresas);
-                //console.log(empresas._id);
                 res.json(empresas);
             });   
     };    
-    
-//curl -i -H "Content-Type: application/json" -d '{"nombre":"eeeeeeeeeewwwwwwwwwweeeeeeeeeewwwww","logotipo":"rojoyblanco","foto":"unamuchacha","textoIntro":"bienvenidos","lat":"01","long":"02","descripcion":"refresqueramasgrandedelmundo","horario":"todoslosdias","encargado":"ellic","tel":"33333","face":"elface","email":"cocacola@gmail.com","productos": [{"lata":"de 500ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"},{"botella":"de 600ml"}] ,"nota":"servicio a domicilio","numero":"2","numeroInt":"1A","calle":"zumpimito","colonia":"zumpimito","cp":"60740","municipio":"uruapan","estado":"michoacan","rubro":"Rubroexitoso","noContrato":"23324","url":"cocacola.com","cliente":"patty","telCliente":"23324","correoCliente":"patty@gmail.com","pago":"23324"}' http://localhost:3000/empresas/api/ 
-
-
 
     EmpresasApi.prototype.save = function(req, res, next){
         var that = this;
@@ -67,30 +58,28 @@ var EmpresasApi = (function() {
                     var message = err.errors[key].message;
                     console.log('Validation error for "%s": %s', key, message);
                 });
-            }
-            console.log(empresa);  
+            }  
         }); 
         res.json(empresa);
     };
-//curl http://localhost:3000/empresas/api/56461263510dc1af0f9a32bf
+
     EmpresasApi.prototype.getOne = function(req, res, next) {
         var that = this;
         
         that.models.empresa.findOne({ _id: req.params.id })
         .exec(function(err, empresa){
             if (err) return next(err);
-            console.log("empresa encontrada")
-            console.log(empresa);
             return res.json(empresa);
         });
     };
 
-//curl -X PUT -i -H "Content-Type: application/json" -d '{"nombre":"UPDATED","logotipo":"rojoyblanco","foto":"unamuchacha","textoIntro":"bienvenidos","lat":"01","long":"02","descripcion":"refresqueramasgrandedelmundo","horario":"todoslosdias","encargado":"ellic","tel":"33333","face":"elface","email":"cocacola@gmail.com","productos": [{"lata":"de 500ml"},{"botella":"de 600ml"}] ,"nota":"servicio a domicilio","numero":"UPDATED","numeroInt":"1A","calle":"zumpimito","colonia":"zumpimito","cp":"607400","municipio":"uruapan","estado":"michoacan","rubro":"UPDATED","noContrato":"UPDATED","url":"cocacola.com","cliente":"patty","telCliente":"23324","correoCliente":"patty@gmail","pago":"23324"}' http://localhost:3000/empresas/api/5646467e83540be61605d680
-    
     EmpresasApi.prototype.update = function(req, res, next) {
         var that = this;
+        console.log("llego 1");
+        console.log(req.params.id);
         that.models.empresa.findById(req.params.id, function (err, empresa) {
             if(err) return next(err);
+            console.log("se buscó y encontró la empresa");
             empresa.nombre = req.body.nombre;
             empresa.logotipo = req.body.logotipo;
             empresa.foto = req.body.foto;
@@ -128,9 +117,12 @@ var EmpresasApi = (function() {
                 pago: req.body.pago
             };
             empresa.save(function(err, empresa) {
-                if(err) return next(err);
-                console.log ("empresa cambiada");
-                console.log(empresa);
+                if(err){
+                    Object.keys(err.errors).forEach(function(key) {
+                        var message = err.errors[key].message;
+                        console.log('Validation error for "%s": %s', key, message);
+                    });
+                }
                 res.json(empresa);
             }); 
         });
@@ -140,7 +132,7 @@ var EmpresasApi = (function() {
         var that = this;
         that.models.empresa.findByIdAndRemove(req.params.id, function(err, empresa) {
             if(err) return next(err);
-            res.json(empresa);
+            res.json({status: "ok"});
         }); 
     };      
     
@@ -151,7 +143,7 @@ var EmpresasApi = (function() {
         that.models.empresa.remove({}, function(err, empresa) {
             if(err) return next(err);
             console.log("Documents deleted");
-            res.json(empresa);
+            res.json({status: "ok"});
         }); 
     };
     return EmpresasApi;
