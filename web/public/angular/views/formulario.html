@@ -1,9 +1,23 @@
 <script type="text/javascript" src="./../../../js/datepicker.js"></script>
 <div ng-controller="FormularioController as ctrl">
-    <form ng-submit="ctrl.save()">
+    <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()" 
+          novalidate>
         <fieldset>
             <h2>Empresa</h2> 
-            Nombre: <input type="text" ng-model="ctrl.nombre"/>
+            Nombre: <input type="text" ng-model="ctrl.nombre"
+                           name="nombre" ng-pattern="/^[a-zA-Záéíóú ]+$/"
+                           required ng-trim="false" ng-minlength="10" 
+                           ng-maxlength="40"/>
+            
+            <pre>frmNuevo.nombre.$error = {{ frmNuevo.nombre.$error | json }}</pre>
+            
+            <div ng-messages="frmNuevo.nombre.$error" style="color:maroon" role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+              </div>
+            
+            
             <br />
             Logotipo:
             <br />
@@ -62,27 +76,41 @@
                      height="50%" alt="embedded folder icon">
             </div>
             <br />   
-            Texto introductorio: <textarea rows="4" cols="50" ng-model="ctrl.textoIntro">Escribe una breve introduccion</textarea>
+            Texto introductorio: 
+            <textarea rows="4" cols="50" ng-model="ctrl.textoIntro"
+                      ng-maxlength="180"></textarea>
             <br /><br />
         </fieldset>
         <br /><br />
         <fieldset>
             <h5>Direccion</h5>
             <br />
-            Numero: <input type="text" ng-model="ctrl.numero"/>
+            Numero: 
+            <input type="text" ng-model="ctrl.numero" ng-maxlength="5"/>
             <br />
-            Numero interior: <input type="text" 
-                                    ng-model="ctrl.numeroInt"/>
+            Numero interior: 
+            <input type="text" ng-model="ctrl.numeroInt" ng-maxlength="5"/>
             <br />
-            Calle: <input type="text" ng-model="ctrl.calle"/>
+            Calle: <input type="text" ng-model="ctrl.calle" 
+                          ng-maxlength="40" required/>
             <br />
-            Colonia: <input type="text" ng-model="ctrl.colonia"/>
+            Colonia: <input type="text" ng-model="ctrl.colonia"
+                            ng-pattern="/^[a-zA-Záéíóú ]+$/" 
+                            ng-maxlength="30" required />
             <br />
-            C.P. : <input type="text" ng-model="ctrl.cp"/>
+            C.P. : 
+            <input type="text" ng-model="ctrl.cp"  
+                   ng-pattern="/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/"
+                   ng-minlength="5" ng-maxlength="5" required/>
             <br />
-            Municipio: <input type="text" ng-model="ctrl.municipio"/>
+            Municipio: <input type="text" ng-model="ctrl.municipio"
+                              ng-pattern="/^[a-zA-Záéíóú ]+$/" 
+                              ng-maxlength="20" ng-mixlength="5"
+                              required/>
             <br />
-            Estado: <input type="text" ng-model="ctrl.estado"/>
+            Estado: <input type="text" ng-model="ctrl.estado"
+                           ng-pattern="/^[a-zA-Záéíóú ]+$/" 
+                           ng-maxlength="20" ng-mixlength="5" required/>
             <br />
             Mapa: 
             <div id="googleMap" style="width:500px;height:380px;"></div>
@@ -91,63 +119,80 @@
         <fieldset>
             <h5>Rubro</h5>
             <br />
-            Nombre: <input type="text" ng-model="ctrl.rubro"/>
+            Nombre: <input type="text" ng-model="ctrl.rubro" 
+                           ng-pattern="/^[a-zA-Záéíóú ]+$/" 
+                           ng-maxlength="40" ng-mixlength="5"
+                           required/>
         </fieldset>
         <br /><br />
-        Descripcion: <textarea rows="4" cols="50" 
-                               ng-model="ctrl.descripcion"></textarea>
+        Descripcion: 
+        <textarea rows="4" cols="50" ng-model="ctrl.descripcion" 
+                  ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-maxlength="180">
+        </textarea>
         <br />
-        Horario: <input type="text" ng-model="ctrl.horario"/>
+        Horario: <input type="text" ng-model="ctrl.horario" 
+                        ng-maxlength="100" required/>
         <br />
-        Encargado: <input type="text" ng-model="ctrl.encargado"/>
+        Encargado: <input type="text" ng-model="ctrl.encargado"
+                          ng-pattern="/^[a-zA-Záéíóú ]+$/" 
+                          ng-maxlength="40" ng-mixlength="10" required/>
         <br />
-        Telefono: <input type="text" ng-model="ctrl.tel"/>
+        Telefono: <input type="text" ng-model="ctrl.tel" 
+                         ng-pattern="/\d{10}/" required/>
         <br />
-        Facebook: <input type="text" ng-model="ctrl.face"/>
+        Facebook: <input type="text" ng-model="ctrl.face" 
+                         ng-maxlength="20"/>
         <br />
-        Email: <input type="email" ng-model="ctrl.email"/>
+        Email: <input type="email" ng-model="ctrl.email" required/>
         <br /><br />
         <fieldset>
             <h5>Producto</h5>
             <br />
-            Titulo: <input type="text" ng-model="ctrl.producto.titulo"/>
+            Titulo: <input type="text" ng-model="ctrl.producto.titulo" 
+                           ng-maxlength="20"/>
             <br />
-            Parrafo: <textarea rows="4" cols="50" 
-                               ng-model="ctrl.producto.parrafo">
-                               Describe el producto o servicio</textarea>
+            Parrafo: 
+            <textarea rows="4" cols="50" ng-model="ctrl.producto.parrafo"
+                      ng-maxlength="40"></textarea>
             <a class="btn btn-lg btn-warning" href 
                ng-click="ctrl.agregarProducto()" role="button">Push</a>
             {{ctrl.producto}}
             {{ctrl.productos}}
         </fieldset>
         <br /><br />
-        Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota"></textarea>
+        Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota" 
+                        ng-maxlength="180"></textarea>
         <br /><br />
         <fieldset>
             <h5>Informacion del cliente</h5>
             <br />
-            Num. de contrato: <input type="text" 
-                                     ng-model="ctrl.noContrato"/>
+            Num. de contrato: 
+            <input type="text" ng-model="ctrl.noContrato" 
+                   ng-pattern="/^[0-9]+$/" required/>
             <br />
             Direccion de pagina web: <input type="text" 
                                             ng-model="ctrl.url"/>
             <br />
-            Nombre del cliente: <input type="text" 
-                                       ng-model="ctrl.cliente"/>
+            Nombre del cliente: 
+            <input type="text" ng-model="ctrl.cliente"  ng-minlength="10"
+                   ng-maxlength="40" required/>
             <br />
-            Telefono: <input type="text" ng-model="ctrl.telCliente"/>
+            Telefono: <input type="text" ng-model="ctrl.telCliente"
+                             ng-pattern="/\d{10}/" required/>
             <br />Correo: <input type="email" 
                                  ng-model="ctrl.correoCliente" />
             <br />
-            Fecha de Contrato: <input type="text" 
-                                      ng-model="ctrl.fechaContrato" 
-                                      id="fechaContrato" />
+            Fecha de Contrato: 
+            <input type="date" ng-model="ctrl.fechaContrato"
+                   id="fechaContrato" required/>
             <br />    
-            Fecha de Vencimiento: <input type="text" 
-                                         ng-model="ctrl.fechaVencimiento" 
-                                         id="fechaVencimiento" />
+            Fecha de Vencimiento: 
+            <input type="date" ng-model="ctrl.fechaVencimiento"
+                   id="fechaVencimiento" />
             <br />
-            Precio: <input type="text" ng-model="ctrl.pago"/>
+            Pago: 
+            <input type="text" ng-model="ctrl.pago" 
+                   ng-pattern="/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/" required/>
         </fieldset>
         
         <button type="submit">Send</button>

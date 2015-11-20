@@ -1,0 +1,32 @@
+<form name="myForm" ng-controller="ValidateController" novalidate>
+  <label>NAME:
+    <input type="text" name="input" ng-model="letras"
+           ng-pattern="/^[a-zA-Záéíóú ]+$/" required ng-trim="false"
+           ng-minlength="10" ng-maxlength="40">
+  </label>
+  <div role="alert">
+    <!--  <span class="error" ng-show="myForm.input.$error.required">
+          Required!</span>
+-->
+      <span class="error" ng-show="myForm.input.$error.pattern">
+          Only letters!</span>
+      <span class="error" ng-show="myForm.input.$error.minlength">
+          Name too short</span>
+      <span class="error" ng-show="myForm.input.$error.maxlength"> 
+          Name too Long</span>
+ 
+    <p ng-show="myForm.input.$invalid && myForm.input.$dirty" class="help-block">You name is required.</p>
+    <!--<p ng-show="myForm.input.$error.minlength" class="help-block">Name is too short.</p>
+      <p ng-show="myForm.input.$error.maxlength" class="help-block">Name is too long.</p>
+      -->
+  </div>
+    
+   Precio: <input type="text" name="precio" ng-model="precio" 
+                  ng-pattern="/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/" required /> 
+    <span class="error" ng-show="myForm.precio.$error.pattern">
+    Only numbers!</span>
+    <span ng-show="myForm.precio.$invalid && myForm.precio.$dirty" class="help-block">Number required.</span>
+
+  
+    <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">Submit</button> 
+</form>

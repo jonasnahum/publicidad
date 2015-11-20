@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('app', ['ngRoute', 'ngFileUpload']);
+    var app = angular.module('app', ['ngRoute', 'ngFileUpload', 'ngMessages']);
     
     app.config(["$routeProvider", function ($router) {
 
@@ -12,6 +12,8 @@
                      { templateUrl: "angular/views/formulario.html"})
         $router.when("/verformulario", 
                      { templateUrl: "angular/views/verformulario.html"})
+        $router.when("/validation", 
+                     { templateUrl: "angular/views/validate.html"})
         .otherwise({ redirectTo: "/" });
     }]);
     
