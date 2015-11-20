@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('VerFormularioController', ['$http', '$routeParams', '$location', function($http, $route, $location) {
+    app.controller('VerController', ['$http', '$routeParams', '$location', '$log', function($http, $route, $location, $log ) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -60,7 +60,13 @@
             var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
             var myMarkerPosition=new google.maps.LatLng(latitud,longitud);
             var map;
-            var myCenter=new google.maps.LatLng(latitud,longitud);
+            var myCenter= undefined;
+            if(latitud && longitud){
+                myCenter =  new google.maps.LatLng(latitud,longitud);
+            }else{
+                myCenter =  new google.maps.LatLng(19.4096,-102.0520);;
+            };
+
             var mapOptions = {
                   center:myCenter,
                   zoom:13,
