@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var letrasEspacios = {validator: /^[A-Za-z ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
+var letrasEspaciosAcentos = {validator: /^[A-Za-z0-9áéíóú ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
 var numeros = {validator: /^[0-9]*$/, msg: 'Este campo sólo acepta letras y espacios'};
 var email = {validator: /^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/, msg: 'Este campo sólo acepta correos válidos'};
 var productos = function(val) {
@@ -12,11 +12,11 @@ var productos = function(val) {
 };
 
 var validateNombre = [
-    letrasEspacios
+    letrasEspaciosAcentos
 ];
 
 var validateDescripcion = [
-    letrasEspacios
+    letrasEspaciosAcentos
 ];
 
 var validateTel = [
@@ -29,22 +29,22 @@ var validateProductos = [
     productos
 ];
 var validateCalle = [
-    letrasEspacios
+    letrasEspaciosAcentos
 ];
 var validateColonia = [
-    letrasEspacios
+    letrasEspaciosAcentos
 ];
 var validateCp = [
     numeros
 ];
 var validateMunicipio = [
-    letrasEspacios
+    letrasEspaciosAcentos
 ];
 var validateEstado = [
-    letrasEspacios
+    letrasEspaciosAcentos
 ];
 var validateRubro = [
-    letrasEspacios
+    letrasEspaciosAcentos
 ];
 var validateContrato = [
     numeros

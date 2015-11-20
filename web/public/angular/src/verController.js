@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('VerFormularioController', ['$http', '$routeParams', '$location', function($http, $route, $location) {
+    app.controller('VerController', ['$http', '$routeParams', '$location', '$log', function($http, $route, $location, $log ) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -11,6 +11,7 @@
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "GET",
             }).success(function(data, status, headers, config){
+                $log.log(data)
                 ctrl.nombre = data.nombre;
                 ctrl.logotipo = data.logotipo;
                 ctrl.foto = data.foto;
