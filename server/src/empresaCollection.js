@@ -1,8 +1,8 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var letrasEspaciosAcentos = {validator: /^[A-Za-z0-9áéíóú ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
-var numeros = {validator: /^[0-9]*$/, msg: 'Este campo sólo acepta letras y espacios'};
+var letrasEspaciosAcentos = {validator: /^[A-Za-záéíóú ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
+var numeros = {validator: /^[0-9]*$/, msg: 'Este campo sólo acepta numeros'};
 var email = {validator: /^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/, msg: 'Este campo sólo acepta correos válidos'};
 var productos = function(val) {
     if (val && val.length <= 10){

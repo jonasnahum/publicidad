@@ -115,9 +115,14 @@
         var map;
         ctrl.initialize = function (latitud, longitud){
             var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-            var myMarkerPosition=new google.maps.LatLng(latitud,longitud);
-           
-            var myCenter=new google.maps.LatLng(latitud,longitud);
+            var myMarkerPosition=undefined;
+            var myCenter = undefined;
+            if(latitud && longitud){
+                myCenter =  new google.maps.LatLng(latitud,longitud);
+                myMarkerPosition= new google.maps.LatLng(latitud,longitud);
+            }else{
+                myCenter =  new google.maps.LatLng(19.4096,-102.0520);;
+            };    
             var mapOptions = {
                   center:myCenter,
                   zoom:13,

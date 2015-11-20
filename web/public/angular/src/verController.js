@@ -11,7 +11,6 @@
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "GET",
             }).success(function(data, status, headers, config){
-                $log.log(data)
                 ctrl.nombre = data.nombre;
                 ctrl.logotipo = data.logotipo;
                 ctrl.foto = data.foto;
@@ -61,7 +60,13 @@
             var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
             var myMarkerPosition=new google.maps.LatLng(latitud,longitud);
             var map;
-            var myCenter=new google.maps.LatLng(latitud,longitud);
+            var myCenter= undefined;
+            if(latitud && longitud){
+                myCenter =  new google.maps.LatLng(latitud,longitud);
+            }else{
+                myCenter =  new google.maps.LatLng(19.4096,-102.0520);;
+            };
+
             var mapOptions = {
                   center:myCenter,
                   zoom:13,
