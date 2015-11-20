@@ -35,7 +35,7 @@
         ctrl.pago = undefined;
         
         //MAP Functions
-        var map;
+        /*var map;
         var myCenter=new google.maps.LatLng(19.4096,-102.0520);
 
         function initialize(){
@@ -63,7 +63,7 @@
             infowindow.open(map,marker);
         }
         google.maps.event.addDomListener(window, 'load', initialize);
-
+*/
         
         //Productos Function
         ctrl.agregarProducto = function() {
