@@ -146,7 +146,7 @@
             <br />
             Estado: <input type="text" ng-model="ctrl.estado"
                            ng-pattern="/^[a-zA-Záéíóú ]+$/" name="estado"
-                           ng-maxlength="20" ng-mixlength="5" required/>
+                           ng-maxlength="20" ng-minlength="5" required/>
             <div ng-messages="frmNuevo.estado.$error" style="color:red" 
                  ng-if="!frmNuevo.estado.$pristine || frmNuevo.$submitted"
                  role="alert">
@@ -163,7 +163,7 @@
             Nombre: 
             <input type="text" ng-model="ctrl.rubro"
                    ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-maxlength="40" 
-                   ng-mixlength="5"name="rubro" required/>            
+                   ng-minlength="5"name="rubro" required/>            
             <div ng-messages="frmNuevo.rubro.$error" style="color:red" 
                  ng-if="!frmNuevo.rubro.$pristine || frmNuevo.$submitted"
                  role="alert">
@@ -175,8 +175,8 @@
         <textarea rows="4" cols="50" ng-model="ctrl.descripcion"
                   name="descripcion" ng-maxlength="180"></textarea>
         <div ng-messages="frmNuevo.descripcion.$error"
-                 ng-if="!frmNuevo.descripcion.$pristine || frmNuevo.$submitted" ng-pattern="/^[a-zA-Záéíóú ]+$/"
-                 style="color:red" role="alert">
+             ng-if="!frmNuevo.descripcion.$pristine || frmNuevo.$submitted"
+             style="color:red" role="alert">
             <div ng-messages-include="error-messages"></div>
         </div>
         <br />
@@ -191,12 +191,12 @@
         Encargado: 
         <input type="text" ng-model="ctrl.encargado" name="encargado"
                ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-maxlength="40" 
-               ng-mixlength="10" required/>            
-            <div ng-messages="frmNuevo.encargado.$error" style="color:red" 
-                 ng-if="!frmNuevo.encargado.$pristine || frmNuevo.$submitted"
-                 role="alert">
-                <div ng-messages-include="error-messages"></div>
-            </div>
+               ng-minlength="10" required/>            
+        <div ng-messages="frmNuevo.encargado.$error" style="color:red" 
+             ng-if="!frmNuevo.encargado.$pristine || frmNuevo.$submitted"
+             role="alert">
+            <div ng-messages-include="error-messages"></div>
+        </div>
         <br />
         Telefono: 
         <input type="text" ng-model="ctrl.tel" name="tel" ng-minlength="5"
@@ -227,9 +227,9 @@
             <h5>Producto</h5>
             <br />
             Titulo: <input type="text" ng-model="ctrl.producto.titulo" 
-                           ng-maxlength="20" name="producto"/>
-            <div ng-messages="frmNuevo.producto.$error" style="color:red" 
-                 ng-if="!frmNuevo.producto.$pristine || frmNuevo.$submitted"
+                           ng-maxlength="20" name="titulo"/>
+            <div ng-messages="frmNuevo.titulo.$error" style="color:red" 
+                 ng-if="!frmNuevo.titulo.$pristine || frmNuevo.$submitted"
                  role="alert">
                 <div ng-messages-include="error-messages"></div>
             </div>
