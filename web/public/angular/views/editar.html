@@ -197,13 +197,17 @@
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
             <a class="btn btn-lg btn-warning" href 
-               ng-click="ctrl.agregarProducto()" role="button">Push</a>
+                ng-click="ctrl.agregarProducto()" role="button">Push</a>
+            {{ctrl.producto}}
             <br />
             Titulo del producto a remover: <input type="text" ng-model="ctrl.remover"/>
             <a class="btn btn-lg btn-warning" href 
                ng-click="ctrl.removerProducto()" role="button">Remove</a>
+            Borrar todos los productos: 
+            <a class="btn btn-lg btn-warning" href 
+               ng-click="ctrl.borrarProductos()" role="button">Borrar Todos los productos</a>
             
-            {{ctrl.productos}}
+             {{ctrl.productos}}
         </fieldset>
         <br /><br />
         Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota" 

@@ -16,10 +16,6 @@ var validateNombre = [
     letrasEspaciosAcentos
 ];
 
-var validateDescripcion = [
-    letrasEspaciosAcentos
-];
-
 var validateTel = [
     numeros
 ];
@@ -28,9 +24,6 @@ var validateEmail = [
 ];
 var validateProductos = [
     productos
-];
-var validateCalle = [
-    letrasEspaciosAcentos
 ];
 var validateColonia = [
     letrasEspaciosAcentos
@@ -57,7 +50,7 @@ var validatePago = [
 var direccionSchema = mongoose.Schema({
     numero: { type: String, maxlength: 5 },
     numeroInt: { type: String, maxlength: 5 },
-    calle: { type: String, required: true, maxlength: 40, validate: validateCalle },
+    calle: { type: String, required: true, maxlength: 40 },
     colonia: { type: String, required: true, maxlength: 30, validate: validateColonia },
     cp: { type: String, required: true, minlength: 5, maxlength: 5, validate: validateCp },
     municipio: { type: String, required: true, minlength: 5, maxlength: 20, validate: validateMunicipio },
@@ -86,7 +79,7 @@ var empresaSchema = mongoose.Schema({
     textoIntro: { type: String, required: true, maxlength: 80}, 
     lat: String, 
     long: String, 
-    descripcion: { type: String, validate: validateDescripcion,  maxlength: 180 }, 
+    descripcion: { type: String, maxlength: 180 }, 
     horario: { type: String, required: true,  maxlength: 100 }, 
     encargado: { type: String, required: true, validate: validateNombre, minlength: 5, maxlength: 40 }, 
     tel: { type: String, required: true, validate: validateTel, minlength: 5, maxlength: 15 },

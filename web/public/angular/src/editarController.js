@@ -154,18 +154,27 @@
         }
         
         ctrl.remover = undefined;
+         function sonDiferentes(element, index, array) {
+            return element.titulo !== ctrl.remover;
+         }
+        
+        
         ctrl.removerProducto = function(){
-            ctrl.productos = ctrl.productos.filter(function (el) {
-                        return el.titulo !== ctrl.remover;
-                 });
+            ctrl.productos = ctrl.productos.filter(sonDiferentes);
         };
                                                   
         //Productos Function
         ctrl.agregarProducto = function() {
-            ctrl.productos.push(ctrl.producto);
+            if(ctrl.producto){
+                ctrl.productos.push(ctrl.producto);
+            }
             ctrl.producto = {};
         };
+        
 
+        ctrl.borrarProductos = function(){
+            ctrl.productos = [];
+        };
         
         ctrl.editar = function() {
             $http({
