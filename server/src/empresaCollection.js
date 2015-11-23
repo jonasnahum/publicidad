@@ -51,8 +51,7 @@ var validateContrato = [
     numeros
 ];
 var validatePago = [
-    float,
-    numeros
+    float
 ];
 
 var direccionSchema = mongoose.Schema({
