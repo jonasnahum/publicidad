@@ -8,30 +8,24 @@
                            name="nombre" ng-pattern="/^[a-zA-Záéíóú ]+$/"
                            required ng-trim="false" ng-minlength="10" 
                            ng-maxlength="40"/>
-            
-            <pre>frmNuevo.nombre.$error = {{ frmNuevo.nombre.$error | json }}</pre>
-            
-            <div ng-messages="frmNuevo.nombre.$error" style="color:maroon" role="alert">
+            <!--<pre>frmNuevo.nombre.$error = {{ frmNuevo.nombre.$error | json }}</pre>-->
+            <div ng-messages="frmNuevo.nombre.$error" style="color:maroon" 
+                 role="alert">
                 <div ng-message="required">You did not enter a field</div>
                 <div ng-message="minlength">Your field is too short</div>
                 <div ng-message="maxlength">Your field is too long</div>
-              </div>
-            
+            </div>
             
             <br />
             Logotipo:
             <br />
-            <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')"
-                    accept="image/*" ngf-max-height="3000"
-                    ngf-max-width="3000" ngf-max-size="1MB"
-                    >Select Files</button>
-            <br>
+            <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')" accept="image/*" ngf-max-height="3000" ngf-max-width="3000" ngf-max-size="1MB">Select Files</button>
             <div style="font:smaller">
                 <ul>
                     <li ng-repeat="f in files" style="font:smaller">
-                            {{ctrl.f.name}} {{ctrl.errFile.name}}
-                            {{ctrl.errFile.$error}}
-                            {{ctrl.errFile.$errorParam}}
+                        {{ctrl.files}} {{ctrl.errFile.name}}
+                        {{ctrl.errFile.$error}} 
+                        {{ctrl.errFile.$errorParam}}
                     </li>
                 </ul>
                 <span class="progress" ng-show="ctrl.progress >= 0">
@@ -42,11 +36,12 @@
 
             </div>
             {{ctrl.errorMsg}}
+            <br>
             <div>
-                <img src="data:image/*;base64,{{ctrl.logotipo}}" width="50%"
-                     height="50%" alt="embedded folder icon">
+                <img src="data:image/*;base64,{{ctrl.logotipo}}"
+                     width="50%" height="50%" alt="embedded folder icon">
             </div>
-            
+    
             <br /><br />
             Foto:
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'foto')"
@@ -78,42 +73,86 @@
             <br />   
             Texto introductorio: 
             <textarea rows="4" cols="50" ng-model="ctrl.textoIntro"
-                      ng-maxlength="180"></textarea>
+                      ng-maxlength="180" name="textoIntro"></textarea>
             <br /><br />
+            <div ng-messages="frmNuevo.textoIntro.$error" style="color:maroon" role="alert">
+                <div ng-message="maxlength">Your field is too long</div>
+            </div>
+
         </fieldset>
         <br /><br />
         <fieldset>
             <h5>Direccion</h5>
             <br />
             Numero: 
-            <input type="text" ng-model="ctrl.numero" ng-maxlength="5"/>
+            <input type="text" ng-model="ctrl.numero" ng-maxlength="5"
+                   name="numero"/>
+            <div ng-messages="frmNuevo.numero.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="maxlength">Your field is too long</div>
+            </div>
             <br />
             Numero interior: 
-            <input type="text" ng-model="ctrl.numeroInt" ng-maxlength="5"/>
+            <input type="text" ng-model="ctrl.numeroInt" ng-maxlength="5"
+                   name="numeroInt"/>
+            <div ng-messages="frmNuevo.numeroInt.$error" style="color:maroon" role="alert">
+                <div ng-message="maxlength">Your field is too long</div>
+            </div>
             <br />
-            Calle: <input type="text" ng-model="ctrl.calle" 
+            Calle: <input type="text" ng-model="ctrl.calle" name="calle"
                           ng-maxlength="40" required/>
+            <div ng-messages="frmNuevo.calle.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="maxlength">Your field is too long</div>
+            </div>
             <br />
             Colonia: <input type="text" ng-model="ctrl.colonia"
-                            ng-pattern="/^[a-zA-Záéíóú ]+$/" 
-                            ng-maxlength="30" required />
+                            ng-pattern="/^[a-zA-Záéíóú ]+$/" name="colonia"
+                            ng-maxlength="30" required />            
+            <div ng-messages="frmNuevo.colonia.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="pattern">Only letters characters</div>
+                <div ng-message="maxlength">Your field is too long</div>
+            </div>
             <br />
             C.P. : 
-            <input type="text" ng-model="ctrl.cp"  
+            <input type="text" ng-model="ctrl.cp" name="cp"
                    ng-pattern="/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/"
                    ng-minlength="5" ng-maxlength="5" required/>
+            <div ng-messages="frmNuevo.cp.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+                <div ng-message="pattern">Only number characters</div>
+            </div>
             <br />
             Municipio: <input type="text" ng-model="ctrl.municipio"
                               ng-pattern="/^[a-zA-Záéíóú ]+$/" 
                               ng-maxlength="20" ng-mixlength="5"
-                              required/>
+                              name="municipio" required/>
+            <div ng-messages="frmNuevo.municipio.$error"
+                 style="color:maroon" role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+                <div ng-message="pattern">Only letters chracters</div>
+            </div>
             <br />
             Estado: <input type="text" ng-model="ctrl.estado"
-                           ng-pattern="/^[a-zA-Záéíóú ]+$/" 
+                           ng-pattern="/^[a-zA-Záéíóú ]+$/" name="estado"
                            ng-maxlength="20" ng-mixlength="5" required/>
+            <div ng-messages="frmNuevo.nombre.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+                <div ng-message="pattern">Only letter characters</div>
+            </div>
             <br />
-            Mapa: 
-            <div id="googleMap" style="width:500px;height:380px;"></div>
+            Mapa: <!--
+            <div id="googleMap" style="width:500px;height:380px;"></div>-->
         </fieldset>
         <br />
         <fieldset>
@@ -122,38 +161,84 @@
             Nombre: <input type="text" ng-model="ctrl.rubro" 
                            ng-pattern="/^[a-zA-Záéíóú ]+$/" 
                            ng-maxlength="40" ng-mixlength="5"
-                           required/>
+                           name="rubro" required/>
+            <div ng-messages="frmNuevo.rubro.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+                <div ng-message="pattern">Only letter characters</div>
+            </div>
         </fieldset>
         <br /><br />
         Descripcion: 
-        <textarea rows="4" cols="50" ng-model="ctrl.descripcion" 
-                  ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-maxlength="180">
+        <textarea rows="4" cols="50" ng-model="ctrl.descripcion"
+                  name="descripcion" ng-pattern="/^[a-zA-Záéíóú ]+$/" 
+                  ng-maxlength="180">
+            <div ng-messages="frmNuevo.descripcion.$error"
+                 style="color:maroon" role="alert">
+                <div ng-message="pattern">Only letter characters</div>
+                <div ng-message="maxlength">Your field is too long</div>
+            </div>
         </textarea>
         <br />
-        Horario: <input type="text" ng-model="ctrl.horario" 
+        Horario: <input type="text" ng-model="ctrl.horario" name="horario"
                         ng-maxlength="100" required/>
+            <div ng-messages="frmNuevo.horario.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="maxlength">Your field is too long</div>
+            </div>
         <br />
         Encargado: <input type="text" ng-model="ctrl.encargado"
-                          ng-pattern="/^[a-zA-Záéíóú ]+$/" 
+                          ng-pattern="/^[a-zA-Záéíóú ]+$/" name="encargado"
                           ng-maxlength="40" ng-mixlength="10" required/>
+            <div ng-messages="frmNuevo.encargado.$error"
+                 style="color:maroon" role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+                <div ng-message="pattern">Only letter characters</div>
+            </div>
         <br />
-        Telefono: <input type="text" ng-model="ctrl.tel" 
+        Telefono: <input type="text" ng-model="ctrl.tel" name="tel"
                          ng-pattern="/\d{10}/" required/>
+            <div ng-messages="frmNuevo.tel.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="pattern">Introduce a phone number</div>
+            </div>
         <br />
         Facebook: <input type="text" ng-model="ctrl.face" 
-                         ng-maxlength="20"/>
+                         ng-maxlength="20" name="face"/>
+            <div ng-messages="frmNuevo.face.$error" style="color:maroon" 
+                 role="alert">
+                 <div ng-message="maxlength">Your field is too long</div>
+            </div>
         <br />
-        Email: <input type="email" ng-model="ctrl.email" required/>
+        Email: <input type="email" ng-model="ctrl.email" required/>   
+        <div ng-messages="frmNuevo.nombre.$error" style="color:maroon" 
+            role="alert">
+            <div ng-message="required">You did not enter a field</div>
+        </div>
         <br /><br />
         <fieldset>
             <h5>Producto</h5>
             <br />
             Titulo: <input type="text" ng-model="ctrl.producto.titulo" 
-                           ng-maxlength="20"/>
+                           ng-maxlength="20" name="producto"/>
+            <div ng-messages="frmNuevo.producto.$error"
+                 style="color:maroon" role="alert">
+                 <div ng-message="maxlength">Your field is too long</div>
+            </div>
             <br />
             Parrafo: 
             <textarea rows="4" cols="50" ng-model="ctrl.producto.parrafo"
-                      ng-maxlength="40"></textarea>
+                      ng-maxlength="40" name="parrafo"></textarea>
+            <div ng-messages="frmNuevo.parrafo.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="maxlength">Your field is too long</div>
+            </div>
             <a class="btn btn-lg btn-warning" href 
                ng-click="ctrl.agregarProducto()" role="button">Push</a>
             {{ctrl.producto}}
@@ -161,40 +246,72 @@
         </fieldset>
         <br /><br />
         Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota" 
-                        ng-maxlength="180"></textarea>
+                        ng-maxlength="180" name="nota"></textarea>
+            <div ng-messages="frmNuevo.nota.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="maxlength">Your field is too long</div>
+            </div>
         <br /><br />
         <fieldset>
             <h5>Informacion del cliente</h5>
             <br />
             Num. de contrato: 
             <input type="text" ng-model="ctrl.noContrato" 
-                   ng-pattern="/^[0-9]+$/" required/>
+                   ng-pattern="/^[0-9]+$/" name="noContrato" required/>
+            <div ng-messages="frmNuevo.noContrato.$error"
+                 style="color:maroon" role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="pattern">Only number characters</div>
+            </div>
             <br />
-            Direccion de pagina web: <input type="text" 
-                                            ng-model="ctrl.url"/>
+            Direccion de pagina web: 
+            <input type="text" ng-model="ctrl.url"/>
             <br />
             Nombre del cliente: 
             <input type="text" ng-model="ctrl.cliente"  ng-minlength="10"
-                   ng-maxlength="40" required/>
+                   ng-maxlength="40" name="cliente" required/>
+            <div ng-messages="frmNuevo.cliente.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+            </div>
             <br />
-            Telefono: <input type="text" ng-model="ctrl.telCliente"
-                             ng-pattern="/\d{10}/" required/>
-            <br />Correo: <input type="email" 
-                                 ng-model="ctrl.correoCliente" />
+            Telefono: 
+            <input type="text" ng-model="ctrl.telCliente" name="telCliente"
+                   ng-pattern="/\d{10}/" required/>
+            <div ng-messages="frmNuevo.telCliente.$error"
+                 style="color:maroon" role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="pattern">Correct the phone number</div>
+            </div>
+            <br />
+            Correo:<input type="email" ng-model="ctrl.correoCliente" />
             <br />
             Fecha de Contrato: 
             <input type="date" ng-model="ctrl.fechaContrato"
-                   id="fechaContrato" required/>
+                   id="fechaContrato" name="fechaContrato" required/>
+            <div ng-messages="frmNuevo.fechaContrato.$error"
+                 style="color:maroon" role="alert">
+                <div ng-message="required">You did not enter a field</div>
+            </div>
             <br />    
             Fecha de Vencimiento: 
             <input type="date" ng-model="ctrl.fechaVencimiento"
                    id="fechaVencimiento" />
             <br />
             Pago: 
-            <input type="text" ng-model="ctrl.pago" 
+            <input type="text" ng-model="ctrl.pago" name="pago"
                    ng-pattern="/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/" required/>
+            <div ng-messages="frmNuevo.pago.$error" style="color:maroon" 
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="pattern">Only numbers</div>
+            </div>
         </fieldset>
         
         <button type="submit">Send</button>
+
+        </fieldset>
     </form>
 </div>
