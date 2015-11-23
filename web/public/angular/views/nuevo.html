@@ -5,7 +5,7 @@
     <div ng-message="maxlength">This field is too long</div>
     <div ng-message="required">This field is required</div>
     <div ng-message="email">Please enter a valid email</div>
-    <div ng-message="pattern">Please enter only letter characters</div>
+    <div ng-message="pattern">Please check the characters of this field are correct</div>
 </script>
 
 <div ng-controller="NuevoController as ctrl">
@@ -128,8 +128,10 @@
             <div ng-messages="frmNuevo.cp.$error" style="color:red" 
                  ng-if="!frmNuevo.cp.$pristine || frmNuevo.$submitted"
                  role="alert">
-                <div ng-messages-include="error-messages"></div>
                 <div ng-message="pattern">Only numbers</div>
+                <div ng-message="minlength">too short</div>
+                <div ng-message="maxlength">too long</div>
+                <div ng-message="required">required field</div>
             </div>
             <br />
             Municipio: 
@@ -171,14 +173,12 @@
         <br /><br />
         Descripcion: 
         <textarea rows="4" cols="50" ng-model="ctrl.descripcion"
-                  name="descripcion" ng-pattern="/^[a-zA-Záéíóú ]+$/" 
-                  ng-maxlength="180">            
-            <div ng-messages="frmNuevo.descripcion.$error"
-                 ng-if="!frmNuevo.descripcion.$pristine || frmNuevo.$submitted"
+                  name="descripcion" ng-maxlength="180"></textarea>
+        <div ng-messages="frmNuevo.descripcion.$error"
+                 ng-if="!frmNuevo.descripcion.$pristine || frmNuevo.$submitted" ng-pattern="/^[a-zA-Záéíóú ]+$/"
                  style="color:red" role="alert">
-                <div ng-messages-include="error-messages"></div>
-            </div>
-        </textarea>
+            <div ng-messages-include="error-messages"></div>
+        </div>
         <br />
         Horario: <input type="text" ng-model="ctrl.horario" name="horario"
                         ng-maxlength="100" required/>            
@@ -198,13 +198,13 @@
                 <div ng-messages-include="error-messages"></div>
             </div>
         <br />
-        Telefono: <input type="text" ng-model="ctrl.tel" name="tel"
-                         ng-pattern="/\d{10}/" required/>
+        Telefono: 
+        <input type="text" ng-model="ctrl.tel" name="tel" ng-minlength="5"
+               ng-maxlength="15" ng-pattern="/^[0-9]+$/" required/>
             <div ng-messages="frmNuevo.tel.$error" style="color:red" 
                  ng-if="!frmNuevo.tel.$pristine || frmNuevo.$submitted"
                  role="alert">  
-                <div ng-message="pattern">Enter a valid phone number</div>
-                <div ng-message="required">Phone number is required</div>
+                <div ng-messages-include="error-messages"></div>
             </div>
         <br />
         Facebook: <input type="text" ng-model="ctrl.face" 
@@ -216,7 +216,7 @@
             </div>
         <br />
         Email: 
-        <input type="email" ng-model="ctrl.email" name="email" required/>   
+        <input type="email" ng-model="ctrl.email" name="email" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/" required/>   
         <div ng-messages="frmNuevo.email.$error" style="color:red" 
              ng-if="!frmNuevo.email.$pristine || frmNuevo.$submitted"
              role="alert">
@@ -265,8 +265,8 @@
             <div ng-messages="frmNuevo.noContrato.$error" style="color:red" 
                  ng-if="!frmNuevo.noContrato.$pristine || frmNuevo.$submitted"
                  role="alert">
-                <div ng-messages-include="error-messages"></div>
                 <div ng-message="pattern">Only number characters</div>
+                <div ng-message="required">Field required</div>
             </div>
             <br />
             Direccion de pagina web: 
@@ -283,17 +283,19 @@
             <br />
             Telefono: 
             <input type="text" ng-model="ctrl.telCliente" name="telCliente"
-                   ng-pattern="/\d{10}/" required/>
+                   ng-minlength="5" ng-maxlength="15" 
+                   ng-pattern="/^[0-9]+$/" required/>
             <div ng-messages="frmNuevo.telCliente.$error" style="color:red" 
                  ng-if="!frmNuevo.telCliente.$pristine || frmNuevo.$submitted"
                  role="alert">
-                <div ng-message="pattern">Enter a valid phone number</div>
-                <div ng-message="required">Phone number is required</div>
+                <div ng-messages-include="error-messages"></div>
             </div>
             <br />
-            Correo:<input type="email" ng-model="ctrl.correoCliente" />
-            <div ng-messages="frmNuevo.email.$error" style="color:red" 
-                 ng-if="!frmNuevo.email.$pristine || frmNuevo.$submitted"
+            Correo:
+            <input type="email" ng-model="ctrl.correoCliente" name="correo"
+                   ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/"/>
+            <div ng-messages="frmNuevo.correo.$error" style="color:red" 
+                 ng-if="!frmNuevo.correo.$pristine || frmNuevo.$submitted"
                  role="alert">
                 <div ng-messages-include="error-messages"></div>
             </div>            
@@ -323,7 +325,8 @@
         </fieldset>
         
         <button type="submit">Send</button>
-
+        {{frmNuevo.$valid}}
+        {{frmNuevo.$error | json }}
         </fieldset>
     </form>
 </div>
