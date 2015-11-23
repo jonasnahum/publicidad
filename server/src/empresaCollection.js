@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
+var float = {validator: /^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/, msg: 'Este campo sólo número o números con decimales'};
 var letrasEspaciosAcentos = {validator: /^[A-Za-záéíóú ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
 var numeros = {validator: /^[0-9]*$/, msg: 'Este campo sólo acepta numeros'};
 var email = {validator: /^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/, msg: 'Este campo sólo acepta correos válidos'};
@@ -50,6 +51,7 @@ var validateContrato = [
     numeros
 ];
 var validatePago = [
+    float,
     numeros
 ];
 
