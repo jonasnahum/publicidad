@@ -3,17 +3,17 @@
     <form name="frmEditar" ng-submit="frmEditar.$valid && ctrl.editar()">
         <fieldset>
             <h2>Empresa</h2> 
-            Nombre: <input type="text" name="nombre" ng-model="ctrl.nombre" required ng-minlength="3" ng-maxlength="10"/>
+            Nombre: 
+            <input type="text" name="nombre" ng-model="ctrl.nombre" 
+                   ng-minlength="10" ng-maxlength="40" 
+                   ng-pattern="/^[a-zA-Záéíóú ]+$/" required/>
             <div class="errorMessages" ng-messages="frmEditar.nombre.$error" ng-if="!frmEditar.nombre.$pristine || frmEditar.$submitted" role="alert" >
-           <div ng-messages-include="/error/messages.html"></div>
-        </div>
+               <div ng-messages-include="/error/messages.html"></div>
+            </div>
             <br />
             Logotipo:
             <br />
-            <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')"
-                    accept="image/*" ngf-max-height="3000"
-                    ngf-max-width="3000" ngf-max-size="1MB"
-                    >Select Files</button>
+            <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')"accept="image/*" ngf-max-height="3000" ngf-max-width="3000" ngf-max-size="1MB">Select Files</button>
             <br>
             <div style="font:smaller">
                 <ul>
@@ -69,8 +69,8 @@
             <textarea rows="4" cols="50" ng-model="ctrl.textoIntro"
                       name="textoIntro" ng-maxlength="180"></textarea>
             <div class="errorMessages" ng-messages="frmEditar.textoIntro.$error" ng-if="!frmEditar.textoIntro.$pristine || frmEditar.$submitted" role="alert" >
-           <div ng-messages-include="/error/messages.html"></div>
-        </div>
+               <div ng-messages-include="/error/messages.html"></div>
+            </div>
             <br /><br />
         </fieldset>
         <br /><br />
@@ -103,7 +103,7 @@
             </div>
             <br />
             C.P. : <input type="text" ng-model="ctrl.cp" name="cp" 
-                          ng-pattern="/^([0-9]*)$/" ng-minlength="5" 
+                          ng-pattern="/^[0-9]+$/" ng-minlength="5" 
                           ng-maxlength="5" required/>
             <div class="errorMessages" ng-messages="frmEditar.cp.$error" ng-if="!frmEditar.cp.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
@@ -112,7 +112,7 @@
             Municipio: 
             <input type="text" ng-model="ctrl.municipio" 
                    ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-maxlength="20" 
-                   ng-mixlength="5" name="municipio" required/>
+                   ng-minlength="5" name="municipio" required/>
             <div class="errorMessages" ng-messages="frmEditar.municipio.$error" ng-if="!frmEditar.municipio.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
