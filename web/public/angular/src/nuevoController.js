@@ -35,10 +35,10 @@
         ctrl.pago = undefined;
         
         //MAP Functions
-        var map;
-        var myCenter=new google.maps.LatLng(19.4096,-102.0520);
-
         function initialize(){
+            var map;
+            var myCenter=new google.maps.LatLng(19.4096,-102.0520);
+            var markersArray = [];
             var mapOptions = {
                 center:myCenter,
                 zoom:13,
@@ -46,26 +46,31 @@
             };
             map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
             google.maps.event.addListener(map, 'click', function(event) {
+                clearOverlays();
                 placeMarker(event.latLng);
                 ctrl.lat = event.latLng.lat();
                 ctrl.long = event.latLng.lng();
             });
-        }
-        function placeMarker(location) {
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map,
-            });
-                
-            var infowindow = new google.maps.InfoWindow({
-                content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
-            });
-            infowindow.open(map,marker);
-        }
-        
-        initialize();
-        //google.maps.event.addDomListener(window, 'load', initialize);
+            function clearOverlays() {
+              for (var i = 0; i < markersArray.length; i++ ) {
+               markersArray[i].setMap(null);
+              }
+            }
+            function placeMarker(location) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                });
+                markersArray.push(marker);
+                var infowindow = new google.maps.InfoWindow({
+                    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+                });
+                infowindow.open(map,marker);
+            }
 
+        }
+        initialize();
+        
         
         //Productos Function
          ctrl.remover = undefined;

@@ -110,9 +110,65 @@
                 console.log("%s %s %s", data, status, config);    
             });
         };
-
         promise1();
-        var map;
+        
+        //MAP Functions
+        ctrl.initialize = function (latitud, longitud){
+            var map;
+            var myMarkerPosition=undefined;
+            var myCenter=new google.maps.LatLng(19.4096,-102.0520);
+            var markersArray = [];
+            if(latitud && longitud){
+                myCenter =  new google.maps.LatLng(latitud,longitud);
+                myMarkerPosition= new google.maps.LatLng(latitud,longitud);
+            }else{
+                myCenter =  new google.maps.LatLng(19.4096,-102.0520);;
+            };
+            var mapOptions = {
+                center:myCenter,
+                zoom:13,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+            var marker = new google.maps.Marker({
+                position: myMarkerPosition,
+                map: map
+            });
+            markersArray.push(marker);
+            
+            
+            google.maps.event.addListener(map, 'click', function(event) {
+                clearOverlays();
+                placeMarker(event.latLng);
+                ctrl.lat = event.latLng.lat();
+                ctrl.long = event.latLng.lng();
+            });
+            function clearOverlays() {
+              for (var i = 0; i < markersArray.length; i++ ) {
+               markersArray[i].setMap(null);
+              }
+            }
+            function placeMarker(location) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                });
+                markersArray.push(marker);
+                var infowindow = new google.maps.InfoWindow({
+                    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+                });
+                infowindow.open(map,marker);
+            }
+
+        }
+
+        
+        
+        
+        
+        
+        
+        /*var map;
         ctrl.initialize = function (latitud, longitud){
             var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
             var myMarkerPosition=undefined;
@@ -151,7 +207,7 @@
             });
             infowindow.open(map,marker);
             
-        }
+        }*/
         
         ctrl.remover = undefined;
          function sonDiferentes(element, index, array) {
