@@ -111,6 +111,7 @@
         <br /><br />
         <fieldset>
             <h5>Producto</h5>
+            Producto : {{ctrl.producto}}
             <br />
             Titulo: <input type="text" ng-model="ctrl.producto.titulo"/>
             <br />
@@ -119,16 +120,16 @@
                                Describe el producto o servicio</textarea>
             <a class="btn btn-lg btn-warning" href 
                 ng-click="ctrl.agregarProducto()" role="button">Push</a>
-            {{ctrl.producto}}
+            <br />
+            Productos : {{ctrl.productos}}
             <br />
             Titulo del producto a remover: <input type="text" ng-model="ctrl.remover"/>
             <a class="btn btn-lg btn-warning" href 
                ng-click="ctrl.removerProducto()" role="button">Remove</a>
+            <br />
             Borrar todos los productos: 
             <a class="btn btn-lg btn-warning" href 
                ng-click="ctrl.borrarProductos()" role="button">Borrar Todos los productos</a>
-            
-             {{ctrl.productos}}
         </fieldset>
         <br /><br />
         Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota"></textarea>

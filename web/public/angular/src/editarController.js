@@ -167,8 +167,8 @@
         ctrl.agregarProducto = function() {
             if(ctrl.producto){
                 ctrl.productos.push(ctrl.producto);
+                ctrl.producto = undefined;
             }
-            ctrl.producto = {};
         };
         
 
