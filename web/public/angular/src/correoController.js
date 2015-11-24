@@ -12,7 +12,7 @@
         
         ctrl.sendEmail = function() {
             $http({
-                url: 'http://localhost:3000/correo',
+                url: 'http://localhost:3000/correo/',
                 method: "POST",
                 data: ctrl
             }).success(function(data, status, headers, config){
