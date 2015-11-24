@@ -224,7 +224,8 @@
             <br />
             Nombre del cliente: 
             <input type="text" ng-model="ctrl.cliente"  ng-minlength="10"
-                   ng-maxlength="40" name="cliente" required/>
+                   ng-maxlength="40" name="cliente" required 
+                   ng-pattern="/^[a-zA-Záéíóú ]+$/"/>
             <div class="errorMessages" ng-messages="frmNuevo.cliente.$error" ng-if="!frmNuevo.cliente.$pristine || frmNuevo.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
