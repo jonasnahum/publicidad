@@ -183,6 +183,7 @@
         <br /><br />
         <fieldset>
             <h5>Producto</h5>
+            (Máximo 10 productos)
             Producto : {{ctrl.producto}}
             <br />
             Titulo: <input type="text" ng-model="ctrl.producto.titulo" 
@@ -221,7 +222,7 @@
             <h5>Informacion del cliente</h5>
             <br />
             Num. de contrato: 
-            <input type="text" ng-model="ctrl.noContrato" ng-minlength="10"
+            <input type="text" ng-model="ctrl.noContrato"
                    ng-pattern="/^[0-9]+$/" name="noContrato" required/>
             <div class="errorMessages" ng-messages="frmEditar.noContrato.$error" ng-if="!frmEditar.noContrato.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
