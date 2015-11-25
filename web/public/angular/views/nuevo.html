@@ -1,4 +1,5 @@
 <script type="text/javascript" src="./../../../js/datepicker.js"></script>
+<div ng-controller="DireccionController as ctrl">
 <div ng-controller="NuevoController as ctrl">
     <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()"
           novalidate>
@@ -73,7 +74,6 @@
         <br /><br />
         <fieldset>
             <h5>Direccion</h5>
-            <br />
             Numero: 
             <input type="text" ng-model="ctrl.numero" ng-maxlength="5"
                    name="numero"/>
@@ -275,5 +275,7 @@
         
         <button type="submit">Send</button>
         </fieldset>
+    {{frmNuevo.$error}}
     </form>
+</div>
 </div>

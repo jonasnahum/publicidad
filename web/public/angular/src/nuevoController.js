@@ -7,7 +7,7 @@
         ctrl.logotipo = undefined;
         ctrl.foto = undefined;
         ctrl.textoIntro = undefined;
-        ctrl.numero = undefined;
+        /*ctrl.numero = undefined;
         ctrl.numeroInt = undefined;
         ctrl.calle = undefined;
         ctrl.colonia = undefined;
@@ -16,7 +16,7 @@
         ctrl.estado = undefined;
         ctrl.lat = undefined;
         ctrl.long = undefined;
-        ctrl.rubro = undefined;
+        */ctrl.rubro = undefined;
         ctrl.descripcion = undefined;
         ctrl.horario = undefined;
         ctrl.encargado = undefined;
@@ -34,7 +34,7 @@
         ctrl.fechaVencimiento = undefined;//date
         ctrl.pago = undefined;
         
-        //MAP Functions
+        /*//MAP Functions
         function initialize(){
             var map;
             var myCenter=new google.maps.LatLng(19.4096,-102.0520);
@@ -70,7 +70,7 @@
 
         }
         initialize();
-        
+        */
         
         //Productos Function
          ctrl.remover = undefined;
@@ -98,6 +98,8 @@
         
         //SERVER Functions
         ctrl.save = function() {
+            console.dir(ctrl);
+            console.dir(ctrl.numero);
             $http({
                 url: 'http://localhost:3000/empresas/api/',
                 method: "POST",
