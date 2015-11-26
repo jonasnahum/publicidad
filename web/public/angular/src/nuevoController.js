@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('NuevoController', ['Upload', '$timeout', '$http', '$location', function(Upload, $timeout, $http, $location) {
+    app.controller('NuevoController', ['Upload', '$timeout', '$http', '$location', 'mapService',  function(Upload, $timeout, $http, $location, mapService) {
         var ctrl = this;
         ctrl.nombre = undefined;
         ctrl.logotipo = undefined;
@@ -33,51 +33,18 @@
         ctrl.fechaContrato = undefined;//date
         ctrl.fechaVencimiento = undefined;//date
         ctrl.pago = undefined;
+       
+        var mapa = mapService();
         
-        /*//MAP Functions
-        function initialize(){
-            var map;
-            var myCenter=new google.maps.LatLng(19.4096,-102.0520);
-            var markersArray = [];
-            var mapOptions = {
-                center:myCenter,
-                zoom:13,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-            };
-            map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
-            google.maps.event.addListener(map, 'click', function(event) {
-                clearOverlays();
-                placeMarker(event.latLng);
-                ctrl.lat = event.latLng.lat();
-                ctrl.long = event.latLng.lng();
-            });
-            function clearOverlays() {
-              for (var i = 0; i < markersArray.length; i++ ) {
-               markersArray[i].setMap(null);
-              }
-            }
-            function placeMarker(location) {
-                var marker = new google.maps.Marker({
-                    position: location,
-                    map: map,
-                });
-                markersArray.push(marker);
-                var infowindow = new google.maps.InfoWindow({
-                    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
-                });
-                infowindow.open(map,marker);
-            }
-
-        }
-        initialize();
-        */
+        ctrl.borrarMarker = function () {
+            mapa.borrarEnMapaEnArrYEnProperties();
+        };
         
         //Productos Function
          ctrl.remover = undefined;
          function sonDiferentes(element, index, array) {
             return element.titulo !== ctrl.remover;
          }
-        
         
         ctrl.removerProducto = function(){
             ctrl.productos = ctrl.productos.filter(sonDiferentes);
@@ -91,15 +58,14 @@
             }
         };
         
-
         ctrl.borrarProductos = function(){
             ctrl.productos = [];
         };
         
         //SERVER Functions
         ctrl.save = function() {
-            console.dir(ctrl);
-            console.dir(ctrl.numero);
+            ctrl.lat = mapa.getLat();
+            ctrl.long = mapa.getLong();
             $http({
                 url: 'http://localhost:3000/empresas/api/',
                 method: "POST",
