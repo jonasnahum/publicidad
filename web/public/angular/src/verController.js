@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('VerController', ['$http', '$routeParams', '$location', '$log', function($http, $route, $location, $log ) {
+    app.controller('VerController', ['$http', '$routeParams', '$location', '$log', 'mapService', function($http, $route, $location, $log, mapService) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -47,38 +47,16 @@
                 
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
+    
+                var mapa = mapService();
+                mapa.placeMarker(latitud,longitud);
                 
-                ctrl.initialize(latitud,longitud);
             }).error(function(data, status, headers, config) {
                 console.log("%s %s %s", data, status, config);    
             });
         };
 
         promise1();
-
-        ctrl.initialize = function (latitud, longitud){
-            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-            var myMarkerPosition=new google.maps.LatLng(latitud,longitud);
-            var map;
-            var myCenter= undefined;
-            if(latitud && longitud){
-                myCenter =  new google.maps.LatLng(latitud,longitud);
-            }else{
-                myCenter =  new google.maps.LatLng(19.4096,-102.0520);;
-            };
-
-            var mapOptions = {
-                  center:myCenter,
-                  zoom:13,
-                  mapTypeId:google.maps.MapTypeId.ROADMAP
-              };
-            map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
-            var marker = new google.maps.Marker({
-                position: myMarkerPosition,
-                map: map,
-                icon: iconBase + 'schools_maps.png'
-            });
-        }
 
     }]);
 })();

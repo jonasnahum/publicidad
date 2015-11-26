@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('EditarFormularioController', ['Upload', '$timeout', '$http', '$routeParams', '$location', function(Upload, $timeout, $http, $route, $location) {
+    app.controller('EditarFormularioController', ['Upload', '$timeout', '$http', '$routeParams', '$location', 'mapService', function(Upload, $timeout, $http, $route, $location, mapService) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -36,7 +36,7 @@
         ctrl.fechaContrato = undefined;//date
         ctrl.fechaVencimiento = undefined;//date
         ctrl.pago = undefined;
-        
+        var mapa = mapService();
         
         //UPLOAD IMAGES Function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
@@ -105,109 +105,16 @@
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
                 
-                ctrl.initialize(latitud,longitud);
+                mapa.placeMarker(latitud,longitud);
+                
             }).error(function(data, status, headers, config) {
                 console.log("%s %s %s", data, status, config);    
             });
         };
         promise1();
-        
-        //MAP Functions
-        ctrl.initialize = function (latitud, longitud){
-            var map;
-            var myMarkerPosition=undefined;
-            var myCenter=new google.maps.LatLng(19.4096,-102.0520);
-            var markersArray = [];
-            if(latitud && longitud){
-                myCenter =  new google.maps.LatLng(latitud,longitud);
-                myMarkerPosition= new google.maps.LatLng(latitud,longitud);
-            }else{
-                myCenter =  new google.maps.LatLng(19.4096,-102.0520);;
-            };
-            var mapOptions = {
-                center:myCenter,
-                zoom:13,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-            };
-            map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
-            var marker = new google.maps.Marker({
-                position: myMarkerPosition,
-                map: map
-            });
-            markersArray.push(marker);
-            
-            
-            google.maps.event.addListener(map, 'click', function(event) {
-                clearOverlays();
-                placeMarker(event.latLng);
-                ctrl.lat = event.latLng.lat();
-                ctrl.long = event.latLng.lng();
-            });
-            function clearOverlays() {
-              for (var i = 0; i < markersArray.length; i++ ) {
-               markersArray[i].setMap(null);
-              }
-            }
-            function placeMarker(location) {
-                var marker = new google.maps.Marker({
-                    position: location,
-                    map: map,
-                });
-                markersArray.push(marker);
-                var infowindow = new google.maps.InfoWindow({
-                    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
-                });
-                infowindow.open(map,marker);
-            }
-
-        }
-
-        
-        
-        
-        
-        
-        
-        /*var map;
-        ctrl.initialize = function (latitud, longitud){
-            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-            var myMarkerPosition=undefined;
-            var myCenter = undefined;
-            if(latitud && longitud){
-                myCenter =  new google.maps.LatLng(latitud,longitud);
-                myMarkerPosition= new google.maps.LatLng(latitud,longitud);
-            }else{
-                myCenter =  new google.maps.LatLng(19.4096,-102.0520);;
-            };    
-            var mapOptions = {
-                  center:myCenter,
-                  zoom:13,
-                  mapTypeId:google.maps.MapTypeId.ROADMAP
-              };
-            map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);    
-            var marker = new google.maps.Marker({
-                position: myMarkerPosition,
-                map: map,
-                icon: iconBase + 'schools_maps.png'
-            });
-            google.maps.event.addListener(map, 'click', function(event) {
-                placeMarker(event.latLng);
-                ctrl.lat = event.latLng.lat();
-                ctrl.long = event.latLng.lng();
-            });
-        }
-        function placeMarker(location) {
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map,
-            });
-                
-            var infowindow = new google.maps.InfoWindow({
-                content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
-            });
-            infowindow.open(map,marker);
-            
-        }*/
+        ctrl.borrarMarker = function () {
+            mapa.borrarMarker();
+        };
         
         ctrl.remover = undefined;
          function sonDiferentes(element, index, array) {
@@ -232,7 +139,9 @@
             ctrl.productos = [];
         };
         
-        ctrl.editar = function() {
+        ctrl.editar = function(){ 
+            ctrl.lat = mapa.getLat();
+            ctrl.long = mapa.getLong();
             $http({
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "PUT",
@@ -241,7 +150,8 @@
                     logotipo:ctrl.logotipo,
                     foto:ctrl.foto,            
                     textoIntro:ctrl.textoIntro,
-                    lat:ctrl.lat,
+                    lat: ctrl.lat,
+                    long: ctrl.long,
                     long:ctrl.long,
                     descripcion:ctrl.descripcion,
                     horario:ctrl.horario,

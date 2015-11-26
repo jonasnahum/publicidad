@@ -37,7 +37,7 @@
         var mapa = mapService();
         
         ctrl.borrarMarker = function () {
-            mapa.borrarEnMapaEnArrYEnProperties();
+            mapa.borrarMarker();
         };
         
         //Productos Function
