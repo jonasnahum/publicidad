@@ -76,7 +76,7 @@ var empresaSchema = mongoose.Schema({
     nombre: { type: String, required: true,  minlength: 5, maxlength: 40,  validate: validateNombre },
     logotipo: String, 
     foto: String, 
-    textoIntro: { type: String, required: true, maxlength: 180}, 
+    textoIntro: { type: String, maxlength: 180}, 
     lat: String, 
     long: String, 
     descripcion: { type: String, maxlength: 180 }, 

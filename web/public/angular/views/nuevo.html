@@ -1,5 +1,5 @@
 <script type="text/javascript" src="./../../../js/datepicker.js"></script>
-<div ng-controller="DireccionController as ctrl">
+
 <div ng-controller="NuevoController as ctrl">
     <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()"
           novalidate>
@@ -126,6 +126,7 @@
             </div>
             <br />
             Mapa: 
+            
             <div id="googleMap" style="width:500px;height:380px;"></div>
             <a class="btn btn-lg btn-warning" href 
                 ng-click="ctrl.borrarMarker()" role="button">Borrar marker</a>
@@ -279,5 +280,4 @@
         </fieldset>
     {{frmNuevo.$error}}
     </form>
-</div>
 </div>
