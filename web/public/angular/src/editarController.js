@@ -37,7 +37,7 @@
         ctrl.fechaContrato = undefined;//date
         ctrl.fechaVencimiento = undefined;//date
         ctrl.pago = undefined;
-        var mapa = mapService();
+        ctrl.mapa = undefined;
         
         //UPLOAD IMAGES Function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
@@ -106,7 +106,9 @@
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
                 
-                mapa.placeMarker(latitud,longitud);
+                ctrl.mapa = mapService(latitud,longitud);
+                ctrl.mapa.placeMarker(latitud,longitud);
+                ctrl.mapa.getEventListener();
                 
             }).error(function(data, status, headers, config) {
                 console.log("%s %s %s", data, status, config);    
@@ -114,7 +116,7 @@
         };
         promise1();
         ctrl.borrarMarker = function () {
-            mapa.borrarMarker();
+            ctrl.mapa.borrarMarker();
         };
         
         //Productos functions
@@ -132,8 +134,8 @@
         };
         
         ctrl.editar = function(){ 
-            ctrl.lat = mapa.getLat();
-            ctrl.long = mapa.getLong();
+            ctrl.lat = ctrl.mapa.getLat();
+            ctrl.long = ctrl.mapa.getLong();
             $http({
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "PUT",
