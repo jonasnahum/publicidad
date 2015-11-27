@@ -3,11 +3,11 @@
     
     app.factory('mapService', ['$location',function($location) {//singleton.
         
-        var MapClass = function() {
+        var MapClass = function(latitud,longitud) {
             this.map = undefined;
-            this.lat = undefined;
-            this.long = undefined;
-            this.myCenter=new google.maps.LatLng(19.4096,-102.0520);
+            this.lat = latitud || 19.4096;
+            this.long = longitud || -102.0520;
+            this.myCenter=new google.maps.LatLng(this.lat, this.long);
             this.markersArray = [];
             this.mapOptions = {
                 center:this.myCenter,
@@ -44,12 +44,8 @@
         MapClass.prototype.placeMarker = function (latitud,longitud) {
             var that = this;
             var myMarkerPosition = undefined;
-            if(latitud && longitud){
-                this.myCenter =  new google.maps.LatLng(latitud,longitud);
-                myMarkerPosition = new google.maps.LatLng(latitud,longitud);
-            }else{
-                this.myCenter =  new google.maps.LatLng(19.4096,-102.0520);;
-            };
+            myMarkerPosition = new google.maps.LatLng(latitud,longitud);
+            
             var marker = new google.maps.Marker({
                 position: myMarkerPosition,
                 map: that.map,
@@ -77,8 +73,8 @@
             return that.long;
         };
         
-        return function() {
-            return new MapClass();
+        return function(latitud,longitud) {
+            return new MapClass(latitud,longitud);
         };
         
     }]);
