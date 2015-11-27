@@ -107,6 +107,7 @@
                 var longitud = parseFloat(ctrl.long);
                 
                 mapa.placeMarker(latitud,longitud);
+                mapa.getEventListener();
                 
             }).error(function(data, status, headers, config) {
                 console.log("%s %s %s", data, status, config);    

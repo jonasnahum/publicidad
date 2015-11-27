@@ -14,24 +14,26 @@
                 zoom:13,
                 mapTypeId:google.maps.MapTypeId.ROADMAP
             };
-            this.map = new google.maps.Map(document.getElementById("googleMap"), this.mapOptions);
+            this.document = document.getElementById("googleMap")
+            this.map = this.getMap();
+            this.eventListener = undefined;
+        };
+        MapClass.prototype.getMap = function(){
             var that = this;
-            google.maps.event.addListener(this.map, 'click', function(event){ 
-                var locationString = $location.path();
-                var palabra = locationString.split("/")[1];
-                if(palabra == "ver"){
-                    return;
-                }
+            return new google.maps.Map(that.document, that.mapOptions);
+        };
+        MapClass.prototype.getEventListener = function(){
+            var that = this;
+            that.eventListener = google.maps.event.addListener(that.map, 'click', function(event){ 
                 that.manageEvent(event);
             });
         };
-        
         MapClass.prototype.manageEvent = function(event){
             var that = this;
-            that.clearOverlays();//quitar del mapa markers anteriores.
-            that.placeMarker(event.latLng.lat(), event.latLng.lng());//poner este marker.
             that.lat = event.latLng.lat();//guardar latitud.
             that.long = event.latLng.lng();
+            that.clearOverlays();
+            that.placeMarker(event.latLng.lat(), event.latLng.lng());
         };
         MapClass.prototype.clearOverlays = function () {
             var that = this;
@@ -60,10 +62,10 @@
         };
         MapClass.prototype.borrarMarker = function () {
             var that = this;
-            that.clearOverlays();
-            that.markersArray = [];
             that.lat = undefined;
             that.long = undefined;
+            that.clearOverlays();
+            that.markersArray = [];
         };
 
         MapClass.prototype.getLat = function () {

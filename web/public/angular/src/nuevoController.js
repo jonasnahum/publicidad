@@ -19,6 +19,7 @@
         
         //Map Function
         var mapa = mapService();
+        mapa.getEventListener();
         
         ctrl.borrarMarker = function () {
             mapa.borrarMarker();
