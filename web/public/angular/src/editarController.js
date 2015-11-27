@@ -1,7 +1,8 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('EditarFormularioController', ['Upload', '$timeout', '$http', '$routeParams', '$location', 'mapService', function(Upload, $timeout, $http, $route, $location, mapService) {
+
+    app.controller('EditarFormularioController', ['Upload', '$timeout', '$http', '$routeParams', '$location', 'mapService', 'productosManager', function(Upload, $timeout, $http, $route, $location, mapService, productosManager) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -116,27 +117,18 @@
             mapa.borrarMarker();
         };
         
-        ctrl.remover = undefined;
-         function sonDiferentes(element, index, array) {
-            return element.titulo !== ctrl.remover;
-         }
-        
-        
-        ctrl.removerProducto = function(){
-            ctrl.productos = ctrl.productos.filter(sonDiferentes);
-        };
-                                                  
-        //Productos Function
+        //Productos functions
+        var prod = productosManager()
         ctrl.agregarProducto = function() {
-            if(ctrl.producto){
-                ctrl.productos.push(ctrl.producto);
-                ctrl.producto = undefined;
-            }
+            ctrl.producto = prod.agregarProducto(ctrl.productos, ctrl.producto);
         };
         
-
-        ctrl.borrarProductos = function(){
-            ctrl.productos = [];
+        ctrl.removerProducto = function() {
+            ctrl.productos = prod.removerProducto(ctrl.productos, ctrl.remover);
+        };
+        
+        ctrl.borrarProductos = function() {
+            ctrl.productos = prod.borrarProductos(ctrl.productos);
         };
         
         ctrl.editar = function(){ 

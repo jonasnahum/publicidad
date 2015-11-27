@@ -1,4 +1,5 @@
 <script type="text/javascript" src="./../../../js/datepicker.js"></script>
+
 <div ng-controller="NuevoController as ctrl">
     <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()"
           novalidate>
@@ -73,7 +74,6 @@
         <br /><br />
         <fieldset>
             <h5>Direccion</h5>
-            <br />
             Numero: 
             <input type="text" ng-model="ctrl.numero" ng-maxlength="5"
                    name="numero"/>
@@ -126,6 +126,7 @@
             </div>
             <br />
             Mapa: 
+            
             <div id="googleMap" style="width:500px;height:380px;"></div>
             <a class="btn btn-lg btn-warning" href 
                 ng-click="ctrl.borrarMarker()" role="button">Borrar marker</a>
