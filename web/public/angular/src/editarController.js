@@ -2,7 +2,7 @@
     var app = angular.module('app');
     
 
-    app.controller('EditarFormularioController', ['Upload', '$timeout', '$http', '$routeParams', '$location', 'mapService', 'productosManager', function(Upload, $timeout, $http, $route, $location, mapService, productosManager) {
+    app.controller('EditarFormularioController', ['Upload', '$timeout', '$http', '$routeParams', '$location', 'mapService', 'productosService', function(Upload, $timeout, $http, $route, $location, mapService, productosService) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -118,7 +118,7 @@
         };
         
         //Productos functions
-        var prod = productosManager()
+        var prod = productosService()
         ctrl.agregarProducto = function() {
             ctrl.producto = prod.agregarProducto(ctrl.productos, ctrl.producto);
         };

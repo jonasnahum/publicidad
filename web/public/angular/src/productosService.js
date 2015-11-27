@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.factory('productosManager', [function() {//singleton.
+    app.factory('productosService', [function() {//singleton.
         
         var ProductosClass = function() {
         };

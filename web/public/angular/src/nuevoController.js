@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('NuevoController', ['Upload', '$timeout', '$http', '$location', 'mapService', 'productosManager',  function(Upload, $timeout, $http, $location, mapService, productosManager) {
+    app.controller('NuevoController', ['Upload', '$timeout', '$http', '$location', 'mapService', 'productosService',  function(Upload, $timeout, $http, $location, mapService, productosService) {
         
         var ctrl = this;
         ctrl.nombre = undefined;
@@ -25,7 +25,7 @@
         };
         
         //Productos functions
-        var prod = productosManager()
+        var prod = productosService()
         ctrl.agregarProducto = function() {
             ctrl.producto = prod.agregarProducto(ctrl.productos, ctrl.producto);
         };
