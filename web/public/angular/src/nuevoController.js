@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('NuevoController', ['Upload', '$timeout', '$http', '$location', 'mapService',  function(Upload, $timeout, $http, $location, mapService) {
+    app.controller('NuevoController', ['Upload', '$timeout', '$http', '$location', 'mapService', 'productosManager',  function(Upload, $timeout, $http, $location, mapService, productosManager) {
         
         var ctrl = this;
         ctrl.nombre = undefined;
@@ -25,25 +25,19 @@
         };
         
         //Productos functions
-        ctrl.remover = undefined;
-        function sonDiferentes(element, index, array) {
-            return element.titulo !== ctrl.remover;
-        }
-        
-        ctrl.removerProducto = function(){
-            ctrl.productos = ctrl.productos.filter(sonDiferentes);
-        };
-                     
+        var prod = productosManager()
         ctrl.agregarProducto = function() {
-            if(ctrl.producto){
-                ctrl.productos.push(ctrl.producto);
-                ctrl.producto = undefined;
-            }
+            ctrl.producto = prod.agregarProducto(ctrl.productos, ctrl.producto);
         };
         
-        ctrl.borrarProductos = function(){
-            ctrl.productos = [];
+        ctrl.removerProducto = function() {
+            ctrl.productos = prod.removerProducto(ctrl.productos, ctrl.remover);
         };
+        
+        ctrl.borrarProductos = function() {
+            ctrl.productos = prod.borrarProductos(ctrl.productos);
+        };
+            
         
         //Server Call
         ctrl.save = function() {
@@ -62,7 +56,6 @@
                 
             });
         };
-        
         //Upload images function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
             ctrl.files = files;
