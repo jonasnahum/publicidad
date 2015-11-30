@@ -20,21 +20,17 @@
         //Map Function
         var mapa = mapService();
         mapa.getEventListener();
-        
         ctrl.borrarMarker = function () {
             mapa.borrarMarker();
         };
-        
-        //Productos functions
+            
         var prod = productosService()
         ctrl.agregarProducto = function() {
             ctrl.producto = prod.agregarProducto(ctrl.productos, ctrl.producto);
         };
-        
         ctrl.removerProducto = function() {
             ctrl.productos = prod.removerProducto(ctrl.productos, ctrl.remover);
-        };
-        
+        };        
         ctrl.borrarProductos = function() {
             ctrl.productos = prod.borrarProductos(ctrl.productos);
         };
@@ -49,14 +45,13 @@
                 method: "POST",
                 data: ctrl
             }).success(function(data, status, headers, config){
-                alert("Info enviada");
                 $location.path('/todos');
             }).error(function(data, status, headers, config) {
                 alert("UPS there's an error");
-                console.log("%s %s", status, data);
-                
+                console.log("%s %s", status, data);            
             });
         };
+        
         //Upload images function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
             ctrl.files = files;

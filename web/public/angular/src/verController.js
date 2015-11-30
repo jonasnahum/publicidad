@@ -2,15 +2,14 @@
     var app = angular.module('app');
     
     app.controller('VerController', ['$http', '$routeParams', '$location', '$log', 'mapService', function($http, $route, $location, $log, mapService) {
-        var ctrl = this;
-        
+        var ctrl = this; 
         ctrl.empresaId= $route.id;
-
-        var promise1 = function() {
-            return $http({
+ 
+        $http({
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "GET",
             }).success(function(data, status, headers, config){
+           
                 ctrl.nombre = data.nombre;
                 ctrl.logotipo = data.logotipo;
                 ctrl.foto = data.foto;
@@ -54,9 +53,5 @@
             }).error(function(data, status, headers, config) {
                 console.log("%s %s %s", data, status, config);    
             });
-        };
-
-        promise1();
-
     }]);
 })();

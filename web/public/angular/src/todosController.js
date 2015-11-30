@@ -1,13 +1,11 @@
 (function() {
     var app = angular.module('app');
     app.controller('TodosController', ['$http', '$location', function($http, $location) {
-
         var ctrl = this;
 
         var url = 'http://localhost:3000/empresas/api/';
         ctrl.empresas = [];
 
-        
         ctrl.getAll = function(){
             $http({
                     method: 'GET',
@@ -18,7 +16,6 @@
                 alert(err);
             });
         };
-        
         ctrl.getAll();
 
         ctrl.delete = function (id) {
