@@ -62,7 +62,8 @@
         //Upload images function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
             var up = uploadFilesService();
-            up.upload(files, errFiles, propertyName, ctrl).then(function(response) {
+            var promise = up.upload;
+            promise(files, errFiles, propertyName, ctrl).then(function(response) {
                 console.log("RESPONSE" + response);
             });
         };
