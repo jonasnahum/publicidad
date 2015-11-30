@@ -2,7 +2,7 @@
     var app = angular.module('app');
     
 
-    app.controller('EditarFormularioController', ['Upload', '$timeout', '$http', '$routeParams', '$location', 'mapService', 'productosService', function(Upload, $timeout, $http, $route, $location, mapService, productosService) {
+    app.controller('EditarFormularioController', ['Upload', '$http', '$routeParams', '$location', 'mapService', 'productosService', 'uploadFilesService',  function(Upload, $http, $route, $location, mapService, productosService, uploadFilesService) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -41,28 +41,21 @@
         
         //UPLOAD IMAGES Function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
-            ctrl.files = files;
-            ctrl.errFile = errFiles && errFiles[0];
-            if (files && files.length) {
-                Upload.upload({
-                    url: 'http://localhost:3000/imagenes/api/post',
-                    data: {
-                        files: files
-                    }
-                }).then(function (response) {
-                    alert("imagen serializada")
-                    ctrl[propertyName] = response.data;
-                }, function (response) {
-                    if (response.status > 0) {
-                        ctrl.errorMsg = response.status + ': ' + response.data;
-                    }
-                }, function (evt) {
-                    ctrl.progress = 
-                        Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-                });
+            var up = uploadFilesService();
+            var callback = function (response) {
+                ctrl[propertyName] = response.data;
+            };
+            var error = function (response) {
+                if (response.status > 0) {
+                    ctrl.errorMsg = response.status + ': ' + response.data;
+                }
+            };
+            var progres = function (evt) {
+                ctrl.progress = 
+                    Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
             }
-        };       
-        
+            up.upload(files, errFiles, propertyName, callback, error, progres);
+        };        
 
         var promise1 = function() {
             return $http({
