@@ -48,7 +48,7 @@
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
     
-                var mapa = mapService();
+                var mapa = mapService(latitud,longitud);
                 mapa.placeMarker(latitud,longitud);
                 
             }).error(function(data, status, headers, config) {

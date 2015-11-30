@@ -3,35 +3,37 @@
     
     app.factory('mapService', ['$location',function($location) {//singleton.
         
-        var MapClass = function() {
+        var MapClass = function(latitud,longitud) {
             this.map = undefined;
-            this.lat = undefined;
-            this.long = undefined;
-            this.myCenter=new google.maps.LatLng(19.4096,-102.0520);
+            this.lat = latitud || 19.4096;
+            this.long = longitud || -102.0520;
+            this.myCenter=new google.maps.LatLng(this.lat, this.long);
             this.markersArray = [];
             this.mapOptions = {
                 center:this.myCenter,
                 zoom:13,
                 mapTypeId:google.maps.MapTypeId.ROADMAP
             };
-            this.map = new google.maps.Map(document.getElementById("googleMap"), this.mapOptions);
+            this.document = document.getElementById("googleMap")
+            this.map = this.getMap();
+            this.eventListener = undefined;
+        };
+        MapClass.prototype.getMap = function(){
             var that = this;
-            google.maps.event.addListener(this.map, 'click', function(event){ 
-                var locationString = $location.path();
-                var palabra = locationString.split("/")[1];
-                if(palabra == "ver"){
-                    return;
-                }
+            return new google.maps.Map(that.document, that.mapOptions);
+        };
+        MapClass.prototype.getEventListener = function(){
+            var that = this;
+            that.eventListener = google.maps.event.addListener(that.map, 'click', function(event){ 
                 that.manageEvent(event);
             });
         };
-        
         MapClass.prototype.manageEvent = function(event){
             var that = this;
-            that.clearOverlays();//quitar del mapa markers anteriores.
-            that.placeMarker(event.latLng.lat(), event.latLng.lng());//poner este marker.
             that.lat = event.latLng.lat();//guardar latitud.
             that.long = event.latLng.lng();
+            that.clearOverlays();
+            that.placeMarker(event.latLng.lat(), event.latLng.lng());
         };
         MapClass.prototype.clearOverlays = function () {
             var that = this;
@@ -42,12 +44,8 @@
         MapClass.prototype.placeMarker = function (latitud,longitud) {
             var that = this;
             var myMarkerPosition = undefined;
-            if(latitud && longitud){
-                this.myCenter =  new google.maps.LatLng(latitud,longitud);
-                myMarkerPosition = new google.maps.LatLng(latitud,longitud);
-            }else{
-                this.myCenter =  new google.maps.LatLng(19.4096,-102.0520);;
-            };
+            myMarkerPosition = new google.maps.LatLng(latitud,longitud);
+            
             var marker = new google.maps.Marker({
                 position: myMarkerPosition,
                 map: that.map,
@@ -60,10 +58,10 @@
         };
         MapClass.prototype.borrarMarker = function () {
             var that = this;
-            that.clearOverlays();
-            that.markersArray = [];
             that.lat = undefined;
             that.long = undefined;
+            that.clearOverlays();
+            that.markersArray = [];
         };
 
         MapClass.prototype.getLat = function () {
@@ -75,8 +73,8 @@
             return that.long;
         };
         
-        return function() {
-            return new MapClass();
+        return function(latitud,longitud) {
+            return new MapClass(latitud,longitud);
         };
         
     }]);

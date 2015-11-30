@@ -3,8 +3,6 @@
     
     app.controller('NuevoController', ['$timeout', '$http', '$location', 'mapService', 'productosManager', 'uploadFilesService',  function($timeout, $http, $location, mapService, productosManager, uploadFilesService) {
         
-    /*app.controller('NuevoController', ['Upload', '$timeout', '$http', '$location', 'mapService', 'productosManager',  function(Upload, $timeout, $http, $location, mapService, productosManager) {*/
-        
         var ctrl = this;
         ctrl.nombre = undefined;
         ctrl.logotipo = undefined;
@@ -21,13 +19,14 @@
         
         //Map Function
         var mapa = mapService();
+        mapa.getEventListener();
         
         ctrl.borrarMarker = function () {
             mapa.borrarMarker();
         };
         
         //Productos functions
-        var prod = productosManager()
+        var prod = productosService()
         ctrl.agregarProducto = function() {
             ctrl.producto = prod.agregarProducto(ctrl.productos, ctrl.producto);
         };
