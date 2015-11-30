@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('NuevoController', ['$timeout', '$http', '$location', 'mapService', 'productosManager', 'uploadFilesService',  function($timeout, $http, $location, mapService, productosManager, uploadFilesService) {
+    app.controller('NuevoController', ['$timeout', '$http', '$location', 'mapService', 'productosService', 'uploadFilesService',  function($timeout, $http, $location, mapService, productosService, uploadFilesService) {
         
         var ctrl = this;
         ctrl.nombre = undefined;
@@ -61,10 +61,19 @@
         //Upload images function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
             var up = uploadFilesService();
-            var promise = up.upload;
-            promise(files, errFiles, propertyName, ctrl).then(function(response) {
-                console.log("RESPONSE" + response);
-            });
+            var callback = function (response) {
+                ctrl[propertyName] = response.data;
+            };
+            var error = function (response) {
+                if (response.status > 0) {
+                    ctrl.errorMsg = response.status + ': ' + response.data;
+                }
+            };
+            var progres = function (evt) {
+                ctrl.progress = 
+                    Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            }
+            up.upload(files, errFiles, propertyName, callback, error, progres);
         };
         
         /*
