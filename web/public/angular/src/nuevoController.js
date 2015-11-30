@@ -1,7 +1,9 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('NuevoController', ['Upload', '$timeout', '$http', '$location', 'mapService', 'productosManager',  function(Upload, $timeout, $http, $location, mapService, productosManager) {
+    app.controller('NuevoController', ['$timeout', '$http', '$location', 'mapService', 'productosManager', 'uploadFilesService',  function($timeout, $http, $location, mapService, productosManager, uploadFilesService) {
+        
+    /*app.controller('NuevoController', ['Upload', '$timeout', '$http', '$location', 'mapService', 'productosManager',  function(Upload, $timeout, $http, $location, mapService, productosManager) {*/
         
         var ctrl = this;
         ctrl.nombre = undefined;
@@ -56,7 +58,16 @@
                 
             });
         };
+        
         //Upload images function
+        ctrl.uploadFiles = function (files, errFiles, propertyName) {
+            var up = uploadFilesService();
+            up.upload(files, errFiles, propertyName, ctrl).then(function(response) {
+                console.log("RESPONSE" + response);
+            });
+        };
+        
+        /*
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
             ctrl.files = files;
             ctrl.errFile = errFiles && errFiles[0];
@@ -78,6 +89,6 @@
                 });
             }
         };       
-        
+        */
     }]);//end of the controller
 })();
