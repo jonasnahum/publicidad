@@ -13,50 +13,35 @@
             <br />
             Logotipo:
             <br />
-            <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')"accept="image/*" ngf-max-height="3000" ngf-max-width="3000" ngf-max-size="1MB">Select Files</button>
+            <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')"accept="image/*" ngf-max-height="3000" ngf-max-width="3000" ngf-max-size="1MB" ngf-fix-orientation="false">Select Files</button>
             <br>
-            <div style="font:smaller">
-                <ul>
-                    <li ng-repeat="f in files" style="font:smaller">
-                            {{ctrl.f.name}} {{ctrl.errFile.name}}
-                            {{ctrl.errFile.$error}}
-                            {{ctrl.errFile.$errorParam}}
-                    </li>
-                </ul>
+            <div style="font:smaller" class="errorMessages">
+                {{ctrl.files.name}} {{ctrl.errFiles.name}} {{ctrl.errFiles.$error}}
+                {{ctrl.errFiles.$errorParam}}
                 <span class="progress" ng-show="ctrl.progress >= 0">
                     <div style="width:{{ctrl.progress}}%" 
                          ng-bind="ctrl.progress + '%'">
                     </div>
                 </span>
-
             </div>
             {{ctrl.errorMsg}}
             <div>
                 <img src="data:image/*;base64,{{ctrl.logotipo}}" width="50%"
-                     height="50%" alt="embedded folder icon">
+                     height="50%" alt="No file selected">
             </div>
-            
             <br /><br />
             Foto:
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'foto')"
-                    accept="image/*" ngf-max-height="3000"
-                    ngf-max-width="3000" ngf-max-size="1MB"
-                    >Select Files</button>
-            <br />
-            <div style="font:smaller">
-                <ul>
-                    <li ng-repeat="f in files" style="font:smaller">
-                            {{ctrl.f.name}} {{ctrl.errFile.name}}
-                            {{ctrl.errFile.$error}}
-                            {{ctrl.errFile.$errorParam}}
-                    </li>
-                </ul>
+                    accept="image/*" ngf-max-height="3000" ngf-max-width="3000" 
+                    ngf-max-size="1MB" ngf-fix-orientation="false">Select Files</button>
+            <div style="font:smaller" class="errorMessages">
+                {{ctrl.files.name}} {{ctrl.errFiles.name}} {{ctrl.errFiles.$error}}
+                {{ctrl.errFiles.$errorParam}}
                 <span class="progress" ng-show="ctrl.progress >= 0">
                     <div style="width:{{ctrl.progress}}%" 
                          ng-bind="ctrl.progress + '%'">
                     </div>
                 </span>
-
             </div>
             {{ctrl.errorMsg}}
             <br />

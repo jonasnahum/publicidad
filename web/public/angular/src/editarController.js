@@ -42,6 +42,8 @@
         //UPLOAD IMAGES Function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
             var up = uploadFilesService();
+            ctrl.files = files;
+            ctrl.errFiles = errFiles && errFiles[0];
             var callback = function (response) {
                 ctrl[propertyName] = response.data;
             };
