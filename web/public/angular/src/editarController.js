@@ -2,7 +2,7 @@
     var app = angular.module('app');
     
 
-    app.controller('EditarFormularioController', ['Upload', '$timeout', '$http', '$routeParams', '$location', 'mapService', 'productosService', function(Upload, $timeout, $http, $route, $location, mapService, productosService) {
+    app.controller('EditarFormularioController', ['Upload', '$timeout', '$http', '$routeParams', '$location', 'mapService', 'productosService', 'modelFactory', function(Upload, $timeout, $http, $route, $location, mapService, productosService, modelFactory) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
