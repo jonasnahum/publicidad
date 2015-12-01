@@ -57,19 +57,7 @@
             var up = uploadFilesService();
             ctrl.files = files;
             ctrl.errFiles = errFiles && errFiles[0];
-            var callback = function (response) {
-                ctrl[propertyName] = response.data;
-            };
-            var error = function (response) {
-                if (response.status > 0) {
-                    ctrl.errorMsg = response.status + ': ' + response.data;
-                }
-            };
-            var progres = function (evt) {
-                ctrl.progress = 
-                    Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-            }
-            up.upload(files, errFiles, propertyName, callback, error, progres);
+            up.upload(files, errFiles, propertyName, ctrl);
         };
         
     }]);//end of the controller
