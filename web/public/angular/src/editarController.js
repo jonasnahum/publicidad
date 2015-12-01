@@ -1,8 +1,8 @@
 (function() {
     var app = angular.module('app');
     
-
-    app.controller('EditarFormularioController', ['Upload', '$http', '$routeParams', '$location', 'mapService', 'productosService', 'uploadFilesService', 'modelFactory', function(Upload, $http, $route, $location, mapService, productosService, uploadFilesService, modelFactory) {
+    var depArr = ['Upload', '$http', '$routeParams', '$location', 'mapService', 'productosService', 'uploadFilesService', 'modelFactory'];  
+    depArr.push(function(Upload, $http, $route, $location, mapService, productosService, uploadFilesService, modelFactory) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -38,7 +38,7 @@
         ctrl.fechaVencimiento = undefined;//date
         ctrl.pago = undefined;
         ctrl.mapa = undefined;
-        
+        var prod = productosService();
         var modelInstance = modelFactory();
         
         //UPLOAD IMAGES Function
@@ -49,9 +49,9 @@
             up.upload(files, errFiles, propertyName, ctrl);
         };      
 
-        var promise1 = function() {
-            return $http({
-                url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
+        var getOne = function(id) {
+            $http({
+                url: 'http://localhost:3000/empresas/api/' + id,
                 method: "GET",
             }).success(function(data, status, headers, config){
                 var obj = modelInstance.getObjFromSubdocument(data);
@@ -68,21 +68,18 @@
                 console.log("%s %s %s", data, status, config);    
             });
         };
-        promise1();
+        getOne(ctrl.empresaId);
+    
         ctrl.borrarMarker = function () {
             ctrl.mapa.borrarMarker();
         };
-        
-        //Productos functions
-        var prod = productosService()
+    
         ctrl.agregarProducto = function() {
             ctrl.producto = prod.agregarProducto(ctrl.productos, ctrl.producto);
         };
-        
         ctrl.removerProducto = function() {
             ctrl.productos = prod.removerProducto(ctrl.productos, ctrl.remover);
         };
-        
         ctrl.borrarProductos = function() {
             ctrl.productos = prod.borrarProductos(ctrl.productos);
         };
@@ -93,7 +90,7 @@
             $http({
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "PUT",
-                data:modelInstance.getModelFromCtrl(ctrl)
+                data: modelInstance.getModelFromCtrl(ctrl)
             }).success(function(data, status, headers, config){
                 alert("Info enviada");
                 $location.path('/todos');
@@ -103,6 +100,6 @@
                 
             });
         };
-
-    }]);
+    });
+    app.controller('EditarFormularioController', depArr); 
 })();

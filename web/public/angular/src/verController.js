@@ -5,14 +5,15 @@
         var ctrl = this; 
         ctrl.empresaId= $route.id;
         var modelInstance = modelFactory();
- 
-        $http({
-                url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
+        
+        ctrl.getOne = function (id) {
+            $http({
+                url: 'http://localhost:3000/empresas/api/' + id,
                 method: "GET",
             }).success(function(data, status, headers, config){
                 var obj = modelInstance.getObjFromSubdocument(data);
                 ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
-         
+                
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
     
@@ -22,5 +23,8 @@
             }).error(function(data, status, headers, config) {
                 console.log("%s %s %s", data, status, config);    
             });
+        };
+        
+        ctrl.getOne(ctrl.empresaId);
     }]);
 })();

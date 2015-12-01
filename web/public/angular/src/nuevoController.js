@@ -23,6 +23,13 @@
         ctrl.borrarMarker = function () {
             mapa.borrarMarker();
         };
+        //Upload images function
+        ctrl.uploadFiles = function (files, errFiles, propertyName) {
+            var up = uploadFilesService();
+            ctrl.files = files;
+            ctrl.errFiles = errFiles && errFiles[0];
+            up.upload(files, errFiles, propertyName, ctrl);
+        };
             
         var prod = productosService()
         ctrl.agregarProducto = function() {
@@ -50,14 +57,6 @@
                 alert("UPS there's an error");
                 console.log("%s %s", status, data);            
             });
-        };
-        
-        //Upload images function
-        ctrl.uploadFiles = function (files, errFiles, propertyName) {
-            var up = uploadFilesService();
-            ctrl.files = files;
-            ctrl.errFiles = errFiles && errFiles[0];
-            up.upload(files, errFiles, propertyName, ctrl);
         };
         
     }]);//end of the controller

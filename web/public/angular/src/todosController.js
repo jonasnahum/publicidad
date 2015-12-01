@@ -17,7 +17,7 @@
             });
         };
         ctrl.getAll();
-
+        
         ctrl.delete = function (id) {
             $http({
                 method: "DELETE",
