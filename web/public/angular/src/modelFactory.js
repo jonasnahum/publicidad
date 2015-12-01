@@ -4,49 +4,49 @@
     app.factory('modelFactory', [function() {
         var ModelFactory = function() {
         };
-        ModelFactory.prototype.getCtrlPropertysFromSubdocument = function(data){
-            var ctrl = {};
-            ctrl.nombre = data.nombre;
-            ctrl.logotipo = data.logotipo;
-            ctrl.foto = data.foto;
-            ctrl.textoIntro = data.textoIntro;
-            ctrl.lat = data.lat;
-            ctrl.long = data.long;
-            ctrl.descripcion = data.descripcion;
-            ctrl.horario = data.horario;
-            ctrl.encargado = data.encargado;
-            ctrl.tel = data.tel;
-            ctrl.face = data.face;
-            ctrl.email = data.email;
-            ctrl.productos = data.productos;
-            ctrl.nota = data.nota;
+        ModelFactory.prototype.getObjFromSubdocument = function(data){
+            var obj = {};
+            obj.nombre = data.nombre;
+            obj.logotipo = data.logotipo;
+            obj.foto = data.foto;
+            obj.textoIntro = data.textoIntro;
+            obj.lat = data.lat;
+            obj.long = data.long;
+            obj.descripcion = data.descripcion;
+            obj.horario = data.horario;
+            obj.encargado = data.encargado;
+            obj.tel = data.tel;
+            obj.face = data.face;
+            obj.email = data.email;
+            obj.productos = data.productos;
+            obj.nota = data.nota;
 
-            ctrl.numero = data.direccion.numero;
-            ctrl.numeroInt = data.direccion.numeroInt;
-            ctrl.calle = data.direccion.calle;
-            ctrl.colonia = data.direccion.colonia;
-            ctrl.cp = data.direccion.cp;
-            ctrl.municipio = data.direccion.municipio;
-            ctrl.estado = data.direccion.estado;
+            obj.numero = data.direccion.numero;
+            obj.numeroInt = data.direccion.numeroInt;
+            obj.calle = data.direccion.calle;
+            obj.colonia = data.direccion.colonia;
+            obj.cp = data.direccion.cp;
+            obj.municipio = data.direccion.municipio;
+            obj.estado = data.direccion.estado;
 
-            ctrl.rubro = data.rubro.rubro;
+            obj.rubro = data.rubro.rubro;
 
-            ctrl.noContrato = data.informacion.noContrato;
-            ctrl.url = data.informacion.url;
-            ctrl.cliente = data.informacion.cliente;
-            ctrl.telCliente = data.informacion.telCliente;
-            ctrl.correoCliente = data.informacion.correoCliente;
-            ctrl.fechaContrato = data.informacion.fechaContrato;
-            ctrl.fechaVencimiento = data.informacion.fechaVencimiento;
-            ctrl.pago = data.informacion.pago;
+            obj.noContrato = data.informacion.noContrato;
+            obj.url = data.informacion.url;
+            obj.cliente = data.informacion.cliente;
+            obj.telCliente = data.informacion.telCliente;
+            obj.correoCliente = data.informacion.correoCliente;
+            obj.fechaContrato = data.informacion.fechaContrato;
+            obj.fechaVencimiento = data.informacion.fechaVencimiento;
+            obj.pago = data.informacion.pago;
             
-            return ctrl;
+            return obj;
         };
-         ModelFactory.prototype.copyModelToCtrl = function(model, ctrl){
-            for (var prop in model) {
-              ctrl[prop] = model[prop]
+         ModelFactory.prototype.copyObjToCtrl = function(obj, ctrl){
+            for (var prop in obj) {
+              ctrl[prop] = obj[prop]
             }
-            return model;
+            return ctrl;
         };
         ModelFactory.prototype.getModelFromCtrl = function(ctrl){
             var model = {};

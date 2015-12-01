@@ -10,8 +10,8 @@
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "GET",
             }).success(function(data, status, headers, config){
-            var model = modelInstance.getCtrlPropertysFromSubdocument(data);
-            ctrl = modelInstance.copyModelToCtrl(model,ctrl);
+                var obj = modelInstance.getObjFromSubdocument(data);
+                ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
          
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);

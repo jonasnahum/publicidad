@@ -39,6 +39,8 @@
         ctrl.pago = undefined;
         ctrl.mapa = undefined;
         
+        var modelInstance = modelFactory();
+        
         //UPLOAD IMAGES Function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
             var up = uploadFilesService();
@@ -64,39 +66,8 @@
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "GET",
             }).success(function(data, status, headers, config){
-                ctrl.nombre = data.nombre;
-                ctrl.logotipo = data.logotipo;
-                ctrl.foto = data.foto;
-                ctrl.textoIntro = data.textoIntro;
-                ctrl.lat = data.lat;
-                ctrl.long = data.long;
-                ctrl.descripcion = data.descripcion;
-                ctrl.horario = data.horario;
-                ctrl.encargado = data.encargado;
-                ctrl.tel = data.tel;
-                ctrl.face = data.face;
-                ctrl.email = data.email;
-                ctrl.productos = data.productos;
-                ctrl.nota = data.nota;
-                
-                ctrl.numero = data.direccion.numero;
-                ctrl.numeroInt = data.direccion.numeroInt;
-                ctrl.calle = data.direccion.calle;
-                ctrl.colonia = data.direccion.colonia;
-                ctrl.cp = data.direccion.cp;
-                ctrl.municipio = data.direccion.municipio;
-                ctrl.estado = data.direccion.estado;
-          
-                ctrl.rubro = data.rubro.rubro;
-                
-                ctrl.noContrato = data.informacion.noContrato;
-                ctrl.url = data.informacion.url;
-                ctrl.cliente = data.informacion.cliente;
-                ctrl.telCliente = data.informacion.telCliente;
-                ctrl.correoCliente = data.informacion.correoCliente;
-                ctrl.fechaContrato = data.informacion.fechaContrato;
-                ctrl.fechaVencimiento = data.informacion.fechaVencimiento;
-                ctrl.pago = data.informacion.pago;
+                var obj = modelInstance.getObjFromSubdocument(data);
+                ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                 
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
@@ -134,37 +105,7 @@
             $http({
                 url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
                 method: "PUT",
-                data:{
-                    nombre:ctrl.nombre,
-                    logotipo:ctrl.logotipo,
-                    foto:ctrl.foto,            
-                    textoIntro:ctrl.textoIntro,
-                    lat: ctrl.lat,
-                    long: ctrl.long,
-                    long:ctrl.long,
-                    descripcion:ctrl.descripcion,
-                    horario:ctrl.horario,
-                    encargado:ctrl.encargado,
-                    tel:ctrl.tel,
-                    face:ctrl.face,
-                    email:ctrl.email,
-                    productos:ctrl.productos,
-                    nota:ctrl.nota,
-                    numero:ctrl.numero,
-                    numeroInt:ctrl.numeroInt,
-                    calle:ctrl.calle,
-                    colonia:ctrl.colonia,
-                    cp:ctrl.cp,
-                    municipio:ctrl.municipio,
-                    estado:ctrl.estado,
-                    rubro:ctrl.rubro,
-                    noContrato:ctrl.noContrato,
-                    url:ctrl.url,
-                    cliente:ctrl.cliente,
-                    telCliente:ctrl.telCliente,
-                    correoCliente:ctrl.correoCliente,
-                    pago:ctrl.pago
-                }
+                data:modelInstance.getModelFromCtrl(ctrl)
             }).success(function(data, status, headers, config){
                 alert("Info enviada");
                 $location.path('/todos');
