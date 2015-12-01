@@ -6,7 +6,19 @@
         var UploadFiles = function() {
         }
         
-        UploadFiles.prototype.upload = function (files, errFiles, propertyName, callback , error, progres) {
+        UploadFiles.prototype.upload = function (files, errFiles, propertyName, ctrl) {
+            var callback = function (response) {
+                ctrl[propertyName] = response.data;
+            };
+            var error = function (response) {
+                if (response.status > 0) {
+                    ctrl.errorMsg = response.status + ': ' + response.data;
+                }
+            };
+            var progres = function (evt) {
+                ctrl.progress = 
+                    Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            }
             if (files && files.length) {
                 Upload.upload({
                     url: 'http://localhost:3000/imagenes/api/post',
