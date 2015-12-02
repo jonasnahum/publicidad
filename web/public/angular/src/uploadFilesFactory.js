@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.factory('uploadFilesService', ['Upload', function(Upload) {//singleton.
+    app.factory('uploadFilesFactory', ['Upload', function(Upload) {//singleton.
         
         var UploadFiles = function() {
         }

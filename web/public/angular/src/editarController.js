@@ -1,8 +1,8 @@
 (function() {
     var app = angular.module('app');
     
-    var depArr = ['Upload', '$http', '$routeParams', '$location', 'mapService', 'productosService', 'uploadFilesService', 'modelFactory'];  
-    depArr.push(function(Upload, $http, $route, $location, mapService, productosService, uploadFilesService, modelFactory) {
+    var depArr = ['$http', '$routeParams', '$location', 'mapFactory', 'productosFactory', 'uploadFilesFactory', 'modelFactory'];  
+    depArr.push(function($http, $route, $location, mapFactory, productosFactory, uploadFilesFactory, modelFactory) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -38,12 +38,12 @@
         ctrl.fechaVencimiento = undefined;//date
         ctrl.pago = undefined;
         ctrl.mapa = undefined;
-        var prod = productosService();
+        var prod = productosFactory();
         var modelInstance = modelFactory();
         
         //UPLOAD IMAGES Function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
-            var up = uploadFilesService();
+            var up = uploadFilesFactory();
             ctrl.files = { [propertyName] : files };
             ctrl.errFiles = { [propertyName] : errFiles && errFiles[0] };
             up.upload(files, errFiles, propertyName, ctrl);
@@ -60,7 +60,7 @@
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
                 
-                ctrl.mapa = mapService(latitud,longitud);
+                ctrl.mapa = mapFactory(latitud,longitud);
                 ctrl.mapa.placeMarker(latitud,longitud);
                 ctrl.mapa.getEventListener();
                 

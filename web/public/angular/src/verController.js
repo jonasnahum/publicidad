@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('VerController', ['$http', '$routeParams', '$location', '$log', 'mapService', 'modelFactory', function($http, $route, $location, $log, mapService, modelFactory) {
+    app.controller('VerController', ['$http', '$routeParams', '$location', '$log', 'mapFactory', 'modelFactory', function($http, $route, $location, $log, mapFactory, modelFactory) {
         var ctrl = this; 
         ctrl.empresaId= $route.id;
         var modelInstance = modelFactory();
@@ -17,7 +17,7 @@
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
     
-                var mapa = mapService(latitud,longitud);
+                var mapa = mapFactory(latitud,longitud);
                 mapa.placeMarker(latitud,longitud);
                 
             }).error(function(data, status, headers, config) {

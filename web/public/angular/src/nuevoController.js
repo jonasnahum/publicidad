@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('NuevoController', ['$http', '$location', 'mapService', 'productosService', 'uploadFilesService', function($http, $location, mapService, productosService, uploadFilesService) {
+    app.controller('NuevoController', ['$http', '$location', 'mapFactory', 'productosFactory', 'uploadFilesFactory', function($http, $location, mapFactory, productosFactory, uploadFilesFactory) {
         
         var ctrl = this;
         ctrl.nombre = undefined;
@@ -18,20 +18,20 @@
         ctrl.nota = undefined;
         
         //Map Function
-        var mapa = mapService();
+        var mapa = mapFactory();
         mapa.getEventListener();
         ctrl.borrarMarker = function () {
             mapa.borrarMarker();
         };
         //Upload images function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
-            var up = uploadFilesService();
+            var up = uploadFilesFactory();
             ctrl.files = { [propertyName] : files };
             ctrl.errFiles = { [propertyName] : errFiles && errFiles[0] };
             up.upload(files, errFiles, propertyName, ctrl);
         };
             
-        var prod = productosService()
+        var prod = productosFactory()
         ctrl.agregarProducto = function() {
             ctrl.producto = prod.agregarProducto(ctrl.productos, ctrl.producto);
         };
