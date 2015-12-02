@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.factory('mapService', ['$location',function($location) {//singleton.
+    app.factory('mapFactory', ['$location',function($location) {//singleton.
         
         var MapClass = function(latitud,longitud) {
             this.map = undefined;
