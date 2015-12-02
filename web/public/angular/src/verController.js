@@ -1,16 +1,14 @@
 (function() {
     var app = angular.module('app');
+    var depArr = ['$routeParams', '$location', 'mapService', 'modelFactory', 'empresasProxy'];
     
-    app.controller('VerController', ['$http', '$routeParams', '$location', '$log', 'mapService', 'modelFactory', function($http, $route, $location, $log, mapService, modelFactory) {
+    depArr.push(function($route, $location,mapService, modelFactory, empresasProxy) {
         var ctrl = this; 
         ctrl.empresaId= $route.id;
         var modelInstance = modelFactory();
         
         ctrl.getOne = function (id) {
-            $http({
-                url: 'http://localhost:3000/empresas/api/' + id,
-                method: "GET",
-            }).success(function(data, status, headers, config){
+            empresasProxy.getOne(id, function(data){
                 var obj = modelInstance.getObjFromSubdocument(data);
                 ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                 
@@ -20,11 +18,10 @@
                 var mapa = mapService(latitud,longitud);
                 mapa.placeMarker(latitud,longitud);
                 
-            }).error(function(data, status, headers, config) {
-                console.log("%s %s %s", data, status, config);    
             });
         };
         
         ctrl.getOne(ctrl.empresaId);
-    }]);
+    });
+    app.controller('VerController', depArr);
 })();

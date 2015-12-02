@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
-    
-    app.controller('NuevoController', ['$http', '$location', 'mapService', 'productosService', 'uploadFilesService', function($http, $location, mapService, productosService, uploadFilesService) {
+    arrDep = ['$http', '$location', 'mapService', 'productosService', 'uploadFilesService', 'empresasProxy']; 
+        arrDep.push(function($http, $location, mapService, productosService, uploadFilesService, empresasProxy) {
         
         var ctrl = this;
         ctrl.nombre = undefined;
@@ -23,6 +23,7 @@
         ctrl.borrarMarker = function () {
             mapa.borrarMarker();
         };
+            
         //Upload images function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
             var up = uploadFilesService();
@@ -40,24 +41,16 @@
         };        
         ctrl.borrarProductos = function() {
             ctrl.productos = prod.borrarProductos(ctrl.productos);
-        };
-            
+        };       
         
         //Server Call
         ctrl.save = function() {
             ctrl.lat = mapa.getLat();
             ctrl.long = mapa.getLong();
-            $http({
-                url: 'http://localhost:3000/empresas/api/',
-                method: "POST",
-                data: ctrl
-            }).success(function(data, status, headers, config){
+            empresasProxy.save(ctrl, function(data, status, headers, config){
                 $location.path('/todos');
-            }).error(function(data, status, headers, config) {
-                alert("UPS there's an error");
-                console.log("%s %s", status, data);            
             });
-        };
-        
-    }]);//end of the controller
+        };  
+    });
+    app.controller('NuevoController', arrDep);
 })();

@@ -1,8 +1,8 @@
 (function() {
     var app = angular.module('app');
     
-    var depArr = ['Upload', '$http', '$routeParams', '$location', 'mapService', 'productosService', 'uploadFilesService', 'modelFactory'];  
-    depArr.push(function(Upload, $http, $route, $location, mapService, productosService, uploadFilesService, modelFactory) {
+    var depArr = ['Upload', '$http', '$routeParams', '$location', 'mapService', 'productosService', 'uploadFilesService', 'modelFactory', 'empresasProxy'];  
+    depArr.push(function(Upload, $http, $route, $location, mapService, productosService, uploadFilesService, modelFactory, empresasProxy) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -50,10 +50,7 @@
         };      
 
         var getOne = function(id) {
-            $http({
-                url: 'http://localhost:3000/empresas/api/' + id,
-                method: "GET",
-            }).success(function(data, status, headers, config){
+            empresasProxy.getOne(id, function(data, status, headers, config){
                 var obj = modelInstance.getObjFromSubdocument(data);
                 ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                 
@@ -64,8 +61,6 @@
                 ctrl.mapa.placeMarker(latitud,longitud);
                 ctrl.mapa.getEventListener();
                 
-            }).error(function(data, status, headers, config) {
-                console.log("%s %s %s", data, status, config);    
             });
         };
         getOne(ctrl.empresaId);
@@ -87,17 +82,9 @@
         ctrl.editar = function(){ 
             ctrl.lat = ctrl.mapa.getLat();
             ctrl.long = ctrl.mapa.getLong();
-            $http({
-                url: 'http://localhost:3000/empresas/api/' + ctrl.empresaId,
-                method: "PUT",
-                data: modelInstance.getModelFromCtrl(ctrl)
-            }).success(function(data, status, headers, config){
+            empresasProxy.update(ctrl.empresaId, modelInstance.getModelFromCtrl(ctrl), function(data, status, headers, config){
                 alert("Info enviada");
                 $location.path('/todos');
-            }).error(function(data, status, headers, config) {
-                alert("UPS there's an error");
-                console.log("%s %s", status, data);
-                
             });
         };
     });
