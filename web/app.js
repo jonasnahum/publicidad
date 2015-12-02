@@ -8,7 +8,6 @@ var cors = require('cors');
 
 var routes = require('./routes/index');
 
-
 var app = express();
 
 // view engine setup
@@ -56,6 +55,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

@@ -11,7 +11,6 @@ var db = container.get('dbConnection');
 
 db.connect('mongodb://localhost/paginas');
 
-
 var routes = require('./routes/index');
 var imagenesApi = container.get("imagenesController");
 var empresasApi = container.get("empresasController");
@@ -71,6 +70,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
