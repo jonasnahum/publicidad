@@ -1,8 +1,8 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$routeParams', '$location', 'mapService', 'modelFactory', 'empresasProxy'];
+    var depArr = ['$routeParams', '$location', 'mapFactory', 'modelFactory', 'empresasProxy'];
     
-    depArr.push(function($route, $location,mapService, modelFactory, empresasProxy) {
+    depArr.push(function($route, $location, mapFactory, modelFactory, empresasProxy) {
         var ctrl = this; 
         ctrl.empresaId= $route.id;
         var modelInstance = modelFactory();
@@ -15,7 +15,7 @@
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
     
-                var mapa = mapService(latitud,longitud);
+                var mapa = mapFactory(latitud,longitud);
                 mapa.placeMarker(latitud,longitud);
                 
             });
