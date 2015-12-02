@@ -12,12 +12,12 @@
             };
             var error = function (response) {
                 if (response.status > 0) {
-                    ctrl.errorMsg = response.status + ': ' + response.data;
+                    ctrl.errorMsg[propertyName] = response.status + ': ' + response.data;
                 }
             };
             var progres = function (evt) {
-                ctrl.progress = 
-                    Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                ctrl.progress = { [propertyName] : 
+                    Math.min(100, parseInt(100.0 * evt.loaded / evt.total)) };
             }
             if (files && files.length) {
                 Upload.upload({

@@ -16,17 +16,16 @@
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')" 
                     accept="image/*" ngf-max-height="3000" ngf-max-width="3000" 
                     ngf-max-size="1MB" ngf-fix-orientation="false">Select Files</button>
-            <br>
             <div style="font:smaller" class="errorMessages">
-                {{ctrl.files.name}} {{ctrl.errFiles.name}} {{ctrl.errFiles.$error}}
-                {{ctrl.errFiles.$errorParam}}
-                <span class="progress" ng-show="ctrl.progress >= 0">
-                    <div style="width:{{ctrl.progress}}%" 
-                         ng-bind="ctrl.progress + '%'">
+                {{ctrl.files.logotipo.name}} {{ctrl.errFiles.logotipo.name}}
+                {{ctrl.errFiles.logotipo.$error}} {{ctrl.errFiles.logotipo.$errorParam}}
+                <span class="progress" ng-show="ctrl.progress.logotipo >= 0">
+                    <div style="width:{{ctrl.progress.logotipo}}%" 
+                         ng-bind="ctrl.progress.logotipo + '%'">
                     </div>
                 </span>
             </div>
-            {{ctrl.errorMsg}}
+            {{ctrl.errorMsg.logotipo}}
             <div>
                 <img src="data:image/*;base64,{{ctrl.logotipo}}" width="50%"
                      height="50%" alt="No file selected">
@@ -37,15 +36,15 @@
                     accept="image/*" ngf-max-height="3000" ngf-max-width="3000" 
                     ngf-max-size="1MB" ngf-fix-orientation="false">Select Files</button>
             <div style="font:smaller" class="errorMessages">
-                {{ctrl.files.name}} {{ctrl.errFiles.name}} {{ctrl.errFiles.$error}}
-                {{ctrl.errFiles.$errorParam}}
-                <span class="progress" ng-show="ctrl.progress >= 0">
-                    <div style="width:{{ctrl.progress}}%" ng-bind="ctrl.progress + '%'">
+                {{ctrl.files.foto.name}} {{ctrl.errFiles.foto.name}}
+                {{ctrl.errFiles.foto.$error}} {{ctrl.errFiles.foto.$errorParam}}
+                <span class="progress" ng-show="ctrl.progress.foto >= 0">
+                    <div style="width:{{ctrl.progress.foto}}%" 
+                         ng-bind="ctrl.progress.foto + '%'">
                     </div>
                 </span>
             </div>
-            {{ctrl.errorMsg}}
-            <br />
+            {{ctrl.errorMsg.foto}}
             <div>
                 <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
                      height="50%" alt="embedded folder icon">
