@@ -22,8 +22,9 @@ CorreoController.$inject = ["express", "correoApi"];
 
 var ImagenesApi = require("./imagenesApi");
 ImagenesApi.$inject = ["models", "imagenFactory", "fs"];
+var Copy = require("./copy");
 var EmpresasApi = require("./empresasApi");
-EmpresasApi.$inject = ["models", "empresaFactory"];
+EmpresasApi.$inject = ["models", "empresaFactory", "copy"];
 var CorreoApi = require("./correoApi");
 CorreoApi.$inject = ["nodemailer"];
 
@@ -41,6 +42,7 @@ container.register("imagenesController", ImagenesController);
 container.register("empresasController", EmpresasController);
 container.register("correoController", CorreoController);
 container.register("imagenesApi", ImagenesApi);
+container.register("copy", Copy);
 container.register("empresasApi", EmpresasApi);
 container.register("correoApi", CorreoApi);
 
