@@ -1,7 +1,6 @@
 //dependencies
 var intravenous = require("intravenous");
 
-
 //local modules
 var Imagen = require("./imagenesCollection");
 var Empresa = require("./empresaCollection");

@@ -13,8 +13,11 @@ var EmpresasApi = (function() {
             });   
     };    
 
+//curl -i -H "Content-Type: application/json" -d '{"nombre":"fjalsdfjalskdfj","textoIntro":"asdfasdfasdf","descripcion":"asdfasdf","horario":"todos los días","encargado":"Jonás Nahúm Jiménez García","tel":"45898999","face":"jonasnahum","email":"jonasnahum@gmail.com","productos":[{"titulo":"asdfa","parrafo":"asfdasdf"}],"nota":"asdfasdf","numero":"1 c","numeroInt":"b","calle":"jonas","colonia":"jorhentipiri","cp":"6asdf0060","municipio":"uruapan","estado":"michoacan","rubro":"purificadoras","noContrato":"1","url":"fasdf","cliente":"asdfasfdaasdf","telCliente":"45","correoCliente":"jonasnahum@gmail.com","fechaContrato":"2015-12-23T06:00:00.000Z","fechaVencimiento":"2015-12-23T06:00:00.000Z","pago":"1220","lat":19.4096,"long":-102.052}' http://localhost:3000/empresas/api/
+    
     EmpresasApi.prototype.save = function(req, res, next){
         var that = this;
+        console.log(JSON.stringify(req.body));
         var empresa = that.empresaFactory.get();
         empresa.nombre = req.body.nombre;
         empresa.logotipo = req.body.logotipo;
