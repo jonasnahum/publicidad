@@ -14,6 +14,7 @@ db.connect('mongodb://localhost/paginas');
 var routes = require('./routes/index');
 var imagenesApi = container.get("imagenesController");
 var empresasApi = container.get("empresasController");
+var usuariosApi = container.get("usuariosController");
 var correoApi = container.get("correoController")
 
 var app = express();
@@ -38,6 +39,7 @@ app.use(busboy({inmediate: true}));
 app.use('/', routes);
 app.use('/imagenes/api', imagenesApi.router);
 app.use('/empresas/api', empresasApi.router);
+app.use('/usuarios/api', usuariosApi.router);
 app.use('/correo', correoApi.router);
 
 // catch 404 and forward to error handler
