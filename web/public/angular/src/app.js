@@ -4,11 +4,13 @@
     app.config(["$routeProvider", "$httpProvider", function ($router, $httpProvider) {
         
         $httpProvider.interceptors.push('httpInterceptor');
-
+//publica
         $router.when("/", { templateUrl: "angular/views/portada.html"})
         $router.when('/signin', { templateUrl: "angular/views/signin.html" })
         $router.when('/signup', { templateUrl: "angular/views/signup.html" })
-        $router.when("/todos", { templateUrl: "angular/views/todos.html"})
+        $router.when("/todosPublica", { templateUrl: "angular/views/todosPublica.html"})
+        $router.when("/verPublica/:id", { templateUrl: "angular/views/verPublica.html"})
+//privado
         $router.when("/nuevo", 
                      { templateUrl: "angular/views/nuevo.html"})
         $router.when("/ver/:id", 

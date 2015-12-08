@@ -1,31 +1,4 @@
-<div ng-controller="VerController as ctrl">
-        <fieldset>
-            <h5>Informacion del cliente</h5>
-            <br />
-            Num. de contrato: <input type="text" 
-                                     ng-model="ctrl.noContrato"/>
-            <br />
-            Direccion de pagina web: <input type="text" 
-                                            ng-model="ctrl.url"/>
-            <br />
-            Nombre del cliente: <input type="text" 
-                                       ng-model="ctrl.cliente"/>
-            <br />
-            Telefono: <input type="text" ng-model="ctrl.telCliente"/>
-            <br />
-            Correo: <input type="email" 
-                           ng-model="ctrl.correoCliente" />
-            <br />
-            Fecha de Contrato: <input type="text" 
-                                      ng-model="ctrl.fechaContrato" 
-                                      id="fechaContrato" />
-            <br />    
-            Fecha de Vencimiento: <input type="text" 
-                                         ng-model="ctrl.fechaVencimiento" 
-                                         id="fechaVencimiento" />
-            <br />
-            Precio: <input type="text" ng-model="ctrl.pago"/>
-        </fieldset>
+<div ng-controller="VerPublicaController as ctrl">
         <fieldset>
             <h2>Empresa</h2> 
             Nombre: <input type="text" ng-model="ctrl.nombre"/>
@@ -121,5 +94,5 @@
                 </form> 
             </div>
         </fieldset>
-        <a href="#/todos">Ir a todos</a>
+        <a href="#/todosPublica">Ir a todos</a>
 </div>

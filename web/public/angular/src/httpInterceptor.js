@@ -3,13 +3,23 @@
     
     app.factory("httpInterceptor", ['$q', '$location', 'tokenStorage', function($q, $location, tokenStorage) {//singleton function.
 
-        var freeAccesPages = ['/', '/signin', '/signup'];
+        
+        //"/".indexOf("/paginas/privada/borrar/****") !== 0
+        //var re = //;
+        
+        
+        var freeAccesPages = ['/', '/signin', '/signup', '/todosPublica'];
         
         return {
             
             // optional method
-            'request': function(request) {    
-            
+            'request': function(request) {
+                var url = $location.path();
+             /*   var url = $location.path();
+                if(url.indexOf("/verPublica/") !==0){
+                    var jonas = hola;
+                }*/
+    
                 // if is not listed in the freeAccessPages array
                 if (freeAccesPages.indexOf($location.path()) === -1) {
                     var tokenObj = tokenStorage.getToken();
