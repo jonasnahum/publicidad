@@ -11,6 +11,8 @@ module.exports = (function() {
         router.post('/', tokenMiddleware.validate.bind(tokenMiddleware), empresasApi.save.bind(empresasApi));
 
         router.get('/:id', empresasApi.getOne.bind(empresasApi));
+                     
+        router.get('/pages/:uniquename', empresasApi.getByUniqueName.bind(empresasApi));
         
         router.put('/:id', tokenMiddleware.validate.bind(tokenMiddleware), empresasApi.update.bind(empresasApi));
         
@@ -21,4 +23,5 @@ module.exports = (function() {
     return EmpresasController;
 
 })();
+
 

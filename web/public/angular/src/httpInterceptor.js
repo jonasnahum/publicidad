@@ -15,8 +15,9 @@
             // optional method
             'request': function(request) {
                 var url = $location.path();
-                var result = url.indexOf("/verPublica/");
-                if(result == 0){
+                var verPublica = url.indexOf("/verPublica/");
+                var negocio = url.indexOf("/negocio/");
+                if( verPublica == 0 || negocio == 0){
                    freeAccesPages.push(url);
                 };
     

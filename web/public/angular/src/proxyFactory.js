@@ -19,6 +19,15 @@
             }).success(success).error(that.error);
         };
         
+        Proxy.prototype.getByUniqueName = function(name, success) {
+            var that = this;
+            var completeUrl = that.url + 'pages/' + name;
+            $http({
+                method: 'GET',
+                url: completeUrl
+            }).success(success).error(that.error);    
+        };
+        
         Proxy.prototype.getAll = function(success) {
             var that = this;
             $http({

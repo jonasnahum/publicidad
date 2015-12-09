@@ -4,11 +4,11 @@
     
     depArr.push(function($route, $location, mapFactory, modelFactory, empresasProxy) {
         var ctrl = this; 
-        ctrl.empresaId= $route.id;
+        ctrl.negocio= $route.negocio;
         var modelInstance = modelFactory();
         
-        ctrl.getOne = function (id) {
-            empresasProxy.getOne(id, function(data){
+        ctrl.getOne = function (name) {
+            empresasProxy.getByUniqueName(name, function(data){
                 var obj = modelInstance.getObjFromSubdocument(data);
                 ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                 
@@ -21,7 +21,7 @@
             });
         };
         
-        ctrl.getOne(ctrl.empresaId);
+        ctrl.getOne(ctrl.negocio);
     });
-    app.controller('VerPublicaController', depArr);
+    app.controller('NegocioController', depArr);
 })();

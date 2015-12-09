@@ -37,6 +37,18 @@ var EmpresasApi = (function() {
             return res.json(empresa);
         });
     };
+     
+    EmpresasApi.prototype.getByUniqueName = function(req, res, next) {
+        var that = this;
+        var name = req.params.uniquename;
+        
+        that.models.empresa.findOne({"informacion.url": name})    
+            .exec(function(err, empresa){
+            if (err) return next(err);
+            return res.json(empresa);
+        });
+    };
+    
     EmpresasApi.prototype.update = function(req, res, next) {
         var that = this;
         console.log("llego 1");
