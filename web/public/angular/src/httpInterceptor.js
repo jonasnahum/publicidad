@@ -15,10 +15,10 @@
             // optional method
             'request': function(request) {
                 var url = $location.path();
-             /*   var url = $location.path();
-                if(url.indexOf("/verPublica/") !==0){
-                    var jonas = hola;
-                }*/
+                var result = url.indexOf("/verPublica/");
+                if(result == 0){
+                   freeAccesPages.push(url);
+                };
     
                 // if is not listed in the freeAccessPages array
                 if (freeAccesPages.indexOf($location.path()) === -1) {

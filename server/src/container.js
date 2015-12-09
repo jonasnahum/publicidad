@@ -12,13 +12,16 @@ var models = {
     usuario: Usuario
 };
 
+var TokenMiddleware = require("./tokenMiddleware");
+TokenMiddleware.$inject = ["models", "jwt"];
+
 var DbConnection = require("./../database/dbConnection");
 DbConnection.$inject = ["mongoose"];
 
 var ImagenesController = require("./imagenesController");
 ImagenesController.$inject = ["express", "imagenesApi"];
 var EmpresasController = require("./empresasController");
-EmpresasController.$inject = ["express", "empresasApi"];
+EmpresasController.$inject = ["express", "empresasApi", "tokenMiddleware"];
 var UsuariosController = require("./usuariosController");
 UsuariosController.$inject = ["express", "usuariosApi"];
 var CorreoController = require("./correoController");
@@ -47,6 +50,7 @@ container.register("fs", { module: require('fs') });
 container.register("nodemailer", { module: require('nodemailer') });
 container.register("moment", { module: require('moment') });
 container.register("jwt", { module: require('jwt-simple') });
+container.register("tokenMiddleware", TokenMiddleware);
 container.register("imagenesController", ImagenesController);
 container.register("empresasController", EmpresasController);
 container.register("usuariosController", UsuariosController);
