@@ -32,7 +32,7 @@
             obj.rubro = data.rubro.rubro;
 
             obj.noContrato = data.informacion.noContrato;
-            obj.url = data.informacion.url;
+            obj.uniquename = data.informacion.uniquename;
             obj.cliente = data.informacion.cliente;
             obj.telCliente = data.informacion.telCliente;
             obj.correoCliente = data.informacion.correoCliente;
@@ -74,7 +74,7 @@
             model.estado=ctrl.estado,
             model.rubro=ctrl.rubro,
             model.noContrato=ctrl.noContrato,
-            model.url=ctrl.url,
+            model.uniquename=ctrl.uniquename,
             model.cliente=ctrl.cliente,
             model.telCliente=ctrl.telCliente,
             model.correoCliente=ctrl.correoCliente,

@@ -29,7 +29,7 @@
         ctrl.productos = [];
         ctrl.nota = undefined;
         ctrl.noContrato = undefined;
-        ctrl.url = undefined;
+        ctrl.uniquename = undefined;
         ctrl.cliente = undefined;
         ctrl.telCliente = undefined;
         ctrl.correoCliente = undefined;

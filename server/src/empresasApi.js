@@ -42,7 +42,7 @@ var EmpresasApi = (function() {
         var that = this;
         var name = req.params.uniquename;
         
-        that.models.empresa.findOne({"informacion.url": name})    
+        that.models.empresa.findOne({"informacion.uniquename": name})    
             .exec(function(err, empresa){
             if (err) return next(err);
             return res.json(empresa);

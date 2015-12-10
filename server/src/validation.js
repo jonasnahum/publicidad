@@ -10,6 +10,10 @@ var Validation = (function() {
             }
             return false;
         };
+        this.uniquenameRegex = {
+            validator: /^[a-zA-Z0-9]+$/, 
+            msg: 'Este campo sólo acepta números, mayúsculas y minúsculas, sin espacios ni acentos.'
+        };
     };
     Validation.prototype.validateCampo = function(req, type, min, max, nameArr){
         var arrValidation = this.getArrValidation(nameArr);

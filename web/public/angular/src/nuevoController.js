@@ -17,6 +17,7 @@
         ctrl.productos = [];
         ctrl.nota = undefined;
         
+        
         //Map Function
         var mapa = mapFactory();
         mapa.getEventListener();

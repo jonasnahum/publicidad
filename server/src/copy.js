@@ -32,7 +32,7 @@ var Copy = (function() {
         };
         empresa.informacion={
             noContrato: body.noContrato,
-            url: body.url,
+            uniquename: body.uniquename,
             cliente: body.cliente,
             telCliente: body.telCliente,
             correoCliente: body.correoCliente,

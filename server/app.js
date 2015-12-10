@@ -16,16 +16,19 @@ var imagenesApi = container.get("imagenesController");
 var empresasApi = container.get("empresasController");
 var usuariosApi = container.get("usuariosController");
 var correoApi = container.get("correoController")
+var corsOptions = {  //This is CORS-enabled for only origin: process.env.WEB || 'http://localhost:3000'
+  origin: process.env.WEB || 'http://localhost:3001'
+};
 
 var app = express();
-
+//app.set('jwtTokenSecret', 'cualquierClave');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(logger('dev'));
 //app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended: false }));

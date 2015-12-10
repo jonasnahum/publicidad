@@ -4,7 +4,14 @@ var validation = require("./validation");
 
 var informacionSchema = mongoose.Schema({
     noContrato: validation.validateCampo(true,String,null,null,"validateContrato"),
-    url: String,
+    uniquename:  {
+        type: String,
+        trim: true,//quita los espacios.
+        unique: true,
+        index: true,//hace más eficiente la búsqueda. checar findByName.
+        required: 'El uniquename es requerido',
+        validate: [validation.uniquenameRegex],
+    },
     cliente: validation.validateCampo(true,String,5,40,"validateNombre"),
     telCliente: validation.validateCampo(true,String,5,15,"validateTel"),
     correoCliente:validation.validateCampo(true,String,null,null,"validateEmail"),
@@ -14,3 +21,6 @@ var informacionSchema = mongoose.Schema({
 });
 
 module.exports = informacionSchema;
+
+
+

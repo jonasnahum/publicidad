@@ -226,7 +226,12 @@
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
             <br />
-            Direccion de pagina web: <input type="text" ng-model="ctrl.url"/>
+            Uniquename: <input type="text" ng-model="ctrl.uniquename" 
+                                    name="uniquename" ng-pattern="/^[a-zA-Z0-9]+$/" required/>
+            <div class="errorMessages" ng-messages="frmNuevo.uniquename.$error" 
+                 ng-if="!frmNuevo.uniquename.$pristine || frmNuevo.$submitted" role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
             <br />
             Nombre del cliente: <input type="text" ng-model="ctrl.cliente" name="cliente"
                                        ng-minlength="10" ng-maxlength="40" required 
