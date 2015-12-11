@@ -4,6 +4,7 @@
 
     app.controller('CorreoController', ['$http', '$location', function($http, $location) {
         var ctrl = this;
+        var serverInfo = $('#hidServer').val();
         
         ctrl.from = undefined;
         ctrl.pass = undefined;
@@ -12,7 +13,8 @@
         
         ctrl.sendEmail = function() {
             $http({
-                url: 'http://localhost:3000/correo/',
+                url:  serverInfo + '/correo/' || 'http://localhost:3000/correo/',
+                //url: 'http://localhost:3000/correo/',
                 method: "POST",
                 data: ctrl
             }).success(function(data, status, headers, config){
