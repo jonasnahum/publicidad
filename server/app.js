@@ -9,7 +9,7 @@ var container = require('./src/container');
 var cors = require('cors');
 var db = container.get('dbConnection');
 
-db.connect('mongodb://localhost/paginas');
+db.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/paginas');
 
 var routes = require('./routes/index');
 var imagenesApi = container.get("imagenesController");
