@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module("app");
     
-    app.factory("httpInterceptor", ['$q', '$location', 'tokenStorage', function($q, $location, tokenStorage) {//singleton function.
+    app.factory("httpInterceptor", ['$q', '$location', 'tokenStorage', 'routeChecker', function($q, $location, tokenStorage, routeChecker) {//singleton function.
 
         
         //"/".indexOf("/paginas/privada/borrar/****") !== 0
@@ -14,14 +14,10 @@
             
             // optional method
             'request': function(request) {
-                var url = $location.path();
-                var negocio = url.indexOf("/negocio/");
-                if(negocio == 0){
-                   freeAccesPages.push(url);
-                };
+                var instancia = routeChecker();
+                
     
-                // if is not listed in the freeAccessPages array
-                if (freeAccesPages.indexOf($location.path()) === -1) {
+                if (instancia.isPrivate()) {
                     var tokenObj = tokenStorage.getToken();
 
                     if (tokenObj === undefined){   

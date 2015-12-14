@@ -121,7 +121,7 @@
             <br />
             Mapa: 
             <div id="googleMap" style="width:500px;height:380px;"></div>
-            <a class="btn btn-lg btn-warning" href ng-click="ctrl.borrarMarker()"
+            <a href ng-click="ctrl.borrarMarker()"
                role="button">Borrar marker</a>
         </fieldset>
         <br />
@@ -199,18 +199,15 @@
                  ng-if="!frmEditar.parrafo.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
-            <a class="btn btn-lg btn-warning" href 
-                ng-click="ctrl.agregarProducto()" role="button">Push</a>
+            <a href ng-click="ctrl.agregarProducto()" role="button">Push</a>
             <br />
             Productos : {{ctrl.productos}}
             <br />
             Titulo del producto a remover: <input type="text" ng-model="ctrl.remover"/>
-            <a class="btn btn-lg btn-warning" href 
-               ng-click="ctrl.removerProducto()" role="button">Remove</a>
+            <a href ng-click="ctrl.removerProducto()" role="button">Remove</a>
             <br />
             Borrar todos los productos: 
-            <a class="btn btn-lg btn-warning" href ng-click="ctrl.borrarProductos()"
-               role="button">Borrar Todos los productos</a>
+            <a href ng-click="ctrl.borrarProductos()" role="button">Borrar Todos los productos</a>
         </fieldset>
         <br /><br />
         Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota" 
