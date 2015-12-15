@@ -4,7 +4,7 @@
     app.controller('AppController', ['$location', 'routeChecker', 'tokenStorage', function($location, routeChecker, tokenStorage) {  
        
         var model = this;
-        model.emailUsuario = "";
+
         var instancia = routeChecker();
         
         model.isPrivate = function () {
@@ -18,9 +18,6 @@
             $location.path("/");
             return false;
         };
-        model.getEmail = function (){
-            model.emailUsuario = tokenStorage.getEmail();
-        };
-        model.getEmail();
+
     }]);
 })();

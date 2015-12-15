@@ -1,6 +1,6 @@
 (function() {
     var app = angular.module('app');
-    app.controller('TodosController', ['$http', '$location', 'empresasProxy',  function($http, $location, empresasProxy) {
+    app.controller('TodosController', ['$http', '$location', 'empresasProxy', 'tokenStorage', function($http, $location, empresasProxy, tokenStorage) {
         var ctrl = this;
 
         var url = 'http://localhost:3000/empresas/api/';
@@ -20,5 +20,10 @@
                $location.path('/todos');
             });
         };
+        ctrl.getEmail = function (){
+            ctrl.emailUsuario = tokenStorage.getEmail();
+        };
+        ctrl.getEmail();
+        
     }]);
 })();
