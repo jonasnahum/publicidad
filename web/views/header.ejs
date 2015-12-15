@@ -10,11 +10,14 @@
         <li role="presentation" ng-class="appCtrl.isActive('/contact')?'active':''">
             <a ng-href="#/contact">Contacto</a>
         </li>
+        <li role="presentation" ng-class="appCtrl.isActive('/todosPublica')?'active':''">
+            <a ng-href="#/todosPublica">Lista de negocios</a>
+        </li>
       </ul>
     </nav>
     <h3 class="text-muted"><%= title %></h3>
 </div>
-<div  ng-show="appCtrl.isPrivate()" class="header clearfix">
+<div  ng-show="appCtrl.isPrivate() && appCtrl.emailUsuario" class="header clearfix">
     <nav>
       <ul class="nav nav-pills pull-right">
         <li role="presentation">
@@ -23,8 +26,8 @@
         <li role="presentation" ng-class="appCtrl.isActive('/todos')?'active':''">
             <a ng-href="#/todos">Todos privado</a>
         </li>
-        <li role="presentation" ng-class="appCtrl.isActive('/')?'active':''">
-            <a ng-href="#/">Todos público</a>
+        <li role="presentation" ng-class="appCtrl.isActive('/todosPublica')?'active':''">
+            <a ng-href="#/todosPublica">Todos público</a>
         </li>
       </ul>
     </nav>

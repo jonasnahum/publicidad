@@ -20,6 +20,9 @@
             };    
             return
         };
+        RouteChecker.prototype.isActive = function (path) {
+            return path === $location.path();
+        };
 
         return function() {
             return new RouteChecker();

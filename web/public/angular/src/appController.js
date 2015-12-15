@@ -4,13 +4,14 @@
     app.controller('AppController', ['$location', 'routeChecker', 'tokenStorage', function($location, routeChecker, tokenStorage) {  
        
         var model = this;
+        model.emailUsuario = "";
         var instancia = routeChecker();
         
         model.isPrivate = function () {
             return instancia.isPrivate();
         }
         model.isActive = function (path) {
-            return path === $location.path();
+            return instancia.isActive(path);
         }
         model.logout = function (){
             tokenStorage.clearToken();
