@@ -9,7 +9,8 @@
         $router.when('/signin', { templateUrl: "angular/views/signin.html" })
         $router.when('/signup', { templateUrl: "angular/views/signup.html" })
         $router.when("/todosPublica", { templateUrl: "angular/views/todosPublica.html"})
-        $router.when("/negocio/:negocio", { templateUrl: "angular/views/negocio.html" })
+        //$router.when("/negocio/:negocio", { templateUrl: "angular/views/negocio.html" })
+        $router.when("/negocio/:negocio", { templateUrl: "angular/views/negocio2.html" })
         $router.when("/about", { templateUrl: "angular/views/about.html" })
         $router.when("/contact", { templateUrl: "angular/views/contact.html" })
 
