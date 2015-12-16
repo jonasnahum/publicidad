@@ -1,5 +1,13 @@
 /*Imagenes*/
-.logo,
+.logo {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 .foto {
     display: block;
     margin-left: auto;
@@ -17,11 +25,8 @@
 .block-title { background-color: #ffc19f; padding-bottom: 50px; }
 .block-direccion { background-color: #348fd4; padding-top: 30px; padding-bottom: 100px; }
 .block-productos { background-color: #4c0d09; padding-top: 30px; padding-bottom: 380px; }
-.block-productos h2 { color: #d3b2af; text-align: center}
-.block-productos li { color: #d3b2af; }
+.block-productos h2, .block-productos li { color: #d3b2af; text-align: center}
 .block-info { background-color: #cc4037; padding-left: 50px; padding-top: 30; padding-bottom: 30 }
-/*Productos*/
-.col-md-6 { color: #d3b2af; text-align: center}
 /*Direccion*/
 .direccion {
     margin-left: 50;
@@ -39,7 +44,6 @@
     float: right;
     margin-right: 40px;
 }
-
 .form-horizontal {
     width: 60%;
     margin: 0 auto;

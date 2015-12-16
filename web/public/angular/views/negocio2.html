@@ -2,13 +2,13 @@
         
     <div class="scrollblock block-title">
         <div>
-            <img src="data:image/*;base64,{{ctrl.logotipo}}" width="10%" height="5%"
-                 alt="embedded folder icon" style='float: left;' class="logo" >
+             <img src="data:image/*;base64,{{ctrl.logotipo}}" width="5%" height="5%"
+                  alt="embedded folder icon" style='float: left;' class="logo" >
         </div>
         <h2 style="text-align:center">{{ctrl.nombre}}</h2>
-        <img src="data:image/*;base64,{{ctrl.foto}}" width="30%"
-             height="30%" alt="embedded folder icon" class="foto">
-        <br />
+         <img src="data:image/*;base64,{{ctrl.foto}}" width="30%"
+              height="30%" alt="embedded folder icon" class="foto">
+         <br />
         <p style="text-align:center">{{ctrl.textoIntro}}</p>
     </div>
     <div class="scrollblock block-direccion" id="direccion">
@@ -28,7 +28,7 @@
                 </p>
                 <br />
                 <br />
-                <ul class="list-unstyled">
+                <ul class="list-unstyled" style="text-align: left">
                     <li><strong>Rubro:</strong> {{ctrl.rubro}}</li>
                     <li><strong>Descripcion:</strong> {{ctrl.descripcion}}</li>
                     <li><strong>Horario:</strong> {{ctrl.horario}}</li>
@@ -37,27 +37,17 @@
                     <li><strong>Facebook:</strong> {{ctrl.facebook}}</li>
                     <li><strong>Email:</strong> {{ctrl.email}}</li>
                 </ul>        
-                
                 <strong>NOTA:</strong> {{ctrl.nota || "Por el momento no hay notas"}}
             </div>
         </div>
     </div>
     <div class="scrollblock block-productos"> 
         <h2>Productos</h2>
-        <div class="col-md-6">
-            <ul>
-                <li ng-repeat="producto in ctrl.productos">
-                    <strong>{{producto.titulo}}</strong>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <ul class="list-unstyled">
-                <li ng-repeat="producto in ctrl.productos">
-                    {{producto.parrafo}}
-                </li>
-            </ul>
-        </div>   
+        <ul>
+            <li ng-repeat="producto in ctrl.productos">
+                <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
+            </li>
+        </ul>
     </div>   
     <div class="scrollblock block-info">
         <h2 style="text-align: center;">CONTACTO </h2>
