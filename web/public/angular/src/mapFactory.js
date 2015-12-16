@@ -5,18 +5,22 @@
         
         var MapClass = function(latitud,longitud) {
             this.map = undefined;
-            this.lat = latitud || 19.4096;
-            this.long = longitud || -102.0520;
-            this.myCenter=new google.maps.LatLng(this.lat, this.long);
+            this.lat = latitud || undefined;//latitud || 19.4096;
+            this.long = longitud || undefined;//longitud || -102.0520;
+            this.myCenter=new google.maps.LatLng(this.lat || 19.4096, this.long  || -102.0520);
             this.markersArray = [];
-            this.mapOptions = {
-                center:this.myCenter,
-                zoom:13,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-            };
+            this.mapOptions = this.getMapOptions(); 
             this.document = document.getElementById("googleMap")
             this.map = this.getMap();
             this.eventListener = undefined;
+        };
+        MapClass.prototype.getMapOptions = function(){
+            var that = this;
+            return {
+                center:that.myCenter,
+                zoom:13,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
         };
         MapClass.prototype.getMap = function(){
             var that = this;

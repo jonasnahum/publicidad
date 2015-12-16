@@ -2,6 +2,7 @@ var Validation = (function() {
     var Validation = function() {
         this.float = {validator: /^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/, msg: 'Este campo sólo número o números con decimales'};
         this.letrasEspaciosAcentos = {validator: /^[A-Za-záéíóú ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
+        this.letrasEspaciosAcentosNumeros = {validator: /^[A-Za-záéíóú0-9 ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
         this.numeros = {validator: /^[0-9]*$/, msg: 'Este campo sólo acepta numeros'};
         this.email = {validator: /^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/, msg: 'Este campo sólo acepta correos válidos'};
         this.productos = function(val) {
@@ -29,7 +30,7 @@ var Validation = (function() {
     Validation.prototype.getArrValidation = function(nameArr){
         switch (nameArr) {
             case "validateNombre":
-                return [this.letrasEspaciosAcentos];
+                return [this.letrasEspaciosAcentosNumeros];
                 break;
             case "validateTel":
                 return [this.numeros];
