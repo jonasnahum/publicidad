@@ -20,7 +20,7 @@
 .block-title { background-color: #23527C; padding-bottom: 50px; text-align: center; color: #DDD; }
 .block-direccion { background-color: #DDD; padding-top: 100px; padding-bottom: 600px; }
 .block-productos { background-color: #337AB7; color: #DDD; }
-.block-productos h2, .block-productos li { /*padding-left: 50px;*/ text-align: center; color: #DDD; }
+.block-productos h2, .block-productos li { text-align: center; color: #DDD; padding-top: 30px; }
 .block-info { background-color: #23527C; padding-left: 50px; padding-right: 50px; color: #DDD;
 border-bottom: 1px; }
 

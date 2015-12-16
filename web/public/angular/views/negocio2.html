@@ -1,6 +1,5 @@
 <div ng-controller="NegocioController as ctrl">
 
-    <!--div class="full-width-div"-->
     <div class="containerIn">
         <div class="row">
             <div class="scrollblock block-title">
@@ -13,7 +12,7 @@
                 <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
                   height="50%" alt="embedded folder icon" class="foto">
                 <br /><br />
-                {{ctrl.textoIntro}}
+                <p>{{ctrl.textoIntro}}</p>
             </div>
         </div>
     </div>
@@ -61,10 +60,6 @@
                         <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
                     </li>
                 </ul>
-                <!--dl ng-repeat="producto in ctrl.productos">
-                    <dt>{{producto.titulo}}</dt>
-                    <dd>{{producto.parrafo}}</dd>
-                </dl-->
             </div>
         </div>   
     </div>
