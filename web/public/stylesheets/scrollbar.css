@@ -1,33 +1,29 @@
-/*Imagenes*/
 .logo {
-    display: block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    position: relative;
+    top: -50px;
+    left: 30px;
 }
 .foto {
     display: block;
     margin-left: auto;
     margin-right: auto 
 }
-/*Blocks*/
+
 .scrollblock {
     position: relative;
     margin: 0;
     width: 100%;
-    color: black;
+    color: #444;
     padding-top: 80px;
     padding-bottom: 80px;
 }
-.block-title { background-color: #ffc19f; padding-bottom: 50px; }
-.block-direccion { background-color: #348fd4; padding-top: 30px; padding-bottom: 100px; }
-.block-productos { background-color: #4c0d09; padding-top: 30px; padding-bottom: 380px; }
-.block-productos h2, .block-productos li { color: #d3b2af; text-align: center}
-.block-info { background-color: #cc4037; padding-left: 50px; padding-top: 30; padding-bottom: 30 }
-/*Direccion*/
+.block-title { background-color: #23527C; padding-bottom: 50px; text-align: center; color: #DDD; }
+.block-direccion { background-color: #DDD; padding-top: 100px; padding-bottom: 600px; }
+.block-productos { background-color: #337AB7; color: #DDD; }
+.block-productos h2, .block-productos li { /*padding-left: 50px;*/ text-align: center; color: #DDD; }
+.block-info { background-color: #23527C; padding-left: 50px; padding-right: 50px; color: #DDD;
+border-bottom: 1px; }
+
 .direccion {
     margin-left: 50;
     margin-right: 0;
@@ -37,15 +33,18 @@
     border: 3px solid #999;
     background-color: #333;
 }
+
 #dir {
     padding-left: 50px;
 }
+
 #googleMap {
     float: right;
     margin-right: 40px;
 }
-.form-horizontal {
-    width: 60%;
-    margin: 0 auto;
-    text-align: center;
+
+.containerIn {
+    position: relative;
+    width: 111%;   
+    left: -60px;
 }

@@ -20,7 +20,7 @@ ol ol {
     *padding: .4em;
     margin: .5em 0;
     background: #ddd;
-    color: #444;
+    color: #444;/*#FFF  #444  */
     text-decoration: none;
     border-radius: .3em;
     transition: all .3s ease-out;
@@ -41,7 +41,7 @@ ol ol {
     left: -1.3em;
     top: 50%;
     margin-top: -1.3em;
-    background: #87ceeb;
+    background: #337AB7;/*#337AB7   #87ceeb */
     height: 2.5em;
     width: 2.5em;
     line-height: 2em;
@@ -50,4 +50,5 @@ ol ol {
     font-weight: bold;
     border-radius: 2em;
     transition: all .3s ease-out;
+    color: #FFF;
 }
