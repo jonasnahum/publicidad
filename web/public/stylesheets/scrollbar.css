@@ -1,4 +1,8 @@
-.logo,
+.logo {
+    position: relative;
+    top: -50px;
+    left: 30px;
+}
 .foto {
     display: block;
     margin-left: auto;
@@ -9,34 +13,38 @@
     position: relative;
     margin: 0;
     width: 100%;
-    color: black;
+    color: #444;
     padding-top: 80px;
     padding-bottom: 80px;
 }
-
-.block-title { background-color: burlywood; padding-bottom: 50px; }
-.block-direccion { 
-    background-color: #348fd4; 
-    padding-top: 30px;
-    padding-bottom: 100px;
-}
-.block-productos { background-color: #4c0d09; }
-.block-productos h5 { color: #d3b2af; }
-.block-productos li { color: #d3b2af; }
+.block-title { background-color: #23527C; padding-bottom: 50px; text-align: center; color: #DDD; }
+.block-direccion { background-color: #DDD; padding-top: 100px; padding-bottom: 600px; }
+.block-productos { background-color: #337AB7; color: #DDD; }
+.block-productos h2, .block-productos li { text-align: center; color: #DDD; padding-top: 30px; }
+.block-info { background-color: #23527C; padding-left: 50px; padding-right: 50px; color: #DDD;
+border-bottom: 1px; }
 
 .direccion {
-    margin-right: auto;
-    margin-left: auto;
+    margin-left: 50;
+    margin-right: 0;
     width: 70%;
     height: 400px;
     margin-top: 65px;
     border: 3px solid #999;
     background-color: #333;
 }
+
 #dir {
-    padding: 10px;
+    padding-left: 50px;
 }
+
 #googleMap {
     float: right;
     margin-right: 40px;
+}
+
+.containerIn {
+    position: relative;
+    width: 111%;   
+    left: -60px;
 }

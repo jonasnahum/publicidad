@@ -1,87 +1,98 @@
 <div ng-controller="NegocioController as ctrl">
-    <div class="scrollblock block-title">
-        <div>
-            <img src="data:image/*;base64,{{ctrl.logotipo}}" width="10%" height="5%"
-                 alt="embedded folder icon" style='float: left;' class="logo" >
-        </div>
-        <h1 style="text-align:center">{{ctrl.nombre}}</h1>
-        <img src="data:image/*;base64,{{ctrl.foto}}" width="30%"
-             height="30%" alt="embedded folder icon" class="foto">
-        <br />
-        <p style="text-align:center">{{ctrl.textoIntro}}</p>
-    </div>
-    <div class="scrollblock block-direccion" id="direccion">
-        <div>
-            <div id="googleMap" style="width:500px;height:380px;"></div>
-            <div id="dir">
-                <strong>Domicilio</strong>
-                <p>
-                    Calle: {{ctrl.calle}} {{ctrl.numero}} (Num. Interior: 
-                    {{ctrl.numeroInt || "No hay"}}).
-                    <br />
-                    Colonia: {{ctrl.colonia}}
-                    <br />
-                    C.P. {{ctrl.cp}}
-                    <br />
-                    {{ctrl.municipio}}, {{ctrl.estado}}
-                </p>
-                <br />
-                <br />
-                <ul class="list-unstyled">
-                    <li><strong>Rubro:</strong> {{ctrl.rubro}}</li>
-                    <li><strong>Descripcion:</strong> {{ctrl.descripcion}}</li>
-                    <li><strong>Horario:</strong> {{ctrl.horario}}</li>
-                    <li><strong>Encargado:</strong> {{ctrl.encargado}}</li>
-                    <li><strong>Telefono:</strong> {{ctrl.tel}}</li>
-                    <li><strong>Facebook:</strong> {{ctrl.facebook}}</li>
-                    <li><strong>Email:</strong> {{ctrl.email}}</li>
-                </ul>        
 
-                <!--dl class="dl-horizontal">
-                    <dt>Rubro</dt>
-                    <dd>{{ctrl.rubro}}</dd>
-                    <dt>Descripcion</dt>
-                    <dd>{{ctrl.descripcion}}</dd>
-                    <dt>Horario</dt>
-                    <dd>{{ctrl.horario}}</dd>
-                    <dt>Encargado</dt>
-                    <dd>{{ctrl.encargado}}</dd>
-                    <dt>telefono</dt>
-                    <dd>{{ctrl.tel}}</dd>
-                    <dt>Facebook</dt>
-                    <dd>{{ctrl.face}}</dd>
-                    <dt>Email</dt>
-                    <dd>{{ctrl.email}}</dd>
-                </dl-->
+    <div class="containerIn">
+        <div class="row">
+            <div class="scrollblock block-title">
+                <div>
+                    <img src="data:image/*;base64,{{ctrl.logotipo}}" width="5%" height="5%"
+                      alt="embedded folder icon" style='float: left;' class="logo" >
+                </div>
+                <h2>{{ctrl.nombre}}</h2>
+                <br />
+                <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
+                  height="50%" alt="embedded folder icon" class="foto">
+                <br /><br />
+                <p>{{ctrl.textoIntro}}</p>
             </div>
         </div>
     </div>
-    <div class="scrollblock block-productos"> 
-        <h5>Producto</h5>
-        <ul>
-            <li ng-repeat="producto in ctrl.productos">
-                <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
-            </li>
-        </ul>    
-    </div>   
-    <div class="scrollblock block-info">
-        <strong>NOTA:</strong> {{ctrl.nota}}
-        <br />
-        <strong>Contactanos:</strong> 
-        <div ng-controller="CorreoController as ctrl">
-                <form   ng-submit="ctrl.sendEmail()">
-                    from:
-                    <input type="email" ng-model="ctrl.from">
-                    pass:
-                    <input type="password" ng-model="ctrl.pass">
-                    subject:
-                    <input type="text" ng-model="ctrl.subject">
-                    text:
-                    <input type="text" ng-model="ctrl.text">
+
+    <div class="containerIn">
+        <div class="row">
+            <div class="scrollblock block-direccion" id="direccion">
+                <div class="col-md-6" id="dir">
+                    <h2>Domicilio</h2>
+                    <p>
+                        Calle: {{ctrl.calle}} {{ctrl.numero}} (Num. Interior: {{ctrl.numeroInt || "No hay"}}).
+                        <br />
+                        Colonia: {{ctrl.colonia}}
+                        <br />
+                        C.P. {{ctrl.cp}}
+                        <br />
+                        {{ctrl.municipio}}, {{ctrl.estado}}
+                    </p>
                     <br />
-                    <button type="submit">Send</button>
-                </form> 
+                    <br />
+                    <ul class="list-unstyled" style="text-align: left">
+                        <li><strong>Rubro:</strong> {{ctrl.rubro}}</li>
+                        <li><strong>Descripcion:</strong> {{ctrl.descripcion}}</li>
+                        <li><strong>Horario:</strong> {{ctrl.horario}}</li>
+                        <li><strong>Encargado:</strong> {{ctrl.encargado}}</li>
+                        <li><strong>Telefono:</strong> {{ctrl.tel}}</li>
+                        <li><strong>Facebook:</strong> {{ctrl.facebook}}</li>
+                        <li><strong>Email:</strong> {{ctrl.email}}</li>
+                    </ul>
+                    <strong>NOTA:</strong> {{ctrl.nota || "Por el momento no hay notas"}}
+                </div>
+                <div class="col-md-6">
+                    <div id="googleMap" style="width:600px;height:480px;"></div>
+                </div>
             </div>
-        <a href="#/todosPublica">Ir a todos</a>
-    </div>        
+        </div>
+    </div>
+    
+    <div class="containerIn">
+        <div class="row">
+            <div class="scrollblock block-productos">
+                <h2>Productos</h2>
+                <ul>
+                    <li ng-repeat="producto in ctrl.productos">
+                        <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
+                    </li>
+                </ul>
+            </div>
+        </div>   
+    </div>
+
+    <div class="containerIn">
+        <div class="row">
+            <div class="scrollblock block-info">
+                <h2>Contacto </h2>
+                <br /><br />
+                <div ng-controller="CorreoController as ctrl">
+                    <form ng-submit="ctrl.sendEmail()">
+                        <div class="form-group">
+                            <label for="from">From: </label>
+                            <input type="email" ng-model="ctrl.from" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Password: </label>
+                            <input type="password" ng-model="ctrl.pass" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject: </label>
+                            <input type="text" ng-model="ctrl.subject" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Text: </label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <a href="#/todosPublica" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Ir a todos</a>
+                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
