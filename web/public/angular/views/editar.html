@@ -4,8 +4,8 @@
         <fieldset>
             <h2>Empresa</h2> 
             Nombre: <input type="text" name="nombre" ng-model="ctrl.nombre" 
-                           ng-minlength="10" ng-maxlength="40"
-                           ng-pattern="/^[a-zA-Záéíóú ]+$/" required/>
+                           ng-minlength="2" ng-maxlength="40"
+                           ng-pattern="/^[A-Za-záéíóú0-9 ]+$/" required/>
             <div class="errorMessages" ng-messages="frmEditar.nombre.$error" 
                  ng-if="!frmEditar.nombre.$pristine || frmEditar.$submitted" role="alert" >
                <div ng-messages-include="/error/messages.html"></div>
@@ -14,8 +14,8 @@
             Logotipo:
             <br />
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')" 
-                    accept="image/*" ngf-max-height="3000" ngf-max-width="3000" 
-                    ngf-max-size="1MB" ngf-fix-orientation="false">Select Files</button>
+                    accept="image/*" ngf-max-height="10000" ngf-max-width="10000" 
+                    ngf-max-size="10MB" ngf-fix-orientation="false">Select Files</button>
             <div style="font:smaller" class="errorMessages">
                 {{ctrl.files.logotipo.name}} {{ctrl.errFiles.logotipo.name}}
                 {{ctrl.errFiles.logotipo.$error}} {{ctrl.errFiles.logotipo.$errorParam}}
@@ -33,8 +33,8 @@
             <br /><br />
             Foto:
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'foto')"
-                    accept="image/*" ngf-max-height="3000" ngf-max-width="3000" 
-                    ngf-max-size="1MB" ngf-fix-orientation="false">Select Files</button>
+                    accept="image/*" ngf-max-height="10000" ngf-max-width="10000" 
+                    ngf-max-size="10MB" ngf-fix-orientation="false">Select Files</button>
             <div style="font:smaller" class="errorMessages">
                 {{ctrl.files.foto.name}} {{ctrl.errFiles.foto.name}}
                 {{ctrl.errFiles.foto.$error}} {{ctrl.errFiles.foto.$errorParam}}
@@ -52,7 +52,7 @@
             <br />   
             Texto introductorio: 
             <textarea rows="4" cols="50" ng-model="ctrl.textoIntro"
-                      name="textoIntro" ng-maxlength="180"></textarea>
+                      name="textoIntro" ng-maxlength="360"></textarea>
             <div class="errorMessages" ng-messages="frmEditar.textoIntro.$error" 
                  ng-if="!frmEditar.textoIntro.$pristine || frmEditar.$submitted"
                  role="alert" >
@@ -186,7 +186,7 @@
             Producto : {{ctrl.producto}}
             <br />
             Titulo: <input type="text" ng-model="ctrl.producto.titulo" 
-                           ng-maxlength="20" name="titulo"/>
+                           ng-maxlength="80" name="titulo"/>
             <div class="errorMessages" ng-messages="frmEditar.titulo.$error" 
                  ng-if="!frmEditar.titulo.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
@@ -194,7 +194,7 @@
             <br />
             Parrafo: 
             <textarea rows="4" cols="50" ng-model="ctrl.producto.parrafo"
-                      ng-maxlength="40" name="parrafo"></textarea>
+                      ng-maxlength="160" name="parrafo"></textarea>
             <div class="errorMessages" ng-messages="frmEditar.parrafo.$error" 
                  ng-if="!frmEditar.parrafo.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
