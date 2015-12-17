@@ -48,30 +48,31 @@
             <br /><br />
         </fieldset>
         <br /><br />
-        <fieldset>
-            <h5>Direccion</h5>
-            <br />
-            Numero: <input type="text" ng-model="ctrl.numero"/>
-            <br />
-            Numero interior: <input type="text" 
-                                    ng-model="ctrl.numeroInt"/>
-            <br />
-            Calle: <input type="text" ng-model="ctrl.calle"/>
-            <br />
-            Colonia: <input type="text" ng-model="ctrl.colonia"/>
-            <br />
-            C.P. : <input type="text" ng-model="ctrl.cp"/>
-            <br />
-            Municipio: <input type="text" ng-model="ctrl.municipio"/>
-            <br />
-            Estado: <input type="text" ng-model="ctrl.estado"/>
-            <br />
-            
-            Mapa: 
-            <div id="googleMap" style="width:500px;height:380px;"></div>
-    
-        
-        </fieldset>
+        <div class="row">
+            <div class="col-md-6" id="dir">
+                <h5>Direccion</h5>
+                <br />
+                Numero: <input type="text" ng-model="ctrl.numero"/>
+                <br />
+                Numero interior: <input type="text" 
+                                        ng-model="ctrl.numeroInt"/>
+                <br />
+                Calle: <input type="text" ng-model="ctrl.calle"/>
+                <br />
+                Colonia: <input type="text" ng-model="ctrl.colonia"/>
+                <br />
+                C.P. : <input type="text" ng-model="ctrl.cp"/>
+                <br />
+                Municipio: <input type="text" ng-model="ctrl.municipio"/>
+                <br />
+                Estado: <input type="text" ng-model="ctrl.estado"/>
+                <br />
+            </div>
+            <div class="col-md-6" id="dir">
+                Mapa: 
+                <div id="googleMap" style="width:500px;height:380px;"></div>
+            </div>
+        </div>
         <br />
         <fieldset>
             <h5>Rubro</h5>
