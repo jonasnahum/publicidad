@@ -48,11 +48,3 @@ border-bottom: 1px; }
     width: 111%;   
     left: -60px;
 }*/
-
-
-.containerIn {
-    position: relative;
-    width: cover;   
-    left: -60px;
-    min-width: 100%;
-}
