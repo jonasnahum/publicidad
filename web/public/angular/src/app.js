@@ -13,6 +13,7 @@
         $router.when("/negocio/:negocio", { templateUrl: "angular/views/negocio2.html" })
         $router.when("/about", { templateUrl: "angular/views/about.html" })
         $router.when("/contact", { templateUrl: "angular/views/contact.html" })
+        $router.when("/error", { templateUrl: "angular/views/error.html" })
 
 //privado
         $router.when("/nuevo", 
