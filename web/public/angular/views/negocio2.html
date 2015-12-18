@@ -1,125 +1,126 @@
-<div ng-controller="NegocioController as ctrl">
-
-    <div class="containerIn">
-        <div class="row">
-            <div class="scrollblock block-title">
-                <div>
-                    <img src="data:image/*;base64,{{ctrl.logotipo}}" width="5%" height="5%"
-                      alt="embedded folder icon" style='float: left;' class="logo" >
+<div ng-controller="NegocioController as ctrl" >
+    <div class="row-full">
+        <div id="containerIn">
+            <div class="row">
+                <div class="scrollblock block-title">
+                    <div>
+                        <img src="data:image/*;base64,{{ctrl.logotipo}}" width="5%" height="5%"
+                          alt="embedded folder icon" style='float: left;' class="logo" >
+                    </div>
+                    <h2>{{ctrl.nombre}}</h2>
+                    <br />
+                    <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
+                      height="50%" alt="embedded folder icon" class="foto">
+                    <br /><br />
+                    <p>{{ctrl.textoIntro}}</p>
                 </div>
-                <h2>{{ctrl.nombre}}</h2>
-                <br />
-                <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
-                  height="50%" alt="embedded folder icon" class="foto">
-                <br /><br />
-                <p>{{ctrl.textoIntro}}</p>
             </div>
         </div>
-    </div>
 
-    <div class="containerIn">
-        <div class="row">
-            <div class="scrollblock block-direccion" id="direccion">
-                <div class="col-md-6" id="dir">
-                    <h2>Domicilio</h2>
-                    <p>
-                        Calle: {{ctrl.calle}} {{ctrl.numero}} (Num. Interior: {{ctrl.numeroInt || "No hay"}}).
+        <div id="containerIn">
+            <div class="row">
+                <div class="scrollblock block-direccion" id="direccion">
+                    <div class="col-md-6" id="dir">
+                        <h2>Domicilio</h2>
+                        <p>
+                            Calle: {{ctrl.calle}} {{ctrl.numero}} (Num. Interior: {{ctrl.numeroInt || "No hay"}}).
+                            <br />
+                            Colonia: {{ctrl.colonia}}
+                            <br />
+                            C.P. {{ctrl.cp}}
+                            <br />
+                            {{ctrl.municipio}}, {{ctrl.estado}}
+                        </p>
                         <br />
-                        Colonia: {{ctrl.colonia}}
                         <br />
-                        C.P. {{ctrl.cp}}
-                        <br />
-                        {{ctrl.municipio}}, {{ctrl.estado}}
-                    </p>
-                    <br />
-                    <br />
-                    <ul class="list-unstyled" style="text-align: left">
-                        <li><strong>Rubro:</strong> {{ctrl.rubro}}</li>
-                        <li><strong>Descripcion:</strong> {{ctrl.descripcion}}</li>
-                        <li><strong>Horario:</strong> {{ctrl.horario}}</li>
-                        <li><strong>Encargado:</strong> {{ctrl.encargado}}</li>
-                        <li><strong>Telefono:</strong> {{ctrl.tel}}</li>
-                        <li><strong>Facebook:</strong> {{ctrl.facebook}}</li>
-                        <li><strong>Email:</strong> {{ctrl.email}}</li>
+                        <ul class="list-unstyled" style="text-align: left">
+                            <li><strong>Rubro:</strong> {{ctrl.rubro}}</li>
+                            <li><strong>Descripcion:</strong> {{ctrl.descripcion}}</li>
+                            <li><strong>Horario:</strong> {{ctrl.horario}}</li>
+                            <li><strong>Encargado:</strong> {{ctrl.encargado}}</li>
+                            <li><strong>Telefono:</strong> {{ctrl.tel}}</li>
+                            <li><strong>Facebook:</strong> {{ctrl.facebook}}</li>
+                            <li><strong>Email:</strong> {{ctrl.email}}</li>
+                        </ul>
+                        <strong>NOTA:</strong> {{ctrl.nota || "Por el momento no hay notas"}}
+                    </div>
+                    <div class="col-md-6">
+                        <div id="googleMap" style="width:600px;height:480px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="containerIn">
+            <div class="row">
+                <div class="scrollblock block-productos">
+                    <h2>Productos</h2>
+                    <ul>
+                        <li ng-repeat="producto in ctrl.productos">
+                            <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
+                        </li>
                     </ul>
-                    <strong>NOTA:</strong> {{ctrl.nota || "Por el momento no hay notas"}}
                 </div>
-                <div class="col-md-6">
-                    <div id="googleMap" style="width:600px;height:480px;"></div>
-                </div>
-            </div>
+            </div>   
         </div>
-    </div>
-    
-    <div class="containerIn">
-        <div class="row">
-            <div class="scrollblock block-productos">
-                <h2>Productos</h2>
-                <ul>
-                    <li ng-repeat="producto in ctrl.productos">
-                        <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
-                    </li>
-                </ul>
-            </div>
-        </div>   
-    </div>
 
-    <div class="containerIn">
-        <div class="row">
-            <div class="scrollblock block-info">
-                <h2>Contacto </h2>
-                <br /><br />
-                <div class="col-md-12" ng-controller="EmailFormController as emCtl">
-                    <h2>Enviar Mensage</h2>
-                    <form name="mailForm" id="myForm" ng-submit="mailForm.$valid && emCtl.send(ctrl.email)" novalidate>
-                        <fieldset ng-attr-disabled="{{emCtl.waiting || undefined}}">
-                            <div class="form-group">
-                                <label>Mi Nombre</label>
-                                <input type="text" class="form-control" name="name" placeholder="Nombre"
-                                       ng-model="emCtl.name" required />    
+        <div id="containerIn">
+            <div class="row">
+                <div class="scrollblock block-info">
+                    <h2>Contacto </h2>
+                    <br /><br />
+                    <div class="col-md-12" ng-controller="EmailFormController as emCtl">
+                        <h2>Enviar Mensage</h2>
+                        <form name="mailForm" id="myForm" ng-submit="mailForm.$valid && emCtl.send(ctrl.email)" novalidate>
+                            <fieldset ng-attr-disabled="{{emCtl.waiting || undefined}}">
+                                <div class="form-group">
+                                    <label>Mi Nombre</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Nombre"
+                                           ng-model="emCtl.name" required />    
 
-                                <div ng-if="(!mailForm.name.$pristine || mailForm.$submitted) 
-                                            && mailForm.name.$error.required">
-                                    <span class="error" ng-show="mailForm.name.$error.required">*Requerido</span>
+                                    <div ng-if="(!mailForm.name.$pristine || mailForm.$submitted) 
+                                                && mailForm.name.$error.required">
+                                        <span class="error" ng-show="mailForm.name.$error.required">*Requerido</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Mi Correo</label>
-                                <input type="email" class="form-control" name="email" placeholder="Email"
-                                       ng-model="emCtl.email" required />
+                                <div class="form-group">
+                                    <label>Mi Correo</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Email"
+                                           ng-model="emCtl.email" required />
 
-                                <div ng-if="(!mailForm.email.$pristine || mailForm.$submitted) 
-                                            && mailForm.email.$error.required">
-                                    <span class="error" ng-show="mailForm.email.$error.required">*Requerido</span>
+                                    <div ng-if="(!mailForm.email.$pristine || mailForm.$submitted) 
+                                                && mailForm.email.$error.required">
+                                        <span class="error" ng-show="mailForm.email.$error.required">*Requerido</span>
+                                    </div>
+
+                                    <div ng-if="(!mailForm.email.$pristine || mailForm.$submitted) 
+                                                && mailForm.email.$error.email">
+                                        <span class="error" ng-show="mailForm.email.$error.email">*Email no válido</span>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Mi Teléfono</label>
+                                    <input type="text" class="form-control" name="phone" placeholder="Teléfono"
+                                           ng-model="emCtl.phone" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Mi Mensage</label>
+                                    <textarea class="form-control" name="message" placeholder="Mensage"
+                                              ng-model="emCtl.message" required ></textarea>
+
+                                    <div ng-if="(!mailForm.message.$pristine || mailForm.$submitted) 
+                                           && mailForm.message.$error.required">
+                                        <span class="error" ng-show="mailForm.message.$error.required">*Requerido</span>
+                                    </div>
                                 </div>
 
-                                <div ng-if="(!mailForm.email.$pristine || mailForm.$submitted) 
-                                            && mailForm.email.$error.email">
-                                    <span class="error" ng-show="mailForm.email.$error.email">*Email no válido</span>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
                                 </div>
-
-                            </div>
-                            <div class="form-group">
-                                <label>Mi Teléfono</label>
-                                <input type="text" class="form-control" name="phone" placeholder="Teléfono"
-                                       ng-model="emCtl.phone" />
-                            </div>
-                            <div class="form-group">
-                                <label>Mi Mensage</label>
-                                <textarea class="form-control" name="message" placeholder="Mensage"
-                                          ng-model="emCtl.message" required ></textarea>
-
-                                <div ng-if="(!mailForm.message.$pristine || mailForm.$submitted) 
-                                       && mailForm.message.$error.required">
-                                    <span class="error" ng-show="mailForm.message.$error.required">*Requerido</span>
-                                </div>
-                            </div>
-
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-primary">Enviar</button>
-                            </div>
-                        </fieldset>
-                    </form>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

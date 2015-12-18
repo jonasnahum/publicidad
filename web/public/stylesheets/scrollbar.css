@@ -42,9 +42,18 @@ border-bottom: 1px; }
     float: right;
     margin-right: 40px;
 }
-
+/*
 .containerIn {
     position: relative;
     width: 111%;   
     left: -60px;
+}*/
+
+.row-full {
+    width: 100vw;
+    position: relative;
+    margin-left: -50vw;
+    height: 100px;
+    margin-top: 0;
+    left: 50%;
 }
