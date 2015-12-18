@@ -1,6 +1,6 @@
 (function() {
     var app = angular.module('app');
-    app.controller('TodosPublicaController', ['$http', '$location', 'empresasProxy', 'tokenStorage', function($http, $location, empresasProxy, tokenStorage) {
+    app.controller('TodosPublicoController', ['$http', '$location', 'empresasProxy', 'tokenStorage', function($http, $location, empresasProxy, tokenStorage) {
         var ctrl = this;
         ctrl.empresas = [];    
 

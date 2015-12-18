@@ -3,7 +3,7 @@
     
     app.factory('routeChecker', ['$location',function($location) {
         var RouteChecker = function() {
-            this.freeAccesPages = ['/', '/signin', '/signup', '/todosPublica', '/about', '/contact'];
+            this.freeAccesPages = ['/', '/signin', '/signup', '/todosPublico', '/about', '/contact'];
             this.url = "";
         };
         RouteChecker.prototype.isPrivate = function () {

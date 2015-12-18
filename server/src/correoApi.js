@@ -3,7 +3,6 @@ var CorreoApi = (function() {
     var CorreoApi = function(nodemailer) {
         this.nodemailer = nodemailer.module;
     };
-//curl -i -H "Content-Type: application/json" -d '{"from":"jonasnahum@gmail.com","pass":"jonasoctubre","subject":"este es subject","text":"jonasoctubre este es el texto"}' http://localhost:3000/correo 
     CorreoApi.prototype.send = function(req, res, next){
         var that = this;
         var transporter = that.nodemailer.createTransport({
@@ -20,7 +19,7 @@ var CorreoApi = (function() {
         var mailOptions = {
             from: req.body.email,
             to: req.body.to,
-            subject: "correo de cliente enviado a través de página web de publicidad.",
+            subject: "Enviado a través de página web de publicidad.",
             text: req.body.message,
             html: html
         };
