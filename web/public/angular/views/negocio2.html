@@ -1,5 +1,6 @@
 <div ng-controller="NegocioController as ctrl" >
     <div class="row-full">
+        
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-title">
@@ -7,10 +8,11 @@
                         <img src="data:image/*;base64,{{ctrl.logotipo}}" width="5%" height="5%"
                           alt="embedded folder icon" style='float: left;' class="logo" >
                     </div>
-                    <h2>{{ctrl.nombre}}</h2>
                     <br />
-                    <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
-                      height="50%" alt="embedded folder icon" class="foto">
+                    <h2 style="font-size: 52px;"><strong>{{ctrl.nombre}}</strong></h2>
+                    <br />
+                    <img src="data:image/*;base64,{{ctrl.foto}}" width="40%"
+                      height="40%" alt="embedded folder icon" class="foto">
                     <br /><br />
                     <p>{{ctrl.textoIntro}}</p>
                 </div>
@@ -21,15 +23,16 @@
             <div class="row">
                 <div class="scrollblock block-direccion" id="direccion">
                     <div class="col-md-6" id="dir">
-                        <h2>Domicilio</h2>
+                        <h2><strong>Domicilio</strong></h2>
+                        <br />
                         <p>
-                            Calle: {{ctrl.calle}} {{ctrl.numero}} (Num. Interior: {{ctrl.numeroInt || "No hay"}}).
+                            <strong>Calle:</strong> {{ctrl.calle}} {{ctrl.numero}} (Num. Interior: {{ctrl.numeroInt || "No hay"}}).
                             <br />
-                            Colonia: {{ctrl.colonia}}
+                            <strong>Colonia:</strong> {{ctrl.colonia}}
                             <br />
-                            C.P. {{ctrl.cp}}
+                            <strong>C.P.</strong> {{ctrl.cp}}
                             <br />
-                            {{ctrl.municipio}}, {{ctrl.estado}}
+                            <strong>{{ctrl.municipio}}, {{ctrl.estado}}</strong>
                         </p>
                         <br />
                         <br />
@@ -42,7 +45,7 @@
                             <li><strong>Facebook:</strong> {{ctrl.facebook}}</li>
                             <li><strong>Email:</strong> {{ctrl.email}}</li>
                         </ul>
-                        <strong>NOTA:</strong> {{ctrl.nota || "Por el momento no hay notas"}}
+                        <h3><strong>NOTA:</strong></h3> {{ctrl.nota || "Por el momento no hay notas"}}
                     </div>
                     <div class="col-md-6">
                         <div id="googleMap" style="width:600px;height:480px;"></div>
@@ -54,12 +57,12 @@
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-productos">
-                    <h2>Productos</h2>
-                    <ul>
-                        <li ng-repeat="producto in ctrl.productos">
-                            <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
-                        </li>
-                    </ul>
+                    <h2 style="font-size: 40px;"><strong>Productos</strong></h2>
+                    <br /><br /><br />
+                    <li ng-repeat="producto in ctrl.productos">
+                        <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
+                        <br /><br />
+                    </li>
                 </div>
             </div>   
         </div>
@@ -67,10 +70,9 @@
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-info">
-                    <h2>Contacto </h2>
-                    <br /><br />
+                    <h2><strong>Contacto</strong></h2> <br /><br />
                     <div class="col-md-12" ng-controller="EmailFormController as emCtl">
-                        <h2>Enviar Mensage</h2>
+                        <h3>Enviar Mensage</h3> <br /><br />
                         <form name="mailForm" id="myForm" ng-submit="mailForm.$valid && emCtl.send(ctrl.email)" novalidate>
                             <fieldset ng-attr-disabled="{{emCtl.waiting || undefined}}">
                                 <div class="form-group">
@@ -95,7 +97,11 @@
                                 <div class="form-group">
                                     <label>Mi Teléfono</label>
                                     <input type="text" class="form-control" name="phone" placeholder="Teléfono"
-                                           ng-model="emCtl.phone" />
+                                           ng-model="emCtl.phone" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/"/>
+                                    <div class="errorMessages" ng-messages="mailForm.phone.$error" 
+                                         ng-if="!mailForm.phone.$pristine || mailForm.$submitted">
+                                        <div ng-messages-include="/error/messages.html"></div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Mi Mensage</label>
