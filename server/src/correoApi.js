@@ -20,7 +20,7 @@ var CorreoApi = (function() {
         var mailOptions = {
             from: req.body.email,
             to: req.body.to,
-            subject: "correo de cliente",
+            subject: "correo de cliente enviado a través de página web de publicidad.",
             text: req.body.message,
             html: html
         };
