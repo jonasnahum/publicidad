@@ -20,7 +20,7 @@ var UsuariosApi = (function() {
                 return res.sendStatus(401);
             }
 
-            if (!user.password === req.body.password) {
+            if (user.password !== req.body.password) {
                 // incorrect password
                 return res.sendStatus(401);
             }
