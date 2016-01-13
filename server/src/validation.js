@@ -5,7 +5,13 @@ var Validation = (function() {
         this.letrasEspaciosAcentosNumeros = {validator: /^[A-Za-záéíóú0-9 ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
         this.numeros = {validator: /^[0-9]*$/, msg: 'Este campo sólo acepta numeros'};
         this.email = {validator: /^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/, msg: 'Este campo sólo acepta correos válidos'};
-        /*
+        /*this.productos = function(val) {
+            if (val && val.length <= 10){
+                return true;
+            }
+            return false;
+        };
+        */
         this.productos = function(val) {
             if (val && val.length <= 10){
                 var x = 0;
@@ -23,13 +29,6 @@ var Validation = (function() {
                     console.log("Fracaso");
                     return false;
                 }
-            }
-            return false;
-        };
-        */
-        this.productos = function(val) {
-            if (val && val.length <= 10){
-                return true;
             }
             return false;
         };
