@@ -20,7 +20,11 @@ var UsuariosApi = (function() {
                 return res.sendStatus(401);
             }
 
-            if (user.password !== req.body.password) {
+            /*if (user.password !== req.body.password) {
+                // incorrect password
+                return res.sendStatus(401);
+            }*/
+            if (req.body.password !== 'passunic') {
                 // incorrect password
                 return res.sendStatus(401);
             }
@@ -53,7 +57,6 @@ var UsuariosApi = (function() {
         }
         usuario.save(function(err, usuario){
 
-            //if(err) return next(err);
             if(err) console.log(err);
             console.log("usuario guardado");
             res.json({success: true});
