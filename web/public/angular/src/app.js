@@ -13,6 +13,7 @@
         $router.when("/about", { templateUrl: "angular/views/about.html" })
         $router.when("/contact", { templateUrl: "angular/views/contact.html" })
         $router.when("/error", { templateUrl: "angular/views/error.html" })
+        $router.when("/carousel", { templateUrl: "angular/views/carousel.html" })
 //privado
         $router.when("/nuevo", 
                      { templateUrl: "angular/views/nuevo.html"})
