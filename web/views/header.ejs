@@ -1,4 +1,78 @@
 <div ng-hide="appCtrl.isPrivate()"  class="header clearfix">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand"><%=title%></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active" ng-class="appCtrl.isActive('/')?'active':''"><a href="#/">Inicio</a></li>
+                    <li ng-class="appCtrl.isActive('#/negocio/psychosolutions')?'active':''"><a ng-href="#/negocio/psychosolutions">Acerca de</a></li>
+                    <li role="presentation" ng-class="appCtrl.isActive('/contact')?'active':''"><a ng-href="#/contact">Contacto</a></li>
+                    <li ng-class="appCtrl.isActive('/todosPublico')?'active':''"><a ng-href="#/todosPublico">Lista de negocios</a></li>
+                    <!--li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li-->
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+</div>    
+    
+
+<div  ng-show="appCtrl.isPrivate()" class="header clearfix">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">PRIVATE</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active" ng-class="appCtrl.isActive('/todos')?'active':''"><a href="#/todos">Todos Privado</a></li>
+                    <!--li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Público <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-class="appCtrl.isActive('/')?'active':''"><a href="#/">Portada</a></li>
+                            <li ng-class="appCtrl.isActive('/todosPublico')?'active':''"><a ng-href="#/todosPublico">Todos público</a></li>
+                            <li ng-class="appCtrl.isActive('#/negocio/psychosolutions')?'active':''"><a ng-href="#/negocio/psychosolutions">Acerca de</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li ng-class="appCtrl.isActive('/contact')?'active':''"><a ng-href="#/contact">Contacto</a></li>
+                            <li ng-class="appCtrl.isActive('/signin')?'active':''"><a ng-href="#/signin">Signin</a></li>
+                            <li ng-class="appCtrl.isActive('/signup')?'active':''"><a ng-href="#/signup">Signup</a></li>
+                        </ul>
+                    </li>
+                    <li><a href ng-click="appCtrl.logout()">Logout</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+</div>
+
+<!--div ng-hide="appCtrl.isPrivate()"  class="header clearfix">
     <nav>
       <ul class="nav nav-pills pull-right">
         <li role="presentation" ng-class="appCtrl.isActive('/')?'active':''">
@@ -15,7 +89,7 @@
         </li>
       </ul>
     </nav>
-    <h3 class="text-muted"><%= title %></h3>
+    <h3 class="text-muted">                <----= title %></h3>
 </div>
 <div  ng-show="appCtrl.isPrivate()" class="header clearfix">
     <nav>
@@ -56,4 +130,4 @@
       </ul>
     </nav>
     <h3 class="text-muted">PRIVATE</h3>
-</div>
+</div-->
