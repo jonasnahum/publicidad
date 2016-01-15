@@ -5,9 +5,30 @@ var Validation = (function() {
         this.letrasEspaciosAcentosNumeros = {validator: /^[A-Za-záéíóú0-9 ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
         this.numeros = {validator: /^[0-9]*$/, msg: 'Este campo sólo acepta numeros'};
         this.email = {validator: /^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/, msg: 'Este campo sólo acepta correos válidos'};
-        this.productos = function(val) {
+        /*this.productos = function(val) {
             if (val && val.length <= 10){
                 return true;
+            }
+            return false;
+        };
+        */
+        this.productos = function(val) {
+            if (val && val.length <= 10){
+                var x = 0;
+                for(var i = 0; i < val.length; i ++) {
+                    if (val[i].titulo.length <= 80 && val[i].parrafo.length 
+<= 160){
+                        x ++;
+                    }
+                }
+                if(x === val.length){
+                    console.log("Exito");
+                    return true;
+                }
+                else {
+                    console.log("Fracaso");
+                    return false;
+                }
             }
             return false;
         };
