@@ -13,6 +13,10 @@ ol ol {
     margin: 0 0 0 2em; /*Add some left margin for inner list
 }
 */
+.rounded-list {
+    margin-top: 5%
+}
+
 .rounded-list a{
     position: relative;
     display: block;

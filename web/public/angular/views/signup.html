@@ -1,7 +1,6 @@
 <h1>Registrarse</h1>
   <form name="frmSignup"  ng-submit="frmSignup.$valid && ctrl.signup()" 
-    ng-controller="SignupController as ctrl"
-    novalidate >
+    ng-controller="SignupController as ctrl" novalidate>
         <div class="form-group">  
         Email:<input class="form-control" type="email" name="email" ng-model="ctrl.email" 
                       required maxlength="60" style="width:30%;" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/"/>

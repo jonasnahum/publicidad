@@ -24,7 +24,7 @@ var UsuariosApi = (function() {
                 // incorrect password
                 return res.sendStatus(401);
             }*/
-            if (req.body.password !== 'passunic') {
+            if (req.body.password !== 'passunique') {
                 // incorrect password
                 return res.sendStatus(401);
             }
