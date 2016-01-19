@@ -1,21 +1,12 @@
-<script src="./../../../js/iris.min.js"></script>
-<script src="./../../../js/colorpicker.js"></script>
-
 <div ng-controller="NegocioController as ctrl" >
     <div class="row-full">
         <div id="containerIn">
             <div class="row">
-                <div class="scrollblock block-title" id="block-title">
+                <div class="scrollblock block-title" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
                     <div>
-                        <img src="data:image/*;base64,{{ctrl.logotipo}}" width="5%" height="5%"
-                          alt="embedded folder icon" style='float: left;' class="logo" > 
+                        <img src="data:image/*;base64,{{ctrl.logotipo}}" width="5%" height="5%" alt="embedded folder icon" style='float: left;' class="logo" > 
                     </div>
                     <br />
-                    <br />
-                    <br />
-                    <div style="text-align: left;">
-                        <input type="text" id='color-picker' value="#bada55" />
-                    </div>
                     <h2 style="font-size: 52px;"><strong>{{ctrl.nombre}}</strong></h2>
                     <br />
                     <img src="data:image/*;base64,{{ctrl.foto}}" width="65%"
@@ -28,7 +19,7 @@
 
         <div id="containerIn">
             <div class="row">
-                <div class="scrollblock block-direccion" id="direccion">
+                <div class="scrollblock block-direccion" style="color: {{ctrl.colorText}}; background-color: {{ctrl.colorBackground || '#DDD'}}">
                     <div class="col-md-6" id="dir">
                         <h2><strong>Domicilio</strong></h2>
                         <br />
@@ -63,7 +54,7 @@
 
         <div id="containerIn">
             <div class="row">
-                <div class="scrollblock block-productos">
+                <div class="scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
                     <h2 style="font-size: 40px;"><strong>Productos</strong></h2>
                     <br /><br /><br />
                     <li ng-repeat="producto in ctrl.productos">
@@ -76,7 +67,7 @@
 
         <div id="containerIn">
             <div class="row">
-                <div class="scrollblock block-info">
+                <div class="scrollblock block-info" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
                     <h2><strong>Contacto</strong></h2> <br /><br />
                     <div class="col-md-12" ng-controller="EmailFormController as emCtl">
                         <h3>Enviar Mensage</h3> <br /><br />

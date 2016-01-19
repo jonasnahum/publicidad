@@ -20,31 +20,26 @@
     padding-right: 50px;
 }
 .block-title { 
-    background-color: #B77C15/*#23527C*/; 
     padding-bottom: 50px; 
     text-align: center; 
-    color: #DDD; 
     font-size: 20px; 
 }
 .block-direccion { 
-    background-color: #933304;/*#DDD;*/ 
     padding-top: 100px; 
     padding-bottom: 800px; 
     font-size: 20px; 
 }
 .block-productos { 
-    background-color: #947A10;/*#337AB7;*/ 
-    color: #DDD; 
+    background-color: #337AB7; 
 }
 .block-productos h2, .block-productos li { 
-    text-align: center; 
-    color: #DDD; 
+    text-align: center;
     font-size: 20px; 
-}
+}/*
 .block-info { 
-    background-color: #4C6C14/*#23527C*/; 
+    background-color: #23527C; 
     color: #DDD; 
-}
+}*/
 
 
 .direccion {

@@ -12,6 +12,12 @@
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
             <br />
+            <br />
+            <div style="text-align: left;">
+                <input type="color" ng-model="ctrl.colorBackground"/>Back {{ctrl.colorBackground}}
+                <input type="color" ng-model="ctrl.colorText"/> Text {{ctrl.colorText}}
+            </div>
+            <br />
             Logotipo:
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')"
                     accept="image/*" ngf-max-height="10000" ngf-max-width="10000" 

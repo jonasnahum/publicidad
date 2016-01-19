@@ -5,6 +5,8 @@
         
         var ctrl = this;
         ctrl.nombre = undefined;
+        ctrl.colorBackground = undefined;
+        ctrl.colorText = undefined;
         ctrl.logotipo = undefined;
         ctrl.foto = undefined;
         ctrl.textoIntro = undefined;
