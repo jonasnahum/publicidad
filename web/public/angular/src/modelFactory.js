@@ -9,6 +9,8 @@
             obj.nombre = data.nombre;
             obj.logotipo = data.logotipo;
             obj.foto = data.foto;
+            obj.colorBackground = data.colorBackground;
+            obj.colorText = data.colorText;
             obj.textoIntro = data.textoIntro;
             obj.lat = data.lat;
             obj.long = data.long;
@@ -52,7 +54,9 @@
             var model = {};
             model.nombre=ctrl.nombre,
             model.logotipo=ctrl.logotipo,
-            model.foto=ctrl.foto,            
+            model.foto=ctrl.foto,    
+            model.colorBackground=ctrl.colorBackground,
+            model.colorTex=ctrl.colorTex,        
             model.textoIntro=ctrl.textoIntro,
             model.lat= ctrl.lat,
             model.long= ctrl.long,
