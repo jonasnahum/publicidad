@@ -28,6 +28,8 @@
     padding-top: 100px; 
     padding-bottom: 800px; 
     font-size: 20px; 
+    background-color: white;
+    color: #444;
 }
 .block-productos { 
     background-color: #337AB7; 
