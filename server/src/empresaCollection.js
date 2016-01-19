@@ -8,7 +8,8 @@ var informacionSchema = require("./infoSchema.js");
 var empresaSchema = mongoose.Schema({
     nombre: validation.validateCampo(true,String,2,40,"validateNombre"),
     logotipo: String, 
-    foto: String, 
+    foto: String,
+    color: String, 
     textoIntro: validation.validateCampo(false,String,null,360), 
     lat: String, 
     long: String, 
