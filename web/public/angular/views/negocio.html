@@ -1,15 +1,21 @@
-<script type="text/javascript" src="./../../../js/getColor.js"></script>
+<script src="./../../../js/iris.min.js"></script>
+<script src="./../../../js/colorpicker.js"></script>
+
 <div ng-controller="NegocioController as ctrl" >
     <div class="row-full">
-        
         <div id="containerIn">
             <div class="row">
-                <div class="scrollblock block-title">
+                <div class="scrollblock block-title" id="block-title">
                     <div>
                         <img src="data:image/*;base64,{{ctrl.logotipo}}" width="5%" height="5%"
-                          alt="embedded folder icon" style='float: left;' class="logo" >
+                          alt="embedded folder icon" style='float: left;' class="logo" > 
                     </div>
                     <br />
+                    <br />
+                    <br />
+                    <div style="text-align: left;">
+                        <input type="text" id='color-picker' value="#bada55" />
+                    </div>
                     <h2 style="font-size: 52px;"><strong>{{ctrl.nombre}}</strong></h2>
                     <br />
                     <img src="data:image/*;base64,{{ctrl.foto}}" width="65%"
@@ -127,139 +133,3 @@
         
     </div>
 </div>
-
-
-
-
-
-
-
-
-<!--<div ng-controller="NegocioController as ctrl" >
-    <div class="row-full">
-        
-        <div id="containerIn">
-            <div class="row">
-                <div class="scrollblock block-title">
-                    <div>
-                        <img src="data:image/*;base64,{{ctrl.logotipo}}" width="5%" height="5%"
-                          alt="embedded folder icon" style='float: left;' class="logo" >
-                    </div>
-                    <br />
-                    <h2 style="font-size: 52px;"><strong>{{ctrl.nombre}}</strong></h2>
-                    <br />
-                    <img src="data:image/*;base64,{{ctrl.foto}}" width="65%"
-                      height="65%" alt="embedded folder icon" class="foto">
-                    <br /><br />
-                    <p>{{ctrl.textoIntro}}</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="containerIn">
-            <div class="row">
-                <div class="scrollblock block-direccion" id="direccion">
-                    <div class="col-md-6" id="dir">
-                        <h2><strong>Domicilio</strong></h2>
-                        <br />
-                        <p>
-                            <strong>Calle:</strong> {{ctrl.calle}} {{ctrl.numero}} (Num. Interior: {{ctrl.numeroInt || "No hay"}}).
-                            <br />
-                            <strong>Colonia:</strong> {{ctrl.colonia}}
-                            <br />
-                            <strong>C.P.</strong> {{ctrl.cp}}
-                            <br />
-                            <strong>{{ctrl.municipio}}, {{ctrl.estado}}</strong>
-                        </p>
-                        <br />
-                        <br />
-                        <ul class="list-unstyled" style="text-align: left">
-                            <li><strong>Rubro:</strong> {{ctrl.rubro}}</li>
-                            <li><strong>Descripcion:</strong> {{ctrl.descripcion}}</li>
-                            <li><strong>Horario:</strong> {{ctrl.horario}}</li>
-                            <li><strong>Encargado:</strong> {{ctrl.encargado}}</li>
-                            <li><strong>Telefono:</strong> {{ctrl.tel}}</li>
-                            <li><strong>Facebook:</strong> {{ctrl.facebook}}</li>
-                            <li><strong>Email:</strong> {{ctrl.email}}</li>
-                        </ul>
-                        <h3><strong>NOTA:</strong></h3> {{ctrl.nota || "Por el momento no hay notas"}}
-                    </div>
-                    <div class="col-md-6">
-                        <div id="googleMap" style="width:600px;height:480px;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="containerIn">
-            <div class="row">
-                <div class="scrollblock block-productos">
-                    <h2 style="font-size: 40px;"><strong>Productos</strong></h2>
-                    <br /><br /><br />
-                    <li ng-repeat="producto in ctrl.productos">
-                        <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
-                        <br /><br />
-                    </li>
-                </div>
-            </div>   
-        </div>
-
-        <div id="containerIn">
-            <div class="row">
-                <div class="scrollblock block-info">
-                    <h2><strong>Contacto</strong></h2> <br /><br />
-                    <div class="col-md-12" ng-controller="EmailFormController as emCtl">
-                        <h3>Enviar Mensage</h3> <br /><br />
-                        <form name="mailForm" id="myForm" ng-submit="mailForm.$valid && emCtl.send(ctrl.email)" novalidate>
-                            <fieldset ng-attr-disabled="{{emCtl.waiting || undefined}}">
-                                <div class="form-group">
-                                    <label>Mi Nombre</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Nombre"
-                                           ng-model="emCtl.name" required />    
-
-                                    <div class="errorMessages" ng-messages="mailForm.name.$error" 
-                                         ng-if="(!mailForm.name.$pristine || mailForm.$submitted)" >
-                                        <div ng-messages-include="/error/messages.html"></div>
-                                    </div>                                    
-                                </div>
-                                <div class="form-group">
-                                    <label>Mi Correo</label>
-                                    <input type="email" class="form-control" name="email" placeholder="Email"
-                                           ng-model="emCtl.email" required />
-                                    <div class="errorMessages" ng-messages="mailForm.email.$error" 
-                                         ng-if="(!mailForm.email.$pristine || mailForm.$submitted)">
-                                        <div ng-messages-include="/error/messages.html"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mi Teléfono</label>
-                                    <input type="text" class="form-control" name="phone" placeholder="Teléfono"
-                                           ng-model="emCtl.phone" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/"/>
-                                    <div class="errorMessages" ng-messages="mailForm.phone.$error" 
-                                         ng-if="!mailForm.phone.$pristine || mailForm.$submitted">
-                                        <div ng-messages-include="/error/messages.html"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mi Mensage</label>
-                                    <textarea class="form-control" name="message" placeholder="Mensage"
-                                              ng-model="emCtl.message" required ></textarea>
-                                    <div class="errorMessages" ng-messages="mailForm.message.$error" 
-                                         ng-if="(!mailForm.message.$pristine || mailForm.$submitted)" >
-                                        <div ng-messages-include="/error/messages.html"></div>
-                                    </div>
-                                </div>
-
-                                <div class="text-right">
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
-                                </div>
-                            </fieldset>
-                        </form>
-                        <a href="#/todosPublico">Regresar</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div-->
