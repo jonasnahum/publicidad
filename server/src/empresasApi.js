@@ -1,4 +1,3 @@
-//borrame.
 var EmpresasApi = (function() {
     var EmpresasApi = function(models, empresaFactory, copy) {
         this.models = models;
@@ -52,8 +51,6 @@ var EmpresasApi = (function() {
     
     EmpresasApi.prototype.update = function(req, res, next) {
         var that = this;
-        console.log("llego 1");
-        console.log(req.params.id);
         that.models.empresa.findById(req.params.id, function (err, empresa) {
             if(err) return next(err);
             empresa = that.copy.copyBodyToEmpresa(req.body, empresa);

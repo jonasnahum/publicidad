@@ -7,6 +7,7 @@ var Copy = (function() {
         empresa.nombre = body.nombre;
         empresa.logotipo = body.logotipo;
         empresa.foto = body.foto;
+        empresa.color = body.color;
         empresa.textoIntro = body.textoIntro;
         empresa.lat = body.lat;
         empresa.long = body.long;
