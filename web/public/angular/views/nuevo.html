@@ -14,8 +14,9 @@
             <br />
             <br />
             <div style="text-align: left;">
-                <input type="color" ng-model="ctrl.colorBackground"/>Back {{ctrl.colorBackground}}
-                <input type="color" ng-model="ctrl.colorText"/> Text {{ctrl.colorText}}
+                Color de fondo: <input type="color" ng-model="ctrl.colorBackground"/>{{ctrl.colorBackground || " No hay color seleccionado"}}
+                <br />
+                Color de texto: <input type="color" ng-model="ctrl.colorText"/>{{ctrl.colorText || " No hay color seleccionado"}}
             </div>
             <br />
             Logotipo:

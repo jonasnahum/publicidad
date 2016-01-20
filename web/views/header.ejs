@@ -1,63 +1,3 @@
-<!--div ng-hide="appCtrl.isPrivate()"  class="header clearfix">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand"><%=title%></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active" ng-class="appCtrl.isActive('/')?'active':''"><a href="#/">Inicio</a></li>
-            <li ng-class="appCtrl.isActive('#/negocio/psychosolutions')?'active':''"><a ng-href="#/negocio/psychosolutions">Acerca de</a></li>
-            <li role="presentation" ng-class="appCtrl.isActive('/contact')?'active':''"><a ng-href="#/contact">Contacto</a></li>
-            <li ng-class="appCtrl.isActive('/todosPublico')?'active':''"><a ng-href="#/todosPublico">Lista de negocios</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-</div>
-
-<div  ng-show="appCtrl.isPrivate()" class="header clearfix">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand">PRIVATE</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active" ng-class="appCtrl.isActive('/todos')?'active':''"><a href="#/todos">Todos Privado</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Público <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li ng-class="appCtrl.isActive('/')?'active':''"><a href="#/">Portada</a></li>
-                            <li ng-class="appCtrl.isActive('/todosPublico')?'active':''"><a ng-href="#/todosPublico">Todos público</a></li>
-                            <li ng-class="appCtrl.isActive('#/negocio/psychosolutions')?'active':''"><a ng-href="#/negocio/psychosolutions">Acerca de</a></li>
-                            <li ng-class="appCtrl.isActive('/contact')?'active':''"><a ng-href="#/contact">Contacto</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">PRIVATE</li>
-                            <li ng-class="appCtrl.isActive('/signin')?'active':''"><a ng-href="#/signin">Signin</a></li>
-                            <li ng-class="appCtrl.isActive('/signup')?'active':''"><a ng-href="#/signup">Signup</a></li>
-                        </ul>
-                    </li>
-                    <li><a href ng-click="appCtrl.logout()">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div-->
-
-
 <div ng-hide="appCtrl.isPrivate()"  class="header clearfix">
     <nav>
       <ul class="nav nav-pills pull-right">
@@ -77,6 +17,7 @@
     </nav>
     <h3 class="text-muted"><%= title %></h3>
 </div>
+
 <div  ng-show="appCtrl.isPrivate()" class="header clearfix">
     <nav>
       <ul class="nav nav-pills pull-right">
