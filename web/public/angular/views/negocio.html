@@ -24,7 +24,7 @@
                         <h2><strong>Domicilio</strong></h2>
                         <br />
                         <p>
-                            <strong>Calle:</strong> {{ctrl.calle}} {{ctrl.numero}} (Num. Interior: {{ctrl.numeroInt || "No hay"}}).
+                            <strong>Calle:</strong> {{ctrl.calle}} {{ctrl.numero}} (Num. Interior: {{ctrl.numeroInt || "----"}}).
                             <br />
                             <strong>Colonia:</strong> {{ctrl.colonia}}
                             <br />
@@ -36,7 +36,7 @@
                         <br />
                         <ul class="list-unstyled" style="text-align: left">
                             <li><strong>Rubro:</strong> {{ctrl.rubro}}</li>
-                            <li><strong>Descripcion:</strong> {{ctrl.descripcion}}</li>
+                            <li><strong>Descripcion:</strong> <p>{{ctrl.descripcion}}</p></li>
                             <li><strong>Horario:</strong> {{ctrl.horario}}</li>
                             <li><strong>Encargado:</strong> {{ctrl.encargado}}</li>
                             <li><strong>Telefono:</strong> {{ctrl.tel}}</li>
@@ -55,7 +55,7 @@
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
-                    <h2 style="font-size: 40px;"><strong>Productos</strong></h2>
+                    <h2 style="font-size: 40px;"><strong>Productos ó servicios</strong></h2>
                     <br /><br /><br />
                     <li ng-repeat="producto in ctrl.productos">
                         <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
