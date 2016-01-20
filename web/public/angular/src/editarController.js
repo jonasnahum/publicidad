@@ -9,6 +9,8 @@
         ctrl.nombre = undefined;
         ctrl.logotipo = undefined;
         ctrl.foto = undefined;
+        ctrl.colorBackground = undefined;
+        ctrl.colorText = undefined;
         ctrl.textoIntro = undefined;
         ctrl.numero = undefined;
         ctrl.numeroInt = undefined;

@@ -56,7 +56,7 @@
             model.logotipo=ctrl.logotipo,
             model.foto=ctrl.foto,    
             model.colorBackground=ctrl.colorBackground,
-            model.colorTex=ctrl.colorTex,        
+            model.colorText=ctrl.colorText,        
             model.textoIntro=ctrl.textoIntro,
             model.lat= ctrl.lat,
             model.long= ctrl.long,
