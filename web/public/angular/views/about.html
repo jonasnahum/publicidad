@@ -1,9 +1,136 @@
-<div class="jumbotron">
-<h1>Acerca de</h1>
-<p class="lead">
-    Somos una empresa que brinda servicio de páginas
-    web para negocios que quieren estar en internet a
-    bajo costo.
-</p>
-<p><a class="btn btn-lg btn-success" href="#/" role="button">Inicio</a></p>
+<div ng-controller="AboutController as ctrl">
+    <div class="row-full">
+        <div id="containerIn">
+            <div class="row">
+                <div class="scrollblock block-title" style="color: #DDD; background-color: #23527C">
+                    <div >
+                        <img src="./../../../images/logoMedioFondo.png" alt="embedded folder icon" style="float: left;" class="logo" height="20%" width="20%"> 
+                        <h2 style="font-size: 52px;"><strong style="color: #DDD">Páginas Web Uruapan</strong></h2>
+                    </div>
+                    <br>
+                    <br>
+                    <img src="./../../../images/IMG_20151216_084934729.jpg" alt="embedded folder icon" class="foto" height="65%" width="65%">
+                    <br><br>
+                    <p>Bienvenidos!<br />
+Si quieres publicar tu página en Internet, comunícate con nosotros, es rápido, fácil y sencillo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="containerIn">
+            <div class="row">
+                <div class="scrollblock block-direccion">
+                    <div class="col-md-6" id="dir">
+                        <h2><strong>Domicilio</strong></h2>
+                        <br>
+                        <p>
+                            <strong>Calle:</strong> Justo Sierra 60.
+                            <br>
+                            <strong>Colonia:</strong> Jorhentpiri
+                            <br>
+                            <strong>C.P.</strong> 60074
+                            <br>
+                            <strong>Uruapan, Michoacán</strong>
+                        </p>
+                        <br>
+                        <br>
+                        <ul class="list-unstyled" style="text-align: left">
+                            <li><strong>Rubro:</strong> Informática</li>
+                            <li><strong>Descripcion:</strong> <p>Se desarrollan páginas web para cualquier tipo de negocio</p></li>
+                            <li><strong>Horario:</strong> 7:00 a.m. a 4:00 p.m.</li>
+                            <li><strong>Encargado:</strong> Jonas Jiménez</li>
+                            <li><strong>Telefono:</strong> 4521652247</li>
+                            <li><strong>Facebook:</strong>--- </li>
+                            <li><strong>Email:</strong> jonasnahum@gmail.com</li>
+                        </ul>
+                        <h3><strong>NOTA:</strong></h3> ---
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div id="googleMap" style="width: 600px; height: 480px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="containerIn">
+            <div class="row">
+                <div class="scrollblock block-productos" style="color: #DDD; background-color: ">
+                    <h2 style="font-size: 40px;"><strong>Productos ó servicios</strong></h2>
+                    <br><br><br>
+                    <li>
+                        <strong>Páginas Web Personalizadas para su negocio</strong>
+ Con el fin de obtener otra manera de hacer publicidad. Además, sus 
+clientes pueden contactarle mas fácil, rápido y brindarles un mejor 
+servicio.
+                        <br><br>
+                    </li>
+                    <li>
+                        <strong>Programas para su negocio</strong>
+ Hacemos programas para su negocio que le permitan trabajar de manera 
+más eficiente y llevar un mejor control sobre sus productos ó servicios.
+                        <br><br>
+                    </li>
+                </div>
+            </div>   
+        </div>
+        
+        <div id="containerIn">
+            <div class="row">
+                <div class="scrollblock block-info" style="color: #DDD; background-color:#23527C">
+                    <h2><strong>Contacto</strong></h2> <br /><br />
+                    <div class="col-md-12" ng-controller="EmailFormController as emCtl">
+                        <h3>Enviar Mensage</h3> <br /><br />
+                        <form name="mailForm" id="myForm" ng-submit="mailForm.$valid && emCtl.send('jonasnahum@gmail.com')" novalidate>
+                            <fieldset ng-attr-disabled="{{emCtl.waiting || undefined}}">
+                                <div class="form-group">
+                                    <label>Mi Nombre</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Nombre"
+                                           ng-model="emCtl.name" required />    
+
+                                    <div class="errorMessages" ng-messages="mailForm.name.$error" 
+                                         ng-if="(!mailForm.name.$pristine || mailForm.$submitted)" >
+                                        <div ng-messages-include="/error/messages.html"></div>
+                                    </div>                                    
+                                </div>
+                                <div class="form-group">
+                                    <label>Mi Correo</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Email"
+                                           ng-model="emCtl.email" required />
+                                    <div class="errorMessages" ng-messages="mailForm.email.$error" 
+                                         ng-if="(!mailForm.email.$pristine || mailForm.$submitted)">
+                                        <div ng-messages-include="/error/messages.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mi Teléfono</label>
+                                    <input type="text" class="form-control" name="phone" placeholder="Teléfono"
+                                           ng-model="emCtl.phone" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/"/>
+                                    <div class="errorMessages" ng-messages="mailForm.phone.$error" 
+                                         ng-if="!mailForm.phone.$pristine || mailForm.$submitted">
+                                        <div ng-messages-include="/error/messages.html"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mi Mensage</label>
+                                    <textarea class="form-control" name="message" placeholder="Mensage"
+                                              ng-model="emCtl.message" required ></textarea>
+                                    <div class="errorMessages" ng-messages="mailForm.message.$error" 
+                                         ng-if="(!mailForm.message.$pristine || mailForm.$submitted)" >
+                                        <div ng-messages-include="/error/messages.html"></div>
+                                    </div>
+                                </div>
+
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <a href="#/todosPublico">Regresar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
