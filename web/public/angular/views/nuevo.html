@@ -19,7 +19,7 @@
                 Color de texto: <input type="color" ng-model="ctrl.colorText"/>{{ctrl.colorText || " No hay color seleccionado"}}
             </div>
             <br />
-            Logotipo:
+            Logotipo(fondo transparente):
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')"
                     accept="image/*" ngf-max-height="10000" ngf-max-width="10000" 
                     ngf-max-size="10MB" ngf-fix-orientation="false">Select Files</button>
