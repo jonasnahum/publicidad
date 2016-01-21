@@ -36,7 +36,7 @@
             <br>
             <div>
                 <img src="data:image/*;base64,{{ctrl.logotipo}}" width="50%" height="50%"
-                     alt="No file selected">
+                     alt="No file selected" />
             </div>
             <br /><br />
             Foto:
@@ -79,15 +79,13 @@
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
                 <br />
-                Numero interior: <input type="text" ng-model="ctrl.numeroInt" ng-maxlength="5"
-                                        name="numeroInt"/>
+                Numero interior: <input type="text" ng-model="ctrl.numeroInt" ng-maxlength="5" name="numeroInt"/>
                 <div class="errorMessages" ng-messages="frmNuevo.numeroInt.$error" 
                      ng-if="!frmNuevo.numeroInt.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
                 <br />
-                Calle: <input type="text" ng-model="ctrl.calle" name="calle" ng-maxlength="40"
-                              required/>
+                Calle: <input type="text" ng-model="ctrl.calle" name="calle" ng-maxlength="40" required/>
                 <div class="errorMessages" ng-messages="frmNuevo.calle.$error" 
                      ng-if="!frmNuevo.calle.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
@@ -100,8 +98,7 @@
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
                 <br />
-                C.P. : <input type="text" ng-model="ctrl.cp" name="cp" ng-pattern="/^[0-9]+$/"
-                              ng-minlength="5" ng-maxlength="5" required/>
+                C.P. : <input type="text" ng-model="ctrl.cp" name="cp" ng-pattern="/^[0-9]+$/" ng-minlength="5" ng-maxlength="5" required/>
                 <div class="errorMessages" ng-messages="frmNuevo.cp.$error" 
                      ng-if="!frmNuevo.cp.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
@@ -285,6 +282,5 @@
         </fieldset>
         
         <button type="submit">Send</button>
-        </fieldset>
     </form>
 </div>
