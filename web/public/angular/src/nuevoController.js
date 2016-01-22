@@ -34,7 +34,14 @@
             ctrl.errFiles = { [propertyName] : errFiles && errFiles[0] };
             up.upload(files, errFiles, propertyName, ctrl);
         };
-            
+        
+        ctrl.quitarLogo = function() {
+            ctrl.logotipo = undefined;
+        };
+        ctrl.quitarFoto = function() {
+            ctrl.foto = undefined;
+        };
+        
         var prod = productosFactory()
         ctrl.agregarProducto = function() {
             ctrl.producto = prod.agregarProducto(ctrl.productos, ctrl.producto);

@@ -37,6 +37,7 @@
                 <img src="data:image/*;base64,{{ctrl.logotipo}}" width="50%"
                      height="50%" alt="No file selected">
             </div>
+            <a href ng-click="ctrl.quitarLogo()" role="button">quitar logo</a>
             <br /><br />
             Foto:
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'foto')"
@@ -56,6 +57,7 @@
                 <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
                      height="50%" alt="embedded folder icon">
             </div>
+            <a href ng-click="ctrl.quitarFoto()" role="button">quitar foto</a>
             <br />   
             Texto introductorio: 
             <textarea rows="4" cols="50" ng-model="ctrl.textoIntro"
