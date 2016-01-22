@@ -1,9 +1,15 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$location', 'mapFactory'];
+    var depArr = ['$location', 'mapFactory', '$anchorScroll'];
     
-    depArr.push(function($location, mapFactory) {
-        var ctrl = this; 
+    depArr.push(function($location, mapFactory, $anchorScroll) {
+        var ctrl = this;
+        
+        ctrl.scrollTo = function(id) {
+           $location.hash(id);
+           $anchorScroll();
+        };
+        
         ctrl.latitud = 19.412288699925995;
         ctrl.longitud = -102.0718502998352;
         
