@@ -41,8 +41,8 @@
                             <li><strong>Horario:</strong> {{ctrl.horario}}</li>
                             <li><strong>Encargado:</strong> {{ctrl.encargado}}</li>
                             <li><strong>Telefono:</strong> {{ctrl.tel}}</li>
-                            <li><strong>Facebook:</strong> {{ctrl.facebook}}</li>
-                            <li><strong>Email:</strong> {{ctrl.email}}</li>
+                            <li><strong>Facebook: </strong><a ng-href="https://www.facebook.com/{{ctrl.face}}/">{{ctrl.face}}</a></li>
+                            <li><strong>Email:</strong> <a ng-click="ctrl.scrollTo('foo')">{{ctrl.email}}</a> </li>
                         </ul>
                         <h3><strong>NOTA:</strong></h3> {{ctrl.nota || "Por el momento no hay notas"}}
                     </div>
@@ -69,7 +69,7 @@
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-info" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
-                    <h2><strong>Contacto</strong></h2> <br /><br />
+                    <h2 id="foo"><strong>Contacto</strong></h2> <br /><br />
                     <div class="col-md-12" ng-controller="EmailFormController as emCtl">
                         <h3>Enviar Mensage</h3> <br /><br />
                         <form name="mailForm" id="myForm" ng-submit="mailForm.$valid && emCtl.send(ctrl.email)" novalidate>

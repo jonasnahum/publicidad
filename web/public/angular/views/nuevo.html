@@ -172,7 +172,7 @@
             <div ng-messages-include="/error/messages.html"></div>
         </div>
         <br />
-        Facebook: <input type="text" ng-model="ctrl.face" ng-maxlength="20" name="face"/>
+        Facebook ("https://www.facebook.com/"): <input type="text" ng-model="ctrl.face" ng-maxlength="20" name="face"/>
         <div class="errorMessages" ng-messages="frmNuevo.face.$error" 
              ng-if="!frmNuevo.face.$pristine || frmNuevo.$submitted" role="alert">
             <div ng-messages-include="/error/messages.html"></div>
