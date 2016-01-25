@@ -2,7 +2,7 @@
     var app = angular.module('app');
     app.controller('TodosController', ['$http', '$location', 'empresasProxy', 'tokenStorage', function($http, $location, empresasProxy, tokenStorage) {
         var ctrl = this;
-
+        ctrl.searchText = "";
         var url = 'http://localhost:3000/empresas/api/';
         ctrl.empresas = [];
         ctrl.emailUsuario = "";
