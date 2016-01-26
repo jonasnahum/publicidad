@@ -37,6 +37,7 @@
                 <img src="data:image/*;base64,{{ctrl.logotipo}}" width="50%"
                      height="50%" alt="No file selected">
             </div>
+            <a href ng-click="ctrl.quitarLogo()" role="button">quitar logo</a>
             <br /><br />
             Foto:
             <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'foto')"
@@ -56,6 +57,7 @@
                 <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
                      height="50%" alt="embedded folder icon">
             </div>
+            <a href ng-click="ctrl.quitarFoto()" role="button">quitar foto</a>
             <br />   
             Texto introductorio: 
             <textarea rows="4" cols="50" ng-model="ctrl.textoIntro"
@@ -148,7 +150,7 @@
             </div>
         </fieldset>
         <br /><br />
-        Descripcion: <textarea rows="4" cols="50" ng-model="ctrl.descripcion"
+        Descripcion(Aparece junto al unique name en la vista de todosPublico): <textarea rows="4" cols="50" ng-model="ctrl.descripcion"
                                name="descripcion" ng-maxlength="180"></textarea>
         <div class="errorMessages" ng-messages="frmEditar.descripcion.$error" 
              ng-if="!frmEditar.descripcion.$pristine || frmEditar.$submitted" role="alert">
@@ -178,7 +180,7 @@
             <div ng-messages-include="/error/messages.html"></div>
         </div>
         <br />
-        Facebook: <input type="text" ng-model="ctrl.face" ng-maxlength="20"
+        Facebook ("https://www.facebook.com/"): <input type="text" ng-model="ctrl.face" ng-maxlength="20"
                          name="face"/>
         <div class="errorMessages" ng-messages="frmEditar.face.$error" 
              ng-if="!frmEditar.face.$pristine || frmEditar.$submitted" role="alert">

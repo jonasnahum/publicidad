@@ -42,8 +42,8 @@ Si quieres publicar tu página en Internet, comunícate con nosotros, es rápido
                             <li><strong>Horario:</strong> 7:00 a.m. a 4:00 p.m.</li>
                             <li><strong>Encargado:</strong> Jonas Jiménez</li>
                             <li><strong>Telefono:</strong> 4521652247</li>
-                            <li><strong>Facebook:</strong>--- </li>
-                            <li><strong>Email:</strong> jonasnahum@gmail.com</li>
+                            <li><strong>Facebook: </strong><a href="https://www.facebook.com/paginasweburuapan/">Páginasweburuapan</a></li>
+                            <li><strong>Email:</strong><a ng-click="ctrl.scrollTo('foo')">jonasnahum@gmail.com</a> </li>
                         </ul>
                         <h3><strong>NOTA:</strong></h3> ---
                     </div>
@@ -80,7 +80,7 @@ más eficiente y llevar un mejor control sobre sus productos ó servicios.
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-info" style="color: #DDD; background-color:#23527C">
-                    <h2><strong>Contacto</strong></h2> <br /><br />
+                    <h2 id="foo"><strong>Contacto</strong></h2> <br /><br />
                     <div class="col-md-12" ng-controller="EmailFormController as emCtl">
                         <h3>Enviar Mensage</h3> <br /><br />
                         <form name="mailForm" id="myForm" ng-submit="mailForm.$valid && emCtl.send('jonasnahum@gmail.com')" novalidate>

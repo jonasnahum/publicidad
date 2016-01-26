@@ -1,7 +1,12 @@
 <h5 style=" text-align:right; color: black;">Si quieres que tu negocio aparezca en Internet <a href="#/about">acércate con nosotros</a>, la manera más efectiva de darte a conocer.</h5>
 
-<ol ng-controller="TodosPublicoController as ctrl" class="rounded-list">
-    <li ng-repeat="empresa in ctrl.empresas">  
-        <a ng-href="#/negocio/{{empresa.informacion.uniquename}}">{{ empresa.nombre }}</a>
-    </li>
-</ol>
+<div ng-controller="TodosPublicoController as ctrl">
+    <div ng-show="ctrl.empresas.length > 0">
+         <label>Buscar: <input ng-model="ctrl.searchText"></label>{{ctrl.searchText}}
+    </div>
+    <ul>
+        <li dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 6">
+            <a ng-href="#/negocio/{{empresa.informacion.uniquename}}">{{ empresa.nombre }}:   {{ empresa.descripcion }} </a>
+        </li>
+    </ul>
+<dir-pagination-controls></dir-pagination-controls>

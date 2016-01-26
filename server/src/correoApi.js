@@ -19,7 +19,7 @@ var CorreoApi = (function() {
         var mailOptions = {
             from: req.body.email,
             to: req.body.to,
-            subject: "Enviado a través de página web de publicidad.",
+            subject: "Páginas Web Uruapan",
             text: req.body.message,
             html: html
         };

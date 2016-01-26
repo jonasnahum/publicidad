@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('app', ['ngRoute', 'ngFileUpload', 'ngMessages']);
+    var app = angular.module('app', ['ngRoute', 'ngFileUpload', 'ngMessages', 'angularUtils.directives.dirPagination']);
     
     app.config(["$routeProvider", "$httpProvider", function ($router, $httpProvider) {
         

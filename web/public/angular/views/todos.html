@@ -1,12 +1,15 @@
 <div ng-controller="TodosController as ctrl">
     <h2 class="pull-right">{{ctrl.emailUsuario}}</h2>
-    </br>
-    </br>
-    </br>
-    </br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <div ng-show="ctrl.empresas.length > 0">
+         <label>Buscar: <input ng-model="ctrl.searchText"></label>
+    </div>
     <ul>
-
-        <li ng-repeat="empresa in ctrl.empresas">
+        <li dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 200">
             {{ empresa.nombre }} 
             <a ng-href="#/ver/{{empresa._id}}">Ver</a>
             <a ng-href="#/editar/{{empresa._id}}">Editar</a>
@@ -19,3 +22,5 @@
 </a>
     <!--a ng-href="#/nuevo">Nuevo</a-->
 </div>
+<dir-pagination-controls></dir-pagination-controls>
+

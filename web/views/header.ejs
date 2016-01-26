@@ -7,14 +7,14 @@
             <li role="presentation" ng-class="appCtrl.isActive('/')?'active':''">
                 <a href="#/">Inicio</a>
             </li>
-            <li role="presentation" ng-class="appCtrl.isActive('#/about')?'active':''">
+            <li role="presentation" ng-class="appCtrl.isActive('/todosPublico')?'active':''">
+                <a ng-href="#/todosPublico">Lista de negocios</a>
+            </li>
+            <li role="presentation" ng-class="appCtrl.isActive('/about')?'active':''">
                 <a ng-href="#/about">Acerca de</a>
             </li>
             <li role="presentation" ng-class="appCtrl.isActive('/contact')?'active':''">
                 <a ng-href="#/contact">Contacto</a>
-            </li>
-            <li role="presentation" ng-class="appCtrl.isActive('/todosPublico')?'active':''">
-                <a ng-href="#/todosPublico">Lista de negocios</a>
             </li>
         </ul>
     </nav>

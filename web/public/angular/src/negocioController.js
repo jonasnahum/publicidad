@@ -1,9 +1,13 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$routeParams', '$location', 'mapFactory', 'modelFactory', 'empresasProxy'];
+    var depArr = ['$routeParams', '$location', 'mapFactory', 'modelFactory', 'empresasProxy', '$anchorScroll'];
     
-    depArr.push(function($route, $location, mapFactory, modelFactory, empresasProxy) {
-        var ctrl = this; 
+    depArr.push(function($route, $location, mapFactory, modelFactory, empresasProxy,  $anchorScroll) {
+        var ctrl = this;
+        ctrl.scrollTo = function(id) {
+           $location.hash(id);
+           $anchorScroll();
+        };
         ctrl.negocio= $route.negocio;
         var modelInstance = modelFactory();
         

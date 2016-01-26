@@ -65,6 +65,13 @@
             });
         };
         getOne(ctrl.empresaId);
+        
+        ctrl.quitarLogo = function() {
+            ctrl.logotipo = undefined;
+        };
+        ctrl.quitarFoto = function() {
+            ctrl.foto = undefined;
+        };
     
         ctrl.borrarMarker = function () {
             ctrl.mapa.borrarMarker();
