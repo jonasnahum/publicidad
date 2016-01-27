@@ -1,14 +1,22 @@
 <br />
 <div class="row">
+    
     <div class="col-sm-8 blog-main">
         <div ng-controller="TodosPublicoController as ctrl">
             <div ng-show="ctrl.empresas.length > 0">
                  <label>Buscar: <input ng-model="ctrl.searchText"></label>{{ctrl.searchText}}
             </div>
-            <ul>
-                <li dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 20">
-                    <a ng-href="#/negocio/{{empresa.informacion.uniquename}}">{{ empresa.nombre }}:   {{ empresa.descripcion }} </a>
-                </li>
+            <ul dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 20">
+                <hr class="featurette-divider">
+                <div class="row featurette">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading" ng-href="#/negocio/{{empresa.informacion.uniquename}}">{{ empresa.nombre }}.</h2>
+                        <p class="text-muted">{{ empresa.descripcion }}</p>
+                    </div>
+                    <div class="col-md-5">
+                        <img class="featurette-image img-responsive center-block"  alt="Logotipo" src="data:image/*;base64,{{empresa.logotipo}}">
+                    </div>
+                </div>        
             </ul>
         </div>
     </div>
@@ -18,6 +26,7 @@
             <p>Si quieres que tu negocio aparezca en Internet <a href="#/about">acércate con nosotros</a>, la manera más efectiva de darte a conocer.</p>
         </div>
     </div>
+    
 </div>
 
 <dir-pagination-controls></dir-pagination-controls>
