@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
-    arrDep = ['$location', 'mapFactory', 'productosFactory', 'uploadFilesFactory', 'empresasProxy']; 
-    arrDep.push(function($location, mapFactory, productosFactory, uploadFilesFactory, empresasProxy) {
+    arrDep = ['$location', 'mapFactory', 'productosFactory', 'empresasProxy']; 
+    arrDep.push(function($location, mapFactory, productosFactory, empresasProxy) {
         
         var ctrl = this;
         ctrl.nombre = undefined;
