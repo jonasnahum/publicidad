@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$routeParams', '$location', 'mapFactory', 'productosFactory', 'uploadFilesFactory', 'modelFactory', 'empresasProxy'];  
-    depArr.push(function($route, $location, mapFactory, productosFactory, uploadFilesFactory, modelFactory, empresasProxy) {
+    var depArr = ['$routeParams', '$location', 'mapFactory', 'productosFactory', 'modelFactory', 'empresasProxy'];  
+    depArr.push(function($route, $location, mapFactory, productosFactory, modelFactory, empresasProxy) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -42,13 +42,6 @@
         var prod = productosFactory();
         var modelInstance = modelFactory();
         
-       /* //UPLOAD IMAGES Function
-        ctrl.uploadFiles = function (files, errFiles, propertyName) {
-            var up = uploadFilesFactory();
-            ctrl.files = { [propertyName] : files };
-            ctrl.errFiles = { [propertyName] : errFiles && errFiles[0] };
-            up.upload(files, errFiles, propertyName, ctrl);
-        }; */     
 
         var getOne = function(id) {
             empresasProxy.getOne(id, function(data, status, headers, config){

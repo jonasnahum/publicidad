@@ -12,7 +12,6 @@ var db = container.get('dbConnection');
 db.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/paginas');
 
 var routes = require('./routes/index');
-var imagenesApi = container.get("imagenesController");
 var empresasApi = container.get("empresasController");
 var usuariosApi = container.get("usuariosController");
 var correoApi = container.get("correoController")
@@ -30,17 +29,14 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cors(corsOptions));
 app.use(logger('dev'));
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({limit: '50mb'}));
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // default options, immediately start reading from the request stream and parsing 
 app.use(busboy({inmediate: true}));
 
 app.use('/', routes);
-app.use('/imagenes/api', imagenesApi.router);
 app.use('/empresas/api', empresasApi.router);
 app.use('/usuarios/api', usuariosApi.router);
 app.use('/correo', correoApi.router);
