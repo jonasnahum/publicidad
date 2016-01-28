@@ -26,7 +26,8 @@
         ctrl.borrarMarker = function () {
             mapa.borrarMarker();
         };
-            
+        
+        /*
         //Upload images function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
             var up = uploadFilesFactory();
@@ -34,6 +35,7 @@
             ctrl.errFiles = { [propertyName] : errFiles && errFiles[0] };
             up.upload(files, errFiles, propertyName, ctrl);
         };
+        */
         
         ctrl.quitarLogo = function() {
             ctrl.logotipo = undefined;

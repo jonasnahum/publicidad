@@ -19,42 +19,17 @@
             </div>
             <br />
             Logotipo:
-            <br />
-            <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'logotipo')" 
-                    accept="image/*" ngf-max-height="10000" ngf-max-width="10000" 
-                    ngf-max-size="10MB" ngf-fix-orientation="false">Select Files</button>
-            <div style="font:smaller" class="errorMessages">
-                {{ctrl.files.logotipo.name}} {{ctrl.errFiles.logotipo.name}}
-                {{ctrl.errFiles.logotipo.$error}} {{ctrl.errFiles.logotipo.$errorParam}}
-                <span class="progress" ng-show="ctrl.progress.logotipo >= 0">
-                    <div style="width:{{ctrl.progress.logotipo}}%" 
-                         ng-bind="ctrl.progress.logotipo + '%'">
-                    </div>
-                </span>
-            </div>
-            {{ctrl.errorMsg.logotipo}}
+            <input type="text" name="logotipo" ng-model="ctrl.logotipo"/>
             <div>
-                <img src="data:image/*;base64,{{ctrl.logotipo}}" width="50%"
+                <img src="{{ctrl.logotipo}}" width="50%"
                      height="50%" alt="No file selected">
             </div>
             <a href ng-click="ctrl.quitarLogo()" role="button">quitar logo</a>
             <br /><br />
             Foto:
-            <button ngf-select="ctrl.uploadFiles($files, $invalidFiles, 'foto')"
-                    accept="image/*" ngf-max-height="10000" ngf-max-width="10000" 
-                    ngf-max-size="10MB" ngf-fix-orientation="false">Select Files</button>
-            <div style="font:smaller" class="errorMessages">
-                {{ctrl.files.foto.name}} {{ctrl.errFiles.foto.name}}
-                {{ctrl.errFiles.foto.$error}} {{ctrl.errFiles.foto.$errorParam}}
-                <span class="progress" ng-show="ctrl.progress.foto >= 0">
-                    <div style="width:{{ctrl.progress.foto}}%" 
-                         ng-bind="ctrl.progress.foto + '%'">
-                    </div>
-                </span>
-            </div>
-            {{ctrl.errorMsg.foto}}
+            <input type="text" name="foto" ng-model="ctrl.foto"/>
             <div>
-                <img src="data:image/*;base64,{{ctrl.foto}}" width="50%"
+                <img src="{{ctrl.foto}}" width="50%"
                      height="50%" alt="embedded folder icon">
             </div>
             <a href ng-click="ctrl.quitarFoto()" role="button">quitar foto</a>

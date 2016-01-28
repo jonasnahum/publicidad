@@ -42,13 +42,13 @@
         var prod = productosFactory();
         var modelInstance = modelFactory();
         
-        //UPLOAD IMAGES Function
+       /* //UPLOAD IMAGES Function
         ctrl.uploadFiles = function (files, errFiles, propertyName) {
             var up = uploadFilesFactory();
             ctrl.files = { [propertyName] : files };
             ctrl.errFiles = { [propertyName] : errFiles && errFiles[0] };
             up.upload(files, errFiles, propertyName, ctrl);
-        };      
+        }; */     
 
         var getOne = function(id) {
             empresasProxy.getOne(id, function(data, status, headers, config){
