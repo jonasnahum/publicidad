@@ -171,6 +171,12 @@
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
             <br />
+            Foto del producto o servicio: <input type="text" ng-model="ctrl.producto.foto" name="foto"/>
+            <div>
+                <img src="{{ctrl.producto.foto}}" width="30%"
+                     height="30%" alt="No file selected">
+            </div>
+            <br />
             Parrafo: <textarea rows="4" cols="50" ng-model="ctrl.producto.parrafo"
                                ng-maxlength="160" name="parrafo"></textarea>
             <div class="errorMessages" ng-messages="frmEditar.parrafo.$error" 
