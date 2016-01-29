@@ -7,7 +7,7 @@
                         <img src="{{ctrl.logotipo}}" width="5%" height="5%"  style='float: left;' class="logo" > 
                     </div>
                     <br />
-                    <h2 style="font-size: 52px;" ><strong style="color: {{ctrl.colorText || '#DDD'}}">{{ctrl.nombre}}</strong></h2>
+                    <h2 style="font-size: 52px;" id="top" ><strong style="color: {{ctrl.colorText || '#DDD'}}">{{ctrl.nombre}}</strong></h2>
                     <br />
                     <br />
                     <img src="{{ctrl.foto}}" width="65%"
@@ -39,9 +39,8 @@
                             <li><strong>Rubro:</strong> {{ctrl.rubro}}</li>
                             <li><strong>Descripcion:</strong> <p>{{ctrl.descripcion}}</p></li>
                             <li><strong>Horario:</strong> {{ctrl.horario}}</li>
-                            <li><strong>Encargado:</strong> {{ctrl.encargado}}</li>
+                            <li><strong>Contacto:</strong> <a ng-click="ctrl.scrollTo('foo')">{{ctrl.encargado}}</a></li>
                             <li><strong>Telefono:</strong> {{ctrl.tel}}</li>
-                            <li><strong>Facebook: </strong><a ng-href="https://www.facebook.com/{{ctrl.face}}/">{{ctrl.face}}</a></li>
                             <li><strong>Email:</strong> <a ng-click="ctrl.scrollTo('foo')">{{ctrl.email}}</a> </li>
                         </ul>
                         <h3><strong>NOTA:</strong></h3> {{ctrl.nota || "Por el momento no hay notas"}}
@@ -124,15 +123,32 @@
                                 </div>
 
                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <button type="submit" class="btn btn-primary">Enviar Correo</button>
                                 </div>
                             </fieldset>
                         </form>
-                        <a href="#/todosPublico">Regresar</a>
                     </div>
+                        <ul style="list-style-type: none; line-height: 2em; position: relative; bottom: -5em;" >
+                            <li>
+                                <i class="fa fa-whatsapp" style="font-size:30px;"></i> {{ctrl.whats}}
+                            </li>
+                            <li>
+                                <i class="fa fa-facebook-official" style="font-size:30px"></i><a ng-href="https://www.facebook.com/{{ctrl.face}}/"> {{ctrl.face}}</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-flickr" style="font-size:30px"></i><a ng-href=" http://flickr.com/{{ctrl.flickr}}/"> {{ctrl.flickr}}</a>
+                            </li>
+                            <li>
+                                <a ng-href=" {{ctrl.link1}}/"> {{ctrl.link1}}</a>
+                            </li>
+                            <li>
+                                <a ng-href=" {{ctrl.link2}}/"> {{ctrl.link2}}</a>
+                            </li>
+                        </ul>
+                        <a ng-click="ctrl.scrollTo('top')" class="pull-right" style="list-style-type: none;">Ir arriba</a>
+                        <a ng-href="#/todosPublico" class="pull-right" style="list-style-type: none;">Listado de Negocios</a>
                 </div>
             </div>
         </div>
-        
     </div>
 </div>
