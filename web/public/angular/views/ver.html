@@ -98,7 +98,8 @@
             <ul>
                 <li ng-repeat="producto in ctrl.productos">
                     {{producto.titulo}} <br>
-                    {{producto.parrafo}}
+                    {{producto.parrafo}} <br>
+                    <img src="{{producto.foto}}" width="20%" height="20%"  class="foto">
                 </li>
             </ul>
         </fieldset>
