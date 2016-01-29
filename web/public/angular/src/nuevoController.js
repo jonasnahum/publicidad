@@ -15,6 +15,11 @@
         ctrl.encargado = undefined;
         ctrl.tel = undefined;
         ctrl.face = undefined;
+        ctrl.flickr = undefined;
+        ctrl.whats = undefined;
+        ctrl.link1 = undefined;
+        ctrl.link2 = undefined;
+        
         ctrl.email = undefined;
         ctrl.productos = [];
         ctrl.nota = undefined;

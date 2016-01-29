@@ -8,7 +8,7 @@
             <div ng-show="ctrl.empresas.length > 0">
                  <label>Buscar: <input ng-model="ctrl.searchText"></label>{{ctrl.searchText}}
             </div>
-            <ul dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 20">
+            <ul dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 10">
                 <hr class="featurette-divider">
                 <div class="row featurette">
                     <div class="col-md-7">

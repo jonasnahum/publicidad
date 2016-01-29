@@ -29,7 +29,7 @@ var UsuariosApi = (function() {
                 return res.sendStatus(401);
             }
 
-            var expires = that.moment().add(30, 'minutes').valueOf();
+            var expires = that.moment().add(120, 'minutes').valueOf();
             var token = that.jwt.encode({
                 iss: user.email,
                 exp: expires
