@@ -173,29 +173,47 @@
             (Máximo 10 productos)
             Producto : {{ctrl.producto}}
             <br />
-            Titulo: <input type="text" ng-model="ctrl.producto.titulo" 
-                           ng-maxlength="80" name="titulo"/>
-            <div class="errorMessages" ng-messages="frmEditar.titulo.$error" 
-                 ng-if="!frmEditar.titulo.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    Titulo: <input type="text" ng-model="ctrl.producto.titulo" 
+                    ng-maxlength="80" name="titulo"/>
+                    <div class="errorMessages" ng-messages="frmEditar.titulo.$error" 
+                    ng-if="!frmEditar.titulo.$pristine || frmEditar.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+                    <br />
+                    Foto del producto o servicio: <input type="text" ng-model="ctrl.producto.foto" name="foto"/>
+                    <div>
+                        <img src="{{ctrl.producto.foto}}" width="30%"
+                             height="30%" alt="No file selected">
+                    </div>
+                    <br />
+                    Parrafo: 
+                    <textarea rows="4" cols="50" ng-model="ctrl.producto.parrafo"
+                    ng-maxlength="160" name="parrafo"></textarea>
+                    <div class="errorMessages" ng-messages="frmEditar.parrafo.$error" 
+                    ng-if="!frmEditar.parrafo.$pristine || frmEditar.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+                    <a href ng-click="ctrl.agregarProducto()" type="button" class="btn btn-success btn-sm">Push</a>
+                    <br />
+                </div>
+                <div class="col-md-6">
+                    Productos : 
+                    <ul>
+                        <li ng-repeat="producto in ctrl.productos">
+                            {{producto.titulo}} <br>
+                            {{producto.parrafo}} <br>
+                            <img src="{{producto.foto}}" width="20%" height="20%"  class="foto">
+                        </li>
+                    </ul>
+                    <br />
+                    Titulo del producto a remover: <input type="text" ng-model="ctrl.remover"/>
+                    <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-success btn-sm">Remove</a>
+                    <br />
+                    <a href ng-click="ctrl.borrarProductos()" type="button" class="btn btn-success btn-sm">Borrar Todos los productos</a>
+                </div>
             </div>
-            <br />
-            Parrafo: 
-            <textarea rows="4" cols="50" ng-model="ctrl.producto.parrafo"
-                      ng-maxlength="160" name="parrafo"></textarea>
-            <div class="errorMessages" ng-messages="frmEditar.parrafo.$error" 
-                 ng-if="!frmEditar.parrafo.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            <a href ng-click="ctrl.agregarProducto()" role="button">Push</a>
-            <br />
-            Productos : {{ctrl.productos}}
-            <br />
-            Titulo del producto a remover: <input type="text" ng-model="ctrl.remover"/>
-            <a href ng-click="ctrl.removerProducto()" role="button">Remove</a>
-            <br />
-            Borrar todos los productos: 
-            <a href ng-click="ctrl.borrarProductos()" role="button">Borrar Todos los productos</a>
         </fieldset>
         <br /><br />
         Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota" 
