@@ -75,7 +75,6 @@
                 </div>
             </div>   
         </div>
-
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-info" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
@@ -128,25 +127,39 @@
                             </fieldset>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="containerIn">
+            <div class="row">
+                <div class="scrollblock block-redesSociales" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground|| '#23527C'}}; height:20px;">
+                    <h2 style="font-size: 40px; text-align: center;"><strong>Redes Sociales</strong></h2>
                         <ul style="list-style-type: none; line-height: 2em; position: relative; bottom: -5em;" >
                             <li>
                                 <i class="fa fa-whatsapp" style="font-size:30px;"></i> {{ctrl.whats}}
                             </li>
                             <li>
-                                <i class="fa fa-facebook-official" style="font-size:30px"></i><a ng-href="https://www.facebook.com/{{ctrl.face}}/"> {{ctrl.face}}</a>
+                                <i class="fa fa-facebook-official" style="font-size:30px"></i><a style="color: {{ctrl.colorText || '#DDD'}};" ng-href="https://www.facebook.com/{{ctrl.face}}/"> {{ctrl.face}}</a>
                             </li>
                             <li>
-                                <i class="fa fa-flickr" style="font-size:30px"></i><a ng-href=" http://flickr.com/{{ctrl.flickr}}/"> {{ctrl.flickr}}</a>
+                                <i class="fa fa-flickr" style="font-size:30px"></i><a style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" http://flickr.com/{{ctrl.flickr}}/"> {{ctrl.flickr}}</a>
                             </li>
                             <li>
-                                <a ng-href=" {{ctrl.link1}}/"> {{ctrl.link1}}</a>
+                                <a style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" {{ctrl.link1}}/"> {{ctrl.link1}}</a>
                             </li>
                             <li>
-                                <a ng-href=" {{ctrl.link2}}/"> {{ctrl.link2}}</a>
+                                <a style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" {{ctrl.link2}}/"> {{ctrl.link2}}</a>
                             </li>
                         </ul>
-                        <a ng-click="ctrl.scrollTo('top')" class="pull-right" style="list-style-type: none;">Ir arriba</a>
-                        <a ng-href="#/todosPublico" class="pull-right" style="list-style-type: none;">Listado de Negocios</a>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    
+                        <ul class="list-unstyled" style="text-align: right">
+                            <li><a style="color: {{ctrl.colorText || '#DDD'}};" href ng-click="ctrl.scrollTo('top')">Ir arriba</a> </li>
+                            <li><a style="color: {{ctrl.colorText || '#DDD'}};"ng-href="#/todosPublico" >Lista de negocios locales</a> </li>
+                        </ul>
                 </div>
             </div>
         </div>
