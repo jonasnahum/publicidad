@@ -7,7 +7,7 @@
                         <img src="{{ctrl.logotipo}}" width="5%" height="5%"  style='float: left;' class="logo" > 
                     </div>
                     <br />
-                    <h2 style="font-size: 52px;" ><strong style="color: {{ctrl.colorText || '#DDD'}}">{{ctrl.nombre}}</strong></h2>
+                    <h2 style="font-size: 52px;" id="top" ><strong style="color: {{ctrl.colorText || '#DDD'}}">{{ctrl.nombre}}</strong></h2>
                     <br />
                     <br />
                     <img src="{{ctrl.foto}}" width="65%"
@@ -39,9 +39,8 @@
                             <li><strong>Rubro:</strong> {{ctrl.rubro}}</li>
                             <li><strong>Descripcion:</strong> <p>{{ctrl.descripcion}}</p></li>
                             <li><strong>Horario:</strong> {{ctrl.horario}}</li>
-                            <li><strong>Encargado:</strong> {{ctrl.encargado}}</li>
+                            <li><strong>Contacto:</strong> <a ng-click="ctrl.scrollTo('foo')">{{ctrl.encargado}}</a></li>
                             <li><strong>Telefono:</strong> {{ctrl.tel}}</li>
-                            <li><strong>Facebook: </strong><a ng-href="https://www.facebook.com/{{ctrl.face}}/">{{ctrl.face}}</a></li>
                             <li><strong>Email:</strong> <a ng-click="ctrl.scrollTo('foo')">{{ctrl.email}}</a> </li>
                         </ul>
                         <h3><strong>NOTA:</strong></h3> {{ctrl.nota || "Por el momento no hay notas"}}
@@ -72,26 +71,8 @@
                 </div>
             </div>
         </div>
-        
-        <!--div id="containerIn">
-            <div class="container  scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
-                <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
-                <div class="gallery">
-                    <div class="row">
-                        <li ng-repeat="producto in ctrl.productos" class="list-unstyled">
-                            <div class="col-lg-3">
-                                <a href="{{producto.foto}}" data-title="{{producto.parrafo}}" data-lightbox="productos"> 
-                                    <img src="{{producto.foto}}" width="200px" class="img-thumbnail"><!--img-rounded-___________->
-                                    {{producto.titulo}}
-                                </a>
-                            </div>
-                        </li>
-                    </div>
-                </div>
-            </div>
-        </div-->
-        
 
+                
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-info" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
@@ -139,15 +120,46 @@
                                 </div>
 
                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <button type="submit" class="btn btn-primary">Enviar Correo</button>
                                 </div>
                             </fieldset>
                         </form>
-                        <a href="#/todosPublico">Regresar</a>
                     </div>
                 </div>
             </div>
         </div>
-        
+        <div id="containerIn">
+            <div class="row">
+                <div class="scrollblock block-redesSociales" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground|| '#23527C'}}; height:20px;">
+                    <h2 style="font-size: 40px; text-align: center;"><strong>Redes Sociales</strong></h2>
+                        <ul style="list-style-type: none; line-height: 2em; position: relative; bottom: -5em;" >
+                            <li>
+                                <i class="fa fa-whatsapp" style="font-size:30px;"></i> {{ctrl.whats}}
+                            </li>
+                            <li>
+                                <i class="fa fa-facebook-official" style="font-size:30px"></i><a style="color: {{ctrl.colorText || '#DDD'}};" ng-href="https://www.facebook.com/{{ctrl.face}}/"> {{ctrl.face}}</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-flickr" style="font-size:30px"></i><a style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" http://flickr.com/{{ctrl.flickr}}/"> {{ctrl.flickr}}</a>
+                            </li>
+                            <li>
+                                <a style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" {{ctrl.link1}}/"> {{ctrl.link1}}</a>
+                            </li>
+                            <li>
+                                <a style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" {{ctrl.link2}}/"> {{ctrl.link2}}</a>
+                            </li>
+                        </ul>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    
+                        <ul class="list-unstyled" style="text-align: right">
+                            <li><a style="color: {{ctrl.colorText || '#DDD'}};" href ng-click="ctrl.scrollTo('top')">Ir arriba</a> </li>
+                            <li><a style="color: {{ctrl.colorText || '#DDD'}};"ng-href="#/todosPublico" >Lista de negocios locales</a> </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

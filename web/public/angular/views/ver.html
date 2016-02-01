@@ -2,27 +2,19 @@
         <fieldset>
             <h5>Informacion del cliente</h5>
             <br />
-            Num. de contrato: <input type="text" 
-                                     ng-model="ctrl.noContrato"/>
+            Num. de contrato: <input type="text" ng-model="ctrl.noContrato"/>
             <br />
-            Uniquename: <input type="text" 
-                                            ng-model="ctrl.uniquename"/>
+            Uniquename: <input type="text" ng-model="ctrl.uniquename"/>
             <br />
-            Nombre del cliente: <input type="text" 
-                                       ng-model="ctrl.cliente"/>
+            Nombre del cliente: <input type="text" ng-model="ctrl.cliente"/>
             <br />
             Telefono: <input type="text" ng-model="ctrl.telCliente"/>
             <br />
-            Correo: <input type="email" 
-                           ng-model="ctrl.correoCliente" />
+            Correo: <input type="email" ng-model="ctrl.correoCliente" />
             <br />
-            Fecha de Contrato: <input type="text" 
-                                      ng-model="ctrl.fechaContrato" 
-                                      id="fechaContrato" />
+            Fecha de Contrato: <input type="text" ng-model="ctrl.fechaContrato" id="fechaContrato" />
             <br />    
-            Fecha de Vencimiento: <input type="text" 
-                                         ng-model="ctrl.fechaVencimiento" 
-                                         id="fechaVencimiento" />
+            Fecha de Vencimiento: <input type="text" ng-model="ctrl.fechaVencimiento" id="fechaVencimiento" />
             <br />
             Precio: <input type="text" ng-model="ctrl.pago"/>
         </fieldset>
@@ -32,35 +24,32 @@
             <br />
             Logotipo:
             <div>
-                <img src="{{ctrl.logotipo}}"
-                     width="50%" height="50%" alt="embedded folder icon">
+                <img src="{{ctrl.logotipo}}" width="50%" height="50%" alt="embedded folder icon"/>
             </div>
-            <br /><br />
+            <br/><br/>
             Foto:
             <div>
-                <img src="{{ctrl.foto}}" width="50%"
-                     height="50%" alt="embedded folder icon">
+                <img src="{{ctrl.foto}}" width="50%" height="50%" alt="embedded folder icon"/>
             </div>
-            <br />   
+            <br/>   
             Texto introductorio:
             <textarea rows="4" cols="50" ng-model="ctrl.textoIntro">
             </textarea>
-            <br /><br />
+            <br/><br/>
         </fieldset>
-        <br /><br />
+        <br/><br/>
         <div class="row">
             <div class="col-md-6" id="dir">
                 <h5>Direccion</h5>
-                <br />
+                <br/>
                 Numero: <input type="text" ng-model="ctrl.numero"/>
-                <br />
-                Numero interior: <input type="text" 
-                                        ng-model="ctrl.numeroInt"/>
-                <br />
+                <br/>
+                Numero interior: <input type="text" ng-model="ctrl.numeroInt"/>
+                <br/>
                 Calle: <input type="text" ng-model="ctrl.calle"/>
-                <br />
+                <br/>
                 Colonia: <input type="text" ng-model="ctrl.colonia"/>
-                <br />
+                <br/>
                 C.P. : <input type="text" ng-model="ctrl.cp"/>
                 <br />
                 Municipio: <input type="text" ng-model="ctrl.municipio"/>
@@ -73,26 +62,33 @@
                 <div id="googleMap" style="width:500px;height:380px;"></div>
             </div>
         </div>
-        <br />
+        <br/>
         <fieldset>
             <h5>Rubro</h5>
             <br />
             Nombre: <input type="text" ng-model="ctrl.rubro"/>
         </fieldset>
-        <br /><br />
-        Descripcion: <textarea rows="4" cols="50" 
-                               ng-model="ctrl.descripcion"></textarea></textarea>
-        <br />
+        <br/><br/>
+        Descripcion: <textarea rows="4" cols="50" ng-model="ctrl.descripcion"></textarea>
+        <br/>
         Horario: <input type="text" ng-model="ctrl.horario"/>
-        <br />
+        <br/>
         Encargado: <input type="text" ng-model="ctrl.encargado"/>
         <br />
         Telefono: <input type="text" ng-model="ctrl.tel"/>
         <br />
-        Facebook: <input type="text" ng-model="ctrl.face"/>
+        Whats: <input type="text" ng-model="ctrl.whats"/>
+        <br />
+        Facebook: <a ng-href="https://www.facebook.com/{{ctrl.face}}/">{{ctrl.face}}</a>
+        <br />
+        Flickr: <a ng-href=" http://flickr.com/{{ctrl.flickr}}/">{{ctrl.flickr}}</a>
+        <br />    
+        Link1: <a ng-href=" {{ctrl.link1}}/">{{ctrl.link1}}</a>
+        <br />    
+        Link2: <a ng-href=" {{ctrl.link2}}/">{{ctrl.link2}}</a>
         <br />
         Email: <input type="email" ng-model="ctrl.email"/>
-        <br /><br />
+        <br/><br/>
         <fieldset>
             <h5>Producto</h5>
             <ul>
@@ -106,10 +102,5 @@
         <br /><br />
         Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota"></textarea>
         <br /><br />
-        {{ctrl.face}}
-        {{ctrl.flickr}}
-        {{ctrl.whats}}
-        {{ctrl.link1}}
-        {{ctrl.link2}}
         <a href="#/todos">Ir a todos</a>
 </div>

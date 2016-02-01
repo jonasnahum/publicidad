@@ -155,12 +155,15 @@
             <div ng-messages-include="/error/messages.html"></div>
         </div>
         <br />
-        Facebook ("https://www.facebook.com/"): <input type="text" ng-model="ctrl.face" ng-maxlength="20"
-                         name="face"/>
-        <div class="errorMessages" ng-messages="frmEditar.face.$error" 
-             ng-if="!frmEditar.face.$pristine || frmEditar.$submitted" role="alert">
-            <div ng-messages-include="/error/messages.html"></div>
-        </div>
+        Whats : <input type="text" ng-model="ctrl.whats" name="whats"/>
+        <br />
+        Facebook ("https://www.facebook.com/") : <input type="text" ng-model="ctrl.face" ng-maxlength="20" name="face"/>
+        <br />
+        flickr ("http://flickr.com/") : <input type="text" ng-model="ctrl.flickr" name="flickr"/>
+        <br />
+        link1 : <input type="text" ng-model="ctrl.link1" name="link1"/>
+        <br />
+        link2 : <input type="text" ng-model="ctrl.link2" name="link2"/>
         <br />
         Email: <input type="email" ng-model="ctrl.email" name="email" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/" required/>
         <div class="errorMessages" ng-messages="frmEditar.email.$error" 
@@ -209,9 +212,9 @@
                     </ul>
                     <br />
                     Titulo del producto a remover: <input type="text" ng-model="ctrl.remover"/>
-                    <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-success btn-sm">Remove</a>
+                    <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-danger btn-sm">Remove</a>
                     <br />
-                    <a href ng-click="ctrl.borrarProductos()" type="button" class="btn btn-success btn-sm">Borrar Todos los productos</a>
+                    <a href ng-click="ctrl.borrarProductos()" type="button" class="btn btn-danger btn-sm">Borrar Todos los productos</a>
                 </div>
             </div>
         </fieldset>
