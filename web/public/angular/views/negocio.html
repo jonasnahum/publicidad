@@ -53,7 +53,139 @@
             </div>
         </div>
 
+        
         <div id="containerIn">
+            <div class="container  scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
+                <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
+                <div class="gallery">
+                    <div class="row">
+                        <li ng-repeat="producto in ctrl.productos" class="list-unstyled">
+                            <div class="col-lg-3">
+                                <a href="{{producto.foto}}" data-title="{{producto.parrafo}}" data-lightbox="productos"> 
+                                    <img src="{{producto.foto}}" width="200px" class="img-thumbnail"><!--img-rounded-->
+                                    {{producto.titulo}}
+                                </a>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!--div class="container">
+            <h1> Lightbox example </h1>
+            <div class="gallery">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <a href="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/10915146_838737546189534_4977804204193769582_n.jpg?oh=36d69e3d17c4b3a0ccbc1cd9a7b284f3&oe=5743F002" data-title="My first caption" data-lightbox="productos">
+                            <img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/10915146_838737546189534_4977804204193769582_n.jpg?oh=36d69e3d17c4b3a0ccbc1cd9a7b284f3&oe=5743F002" width="200px" class="img-thumbnail"><!--img-rounded-____________-></a>
+                    </div>
+                    <div class="col-lg-3">
+                        <a href="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/10472842_745752458821377_6690423736701621837_n.jpg?oh=51eac5dade3d72a99391619030799354&oe=57255226" data-title="My second caption" data-lightbox="productos">
+                            <img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/10472842_745752458821377_6690423736701621837_n.jpg?oh=51eac5dade3d72a99391619030799354&oe=57255226" width="200px" class="img-thumbnail"><!--img-rounded-__________-></a>
+                    </div>
+                    <div class="col-lg-3">
+                        <a href="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xft1/t31.0-8/s960x960/1557297_658639244199366_1218999304_o.jpg" data-title="My third caption" data-lightbox="productos">
+                            <img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xft1/t31.0-8/s960x960/1557297_658639244199366_1218999304_o.jpg" width="200px" class="img-thumbnail"><!--img-rounded-______________-></a>
+                    </div>
+                    <div class="col-lg-3">
+                        <a href="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xta1/v/t1.0-9/1234900_578977715498853_1300424298_n.jpg?oh=aefa3951495616f6fc70dd238c45de4b&oe=573A50AE" data-title="My fourth caption" data-lightbox="productos">
+                            <img src="https://scontent-dfw1-1.xx.fbcdn.net/hphotos-xta1/v/t1.0-9/1234900_578977715498853_1300424298_n.jpg?oh=aefa3951495616f6fc70dd238c45de4b&oe=573A50AE" width="200px" class="img-thumbnail"><!--img-rounded-___________-></a>
+                    </div>
+                </div>
+            </div>
+        </div-->
+        
+        
+        <!--div id="containerIn">
+            <div id="container">
+                <div class="row">
+                    <div class="scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
+                        <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
+                        <br /><br /><br />
+                        <li ng-repeat="producto in ctrl.productos" class="list-unstyled">
+                            <div class="col-lg-3 col-sm-4 col-6"><!--a href="#" title="Image 1"--_____><img src="{{producto.foto}}" class="thumbnail img-responsive"><strong>{{producto.titulo}}</strong> 
+                                <p>{{producto.parrafo}} </p><!--/a--________></div>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h3 class="modal-title">Heading</h3>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div-->
+
+
+        <!--div id="containerIn">
+            <div class="row">
+                <!--div class="scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}"--__________>
+                    <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
+                    <br /><br /><br />
+                    <section>
+                        <ul id="gallery">
+                            <li id="fullPreview"></li>
+                            
+                            <li ng-repeat="producto in ctrl.productos" class="list-unstyled">
+                                <a href="{{producto.foto}}"></a>
+                                <img data-original="img/thumb/1.jpg" src="{{producto.foto}}" width="240" height="150" alt="NoImageAvailable" />
+                                <div class="overLayer"></div>
+                                <div class="infoLayer">
+                                    <ul>
+                                        <li>
+                                            <h2>
+                                                Do not know
+                                            </h2>
+                                        </li>
+                                        <li>
+                                            <p>
+                                               Do not know 2 
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="projectInfo">
+                                    <strong>
+                                        {{producto.titulo}}
+                                    </strong> {{producto.parrafo}}
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                <!--/div--_____>
+            </div>
+        </div--> 
+        <!--div id="containerIn">
+            <div class="row placeholders">
+                <div class="scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
+                    <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
+                    <br /><br /><br />
+                    <li ng-repeat="producto in ctrl.productos" class="list-unstyled">
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img src="{{producto.foto}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                            <strong>{{producto.titulo}}</strong>
+                            <span class="text-muted">{{producto.parrafo}}</span>
+                        </div>
+                    </li>
+                </div>
+            </div>   
+        </div-->
+         
+        <!--div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
                     <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
@@ -75,7 +207,7 @@
                     </li>
                 </div>
             </div>   
-        </div>
+        </div-->
 
         <div id="containerIn">
             <div class="row">
