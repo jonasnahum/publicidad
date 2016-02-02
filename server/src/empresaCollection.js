@@ -24,7 +24,7 @@ var empresaSchema = mongoose.Schema({
     link1 : { type: String },
     link2 : { type: String },
     email: validation.validateCampo(true,String,null,null,"validateEmail"),
-    productos: validation.validateCampo(false,Array,null,null,"validateProductos"),
+    productos: Array,/*validation.validateCampo(false,Array,null,null,"validateProductos"),*/
     nota: { type: String, maxlength: 180}, 
     direccion: direccionSchema,
     rubro: rubroSchema,

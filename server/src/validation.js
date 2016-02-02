@@ -12,7 +12,7 @@ var Validation = (function() {
             return false;
         };
         */
-        this.productos = function(val) {
+        /*this.productos = function(val) {
             if (val && val.length <= 10){
                 var x = 0;
                 for(var i = 0; i < val.length; i ++) {
@@ -31,7 +31,7 @@ var Validation = (function() {
                 }
             }
             return false;
-        };
+        };*/
         this.uniquenameRegex = {
             validator: /^[a-zA-Z0-9]+$/, 
             msg: 'Este campo sólo acepta números, mayúsculas y minúsculas, sin espacios ni acentos.'
