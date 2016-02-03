@@ -52,7 +52,7 @@
             </div>
         </div>
 
-                     
+            
         <div id="containerIn">
             <div class="scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
                 <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
@@ -64,14 +64,15 @@
                         <p>{{producto.parrafo}}</p>
                     </li>
                 </div>
-                <br /><br /><br /><br />
+                <br /><br />
                 <div class="gallery">
                     <div class="row">
                         <li ng-repeat="producto in ctrl.productos" class="list-unstyled" >
-                            <div class="col-lg-2">
-                                <a href="{{producto.foto}}" data-title="{{producto.titulo}}: {{producto.parrafo}}" data-lightbox="productos" > 
+                            <div class="col-lg-2" ng-show="{{producto.foto}}">
+                                <a href="{{producto.foto}}" data-title="{{producto.titulo}}: {{producto.parrafo}}" data-lightbox="productos" style="color: {{ctrl.colorText || '#DDD'}};"> 
                                     <img src="{{producto.foto}}" width="200px" height="200px" class="img-rounded">
                                     {{producto.titulo}}
+                                    <!--<img src="{{producto.foto}}" width="200px" height="200px" class="img-thumbnail">-->
                                 </a>
                             </div>
                         </li>
@@ -80,40 +81,12 @@
             </div>
         </div>
         
-            
-        <!--div id="containerIn">
-            <div class="scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
-                <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
-                <br /><br />
-                <div class="row">
-                    <li ng-repeat="producto in ctrl.productos" style="font-size: 20px; 
-    margin-left: 50px; " class="list-unstyled">
-                        <strong>{{producto.titulo}}</strong> 
-                        <p>{{producto.parrafo}}</p>
-                    </li>
-                </div>
-                <br /><br /><br /><br />
-                <div class="gallery">
-                    <div class="row">
-                        <li ng-repeat="producto in ctrl.productos" class="list-unstyled" >
-                            <div class="col-lg-2"><!-- ng-show="{{producto.foto}}" --__>
-                                <a href="{{producto.foto}}" data-title="{{producto.titulo}}: {{producto.parrafo}}" data-lightbox="productos" style="color: {{ctrl.colorText || '#DDD'}};"> 
-                                    <img src="{{producto.foto}}" width="200px" height="200px" class="img-rounded">
-                                    {{producto.titulo}}
-                                    <!--<img src="{{producto.foto}}" width="200px" height="200px" class="img-thumbnail">--___>
-                                </a>
-                            </div>
-                        </li>
-                    </div>
-                </div>
-            </div>
-        </div-->
-        
         
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-info" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
-                    <h2><strong>Contacto</strong></h2> <br /><br />
+                    <h2><strong>Contacto</strong></h2> 
+                    <br /><br />
                     <div class="col-md-12" ng-controller="EmailFormController as emCtl">
                         <h3 id="foo" >Enviar Mensage</h3> <br /><br />
                         <form name="mailForm" id="myForm" ng-submit="mailForm.$valid && emCtl.send(ctrl.email)" novalidate>
