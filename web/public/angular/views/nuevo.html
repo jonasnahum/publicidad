@@ -193,7 +193,17 @@
                     <br />
                 </div>
                 <div class="col-md-6">
-                    Productos : {{ctrl.productos}}
+                    Productos : 
+                    <ul>
+                        <li ng-repeat="producto in ctrl.productos">
+                            <strong>{{producto.titulo}}:</strong> {{producto.parrafo}}
+                            <img src="{{producto.foto}}" width="20%" height="20%"  class="foto">
+                            <div ng-show="!producto.titulo">
+                                <button ng-click="ctrl.borrarSinTitulo()">delete</button>
+                                <a ng-hide="true" ng-model="ctrl.fotoSinTexto">{{producto.foto}}</a>
+                            </div>
+                        </li>
+                    </ul>
                     <br />
                     Titulo del producto a remover: <input type="text" ng-model="ctrl.remover"/>
                     <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-success btn-sm">Remove</a>
