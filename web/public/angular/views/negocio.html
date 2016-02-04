@@ -41,7 +41,7 @@
                             <li><strong>Horario:</strong> {{ctrl.horario}}</li>
                             <li><strong>Contacto:</strong> {{ctrl.encargado}}</li>
                             <li><strong>Telefono:</strong> {{ctrl.tel}}</li>
-                            <li><strong>Email:</strong><a ng-click="ctrl.scrollTo('foo')">{{ctrl.email}}</a> </li>
+                            <li><strong>Email:</strong> {{ctrl.email}}</li>
                         </ul>
                         <h3><strong>NOTA:</strong></h3> {{ctrl.nota || ""}}
                     </div>
@@ -88,7 +88,7 @@
                     <h2><strong>Contacto</strong></h2> 
                     <br /><br />
                     <div class="col-md-12" ng-controller="EmailFormController as emCtl">
-                        <h3 id="foo" >Enviar Mensage</h3> <br /><br />
+                        <h3>Enviar Mensage</h3> <br /><br />
                         <form name="mailForm" id="myForm" ng-submit="mailForm.$valid && emCtl.send(ctrl.email)" novalidate>
                             <fieldset ng-attr-disabled="{{emCtl.waiting || undefined}}">
                                 <div class="form-group">
