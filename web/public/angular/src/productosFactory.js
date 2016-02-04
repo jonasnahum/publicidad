@@ -23,6 +23,13 @@
             productos = [];
             return productos;
         };
+        ProductosClass.prototype.borrarSinTitulo = function(arr, producto){
+            var sonDiferentes = function sonDiferentes (element, index, array) {
+                return element.foto === producto;
+            }
+            arr = arr.filter(sonDiferentes); 
+            return arr;
+        };
         
         return function() {
             return new ProductosClass();
