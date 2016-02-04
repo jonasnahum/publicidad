@@ -194,22 +194,18 @@
                 </div>
                 <div class="col-md-6">
                     Productos : 
-                    <ul>
+                    <ol>
                         <li ng-repeat="producto in ctrl.productos">
-                            <strong>{{producto.titulo}}:</strong> {{producto.parrafo}}
-                            <img src="{{producto.foto}}" width="20%" height="20%"  class="foto">
-                            <div ng-show="!producto.titulo">
-                                <button ng-click="ctrl.borrarSinTitulo()">delete</button>
-                                <a ng-hide="true" ng-model="ctrl.fotoSinTexto">{{producto.foto}}</a>
-                            </div>
+                            <img src="{{producto.foto}}" ng-show="{{producto.foto}}" width="20%" height="20%"  class="foto">
+                            <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
                         </li>
-                    </ul>
+                    </ol>
                     <br />
-                    Titulo del producto a remover: <input type="text" ng-model="ctrl.remover"/>
-                    <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-success btn-sm">Remove</a>
+                    Número del producto a remover: <input type="text" ng-model="ctrl.remover"/>
+                    <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-danger btn-sm">Remove</a>
                     <br />
                     Borrar todos los productos: 
-                    <a href ng-click="ctrl.borrarProductos()" type="button" class="btn btn-success btn-sm">Borrar Todos los productos</a>
+                    <a href ng-click="ctrl.borrarProductos()" type="button" class="btn btn-danger btn-sm">Borrar Todos los productos</a>
                 </div>
             </div>
         </fieldset>

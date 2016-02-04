@@ -7,7 +7,7 @@
         };
         ProductosClass.prototype.removerProducto = function(arr, producto){
             var sonDiferentes = function sonDiferentes (element, index, array) {
-                return element.titulo !== producto;
+                return index !== producto-1;
             }
             arr = arr.filter(sonDiferentes); 
             return arr;
@@ -22,13 +22,6 @@
         ProductosClass.prototype.borrarProductos = function(productos){
             productos = [];
             return productos;
-        };
-        ProductosClass.prototype.borrarSinTitulo = function(arr, producto){
-            var sonDiferentes = function sonDiferentes (element, index, array) {
-                return element.foto === producto;
-            }
-            arr = arr.filter(sonDiferentes); 
-            return arr;
         };
         
         return function() {
