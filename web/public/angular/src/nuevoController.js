@@ -48,10 +48,8 @@
         };        
         ctrl.borrarProductos = function() {
             ctrl.productos = prod.borrarProductos(ctrl.productos);
-        };  
-        ctrl.borrarSinTitulo = function() {
-            ctrl.productos = prod.borrarSinTitulo(ctrl.productos, ctrl.fotoSinTexto);
-        };       
+        };        
+        
         
         //Server Call
         ctrl.save = function() {
