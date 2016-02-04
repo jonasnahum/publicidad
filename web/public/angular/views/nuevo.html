@@ -196,8 +196,9 @@
                     Productos : 
                     <ol>
                         <li ng-repeat="producto in ctrl.productos">
-                            <img src="{{producto.foto}}" ng-show="{{producto.foto}}" width="20%" height="20%"  class="foto">
-                            <strong>{{producto.titulo}}</strong> {{producto.parrafo}}
+                            <strong>{{producto.titulo}}</strong><br>
+                            {{producto.parrafo}} <br>
+                            <img src="{{producto.foto}}" width="20%" height="20%"  class="foto">
                         </li>
                     </ol>
                     <br />
