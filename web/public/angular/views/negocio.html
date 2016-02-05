@@ -70,8 +70,7 @@
                         <li ng-repeat="producto in ctrl.productos" class="list-unstyled" >
                             <div class="col-lg-2" ng-show="producto.foto">
                                 <a href="{{producto.foto}}" data-title="{{producto.titulo}}: {{producto.parrafo}}" data-lightbox="productos" style="color: {{ctrl.colorText || '#DDD'}};"> 
-                                    <img src="{{producto.foto}}" width="200px" height="200px" class="img-rounded">
-                                    {{producto.titulo}}
+                                    <img src="{{producto.foto}}" width="200px" height="200px" class="img-rounded">{{producto.titulo}}
                                     <!--<img src="{{producto.foto}}" width="200px" height="200px" class="img-thumbnail">-->
                                 </a>
                             </div>
@@ -142,13 +141,13 @@
                 <div class="scrollblock block-redesSociales" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground|| '#23527C'}}; height:20px;">
                     <h2 style="font-size: 40px; text-align: center;"><strong>Redes Sociales</strong></h2>
                         <ul style="list-style-type: none; line-height: 2em; position: relative; bottom: -5em;" >
-                            <li>
+                            <li ng-if="ctrl.whats">
                                 <i class="fa fa-whatsapp" style="font-size:30px;"></i> {{ctrl.whats}}
                             </li>
-                            <li>
+                            <li ng-if="ctrl.face">
                                 <i class="fa fa-facebook-official" style="font-size:30px"></i><a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};" ng-href="https://www.facebook.com/{{ctrl.face}}/"> {{ctrl.face}}</a>
                             </li>
-                            <li>
+                            <li ng-if="ctrl.flickr">
                                 <i class="fa fa-flickr" style="font-size:30px"></i><a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" http://flickr.com/{{ctrl.flickr}}/"> {{ctrl.flickr}}</a>
                             </li>
                             <li>
