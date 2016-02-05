@@ -11,13 +11,13 @@
     <ul>
         <li dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 200">
             {{ empresa.nombre }} 
-            <a ng-href="#/ver/{{empresa._id}}">Ver</a>
-            <a ng-href="#/editar/{{empresa._id}}">Editar</a>
+            <a ng-href="#/privado/ver/{{empresa._id}}">Ver</a>
+            <a ng-href="#/privado/editar/{{empresa._id}}">Editar</a>
             <a href="#" ng-click="ctrl.delete(empresa._id)">Borrar</a>
         </li>
     </ul>
 <br />
-<a type="button" class="btn btn-success btn-sm" aria-label="Left Align" ng-href="#/nuevo">
+<a type="button" class="btn btn-success btn-sm" aria-label="Left Align" ng-href="#/privado/nuevo">
   <span class="glyphicon glyphicon-plus" aria-hidden="true">Nuevo</span>
 </a>
     <!--a ng-href="#/nuevo">Nuevo</a-->

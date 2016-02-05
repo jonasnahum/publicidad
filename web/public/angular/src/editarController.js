@@ -85,7 +85,7 @@
             ctrl.long = ctrl.mapa.getLong();
             empresasProxy.update(ctrl.empresaId, modelInstance.getModelFromCtrl(ctrl), function(data, status, headers, config){
                 alert("Info enviada");
-                $location.path('/todos');
+                $location.path('/privado/todos');
             });
         };
     });

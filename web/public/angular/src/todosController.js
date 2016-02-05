@@ -17,7 +17,7 @@
         
         ctrl.delete = function (id) {
             empresasProxy.delete(id,function(){
-               $location.path('/todos');
+               $location.path('/privado/todos');
             });
         };
         ctrl.getEmail = function (){

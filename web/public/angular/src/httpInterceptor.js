@@ -10,10 +10,10 @@
             
             // optional method
             'request': function(request) {
-                var instancia = routeChecker();
+                var rCh = routeChecker();
                 
     
-                if (instancia.isPrivate()) {
+                if (rCh.isPrivate()) {
                     var tokenObj = tokenStorage.getToken();
 
                     if (tokenObj === undefined){   

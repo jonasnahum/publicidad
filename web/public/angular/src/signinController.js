@@ -10,7 +10,7 @@
         ctrl.signin = function() {
             proxy.signin(ctrl, function(tokenObj) {
                 tokenStorage.setToken(tokenObj);
-                $location.path('/todos');
+                $location.path('/privado/todos');
             });
         };
         

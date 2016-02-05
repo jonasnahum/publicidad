@@ -6,46 +6,47 @@
         };
         ModelFactory.prototype.getObjFromSubdocument = function(data){
             var obj = {};
-            obj.nombre = data.nombre;
-            obj.logotipo = data.logotipo;
-            obj.foto = data.foto;
-            obj.colorBackground = data.colorBackground;
-            obj.colorText = data.colorText;
-            obj.textoIntro = data.textoIntro;
-            obj.lat = data.lat;
-            obj.long = data.long;
-            obj.descripcion = data.descripcion;
-            obj.horario = data.horario;
-            obj.encargado = data.encargado;
-            obj.tel = data.tel;
-            obj.face = data.face;
-            obj.flickr = data.flickr;
-            obj.whats = data.whats;
-            obj.link1 = data.link1;
-            obj.link2 = data.link2;
-            obj.email = data.email;
-            obj.productos = data.productos;
-            obj.nota = data.nota;
+            if (data){
+                obj.nombre = data.nombre;
+                obj.logotipo = data.logotipo;
+                obj.foto = data.foto;
+                obj.colorBackground = data.colorBackground;
+                obj.colorText = data.colorText;
+                obj.textoIntro = data.textoIntro;
+                obj.lat = data.lat;
+                obj.long = data.long;
+                obj.descripcion = data.descripcion;
+                obj.horario = data.horario;
+                obj.encargado = data.encargado;
+                obj.tel = data.tel;
+                obj.face = data.face;
+                obj.flickr = data.flickr;
+                obj.whats = data.whats;
+                obj.link1 = data.link1;
+                obj.link2 = data.link2;
+                obj.email = data.email;
+                obj.productos = data.productos;
+                obj.nota = data.nota;
 
-            obj.numero = data.direccion.numero;
-            obj.numeroInt = data.direccion.numeroInt;
-            obj.calle = data.direccion.calle;
-            obj.colonia = data.direccion.colonia;
-            obj.cp = data.direccion.cp;
-            obj.municipio = data.direccion.municipio;
-            obj.estado = data.direccion.estado;
+                obj.numero = data.direccion.numero;
+                obj.numeroInt = data.direccion.numeroInt;
+                obj.calle = data.direccion.calle;
+                obj.colonia = data.direccion.colonia;
+                obj.cp = data.direccion.cp;
+                obj.municipio = data.direccion.municipio;
+                obj.estado = data.direccion.estado;
 
-            obj.rubro = data.rubro.rubro;
+                obj.rubro = data.rubro.rubro;
 
-            obj.noContrato = data.informacion.noContrato;
-            obj.uniquename = data.informacion.uniquename;
-            obj.cliente = data.informacion.cliente;
-            obj.telCliente = data.informacion.telCliente;
-            obj.correoCliente = data.informacion.correoCliente;
-            obj.fechaContrato = data.informacion.fechaContrato;
-            obj.fechaVencimiento = data.informacion.fechaVencimiento;
-            obj.pago = data.informacion.pago;
-            
+                obj.noContrato = data.informacion.noContrato;
+                obj.uniquename = data.informacion.uniquename;
+                obj.cliente = data.informacion.cliente;
+                obj.telCliente = data.informacion.telCliente;
+                obj.correoCliente = data.informacion.correoCliente;
+                obj.fechaContrato = data.informacion.fechaContrato;
+                obj.fechaVencimiento = data.informacion.fechaVencimiento;
+                obj.pago = data.informacion.pago;
+            }
             return obj;
         };
          ModelFactory.prototype.copyObjToCtrl = function(obj, ctrl){

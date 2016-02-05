@@ -3,15 +3,18 @@
     
     app.factory('routeChecker', ['$location',function($location) {
         var RouteChecker = function() {
-            this.freeAccesPages = ['/', '/signin', '/signup', '/todosPublico', '/about', '/contact'];
+            this.privatePages = ['/privado/todos', '/privado/nuevo', '/privado/editar', '/privado/ver'];
             this.url = "";
         };
         RouteChecker.prototype.isPrivate = function () {
             this.url = $location.path();
-            this.addFreePage("/negocio/");            
-            if (this.freeAccesPages.indexOf(this.url) === -1) 
-                return true;//si no lo encuentra es privado.
-            return false;//si lo encuentra es público.
+            
+            for (i = 0; i < this.privatePages.length ; i++){
+                if(this.url.indexOf(i) > -1)
+                    return true;
+            }
+            return false;
+
         };
         RouteChecker.prototype.addFreePage = function (page) {
             var casilla = this.url.indexOf(page);

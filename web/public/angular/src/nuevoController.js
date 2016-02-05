@@ -56,7 +56,7 @@
             ctrl.lat = mapa.getLat();
             ctrl.long = mapa.getLong();
             empresasProxy.save(ctrl, function(data, status, headers, config){
-                $location.path('/todos');
+                $location.path('/privado/todos');
             });
         };  
     });
