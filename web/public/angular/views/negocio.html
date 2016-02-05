@@ -70,8 +70,7 @@
                         <li ng-repeat="producto in ctrl.productos" class="list-unstyled" >
                             <div class="col-lg-2" ng-show="producto.foto">
                                 <a href="{{producto.foto}}" data-title="{{producto.titulo}}: {{producto.parrafo}}" data-lightbox="productos" style="color: {{ctrl.colorText || '#DDD'}};"> 
-                                    <img src="{{producto.foto}}" width="200px" height="200px" class="img-rounded">
-                                    {{producto.titulo}}
+                                    <img src="{{producto.foto}}" width="200px" height="200px" class="img-rounded">{{producto.titulo}}
                                     <!--<img src="{{producto.foto}}" width="200px" height="200px" class="img-thumbnail">-->
                                 </a>
                             </div>
