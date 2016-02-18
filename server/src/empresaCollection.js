@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var validation = require("./validation");
 var direccionSchema = require("./dirSchema.js");
 var rubroSchema = require("./rubroSchema.js");
-var informacionSchema = require("./infoSchema.js");
+//var informacionSchema = require("./infoSchema.js");
 
 var empresaSchema = mongoose.Schema({
     nombre: validation.validateCampo(true,String,2,40,"validateNombre"),
@@ -28,7 +28,8 @@ var empresaSchema = mongoose.Schema({
     nota: { type: String, maxlength: 180}, 
     direccion: direccionSchema,
     rubro: rubroSchema,
-    informacion: informacionSchema,
+    //informacion: informacionSchema,
+    _usuario: {type: Number, ref: 'Usuario'}
 });
 
 module.exports = mongoose.model('Empresa', empresaSchema);

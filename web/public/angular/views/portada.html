@@ -55,7 +55,7 @@
         <div ng-controller="TodosPublicoController as ctrl">
             <div class="row">
                 <div class="col-lg-6">
-                    <a type="button" class="btn btn-success btn-sm" aria-label="Left Align" ng-href="#/publico/nuevo">
+                    <a type="button" class="btn btn-success btn-sm" aria-label="Left Align" ng-href="#/publico/signup">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true">Registrar mi empresa</span>
                     </a>
                 </div><!-- /.col-lg-6 -->
@@ -70,10 +70,7 @@
             </div><!-- /.row -->
             
             
-            
-            
-            
-            
+            {{ctrl.empresas}}
             <ul dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 4">
                 <!--p ng-model="ctrl.requestedPageNumber" ng-hide="true"> {{currentPage}}</p-->
                 <hr class="featurette-divider">

@@ -59,9 +59,47 @@ var UsuariosApi = (function() {
 
             if(err) console.log(err);
             console.log("usuario guardado");
+            console.dir(usuario);
             res.json({success: true});
         });
     };
+    
+     UsuariosApi.prototype.savePublico = function(req, res, next) {
+        var that = this;        
+        var usuario = that.usuarioFactory.get();    
+        
+        for (var property in req.body){
+            usuario[property] = req.body[property];
+        }
+        usuario.save(function(err, usuario){
+            if(err) console.log(err);
+            console.log("usuario guardado");
+            res.json({success: true});
+        });
+    };
+    
+    
+    UsuariosApi.prototype.getAll = function(req, res, next) {
+        var that = this;              
+        that.models.usuario.find({}, function (err, usuarios) {
+            if (err) return console.log(err);
+            
+            that.models.usuario.find({}, function(err, usuarios){
+                if (err) return console.log(err);
+                res.json(usuarios);
+            });
+        });
+    };
+    
+    UsuariosApi.prototype.delete = function(req, res, next) {
+        var that = this;
+        that.models.usuario.findByIdAndRemove(req.params.id, function(err, usuario) {
+            if(err) return next(err);
+            res.json({status: "ok"});
+        }); 
+    }; 
+    
+    
     
     return UsuariosApi;
 })();

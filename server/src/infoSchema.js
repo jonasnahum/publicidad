@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+/*var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var validation = require("./validation");
 
@@ -24,3 +24,4 @@ module.exports = informacionSchema;
 
 
 
+*/

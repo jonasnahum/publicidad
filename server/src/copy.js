@@ -35,17 +35,17 @@ var Copy = (function() {
         };
         empresa.rubro={
             rubro: body.rubro
-        };
+        };/*
         empresa.informacion={
             noContrato: body.noContrato,
             uniquename: body.uniquename,
             cliente: body.cliente,
             telCliente: body.telCliente,
             correoCliente: body.correoCliente,
-            fechaContrato: body.fechaContrato||Date.now(),
+            fechaRegistro: body.fechaContrato||Date.now(),
             fechaVencimiento: body.fechaVencimiento||Date.now(),
             pago: body.pago
-        };
+        };*/
         return empresa;
     };
 

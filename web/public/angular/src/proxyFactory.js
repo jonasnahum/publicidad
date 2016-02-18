@@ -53,6 +53,16 @@
             }).success(success).error(that.error);
         };
         
+        Proxy.prototype.savePublico = function(model, success) {
+            var that = this;
+            console.log("URL: " + that.url);
+            $http({
+                method: 'POST',
+                url: that.url + "nuevopub",
+                data: model
+            }).success(success).error(that.error);
+        };
+        
         Proxy.prototype.update = function(id, model, success) {
             var that = this;
             $http({
