@@ -22,7 +22,7 @@ var schema = mongoose.Schema({
     fechaVencimiento: Date,
     //pago: validation.validateCampo(true,String,null,null,"validatePago"), 
     pago: validation.validateCampo(false,String,null,null,"validatePago"), 
-    paginaWeb: [{ Type: mongoose.Schema.Types.ObjectId, ref: 'Empresa'}],//si le quitamos los parentensis solo acepta uno?
+    paginaWeb: [{ type: mongoose.Schema.ObjectId, ref: 'Empresa' }],//si le quitamos los parentensis solo acepta uno?
     //[{ Type: empresaSchema}],
     email: { type: String, unique: true, required: true, validate: validateCorreo  },
     password: { type: String, required: true }

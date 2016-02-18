@@ -29,7 +29,7 @@ var empresaSchema = mongoose.Schema({
     direccion: direccionSchema,
     rubro: rubroSchema,
     //informacion: informacionSchema,
-    _usuario: {type: Number, ref: 'Usuario'}
+    _usuario: {type: Schema.ObjectId, ref: 'Usuario'}
 });
 
 module.exports = mongoose.model('Empresa', empresaSchema);

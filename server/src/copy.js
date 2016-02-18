@@ -24,6 +24,7 @@ var Copy = (function() {
         empresa.email = body.email;
         empresa.productos = body.productos;
         empresa.nota = body.nota;
+        empresa._usuario = body.userId;
         empresa.direccion={
             numero: body.numero,
             numeroInt: body.numeroInt,

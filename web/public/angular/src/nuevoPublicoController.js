@@ -56,7 +56,7 @@
         ctrl.save = function() {
             ctrl.lat = mapa.getLat();
             ctrl.long = mapa.getLong();
-            ctrl.user = tokenStorage.getEmail();
+            ctrl.userId = tokenStorage.getId();
             //empresasProxy.savePublico(ctrl, function(data, status, headers, config){
             empresasProxy.save(ctrl, function(data, status, headers, config){
                 $location.path('/');

@@ -103,41 +103,38 @@ var EmpresasApi = (function() {
         });
         ///*
     };*/
-    EmpresasApi.prototype.save = function(req, res, next){
+    /*EmpresasApi.prototype.save = function(req, res, next){
         var that = this;
-        console.log("THAT1 ");
-        console.dir(that);
-
-        //console.log("body.user: " + req.body.user);
-        that.models.usuario.findBy({"email":req.body.user}, function(err, usuario) {
+        console.log("body.userID: " + req.body.userId);
+        //Eliminar findByID primero guardar empresa y despues push
+        that.models.usuario.findById(req.body.userId, function(err, usuario) {
             if (err) return console.log(err);
-
             
-        console.log("THAT2 ");
-        console.dir(that);
             var empresa = that.empresaFactory.get();
             empresa = that.copy.copyBodyToEmpresa(req.body, empresa);
             var emp = empresa;
-          //  console.log("EMPRESA.SAVE emrpesa");
-        //    console.dir(empresa);
-            empresa.save(function(err, emp) {
-          //      console.log("RECIBE EMPRESA ERROR");
-            //    console.dir(err);
-                if(err) return that.validationErrMessages(err);
-              //  console.log("Empresa.save");
-            //    console.dir(empresa);
+            console.log("EMPRESA.SAVE emrpesa");
+            console.dir(empresa);
+            
+            usuario.paginaWeb.push(empresa);
+            
+            usuario.save(function (err) {
+                if(err) console.log(err);
+            
+                empresa.save(function(err, emp) { 
+                if(err) {
+                    console.log("RECIBE EMPRESA ERROR");
+                    return that.validationErrMessages(err);}
+                  console.log("Empresa.save");
+                    console.dir(empresa);
 
                 //console.log("RETORNA EMPRESA");
                 //console.dir(empresa);
                 //---res.json(empresa);
-            }); 
-            console.log("UsuarioFindByEmail")
-            usuario.paginaWeb.push(empresa);
-            usuario.save(function(err, usuario){
-                if(err) console.log(err);
-                console.log("Pushed empresa con exito");
-                console.dir(usuario);
-                res.json({success: true});
+                }); 
+
+                //res.json({success: true});
+
             });
         });
         
@@ -145,8 +142,42 @@ var EmpresasApi = (function() {
         
     };
     
+    */
     
     
+    EmpresasApi.prototype.save = function(req, res, next){
+        var that = this;
+        console.log("body.userID: " + req.body.userId);
+        //Eliminar findByID primero guardar empresa y despues push
+        that.models.usuario.findById(req.body.userId, function(err, usuario) {
+            if (err) return console.log(err);
+            
+            var empresa = that.empresaFactory.get();
+            empresa = that.copy.copyBodyToEmpresa(req.body, empresa);
+            var emp = empresa;
+            //console.log("EMPRESA.SAVE emrpesa");
+            //console.dir(empresa);
+            
+            usuario.paginaWeb.push(empresa);
+            console.log("Usuario antes de save");
+            console.dir(usuario.paginaWeb);
+            
+            usuario.save(function (err) {
+                if(err) console.log(err);
+                
+                console.log("USUARIO dentro de SAVE");
+                empresa.save(function(err, emp) { 
+                    if(err) {
+                        console.log("RECIBE EMPRESA ERROR");
+                        return that.validationErrMessages(err);
+                    }
+                    console.log("Empresa.save");
+                    console.dir(empresa);
+                }); 
+            });
+            
+        });        
+    };
     
     
     EmpresasApi.prototype.getOne = function(req, res, next) {
