@@ -12,7 +12,7 @@
     <ul>
         <li dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 200">
             {{ empresa.nombre }}    {{empresa._usuario.cliente}}   {{empresa._usuario.fechaRegistro}}
-            <a ng-href="#/privado/ver/{{empresa._usuario._id}}">Ver</a>
+            <a ng-href="#/privado/ver/{{empresa._id}}">Ver</a>
             <a ng-href="#/privado/editar/{{empresa._usuario._id}}">Editar</a>
             <a href="#" ng-click="ctrl.delete(empresa._usuario._id)">Borrar</a>
         </li>

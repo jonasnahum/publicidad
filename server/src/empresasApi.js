@@ -10,49 +10,9 @@ var EmpresasApi = (function() {
             var message = err.errors[key].message;
             console.log('Validation error for "%s": %s', key, message);
         });
-    };/*
-    EmpresasApi.prototype.getAll = function(req, res, next) {
-        var that = this;              
-        that.models.empresa.find({}, function (err, empresas) {
-            if (err) return console.log(err);
-            
-            console.log("GET ALL SERVER");
-            console.dir(empresas);
-            that.models.usuario.find({}, function(err, usuarios){
-                if (err) return console.log(err);
-                console.log("GET ALL SERVER USUARIOS");
-                console.dir(usuarios);
-                //res.json(usuarios);
-            })/*.select('uniquename')/;
-            //res.json(empresas);
-        })
-            //.select('nombre logotipo descripcion informacion.uniquename')
-            .select('nombre logotipo descripcion')
-            .skip(req.body.requestedPageNumber*req.body.myPageItemsCount)
-            .limit(req.body.myPageItemsCount);
-    };*/
+    };
     
-    
-    EmpresasApi.prototype.getAll = function(req, res, next) {//Aun hay que modificarlo
-        /*var that = this;              
-        that.models.empresa.find({}, function (err, empresas) {
-            if (err) return console.log(err);
-            
-            console.log("GET ALL SERVER");
-            console.dir(empresas);
-            /*that.models.usuario.find({}, function(err, usuarios){
-                if (err) return console.log(err);
-                console.log("GET ALL SERVER USUARIOS");
-                console.dir(usuarios);
-                //res.json(usuarios);
-            }).select('uniquename')*--/;
-            res.json(empresas);
-        }).populate('uniquename')
-            .select('nombre logotipo descripcion')
-            .skip(req.body.requestedPageNumber*req.body.myPageItemsCount)
-            .limit(req.body.myPageItemsCount);
-        */
-        
+    EmpresasApi.prototype.getAll = function(req, res, next) {        
         var that = this;              
         that.models.empresa.find({}, function (err, empresas) {
             if (err) return console.log(err);
@@ -115,8 +75,12 @@ var EmpresasApi = (function() {
         var that = this;
         
         that.models.empresa.findOne({ _id: req.params.id })
+        .populate('_usuario')
         .exec(function(err, empresa){
             if (err) return next(err);
+            
+            console.log("GETONE empresa");
+            console.dir(empresa);
             return res.json(empresa);
         });
     };
