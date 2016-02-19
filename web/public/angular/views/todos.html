@@ -4,23 +4,25 @@
     <br>
     <br>
     <br>
-    
+
     <div ng-show="ctrl.empresas.length > 0">
-         <label>Buscar: <input ng-model="ctrl.searchText"></label>
+        <label>Buscar: <input ng-model="ctrl.searchText"></label>
     </div>
+    
     <ul>
         <li dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 200">
-            {{ empresa.nombre }} 
-            <a ng-href="#/privado/ver/{{empresa._id}}">Ver</a>
-            <a ng-href="#/privado/editar/{{empresa._id}}">Editar</a>
-            <a href="#" ng-click="ctrl.delete(empresa._id)">Borrar</a>
+            {{ empresa.nombre }}    {{empresa._usuario.cliente}}   {{empresa._usuario.fechaRegistro}}
+            <a ng-href="#/privado/ver/{{empresa._usuario._id}}">Ver</a>
+            <a ng-href="#/privado/editar/{{empresa._usuario._id}}">Editar</a>
+            <a href="#" ng-click="ctrl.delete(empresa._usuario._id)">Borrar</a>
         </li>
     </ul>
-<br />
-<a type="button" class="btn btn-success btn-sm" aria-label="Left Align" ng-href="#/privado/nuevo">
-  <span class="glyphicon glyphicon-plus" aria-hidden="true">Nuevo</span>
-</a>
-    <!--a ng-href="#/nuevo">Nuevo</a-->
+    <br />
+
+    <a type="button" class="btn btn-success btn-sm" aria-label="Left Align" ng-href="#/privado/nuevo">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true">Nuevo</span>
+    </a>
+
 </div>
 <dir-pagination-controls></dir-pagination-controls>
 

@@ -12,8 +12,11 @@ module.exports = (function() {
         router.post('/signup', usuariosApi.save.bind(usuariosApi));
         
         router.post('/signupPublico', usuariosApi.savePublico.bind(usuariosApi));
+        
         router.get('/', usuariosApi.getAll.bind(usuariosApi));
+        
         router.delete('/:id', usuariosApi.delete.bind(usuariosApi));
+    
     };
     
     return UsuariosController;

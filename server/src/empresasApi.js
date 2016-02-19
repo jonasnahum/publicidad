@@ -34,7 +34,7 @@ var EmpresasApi = (function() {
     
     
     EmpresasApi.prototype.getAll = function(req, res, next) {//Aun hay que modificarlo
-        var that = this;              
+        /*var that = this;              
         that.models.empresa.find({}, function (err, empresas) {
             if (err) return console.log(err);
             
@@ -45,10 +45,25 @@ var EmpresasApi = (function() {
                 console.log("GET ALL SERVER USUARIOS");
                 console.dir(usuarios);
                 //res.json(usuarios);
-            }).select('uniquename')*/;
+            }).select('uniquename')*--/;
             res.json(empresas);
         }).populate('uniquename')
             .select('nombre logotipo descripcion')
+            .skip(req.body.requestedPageNumber*req.body.myPageItemsCount)
+            .limit(req.body.myPageItemsCount);
+        */
+        
+        var that = this;              
+        that.models.empresa.find({}, function (err, empresas) {
+            if (err) return console.log(err);
+            
+            console.log("GET ALL Empresas");
+            console.dir(empresas);
+            res.json(empresas);
+        })
+            //.populate('_usuario', 'cliente fechaRegistro -_id')//-id no renderea el id del usuario
+            .populate('_usuario', 'cliente fechaRegistro')
+            .select('nombre _id _usuario')
             .skip(req.body.requestedPageNumber*req.body.myPageItemsCount)
             .limit(req.body.myPageItemsCount);
     };

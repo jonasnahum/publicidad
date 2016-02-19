@@ -82,16 +82,6 @@ var UsuariosApi = (function() {
     
     
     UsuariosApi.prototype.getAll = function(req, res, next) {
-        /*var that = this;              
-        that.models.usuario.find({}, function (err, usuarios) {
-            if (err) return console.log(err);
-            
-            that.models.usuario.find({}, function(err, usuarios){
-                if (err) return console.log(err);
-                res.json(usuarios);
-            });
-        });
-        */
         var that = this;              
         that.models.usuario.find({}, function (err, usuarios) {
             if (err) return console.log(err);
@@ -100,10 +90,6 @@ var UsuariosApi = (function() {
                 if (err) return console.log(err);
                 res.json(usuarios);
             });
-        }).populate('paginaWeb').exec(function(err, pag){
-            if(err) console.log(err);
-            console.log("PAGWEB");
-            console.dir(pag);
         });
     };
     
