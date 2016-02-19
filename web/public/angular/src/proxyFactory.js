@@ -53,6 +53,24 @@
             }).success(success).error(that.error);
         };
         
+        Proxy.prototype.savePublico = function(id, model, success) {
+            var that = this;
+            $http({
+                method: 'POST',
+                url: that.url + id,
+                data: model
+            }).success(success).error(that.error);
+        };
+        
+        Proxy.prototype.signupPublico = function(model, success) {
+            var that = this;
+            $http({
+                method: 'POST',
+                url: that.url,
+                data: model
+            }).success(success).error(that.error);
+        };
+        
         Proxy.prototype.update = function(id, model, success) {
             var that = this;
             $http({

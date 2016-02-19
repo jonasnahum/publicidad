@@ -37,15 +37,16 @@
                 obj.estado = data.direccion.estado;
 
                 obj.rubro = data.rubro.rubro;
-
-                obj.noContrato = data.informacion.noContrato;
-                obj.uniquename = data.informacion.uniquename;
-                obj.cliente = data.informacion.cliente;
-                obj.telCliente = data.informacion.telCliente;
-                obj.correoCliente = data.informacion.correoCliente;
-                obj.fechaContrato = data.informacion.fechaContrato;
-                obj.fechaVencimiento = data.informacion.fechaVencimiento;
-                obj.pago = data.informacion.pago;
+                
+                obj.userId = data._usuario._id;
+                obj.noContrato = data._usuario.noContrato;
+                obj.uniquename = data._usuario.uniquename;
+                obj.cliente = data._usuario.cliente;
+                obj.telCliente = data._usuario.telCliente;
+                obj.correoCliente = data._usuario.email;
+                obj.fechaContrato = data._usuario.fechaRegistro;
+                obj.fechaVencimiento = data._usuario.fechaVencimiento;
+                obj.pago = data._usuario.pago;
             }
             return obj;
         };
@@ -94,6 +95,7 @@
             model.fechaContrato=ctrl.fechaContrato,    
             model.fechaVencimiento=ctrl.fechaVencimiento,    
             model.pago=ctrl.pago
+            model.userId=ctrl.userId
             return model;
         };
         

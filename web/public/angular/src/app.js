@@ -12,6 +12,8 @@
         $router.when("/publico/about", { templateUrl: "angular/views/about.html" })
         $router.when("/publico/contact", { templateUrl: "angular/views/contact.html" })
         $router.when("/error", { templateUrl: "angular/views/error.html" })
+        $router.when("/publico/nuevo/:id", { templateUrl: "angular/views/nuevoPublico.html" })
+        $router.when("/publico/signup", { templateUrl: "angular/views/signupPublico.html" })
 //privado
         $router.when("/privado/nuevo", 
                      { templateUrl: "angular/views/nuevo.html"})

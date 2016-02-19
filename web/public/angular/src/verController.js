@@ -9,6 +9,7 @@
         
         ctrl.getOne = function (id) {
             empresasProxy.getOne(id, function(data){
+                //console.dir(data);
                 var obj = modelInstance.getObjFromSubdocument(data);
                 ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                 

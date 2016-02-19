@@ -9,6 +9,7 @@
 
         ctrl.getAll = function(){
             empresasProxy.getAll(function(data){
+                console.log("GET ALL EMPRESAS PROxy");
                 ctrl.empresas=data;
             });
         };
