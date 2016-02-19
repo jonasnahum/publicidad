@@ -24,11 +24,6 @@ var Copy = (function() {
         empresa.email = body.email;
         empresa.productos = body.productos;
         empresa.nota = body.nota;
-        console.log("COPY");
-        console.log(body.userId);
-        empresa._usuario = body.userId;
-        console.log("COPY2");
-        console.log(empresa._usuario);
         empresa.direccion={
             numero: body.numero,
             numeroInt: body.numeroInt,
@@ -40,8 +35,8 @@ var Copy = (function() {
         };
         empresa.rubro={
             rubro: body.rubro
-        };/*
-        empresa.informacion={
+        };
+        empresa._usuario={
             noContrato: body.noContrato,
             uniquename: body.uniquename,
             cliente: body.cliente,
@@ -50,7 +45,12 @@ var Copy = (function() {
             fechaRegistro: body.fechaContrato||Date.now(),
             fechaVencimiento: body.fechaVencimiento||Date.now(),
             pago: body.pago
-        };*/
+            //pagWeb
+            //email
+            //password
+            
+        };
+        
         return empresa;
     };
 

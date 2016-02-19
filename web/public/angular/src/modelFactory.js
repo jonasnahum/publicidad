@@ -37,7 +37,8 @@
                 obj.estado = data.direccion.estado;
 
                 obj.rubro = data.rubro.rubro;
-
+                
+                obj.userId = data._usuario._id;
                 obj.noContrato = data._usuario.noContrato;
                 obj.uniquename = data._usuario.uniquename;
                 obj.cliente = data._usuario.cliente;
@@ -94,6 +95,7 @@
             model.fechaContrato=ctrl.fechaContrato,    
             model.fechaVencimiento=ctrl.fechaVencimiento,    
             model.pago=ctrl.pago
+            model.userId=ctrl.userId
             return model;
         };
         

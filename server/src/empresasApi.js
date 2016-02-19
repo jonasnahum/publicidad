@@ -69,7 +69,7 @@ var EmpresasApi = (function() {
         });
         
     };
-    
+    EmpresasApi
     
     EmpresasApi.prototype.getOne = function(req, res, next) {
         var that = this;
@@ -97,7 +97,7 @@ var EmpresasApi = (function() {
     };
     */
     EmpresasApi.prototype.update = function(req, res, next) {
-        var that = this;
+        /*var that = this;
         that.models.empresa.findById(req.params.id, function (err, empresa) {
             if(err) return next(err);
             empresa = that.copy.copyBodyToEmpresa(req.body, empresa);
@@ -105,7 +105,49 @@ var EmpresasApi = (function() {
                 if(err) return that.validationErrMessages(err);
                 res.json(empresa);
             }); 
+        });*/
+        
+        /*var that = this;
+        that.models.empresa.findById(req.params.id, function (err, empresa) {
+            if(err) return next(err);
+            empresa = that.copy.copyBodyToEmpresa(req.body, empresa);
+            //empresa.save()
+        })
+        .populate('_usuario', '-paginaWeb');
+        */
+        var that = this;
+        that.models.usuario.findById(req.body.userId, function (err, found) {
+            if(err) return console.log(err);
+            
+            that.models.empresa.findById(req.params.id, function (err, empresa) {
+                if(err) return next(err);
+                
+                empresa = that.copy.copyBodyToEmpresa(req.body, empresa);
+                console.dir(empresa);
+                empresa.save(function(err, empresa) {
+                    if(err) return that.validationErrMessages(err);
+                    
+                    console.log(empresa);
+                    console.log("Se modifico empresa");
+                });
+                //guardar propiedad por propiedad
+                found.noContrato = req.body.noContrato,
+                found.uniquename = req.body.uniquename,
+                found.cliente = req.body.cliente,
+                found.telCliente = req.body.telCliente,
+                found.correoCliente = req.body.correoCliente,
+                found.fechaRegistro = req.body.fechaContrato,
+                found.fechaVencimiento = req.body.fechaVencimiento,
+                found.pago = req.body.pago
+                found.save(function(err, user) {
+                    if(err) return console.log("Usuario save ERROR" + err);
+                    console.log("Usuario modificado " + user);
+                });
+            })
+            .populate('_usuario', '-paginaWeb');
+            
         });
+        
     };
     EmpresasApi.prototype.delete = function(req, res, next) {
         var that = this;
