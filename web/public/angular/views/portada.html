@@ -71,7 +71,8 @@
             
             
             
-            <ul dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 10">
+            <ul dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 4">
+                <!--p ng-model="ctrl.requestedPageNumber" ng-hide="true"> {{currentPage}}</p-->
                 <hr class="featurette-divider">
                 <div class="row featurette">
                     <div class="col-md-7">

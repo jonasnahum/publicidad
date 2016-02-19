@@ -12,11 +12,15 @@ var EmpresasApi = (function() {
         });
     };
     EmpresasApi.prototype.getAll = function(req, res, next) {
-        var that = this;       
-        that.models.empresa.find({}, function (err, empresas) {
+        var that = this;              
+        that.models.empresa
+            .find({}, function (err, empresas) {
                 if (err) return console.log(err);
                 res.json(empresas);
-            });   
+            })
+            .select('nombre logotipo descripcion informacion.uniquename')
+            .skip(req.body.requestedPageNumber*req.body.myPageItemsCount)
+            .limit(req.body.myPageItemsCount);
     };
     EmpresasApi.prototype.save = function(req, res, next){
         var that = this;

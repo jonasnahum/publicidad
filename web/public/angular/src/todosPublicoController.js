@@ -4,6 +4,8 @@
         var ctrl = this;
         ctrl.empresas = [];
         ctrl.searchText = "";
+        //ctrl.requestedPageNumber;
+        //ctrl.myPageItemsCount = 4;
 
         ctrl.getAll = function(){
             empresasProxy.getAll(function(data){
