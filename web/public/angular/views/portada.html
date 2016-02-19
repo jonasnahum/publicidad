@@ -54,23 +54,23 @@
     
         <div ng-controller="TodosPublicoController as ctrl">
             <div class="row">
-              <div class="col-lg-6">
-              </div><!-- /.col-lg-6 -->
-              <div class="col-lg-6">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Buscar negocio"  ng-model="ctrl.searchText">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Buscar</button>
-                  </span>
-                </div><!-- /input-group -->
-              </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <a type="button" class="btn btn-success btn-sm" aria-label="Left Align" ng-href="#/publico/signup">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Registrar mi empresa</span>
+                    </a>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar negocio"  ng-model="ctrl.searchText">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Buscar</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
             
             
-            
-            
-            
-            
+            {{ctrl.empresas}}
             <ul dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 4">
                 <!--p ng-model="ctrl.requestedPageNumber" ng-hide="true"> {{currentPage}}</p-->
                 <hr class="featurette-divider">

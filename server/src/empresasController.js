@@ -9,10 +9,12 @@ module.exports = (function() {
         router.get('/', empresasApi.getAll.bind(empresasApi));
             
         router.post('/', tokenMiddleware.validate.bind(tokenMiddleware), empresasApi.save.bind(empresasApi));
+        
+        router.post('/:id', tokenMiddleware.validate.bind(tokenMiddleware), empresasApi.savePublico.bind(empresasApi));
 
         router.get('/:id', empresasApi.getOne.bind(empresasApi));
                      
-        router.get('/pages/:uniquename', empresasApi.getByUniqueName.bind(empresasApi));
+        //router.get('/pages/:uniquename', empresasApi.getByUniqueName.bind(empresasApi));
         
         router.put('/:id', tokenMiddleware.validate.bind(tokenMiddleware), empresasApi.update.bind(empresasApi));
         

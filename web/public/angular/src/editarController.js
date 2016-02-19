@@ -87,6 +87,7 @@
                 alert("Info enviada");
                 $location.path('/privado/todos');
             });
+            
         };
     });
     app.controller('EditarFormularioController', depArr); 

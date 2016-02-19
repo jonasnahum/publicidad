@@ -41,6 +41,14 @@
                     return tokenObj.user._id;
                 }
                 return 'No hay _id';
+            },
+            getUser: function() {
+                var that = this;
+                var tokenObj = that.getToken();
+                if (tokenObj) {
+                    return tokenObj.user;
+                }
+                return 'No user';
             }
         };
     }]);
