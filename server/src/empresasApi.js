@@ -33,7 +33,7 @@ var EmpresasApi = (function() {
     };*/
     
     
-    EmpresasApi.prototype.getAll = function(req, res, next) {
+    EmpresasApi.prototype.getAll = function(req, res, next) {//Aun hay que modificarlo
         var that = this;              
         that.models.empresa.find({}, function (err, empresas) {
             if (err) return console.log(err);
@@ -55,7 +55,7 @@ var EmpresasApi = (function() {
     
     
     
-   /* EmpresasApi.prototype.save = function(req, res, next){
+    EmpresasApi.prototype.save = function(req, res, next){
         var that = this;
         var empresa = that.empresaFactory.get();
         empresa = that.copy.copyBodyToEmpresa(req.body, empresa);
@@ -64,119 +64,35 @@ var EmpresasApi = (function() {
         }); 
         res.json(empresa);
     };
-*/
-  //  EmpresasApi.prototype.savePublico = function(req, res, next){
-    /*EmpresasApi.prototype.save = function(req, res, next){
-        var that = this;
-        var empresa = that.empresaFactory.get();
-        empresa = that.copy.copyBodyToEmpresa(req.body, empresa);
-        var emp = empresa;
-        //console.log("EMPRESA.SAVE emrpesa");
-        //console.dir(empresa);
-        empresa.save(function(err, emp) {
-            console.log("RECIBE EMPRESA ERROR");
-            console.dir(err);
-            if(err) return that.validationErrMessages(err);
-            console.log("Empresa.save");
-            console.dir(empresa);
-                    
-            
-            console.log("RETORNA EMPRESA");
-            console.dir(empresa);
-            res.json(empresa);
-        }); 
-        //res.json(empresa);
-        /*
-        var user = req.body.user; 
-        console.log("body.user: " + user);
-        that.models.usuario.findByEmail({user}, function(err, usuario) {
-            if (err) return console.log(err);
 
-            console.log("UsuarioFindByEmail")
-            usuario.paginaWeb.push(empresa);
-            usuario.save(function(err, usuario){
-                if(err) console.log(err);
-                console.log("Pushed empresa con exito");
-                console.dir(usuario);
-                //res.json({success: true});
-            });
-        });
-        ///*
-    };*/
-    /*EmpresasApi.prototype.save = function(req, res, next){
+    
+    EmpresasApi.prototype.savePublico = function(req, res, next){
+        var id = req.params.id;
         var that = this;
-        console.log("body.userID: " + req.body.userId);
-        //Eliminar findByID primero guardar empresa y despues push
-        that.models.usuario.findById(req.body.userId, function(err, usuario) {
-            if (err) return console.log(err);
+        
+        that.models.usuario.findById(req.params.id, function (err, found) {
+            if(err) return console.log('OH DEAR... ' + err);//return next(err);
             
             var empresa = that.empresaFactory.get();
             empresa = that.copy.copyBodyToEmpresa(req.body, empresa);
-            var emp = empresa;
-            console.log("EMPRESA.SAVE emrpesa");
-            console.dir(empresa);
-            
-            usuario.paginaWeb.push(empresa);
-            
-            usuario.save(function (err) {
-                if(err) console.log(err);
-            
-                empresa.save(function(err, emp) { 
+            empresa.save(function(err, empresa) {
                 if(err) {
-                    console.log("RECIBE EMPRESA ERROR");
-                    return that.validationErrMessages(err);}
-                  console.log("Empresa.save");
-                    console.dir(empresa);
-
-                //console.log("RETORNA EMPRESA");
-                //console.dir(empresa);
-                //---res.json(empresa);
-                }); 
-
-                //res.json({success: true});
-
+                    console.log(err);
+                    return that.validationErrMessages(err);
+                }
+                
+                console.log(empresa);
+                console.log('Empresa guardada y en _usuario va el _id de usuario');
             });
+            
+            found.paginaWeb.push(empresa);
+            found.save(function(err, user) {
+                if(err) return console.log("Usuario save ERROR" + err);
+                console.log("Empresa guardada en usuario" + user);
+            });
+             
         });
         
-        //res.json(empresa);
-        
-    };
-    
-    */
-    
-    
-    EmpresasApi.prototype.save = function(req, res, next){
-        var that = this;
-        console.log("body.userID: " + req.body.userId);
-        //Eliminar findByID primero guardar empresa y despues push
-        that.models.usuario.findById(req.body.userId, function(err, usuario) {
-            if (err) return console.log(err);
-            
-            var empresa = that.empresaFactory.get();
-            empresa = that.copy.copyBodyToEmpresa(req.body, empresa);
-            var emp = empresa;
-            //console.log("EMPRESA.SAVE emrpesa");
-            //console.dir(empresa);
-            
-            usuario.paginaWeb.push(empresa);
-            console.log("Usuario antes de save");
-            console.dir(usuario.paginaWeb);
-            
-            usuario.save(function (err) {
-                if(err) console.log(err);
-                
-                console.log("USUARIO dentro de SAVE");
-                empresa.save(function(err, emp) { 
-                    if(err) {
-                        console.log("RECIBE EMPRESA ERROR");
-                        return that.validationErrMessages(err);
-                    }
-                    console.log("Empresa.save");
-                    console.dir(empresa);
-                }); 
-            });
-            
-        });        
     };
     
     

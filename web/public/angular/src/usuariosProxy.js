@@ -15,7 +15,7 @@
             this.signupProxy.save(model, success);
         };
         UsuariosProxy.prototype.signupPublico = function(model, success){
-            this.signupPublicoProxy.save(model, success);
+            this.signupPublicoProxy.signupPublico(model, success);
         };
         
         UsuariosProxy.prototype.getALl = function(){

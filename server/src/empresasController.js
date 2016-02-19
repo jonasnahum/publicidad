@@ -10,7 +10,7 @@ module.exports = (function() {
             
         router.post('/', tokenMiddleware.validate.bind(tokenMiddleware), empresasApi.save.bind(empresasApi));
         
-        //router.post('/nuevopub', tokenMiddleware.validate.bind(tokenMiddleware), empresasApi.savePublico.bind(empresasApi));
+        router.post('/:id', tokenMiddleware.validate.bind(tokenMiddleware), empresasApi.savePublico.bind(empresasApi));
 
         router.get('/:id', empresasApi.getOne.bind(empresasApi));
                      

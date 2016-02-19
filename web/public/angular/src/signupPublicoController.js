@@ -17,8 +17,8 @@
         
         ctrl.signup = function() {
             ctrl.fechaRegistro = Date.now();
-            proxy.signupPublico(ctrl, function() {
-                $location.path('/publico/nuevo');
+            proxy.signupPublico(ctrl, function(data) {
+                $location.path('/publico/nuevo/' + data.id);
             });
         };
     }]);

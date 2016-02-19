@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
-    arrDep = ['$location', 'mapFactory', 'productosFactory', 'empresasProxy', 'tokenStorage']; 
-    arrDep.push(function($location, mapFactory, productosFactory, empresasProxy, tokenStorage) {
+    arrDep = ['$routeParams','$location', 'mapFactory', 'productosFactory', 'empresasProxy', 'tokenStorage']; 
+    arrDep.push(function($route, $location, mapFactory, productosFactory, empresasProxy, tokenStorage) {
         
         var ctrl = this;
         ctrl.nombre = undefined;
@@ -56,9 +56,8 @@
         ctrl.save = function() {
             ctrl.lat = mapa.getLat();
             ctrl.long = mapa.getLong();
-            ctrl.userId = tokenStorage.getId();
-            //empresasProxy.savePublico(ctrl, function(data, status, headers, config){
-            empresasProxy.save(ctrl, function(data, status, headers, config){
+            ctrl.userId = $route.id;
+            empresasProxy.savePublico(ctrl.userId, ctrl, function(data, status, headers, config){
                 $location.path('/');
             });
         };  

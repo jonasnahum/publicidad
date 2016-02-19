@@ -24,7 +24,11 @@ var Copy = (function() {
         empresa.email = body.email;
         empresa.productos = body.productos;
         empresa.nota = body.nota;
+        console.log("COPY");
+        console.log(body.userId);
         empresa._usuario = body.userId;
+        console.log("COPY2");
+        console.log(empresa._usuario);
         empresa.direccion={
             numero: body.numero,
             numeroInt: body.numeroInt,

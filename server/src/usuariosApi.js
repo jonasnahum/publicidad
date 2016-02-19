@@ -74,12 +74,24 @@ var UsuariosApi = (function() {
         usuario.save(function(err, usuario){
             if(err) console.log(err);
             console.log("usuario guardado");
-            res.json({success: true});
+            console.log("usuario id" + usuario._id);
+            //res.json({success: true});
+            res.json({id: usuario._id});
         });
     };
     
     
     UsuariosApi.prototype.getAll = function(req, res, next) {
+        /*var that = this;              
+        that.models.usuario.find({}, function (err, usuarios) {
+            if (err) return console.log(err);
+            
+            that.models.usuario.find({}, function(err, usuarios){
+                if (err) return console.log(err);
+                res.json(usuarios);
+            });
+        });
+        */
         var that = this;              
         that.models.usuario.find({}, function (err, usuarios) {
             if (err) return console.log(err);
@@ -88,6 +100,10 @@ var UsuariosApi = (function() {
                 if (err) return console.log(err);
                 res.json(usuarios);
             });
+        }).populate('paginaWeb').exec(function(err, pag){
+            if(err) console.log(err);
+            console.log("PAGWEB");
+            console.dir(pag);
         });
     };
     
