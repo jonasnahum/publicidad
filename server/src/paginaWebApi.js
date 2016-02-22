@@ -18,7 +18,7 @@ var PaginaWebApi = (function() {
             });   
     };
     
-  // curl -i -H "Content-Type: application/json" -d '{"nombre": "rodriog damian jimenesz","logotipo": "este es un logo", "foto": "este es un fptp","colorBackground": "este es un color", "colorText": "este es un color2", "textoIntro": "bienvenidos", "lat": "4", "long": "4", "descripcion": "cualquiera", "horario": "abrimos todos los dias todos los días", "encargado": "jonas nahum jimenez garcilazo","tel": "4521652247","face": "paginasweburuapan","flickr" : "confeccionescolombia","whats" : "4521652247","link1" : "","link2" : "","email": "jonas@gmail.com","productos": [],"nota": "esta es una nota", "direccion": "justo sierra no 20","rubro": "escolaridad","numero": "2","numeroInt": "33","calle": "justo sierra","colonia": "amapolita","cp": "00060","municipio": "uaruapan","estado": "uruapan","rubro": "purificadoras"}' http://localhost:3000/paginaWeb/api/
+  // curl -i -H "Content-Type: application/json" -d '{"nombre": "rodriog damian jimenesz","logotipo": "este es un logo", "foto": "este es un fptp","colorBackground": "este es un color", "colorText": "este es un color2", "textoIntro": "bienvenidos", "lat": "4", "long": "4", "descripcion": "cualquiera", "horario": "abrimos todos los dias todos los días", "encargado": "jonas nahum jimenez garcilazo","tel": "4521652247","face": "paginasweburuapan","flickr" : "confeccionescolombia","whats" : "4521652247","link1" : "","link2" : "","email": "jonas@gmail.com","productos": [],"nota": "esta es una nota", "direccion": "justo sierra no 20","rubro": "escolaridad","numero": "2","numeroInt": "33","calle": "justo sierra","colonia": "amapolita","cp": "00060","municipio": "uaruapan","estado": "uruapan","rubro": "purificadoras"}' http://localhost:3000/paginaWeb/api/56cb5f98859069ee22019620
  //ocupa usuarioid en params para poder guardar.
    PaginaWebApi.prototype.save = function(req, res, next){
         var that = this;
@@ -27,11 +27,10 @@ var PaginaWebApi = (function() {
         paginaWeb._usuario = req.params.usuarioid;
         paginaWeb.save(function(err, saved) {
             if(err)return console.log(err);
-            console.log(saved);
             res.json(saved);
         }); 
    };
-    //curl http://localhost:3000/paginaWeb/api/56cb27e2dfd8dedc17f23887
+    //curl http://localhost:3000/paginaWeb/api/56cb60fc21499c922426a4c7
    PaginaWebApi.prototype.getOne = function(req, res, next) {
         var that = this;  
         that.models.paginaWeb.findOne({ _id: req.params.id })
