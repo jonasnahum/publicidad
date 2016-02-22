@@ -73,10 +73,23 @@ var UsuariosApi = (function() {
         }
         usuario.save(function(err, usuario){
             if(err) console.log(err);
-            console.log("usuario guardado");
-            console.log("usuario id" + usuario._id);
-            //res.json({success: true});
-            res.json({id: usuario._id});
+            
+            var expires = that.moment().add(120, 'minutes').valueOf();
+            var token = that.jwt.encode({
+                iss: usuario.cliente,
+                exp: expires
+            }, 'cualquiera');
+
+            console.log({
+                token : token,
+                expires: expires,
+                user: usuario
+            });
+            res.json({
+                token : token,
+                expires: expires,
+                user: usuario
+            });
         });
     };
     

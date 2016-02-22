@@ -44,15 +44,6 @@
             }).success(success).error(that.error);       
         };
         
-        Proxy.prototype.save = function(model, success) {
-            var that = this;
-            $http({
-                method: 'POST',
-                url: that.url,
-                data: model
-            }).success(success).error(that.error);
-        };
-        
         Proxy.prototype.savePublico = function(id, model, success) {
             var that = this;
             $http({
