@@ -1,8 +1,8 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$routeParams', '$location', 'mapFactory', 'modelFactory', 'empresasProxy', '$anchorScroll'];
+    var depArr = ['$routeParams', '$location', 'mapFactory', 'modelFactory', 'paginasProxy', '$anchorScroll'];
     
-    depArr.push(function($route, $location, mapFactory, modelFactory, empresasProxy,  $anchorScroll) {
+    depArr.push(function($route, $location, mapFactory, modelFactory, paginasProxy,  $anchorScroll) {
         var ctrl = this;
         ctrl.scrollTo = function(id) {
            $location.hash(id);
@@ -12,13 +12,13 @@
         var modelInstance = modelFactory();
         
         ctrl.getOne = function (name) {
-            empresasProxy.getByUniqueName(name, function(data){
+            paginasProxy.getByUniqueName(name, function(data){
                 var obj = modelInstance.getObjFromSubdocument(data);
                 ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                 
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
-    
+                
                 var mapa = mapFactory(latitud,longitud);
                 mapa.placeMarker(latitud,longitud);
                 

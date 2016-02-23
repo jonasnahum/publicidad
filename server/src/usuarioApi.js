@@ -13,7 +13,7 @@ var UsuariosApi = (function() {
             console.log('Validation error for "%s": %s', key, message);
         });
     };
-    //curl -i -H "Content-Type: application/json" -d '{"cliente":"Maria Jones","uniquename":"jones","telCliente":"234567","noContrato":"02","fechaRegistro":"2015-11-10","fechaVencimiento":"2015/01/09","pago":"10","email":"jones@gmail.com","password":"4321"}' http://localhost:3000/usuarios/api/
+    //curl -i -H "Content-Type: application/json" -d '{"cliente":"Maria Jones","uniquename":"jones","telCliente":"234567","noContrato":"02","fechaRegistro":"2015-11-10","fechaVencimiento":"2015/01/09","pago":"10","email":"jones@gmail.com","password":"4321"}' http://localhost:3000/usuario/api/
     UsuariosApi.prototype.save = function(req, res, next) {
         var that = this;        
         var usuario = that.usuarioFactory.get();   

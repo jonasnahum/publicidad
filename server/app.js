@@ -5,15 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var busboy = require('connect-busboy');
-var container = require('./src/container');
+var container = require('./src/container.js');
 var cors = require('cors');
 var db = container.get('dbConnection');
 
-db.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/paginas');
+db.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/paginaWeb');
 
 var routes = require('./routes/index');
-var empresasApi = container.get("empresasController");
-var usuariosApi = container.get("usuariosController");
+var paginaWebApi = container.get("paginaWebController");
+var usuarioApi = container.get("usuarioController");
 var correoApi = container.get("correoController")
 var corsOptions = {  //This is CORS-enabled for only origin: process.env.WEB || 'http://localhost:3000'
   origin: process.env.WEB || 'http://localhost:3001'
@@ -37,8 +37,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(busboy({inmediate: true}));
 
 app.use('/', routes);
-app.use('/empresas/api', empresasApi.router);
-app.use('/usuarios/api', usuariosApi.router);
+app.use('/paginaWeb/api', paginaWebApi.router);
+app.use('/usuario/api', usuarioApi.router);
 app.use('/correo', correoApi.router);
 
 // catch 404 and forward to error handler

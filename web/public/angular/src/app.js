@@ -5,7 +5,7 @@
         
         $httpProvider.interceptors.push('httpInterceptor');
 //publico
-        $router.when("/", { templateUrl: "angular/views/portada.html"})
+        $router.when("/", { templateUrl: "angular/views/todosPublico.html"})
         $router.when('/signin', { templateUrl: "angular/views/signin.html" })
         $router.when('/signup', { templateUrl: "angular/views/signup.html" })
         $router.when("/:negocio", { templateUrl: "angular/views/negocio.html" })

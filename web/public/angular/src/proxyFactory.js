@@ -11,14 +11,13 @@
             $log.error('%s %s %s', config.method, config.url, status);
         };
         
-        Proxy.prototype.getOne = function(id, success) {
+        Proxy.prototype.getAll = function(success) {
             var that = this;
             $http({
-                method: "GET",
-                url: that.url + id
+                method: 'GET',
+                url: that.url
             }).success(success).error(that.error);
         };
-        
         Proxy.prototype.getByUniqueName = function(name, success) {
             var that = this;
             var completeUrl = that.url + 'pages/' + name;
@@ -28,29 +27,27 @@
             }).success(success).error(that.error);    
         };
         
-        Proxy.prototype.getAll = function(success) {
+        
+        
+        
+        
+        Proxy.prototype.getOne = function(id, success) {
             var that = this;
             $http({
-                method: 'GET',
-                url: that.url
+                method: "GET",
+                url: that.url + id
             }).success(success).error(that.error);
         };
         
+
+        
+
         Proxy.prototype.delete = function(id, success) {
             var that = this;
             $http({
                 method: "DELETE",
                 url: that.url + id
             }).success(success).error(that.error);       
-        };
-        
-        Proxy.prototype.save = function(model, success) {
-            var that = this;
-            $http({
-                method: 'POST',
-                url: that.url,
-                data: model
-            }).success(success).error(that.error);
         };
         
         Proxy.prototype.savePublico = function(id, model, success) {

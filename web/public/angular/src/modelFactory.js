@@ -5,6 +5,8 @@
         var ModelFactory = function() {
         };
         ModelFactory.prototype.getObjFromSubdocument = function(data){
+            console.log("GET OBJ FROMN SUBDOC");
+            console.dir(data);
             var obj = {};
             if (data){
                 obj.nombre = data.nombre;
@@ -27,7 +29,8 @@
                 obj.email = data.email;
                 obj.productos = data.productos;
                 obj.nota = data.nota;
-
+                console.log("data.user");
+                console.dir(data._usuario);
                 obj.numero = data.direccion.numero;
                 obj.numeroInt = data.direccion.numeroInt;
                 obj.calle = data.direccion.calle;
