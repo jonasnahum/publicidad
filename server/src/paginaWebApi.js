@@ -17,6 +17,26 @@ var PaginaWebApi = (function() {
                 res.json(paginas);
             });   
     };
+    PaginaWebApi.prototype.getByUniqueName = function(req, res, next) {
+        var that = this;
+        var name = req.params.uniquename;
+        var usrio = undefined;
+        
+        
+        that.models.usuario.findOne({"uniquename": name})    
+            .exec(function(err, usuario){
+            if (err) return next(err);
+            usrio = usuario;
+        });
+        
+        that.models.paginaWeb.findOne({"_usuario._id": usrio._id}).populate('_usuario')    
+            .exec(function(err, negocio){
+            if (err) return console.log(err);
+            console.log(negocio);
+            return res.json(negocio);
+        });
+    };
+    
     
   // curl -i -H "Content-Type: application/json" -d '{"nombre": "rodriog damian jimenesz","logotipo": "este es un logo", "foto": "este es un fptp","colorBackground": "este es un color", "colorText": "este es un color2", "textoIntro": "bienvenidos", "lat": "4", "long": "4", "descripcion": "cualquiera", "horario": "abrimos todos los dias todos los días", "encargado": "jonas nahum jimenez garcilazo","tel": "4521652247","face": "paginasweburuapan","flickr" : "confeccionescolombia","whats" : "4521652247","link1" : "","link2" : "","email": "jonas@gmail.com","productos": [],"nota": "esta es una nota", "direccion": "justo sierra no 20","rubro": "escolaridad","numero": "2","numeroInt": "33","calle": "justo sierra","colonia": "amapolita","cp": "00060","municipio": "uaruapan","estado": "uruapan","rubro": "purificadoras"}' http://localhost:3000/paginaWeb/api/56cb5f98859069ee22019620
  //ocupa usuarioid en params para poder guardar.

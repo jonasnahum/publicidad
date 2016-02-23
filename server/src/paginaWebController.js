@@ -10,6 +10,8 @@ module.exports = (function() {
             
         router.get('/:id', paginaWebApi.getOne.bind(paginaWebApi));
         
+        router.get('/pages/:uniquename', paginaWebApi.getByUniqueName.bind(paginaWebApi));
+        
         router.post('/:usuarioid', paginaWebApi.save.bind(paginaWebApi));
         
         //router.put('/:id', tokenMiddleware.validate.bind(tokenMiddleware), paginaWebApi.update.bind(paginaWebApi));

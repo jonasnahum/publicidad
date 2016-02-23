@@ -47,6 +47,7 @@
                 obj.fechaContrato = data._usuario.fechaRegistro;
                 obj.fechaVencimiento = data._usuario.fechaVencimiento;
                 obj.pago = data._usuario.pago;
+                obj.password = data._usuario.password;
             }
             return obj;
         };
