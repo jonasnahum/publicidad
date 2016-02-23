@@ -13,25 +13,24 @@ var PaginaWebApi = (function() {
         that.models.paginaWeb.find({}).populate('_usuario')
             .exec(function (err, paginas) {
                 if (err) return console.log(err);
-                console.log(paginas);
                 res.json(paginas);
             });   
     };
     PaginaWebApi.prototype.getByUniqueName = function(req, res, next) {
         var that = this;
         var name = req.params.uniquename;
-        var usrio = undefined;
+        var userId = undefined;
         
         
         that.models.usuario.findOne({"uniquename": name})    
             .exec(function(err, usuario){
             if (err) return next(err);
-            usrio = usuario;
+            userId = usuario._id;
         });
-        
-        that.models.paginaWeb.findOne({"_usuario._id": usrio._id}).populate('_usuario')    
+        that.models.paginaWeb.find({"_usuario._id": userId}).populate('_usuario')    
             .exec(function(err, negocio){
             if (err) return console.log(err);
+            console.log("este es la pagina web que resulta despues de la búsqueda a través de _usuario._id");
             console.log(negocio);
             return res.json(negocio);
         });
