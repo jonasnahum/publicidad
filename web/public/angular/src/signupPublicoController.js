@@ -17,10 +17,9 @@
         
         ctrl.signup = function() {
             ctrl.fechaRegistro = Date.now();
-            proxy.signupPublico(ctrl, function(tokenObj) {
-                var id = tokenStorage.getId();
-                tokenStorage.setToken(tokenObj);
-                $location.path('/publico/nuevo/' + id);
+            proxy.signupPublico(ctrl, function(data) {
+                var userId = data._id;
+                $location.path('/publico/nuevo/' + userId);
             });
         };
     }]);

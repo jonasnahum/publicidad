@@ -13,6 +13,7 @@ var PaginaWebApi = (function() {
         that.models.paginaWeb.find({}).populate('_usuario')
             .exec(function (err, paginas) {
                 if (err) return console.log(err);
+                console.log(paginas);
                 res.json(paginas);
             });   
     };
@@ -43,7 +44,7 @@ var PaginaWebApi = (function() {
         var that = this;
         var paginaWeb = that.paginaWebFactory.get();
         paginaWeb = that.copy.copyBodyToEmpresa(req.body, paginaWeb);
-        paginaWeb._usuario = req.params.usuarioid;
+        paginaWeb._usuario = req.params.userId;
         paginaWeb.save(function(err, saved) {
             if(err)return console.log(err);
             res.json(saved);

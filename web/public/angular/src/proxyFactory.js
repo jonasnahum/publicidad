@@ -6,11 +6,11 @@
         var Proxy = function(url) {
             this.url = url;
         };
-        
+
         Proxy.prototype.error = function(data, status, headers, config){
             $log.error('%s %s %s', config.method, config.url, status);
         };
-        
+        //paginasWeb        
         Proxy.prototype.getAll = function(success) {
             var that = this;
             $http({
@@ -26,7 +26,28 @@
                 url: completeUrl
             }).success(success).error(that.error);    
         };
+        //guarda pagina con property _usuario
+        Proxy.prototype.savePublico = function(id, model, success) {
+            var that = this;
+            $http({
+                method: 'POST',
+                url: that.url + id,
+                data: model
+            }).success(success).error(that.error);
+        };        
         
+        
+        
+        
+        //usuarios
+        Proxy.prototype.signupPublico = function(model, success) {
+            var that = this;
+            $http({
+                method: 'POST',
+                url: that.url,
+                data: model
+            }).success(success).error(that.error);
+        };
         
         
         
@@ -50,24 +71,9 @@
             }).success(success).error(that.error);       
         };
         
-        Proxy.prototype.savePublico = function(id, model, success) {
-            var that = this;
-            $http({
-                method: 'POST',
-                url: that.url + id,
-                data: model
-            }).success(success).error(that.error);
-        };
+
         
-        Proxy.prototype.signupPublico = function(model, success) {
-            var that = this;
-            $http({
-                method: 'POST',
-                url: that.url,
-                data: model
-            }).success(success).error(that.error);
-        };
-        
+
         Proxy.prototype.update = function(id, model, success) {
             var that = this;
             $http({
