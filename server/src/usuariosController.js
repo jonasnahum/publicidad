@@ -10,6 +10,7 @@ module.exports = (function() {
         router.post('/signin', usuariosApi.findByEmail.bind(usuariosApi));
         
         router.post('/signup', usuariosApi.save.bind(usuariosApi));
+        router.delete('/delete', usuariosApi.delete.bind(usuariosApi));
     };
     
     return UsuariosController;
