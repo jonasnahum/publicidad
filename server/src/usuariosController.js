@@ -7,16 +7,18 @@ module.exports = (function() {
         var router = this.router;
         var that = this;
              
-        router.post('/signin', usuariosApi.findByEmail.bind(usuariosApi));
-        
-        router.post('/signup', usuariosApi.save.bind(usuariosApi));
-        
-        router.post('/signupPublico', usuariosApi.savePublico.bind(usuariosApi));
+        router.post('/', usuariosApi.save.bind(usuariosApi));
         
         router.get('/', usuariosApi.getAll.bind(usuariosApi));
         
+        router.get('/:id', usuariosApi.getOne.bind(usuariosApi));
+        
+        router.put('/:id', usuariosApi.update.bind(usuariosApi));
+        
         router.delete('/:id', usuariosApi.delete.bind(usuariosApi));
-    
+        
+        router.get('/pages/:uniquename', usuariosApi.getByUniqueName.bind(usuariosApi));
+        
     };
     
     return UsuariosController;

@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
 var validation = require("./validation");
-var empresaSchema = require("./empresaCollection.js");
 
 var validateCorreo = [
     {validator: /^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/, msg: 'mongoose requiere un correo electrónico válido'}
@@ -22,14 +21,8 @@ var schema = mongoose.Schema({
     fechaVencimiento: Date,
     //pago: validation.validateCampo(true,String,null,null,"validatePago"), 
     pago: validation.validateCampo(false,String,null,null,"validatePago"), 
-    paginaWeb: [{ 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Empresa' 
-    }],//si le quitamos los parentensis solo acepta uno?
-    //[{ Type: empresaSchema}],
-    email: { type: String, unique: true, required: true, validate: validateCorreo  },
+    email: { type: String, unique: true, required: true, validate: validateCorreo },
     password: { type: String, required: true }
 });
 
 module.exports = mongoose.model('Usuario', schema);
-
