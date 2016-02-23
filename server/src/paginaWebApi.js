@@ -13,7 +13,6 @@ var PaginaWebApi = (function() {
         that.models.paginaWeb.find({}).populate('_usuario')
             .exec(function (err, paginas) {
                 if (err) return console.log(err);
-                console.log(paginas);
                 res.json(paginas);
             });   
     };
@@ -21,13 +20,14 @@ var PaginaWebApi = (function() {
         var that = this;
         var name = req.params.uniquename;
         var userId = undefined;
-        
+        console.log("entró aqui");
         
         that.models.usuario.findOne({"uniquename": name})    
             .exec(function(err, usuario){
             if (err) return next(err);
             userId = usuario._id;
         });
+                console.log("entró aqui2");
         that.models.paginaWeb.find({"_usuario._id": userId}).populate('_usuario')    
             .exec(function(err, negocio){
             if (err) return console.log(err);

@@ -1,6 +1,6 @@
 <script type="text/javascript" src="./../../../js/datepicker.js"></script>
 
-<div ng-controller="NuevoPublicoController as ctrl" class="container">
+<div ng-controller="NuevoPublicoController as ctrl" class="container" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
     <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()" role="form" novalidate>
         <h2>Empresa</h2>
                 
@@ -278,6 +278,6 @@
         <br />
         <br />
         
-        <button type="submit">Send</button>
+        <button type="submit" class="btn btn-success btn-lg">Guardar mi página</button>
     </form>
 </div>
