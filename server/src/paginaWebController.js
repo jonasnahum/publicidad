@@ -12,7 +12,7 @@ module.exports = (function() {
         
         router.get('/pages/:uniquename', paginaWebApi.getByUniqueName.bind(paginaWebApi));
         
-        router.post('/:usuarioid', paginaWebApi.save.bind(paginaWebApi));
+        router.post('/:userId', paginaWebApi.save.bind(paginaWebApi));
         
         //router.put('/:id', tokenMiddleware.validate.bind(tokenMiddleware), paginaWebApi.update.bind(paginaWebApi));
         //sin token.
@@ -28,3 +28,7 @@ module.exports = (function() {
 
 })();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 044f7e2899aee20a311bca553c1b14da5a7131dd

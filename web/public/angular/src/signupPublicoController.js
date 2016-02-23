@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('SignupPublicoController', ['usuariosProxy', '$location', function(proxy, $location) {
+    app.controller('SignupPublicoController', ['usuariosProxy', '$location', 'tokenStorage', function(proxy, $location, tokenStorage) {
         var ctrl = this;
         
         ctrl.cliente = '';
@@ -18,7 +18,8 @@
         ctrl.signup = function() {
             ctrl.fechaRegistro = Date.now();
             proxy.signupPublico(ctrl, function(data) {
-                $location.path('/publico/nuevo/' + data.id);
+                var userId = data._id;
+                $location.path('/publico/nuevo/' + userId);
             });
         };
     }]);
