@@ -34,4 +34,3 @@ var paginaWebSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('PaginaWeb', paginaWebSchema);
-

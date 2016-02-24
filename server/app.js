@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var busboy = require('connect-busboy');
-var container = require('./src/container');
+var container = require('./src/container.js');
 var cors = require('cors');
 var db = container.get('dbConnection');
 

@@ -10,7 +10,7 @@ module.exports = (function() {
             
         router.get('/:id', paginaWebApi.getOne.bind(paginaWebApi));
         
-        router.get('/pages/:uniquename', paginaWebApi.getByUniqueName.bind(paginaWebApi));
+        router.get('/pages/:uniquename/', paginaWebApi.getByUniqueName.bind(paginaWebApi));
         
         router.post('/:userId', paginaWebApi.save.bind(paginaWebApi));
         
@@ -27,5 +27,3 @@ module.exports = (function() {
     return EmpresasController;
 
 })();
-
-

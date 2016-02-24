@@ -1,25 +1,25 @@
 module.exports = (function() {
-    var UsuarioController = function(express, usuarioApi) {
+    var UsuariosController = function(express, usuariosApi) {
         this.express = express.module;
-        this.usuarioApi = usuarioApi;
+        this.usuariosApi = usuariosApi;
         this.router = this.express.Router();
         
         var router = this.router;
         var that = this;
-        
-        router.get('/', usuarioApi.getAll.bind(usuarioApi));
              
-        router.post('/', usuarioApi.save.bind(usuarioApi));
+        router.post('/', usuariosApi.save.bind(usuariosApi));
         
-        router.get('/:id', usuarioApi.getOne.bind(usuarioApi));
+        router.get('/', usuariosApi.getAll.bind(usuariosApi));
         
-        router.put('/:id', usuarioApi.update.bind(usuarioApi));
+        router.get('/:id', usuariosApi.getOne.bind(usuariosApi));
         
-        router.delete('/:id', usuarioApi.delete.bind(usuarioApi));
+        router.put('/:id', usuariosApi.update.bind(usuariosApi));
         
-        router.get('/pages/:uniquename', usuarioApi.getByUniqueName.bind(usuarioApi));
+        router.delete('/:id', usuariosApi.delete.bind(usuariosApi));
+        
+        router.get('/pages/:uniquename', usuariosApi.getByUniqueName.bind(usuariosApi));
         
     };
     
-    return UsuarioController;
+    return UsuariosController;
 })();

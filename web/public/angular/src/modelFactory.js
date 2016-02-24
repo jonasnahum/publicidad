@@ -27,7 +27,6 @@
                 obj.email = data.email;
                 obj.productos = data.productos;
                 obj.nota = data.nota;
-
                 obj.numero = data.direccion.numero;
                 obj.numeroInt = data.direccion.numeroInt;
                 obj.calle = data.direccion.calle;
