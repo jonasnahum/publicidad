@@ -19,6 +19,7 @@
                 url: that.url
             }).success(success).error(that.error);
         };
+        
         Proxy.prototype.getByUniqueName = function(name, success) {
             var that = this;
             var completeUrl = that.url + 'pages/' + name;

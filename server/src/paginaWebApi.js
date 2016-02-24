@@ -22,23 +22,22 @@ var PaginaWebApi = (function() {
         var that = this;
         var name = req.params.uniquename;
         var userId = undefined;
-        
-        
+                
         that.models.usuario.findOne({"uniquename": name})    
             .exec(function(err, usuario){
             if (err) return next(err);
             userId = usuario._id;
-        });
-        that.models.paginaWeb.find({"_usuario._id": userId}).populate('_usuario')    
+            
+            that.models.paginaWeb.find({"_usuario": userId}).populate('_usuario')    
             .exec(function(err, negocio){
-            if (err) return console.log(err);
-            console.log("este es la pagina web que resulta despues de la búsqueda a través de _usuario._id");
-            console.log(negocio);
+                if (err) return console.log(err);
+                console.log("este es la pagina web que resulta despues de la búsqueda a través de _usuario._id");
+                console.log(negocio);
 
-            console.log("negocio property");
-            console.log(negocio.nombre);
-            return res.json(negocio);
+                return res.json(negocio);
+            });
         });
+        
     };
     
     
