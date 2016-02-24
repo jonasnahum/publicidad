@@ -26,6 +26,7 @@ var UsuariosApi = (function() {
         }
         usuario.save(function(err, usuario){
             if(err)  return console.log(err);
+            console.log(usuario);
             res.json(usuario);
         });
     };

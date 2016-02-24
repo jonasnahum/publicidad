@@ -10,7 +10,7 @@
         ctrl.noContrato = '';
         ctrl.fechaRegistro = '';
         ctrl.fechaVencimiento = '';
-        ctrl.pago = 1;//cambiar a undefined
+        ctrl.pago = undefined;
         ctrl.paginaWeb = undefined;
         ctrl.email = '';
         ctrl.password = '';

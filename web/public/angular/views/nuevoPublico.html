@@ -156,7 +156,7 @@
        
         
         <fieldset class="form-group">
-            <label>Descripción</label> <small class="text-muted">(Aparece junto al nombre de su negocio en nuestro listado de empresas).</small>
+            <label>Descripción</label> <small class="text-muted">(Aparece junto al nombre de su negocio en nuestra lista de empresas).</small>
             <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.descripcion" name="descripcion" ng-maxlength="180"></textarea>
             <div class="errorMessages" ng-messages="frmNuevo.descripcion.$error" 
              ng-if="!frmNuevo.descripcion.$pristine || frmNuevo.$submitted" role="alert">
@@ -184,7 +184,7 @@
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
             
-            <label>* Email</label>
+            <label>* Email de la empresa</label>
             <input class="form-control" type="email" ng-model="ctrl.email" name="email" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/" required/>   
             <div class="errorMessages" ng-messages="frmNuevo.email.$error" 
                  ng-if="!frmNuevo.email.$pristine || frmNuevo.$submitted" role="alert">
