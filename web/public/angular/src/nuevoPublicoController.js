@@ -58,6 +58,7 @@
             ctrl.long = mapa.getLong();
             ctrl.userId = $route.id;
             paginasProxy.savePublico(ctrl.userId, ctrl, function(data, status, headers, config){
+                alert("búsca tu página en nuestro listado de negocios.");
                 $location.path('/');
             });
         };  

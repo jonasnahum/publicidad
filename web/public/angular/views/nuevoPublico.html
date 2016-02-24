@@ -34,7 +34,7 @@
         <br />
         <br />
         
-        <label>Ingresar la dirección URL de las imagenes: </label>
+        <label>Ingresar la dirección URL de las imagenes:<small class="text-muted">Abra una imagen que este en internet, de click derecho sobre la imágen, copie la dirección URL y péguela en este campo. la dirección URL, tiene este formato: https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg</small> </label>
         <br />
         <div class="row">
             <div class="col-lg-6">
@@ -198,13 +198,13 @@
             <label>Whatsapp</label>
             <input class="form-control" type="text" ng-model="ctrl.whats" name="whats"/>
             
-            <label>Facebook ("https://www.facebook.com/") :</label>
+            <label>Facebook ("https://www.facebook.com/") :<small class="text-muted">sólo agregue la parte del URL que falta, ejemplo: paginasweburuapan</small></label>
             <input class="form-control" type="text" ng-model="ctrl.face" ng-maxlength="20" name="face"/>
             
-            <label>Flickr ("http://flickr.com/") :</label>
+            <label>Flickr ("http://flickr.com/") :<small class="text-muted">sólo agregue la parte del URL que falta, ejemplo: confeccionescolombia</small></label>
             <input class="form-control" type="text" ng-model="ctrl.flickr" name="flickr"/>
             
-            <label>Link1 :</label>
+            <label>Link1 :<small class="text-muted">escriba la dirección completa (URL), ejemplo: http://weburuapan.com/</small></label>
             <input class="form-control" type="text" ng-model="ctrl.link1" name="link1"/>
         
             <label>Link2 :</label>
@@ -220,7 +220,7 @@
             <div class="row">
                 <div class="col-md-6">
                     
-                    <small class="text-muted">(Máximo 10 productos)</small>
+                    <small class="text-muted">Llene los datos de un producto y presione el botón "Agregar producto", usted puede agregar máximo 10 productos o servicios a su página web.</small>
                     <br />
                     <label>Título del producto</label>
                     <input class="form-control" type="text" ng-model="ctrl.producto.titulo" ng-maxlength="80" name="titulo"/>
@@ -247,7 +247,7 @@
                 </div>
                 <div class="col-md-6">
                     
-                    Productos : 
+                    Productos Agregados: 
                     <ol class="list-group">
                         <li ng-repeat="producto in ctrl.productos" class="list-group-item">
                             <strong>{{$index + 1}}. {{producto.titulo}}</strong> {{producto.parrafo}} 

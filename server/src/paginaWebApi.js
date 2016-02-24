@@ -14,7 +14,7 @@ var PaginaWebApi = (function() {
             .exec(function (err, paginas) {
                 if (err) return console.log(err);
             
-                console.log(paginas);
+               return res.json(paginas);
             });   
     };
 
