@@ -19,7 +19,7 @@ DbConnection.$inject = ["mongoose"];
 var PaginaWebController = require("./paginaWebController");
 PaginaWebController.$inject = ["express", "paginaWebApi", "tokenMiddleware"];
 var UsuarioController = require("./usuarioController");
-UsuarioController.$inject = ["express", "usuarioApi"];
+UsuarioController.$inject = ["express", "usuarioApi", "tokenMiddleware"];
 
 
 var CorreoController = require("./correoController");
