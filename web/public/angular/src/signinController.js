@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.controller('SigninController', ['usuariosProxy', '$location', 'tokenStorage', function(proxy, $location, tokenStorage) {
+    app.controller('SigninController', ['adminsProxy', '$location', 'tokenStorage', function(proxy, $location, tokenStorage) {
         var ctrl = this;
         
         ctrl.email = '';

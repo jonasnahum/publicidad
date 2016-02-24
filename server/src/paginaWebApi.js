@@ -13,12 +13,9 @@ var PaginaWebApi = (function() {
         that.models.paginaWeb.find({}).populate('_usuario')
             .exec(function (err, paginas) {
                 if (err) return console.log(err);
-            
-<<<<<<< HEAD
-               return res.json(paginas);
-=======
+            console.log(paginas);
                 return res.json(paginas);
->>>>>>> Mongit-details
+
             });   
     };
 
@@ -82,7 +79,7 @@ var PaginaWebApi = (function() {
         });
     };
 
-//curl -X "DELETE" http://localhost:3000/paginaWeb/api/56cb27e2dfd8dedc17f23887
+//curl -X "DELETE" http://localhost:3000/paginaWeb/api/56cdd027e853b62c15257774
    PaginaWebApi.prototype.delete = function(req, res, next) {
        var that = this;
        that.models.paginaWeb.findByIdAndRemove(req.params.id, function(err, pag) {

@@ -48,6 +48,15 @@
                 data: model
             }).success(success).error(that.error);
         };
+        //admins
+        Proxy.prototype.save = function(model, success) {
+            var that = this;
+            $http({
+                method: 'POST',
+                url: that.url,
+                data: model
+            }).success(success).error(that.error);
+        };
         
         
         

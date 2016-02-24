@@ -14,6 +14,7 @@ db.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/paginaWeb');
 var routes = require('./routes/index');
 var paginaWebApi = container.get("paginaWebController");
 var usuarioApi = container.get("usuarioController");
+var adminApi = container.get("adminController");
 var correoApi = container.get("correoController")
 var corsOptions = {  //This is CORS-enabled for only origin: process.env.WEB || 'http://localhost:3000'
   origin: process.env.WEB || 'http://localhost:3001'
@@ -39,6 +40,7 @@ app.use(busboy({inmediate: true}));
 app.use('/', routes);
 app.use('/paginaWeb/api', paginaWebApi.router);
 app.use('/usuario/api', usuarioApi.router);
+app.use('/admin/api', adminApi.router);
 app.use('/correo', correoApi.router);
 
 // catch 404 and forward to error handler
