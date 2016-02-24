@@ -37,7 +37,7 @@ var UsuariosApi = (function() {
             res.json(usuario);
         });
     };
-    //curl -X PUT -i -H "Content-Type: application/json" -d '{"cliente":"Lupita Jones","uniquename":"Lupita","telCliente":"12345","noContrato":"02","fechaRegistro":"2015-11-10","fechaVencimiento":"2015/01/09","pago":"1100","email":"jones@gmail.com","password":"4321"}' http://localhost:3000/usuarios/api/ 5646467e83540be61605d680
+    //curl -X PUT -i -H "Content-Type: application/json" -d '{"cliente":"Lupita Jones","uniquename":"Lupita","telCliente":"12345","noContrato":"02","fechaRegistro":"2015-11-10","fechaVencimiento":"2015/01/09","pago":"1100","email":"jones@gmail.com","password":"4321"}' http://localhost:3000/usuario/api/ 5646467e83540be61605d680
     UsuariosApi.prototype.update = function(req, res, next) {
         var that = this;
         
@@ -53,24 +53,13 @@ var UsuariosApi = (function() {
             });   
         });
     };
-    //curl -X "DELETE" http://localhost:3000/usuarios/api/5646400628346fef1513c651
+    //curl -X "DELETE" http://localhost:3000/usuario/api/5646400628346fef1513c651
     UsuariosApi.prototype.delete = function(req, res, next) {
         var that = this;
         
         that.models.usuario.findByIdAndRemove(req.params.id, function(err, usuario) {
             if(err) return next(err);
             res.json({status: "ok"});
-        });
-    };
-    //curl http://localhost:3000/usuarios/api/pages/Lupita
-    UsuariosApi.prototype.getByUniqueName = function(req, res, next) {
-        var that = this;
-        var name = req.params.uniquename;
-        
-        that.models.usuario.findOne({"uniquename": name})    
-            .exec(function(err, usuario){
-            if (err) return next(err);
-            return res.json(usuario);
         });
     };
     
