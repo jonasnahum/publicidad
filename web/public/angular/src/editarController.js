@@ -38,6 +38,7 @@
         ctrl.fechaContrato = undefined;//date
         ctrl.fechaVencimiento = undefined;//date
         ctrl.pago = undefined;
+        ctrl.password = undefined;
         ctrl.mapa = undefined;
         var prod = productosFactory();
         var modelInstance = modelFactory();

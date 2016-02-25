@@ -94,7 +94,8 @@
             model.correoCliente=ctrl.correoCliente,
             model.fechaContrato=ctrl.fechaContrato,    
             model.fechaVencimiento=ctrl.fechaVencimiento,    
-            model.pago=ctrl.pago
+            model.pago=ctrl.pago,
+            model.password=ctrl.password
             model.userId=ctrl.userId
             return model;
         };

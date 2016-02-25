@@ -230,7 +230,7 @@
             <h5>Informacion del cliente</h5>
             <br />
             Num. de contrato: <input type="text" ng-model="ctrl.noContrato"
-                                     ng-pattern="/^[0-9]+$/" name="noContrato" required/>
+                                     ng-pattern="/^[0-9]+$/" name="noContrato" />
             <div class="errorMessages" ng-messages="frmEditar.noContrato.$error" 
                  ng-if="!frmEditar.noContrato.$pristine || frmEditar.$submitted"
                  role="alert">
@@ -267,6 +267,12 @@
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
             <br />
+             <br />Password: <input type="text" ng-model="ctrl.password" name="password" required/>
+            <div class="errorMessages" ng-messages="frmEditar.correo.$error" 
+                 ng-if="!frmEditar.correo.$pristine || frmEditar.$submitted" role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+            <br />
             Fecha de Contrato: <input type="text" ng-model="ctrl.fechaContrato" 
                                       id="fechaContrato" name="fechaContrato" required />
             <div class="errorMessages" ng-messages="frmEditar.fechaContrato.$error" 
@@ -279,7 +285,7 @@
                                          id="fechaVencimiento" />
             <br />
             Precio: <input type="text" ng-model="ctrl.pago" name="pago"
-                   ng-pattern="/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/" required/>
+                   ng-pattern="/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/" />
             <div class="errorMessages" ng-messages="frmEditar.pago.$error" 
                  ng-if="!frmEditar.pago.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
