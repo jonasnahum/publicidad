@@ -63,6 +63,14 @@ var UsuariosApi = (function() {
             res.json({status: "ok"});
         });
     };
+    //curl -X "DELETE" http://localhost:3000/usuario/api/peligro/deleteAll
+    UsuariosApi.prototype.deleteAll = function(req, res, next) {
+        var that = this;
+        that.models.usuario.remove({}, function(err, usuario) {
+            if(err) return next(err);
+            res.json({status: "all deleted"});
+        });
+    };
     
     return UsuariosApi;
 })();

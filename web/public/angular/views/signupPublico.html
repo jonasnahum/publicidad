@@ -12,12 +12,14 @@
             <div ng-messages-include="/error/messages.html"></div>
         </div>
 
-        <label>*Uniquename </label><small class="text-muted">  Agregue un nombre (sin espacios intermedios), que será un distintivo para ingresar directamente a su página web.</small>
+        <label>*Uniquename </label><small class="text-muted">  Agregue un nombre (en minúsculas y sin espacios intermedios) para crear su dirección de internet (URL)</small>
         <input class="form-control" type="text" ng-model="ctrl.uniquename" name="uniquename" ng-pattern="/^[a-zA-Z0-9]+$/" required style="width:30%;"/>
         <div class="errorMessages" ng-messages="frmSignup.uniquename.$error" 
              ng-if="!frmSignup.uniquename.$pristine || frmSignup.$submitted" role="alert">
             <div ng-messages-include="/error/messages.html"></div>
         </div>
+        <label>Su dirección de internet será : http://weburuapan/{{ctrl.uniquename}}</label>
+        <br />
 
         <label>*Teléfono:</label>
         <input class="form-control" type="text" ng-model="ctrl.telCliente" name="telCliente" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/" required style="width:30%;"/>

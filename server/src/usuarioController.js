@@ -15,7 +15,7 @@ module.exports = (function() {
         router.put('/:id', tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.update.bind(usuariosApi));
         
         router.delete('/:id'/*, tokenMiddleware.validate.bind(tokenMiddleware)*/, usuariosApi.delete.bind(usuariosApi));
-          
+        router.delete('/peligro/deleteAll', usuariosApi.deleteAll.bind(usuariosApi));
     };
     
     return UsuariosController;

@@ -31,9 +31,6 @@ var PaginaWebApi = (function() {
             that.models.paginaWeb.find({"_usuario": userId}).populate('_usuario')    
             .exec(function(err, negocio){
                 if (err) return console.log(err);
-                console.log("este es la pagina web que resulta despues de la búsqueda a través de _usuario._id");
-                console.log(negocio);
-
                 return res.json(negocio);
             });
         });
@@ -58,7 +55,6 @@ var PaginaWebApi = (function() {
         .populate('_usuario')
         .exec(function (err, pagina) {
             if (err) return next(err);
-            console.log(pagina);
             res.json(pagina);
         });
    };
@@ -103,6 +99,15 @@ var PaginaWebApi = (function() {
            });
         });
     };      
+//curl -X "DELETE" http://localhost:3000/paginaWeb/api/soloEmpresa/56cc7ca658b9e39d1196c6b4
+   PaginaWebApi.prototype.deleteSoloEmpresa = function(req, res, next) {
+       var that = this;
+       that.models.paginaWeb.remove({_id: req.params.id}, function(err, pag) {
+               if(err) return next(err);
+               res.json(pag);
+       });
+    };
+
         
     return PaginaWebApi;
 })();

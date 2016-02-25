@@ -34,7 +34,7 @@
         <br />
         <br />
         
-        <label>Ingresar la dirección URL de las imagenes:<small class="text-muted">Abra una imagen que este en internet, de click derecho sobre la imágen, copie la dirección URL y péguela en este campo. la dirección URL, tiene este formato: https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg</small> </label>
+        <label>Ingresar la dirección URL de las imagenes:<small class="text-muted">Abra una imagen que este en internet, de click derecho sobre la imágen, copie la dirección de la imagen (URL) y péguela en este campo. Un ejemplo de URL es este: https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg</small> </label>
         <br />
         <div class="row">
             <div class="col-lg-6">
@@ -170,7 +170,7 @@
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
             
-            <label>* Encargado</label><small class="text-muted">(Contesta las dudas del cliente).</small>
+            <label>* Encargado</label><small class="text-muted">(Contesta las dudas del cliente a través de correo, teléfono ó redes sociales).</small>
             <input class="form-control" type="text" ng-model="ctrl.encargado" name="encargado" ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-maxlength="40" ng-minlength="10" required/>      
             <div class="errorMessages" ng-messages="frmNuevo.encargado.$error" 
              ng-if="!frmNuevo.encargado.$pristine || frmNuevo.$submitted" role="alert">
@@ -220,7 +220,7 @@
             <div class="row">
                 <div class="col-md-6">
                     
-                    <small class="text-muted">Llene los datos de un producto y presione el botón "Agregar producto", usted puede agregar máximo 10 productos o servicios a su página web.</small>
+                    <small class="text-muted">Llene los datos de un producto o servicio que usted ofrece y presione el botón "Agregar producto", usted puede agregar máximo 10 productos o servicios a su página web.</small>
                     <br />
                     <label>Título del producto</label>
                     <input class="form-control" type="text" ng-model="ctrl.producto.titulo" ng-maxlength="80" name="titulo"/>

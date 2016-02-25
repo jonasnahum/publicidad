@@ -21,7 +21,7 @@ module.exports = (function() {
         //router.delete('/:id', tokenMiddleware.validate.bind(tokenMiddleware), paginaWebApi.delete.bind(paginaWebApi));
         //sin token
         router.delete('/:id', paginaWebApi.delete.bind(paginaWebApi));
-        
+        router.delete('/soloEmpresa/:id', paginaWebApi.deleteSoloEmpresa.bind(paginaWebApi));
     }
     
     return EmpresasController;
