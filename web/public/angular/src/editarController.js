@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$routeParams', '$location', 'mapFactory', 'productosFactory', 'modelFactory', 'empresasProxy'];  
-    depArr.push(function($route, $location, mapFactory, productosFactory, modelFactory, empresasProxy) {
+    var depArr = ['$routeParams', '$location', 'mapFactory', 'productosFactory', 'modelFactory', 'paginasProxy'];  
+    depArr.push(function($route, $location, mapFactory, productosFactory, modelFactory, paginasProxy) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
@@ -44,7 +44,7 @@
         
 
         var getOne = function(id) {
-            empresasProxy.getOne(id, function(data, status, headers, config){
+            paginasProxy.getOne(id, function(data, status, headers, config){
                 var obj = modelInstance.getObjFromSubdocument(data);
                 ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                 
@@ -83,7 +83,7 @@
         ctrl.editar = function(){ 
             ctrl.lat = ctrl.mapa.getLat();
             ctrl.long = ctrl.mapa.getLong();
-            empresasProxy.update(ctrl.empresaId, modelInstance.getModelFromCtrl(ctrl), function(data, status, headers, config){
+            paginasProxy.update(ctrl.empresaId, modelInstance.getModelFromCtrl(ctrl), function(data, status, headers, config){
                 alert("Info enviada");
                 $location.path('/privado/todos');
             });
