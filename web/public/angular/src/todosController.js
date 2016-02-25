@@ -16,7 +16,7 @@
         ctrl.getAll();
         
         ctrl.delete = function (id) {
-            empresasProxy.delete(id,function(){
+            paginasProxy.delete(id,function(){
                $location.path('/privado/todos');
             });
         };
