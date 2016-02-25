@@ -82,18 +82,13 @@ var PaginaWebApi = (function() {
 //curl -X "DELETE" http://localhost:3000/paginaWeb/api/56cdd027e853b62c15257774
    PaginaWebApi.prototype.delete = function(req, res, next) {
        var that = this;
-       that.models.paginaWeb.findByIdAndRemove(req.params.id, function(err, pag) {
-           if(err) return next(err);
-           
-           console.log("PAGINA");
-           console.dir(pag);
-           that.models.usuario.findByIdAndRemove(pag._usuario, function(err,usr){
+       var userId = req.params.id;
+       that.models.usuario.findByIdAndRemove({ _id: req.params.id }, function(err, user) {
+           if(err) return next(err);           
+           that.models.paginaWeb.remove({_usuario: userId}, function(err, pag) {
                if(err) return next(err);
-               console.log("USUARIO");
-               console.dir(usr);
-               res.json(usr);
+               res.json(pag);
            });
-           res.json(pag);
         });
     };      
         
