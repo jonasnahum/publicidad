@@ -5,7 +5,7 @@
         <h2>Empresa</h2>
                 
         <fieldset class="form-group">
-            <label for="nombre">* Nombre de la empresa</label>
+            <label for="nombre">* Nombre del negocio</label>
             <input class="form-control" type="text" ng-model="ctrl.nombre" name="nombre" ng-pattern="/^[A-Za-záéíóú0-9ñ. ]+$/" required ng-minlength="2" ng-maxlength="40"> <!-- class="form-control" -->
             <div class="errorMessages" ng-messages="frmNuevo.nombre.$error" 
                  ng-if="!frmNuevo.nombre.$pristine || frmNuevo.$submitted" role="alert" >
@@ -49,7 +49,7 @@
                 </label>
             </div>
             <div class="col-lg-6">
-                Foto
+                Imágen o foto de portada
                 <br />
                 <label>
                     <input class="form-control" type="text" ng-model="ctrl.foto" name="foto"/>
@@ -156,7 +156,7 @@
        
         
         <fieldset class="form-group">
-            <label>Descripción</label> <small class="text-muted">(Aparece junto al nombre de su negocio en nuestra lista de empresas).</small>
+            <label>Descripción</label> <small class="text-muted">(Aparece junto al nombre de su negocio en nuestra lista de negocios).</small>
             <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.descripcion" name="descripcion" ng-maxlength="180"></textarea>
             <div class="errorMessages" ng-messages="frmNuevo.descripcion.$error" 
              ng-if="!frmNuevo.descripcion.$pristine || frmNuevo.$submitted" role="alert">
@@ -259,7 +259,7 @@
                     <label>Número del producto a remover:</label>
                     <input class="form-control" type="text" ng-model="ctrl.remover"/>
                     <br />
-                    <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-danger btn-sm">Remover producto</a>
+                    <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-danger btn-sm">Borrar producto</a>
                     <a href ng-click="ctrl.borrarProductos()" type="button" class="btn btn-danger btn-sm">Borrar todos los productos</a>
                     
                 </div>

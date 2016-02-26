@@ -15,8 +15,6 @@
         $router.when("/publico/nuevo/:id", { templateUrl: "angular/views/nuevoPublico.html" })
         $router.when("/publico/signup", { templateUrl: "angular/views/signupPublico.html" })
 //privado
-        $router.when("/privado/nuevo", 
-                     { templateUrl: "angular/views/nuevo.html"})
         $router.when("/privado/ver/:id", 
                      { templateUrl: "angular/views/ver.html"})
         $router.when("/privado/todos", 
