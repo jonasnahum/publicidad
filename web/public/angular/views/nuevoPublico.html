@@ -6,7 +6,7 @@
                 
         <fieldset class="form-group">
             <label for="nombre">* Nombre de la empresa</label>
-            <input class="form-control" type="text" ng-model="ctrl.nombre" name="nombre" ng-pattern="/^[A-Za-záéíóú0-9 ]+$/" required ng-minlength="2" ng-maxlength="40"> <!-- class="form-control" -->
+            <input class="form-control" type="text" ng-model="ctrl.nombre" name="nombre" ng-pattern="/^[A-Za-záéíóú0-9ñ. ]+$/" required ng-minlength="2" ng-maxlength="40"> <!-- class="form-control" -->
             <div class="errorMessages" ng-messages="frmNuevo.nombre.$error" 
                  ng-if="!frmNuevo.nombre.$pristine || frmNuevo.$submitted" role="alert" >
                 <div ng-messages-include="/error/messages.html"></div>
@@ -101,7 +101,7 @@
                 </div>
                 
                 <label>* Colonia</label>
-                <input class="form-control" type="text" ng-model="ctrl.colonia" name="colonia" ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-maxlength="30" required> 
+                <input class="form-control" type="text" ng-model="ctrl.colonia" name="colonia" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-maxlength="30" required> 
                 <div class="errorMessages" ng-messages="frmNuevo.colonia.$error" 
                      ng-if="!frmNuevo.colonia.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
@@ -115,14 +115,14 @@
                 </div>
                 
                 <label>* Municipio</label>
-                <input class="form-control" type="text" ng-model="ctrl.municipio" name="municipio" ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-maxlength="20" ng-minlength="5" required/>
+                <input class="form-control" type="text" ng-model="ctrl.municipio" name="municipio" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-maxlength="20" ng-minlength="5" required/>
                 <div class="errorMessages" ng-messages="frmNuevo.municipio.$error" 
                      ng-if="!frmNuevo.municipio.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
                 
                 <label>* Estado</label>
-                <input class="form-control" type="text" ng-model="ctrl.estado" ng-minlength="5" ng-maxlength="20" ng-pattern="/^[a-zA-Záéíóú ]+$/" name="estado" required/>
+                <input class="form-control" type="text" ng-model="ctrl.estado" ng-minlength="5" ng-maxlength="20" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" name="estado" required/>
                 <div class="errorMessages" ng-messages="frmNuevo.estado.$error" 
                      ng-if="!frmNuevo.estado.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
@@ -144,7 +144,7 @@
         <fieldset>
             <h3>Rubro</h3>
             <label>* Rubro de la empresa:</label>
-            <input class="form-control" ng-model="ctrl.rubro" ng-maxlength="40" ng-minlength="5" ng-pattern="/^[a-zA-Záéíóú ]+$/"  name="rubro" required/>            
+            <input class="form-control" ng-model="ctrl.rubro" ng-maxlength="40" ng-minlength="5" ng-pattern="/^[a-zA-Záéíóúñ ]+$/"  name="rubro" required/>            
             <div class="errorMessages" ng-messages="frmNuevo.rubro.$error" 
                  ng-if="!frmNuevo.rubro.$pristine || frmNuevo.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
@@ -171,7 +171,7 @@
             </div>
             
             <label>* Encargado</label><small class="text-muted">(Contesta las dudas del cliente a través de correo, teléfono ó redes sociales).</small>
-            <input class="form-control" type="text" ng-model="ctrl.encargado" name="encargado" ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-maxlength="40" ng-minlength="10" required/>      
+            <input class="form-control" type="text" ng-model="ctrl.encargado" name="encargado" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-maxlength="40" ng-minlength="10" required/>      
             <div class="errorMessages" ng-messages="frmNuevo.encargado.$error" 
              ng-if="!frmNuevo.encargado.$pristine || frmNuevo.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
