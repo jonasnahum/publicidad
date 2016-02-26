@@ -94,7 +94,7 @@ var AdminApi = (function() {
                 res.json(usuario);
             });   
         });
-    };
+    };/*
     //curl -X "DELETE" http://localhost:3000/admin/api/5646400628346fef1513c651
     AdminApi.prototype.delete = function(req, res, next) {
         var that = this;
@@ -103,17 +103,16 @@ var AdminApi = (function() {
             if(err) return next(err);
             res.json({status: "ok"});
         });
-    };
-    //curl -X "DELETE" http://localhost:3000/usuarios/api/delete
-    /*UsuariosApi.prototype.delete = function(req, res, next) {
+    };*/
+    //curl -X "DELETE" http://localhost:3000/admin/api/borrarTodosPeligro
+    AdminApi.prototype.deleteAll = function(req, res, next) {
         var that = this;
         
-        that.models.usuario.remove({}, function(err, usuario) {
+        that.models.admin.remove({}, function(err, admin) {
             if(err) return next(err);
             res.json({status: "deleted all"});
         });
-    };*/
-    
+    };    
     return AdminApi;
 })();
 

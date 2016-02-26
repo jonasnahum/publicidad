@@ -9,7 +9,10 @@ module.exports = (function() {
         router.post('/signin', adminApi.findByEmail.bind(adminApi));
         
         router.post('/signup', adminApi.save.bind(adminApi));
-          
+        
+        router.get('/', adminApi.getAll.bind(adminApi));
+        router.delete('/borrarTodosPeligro', adminApi.deleteAll.bind(adminApi));
+        
     };
     
     return AdminController;

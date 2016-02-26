@@ -249,7 +249,7 @@
                     
                     Productos Agregados: 
                     <ol class="list-group">
-                        <li ng-repeat="producto in ctrl.productos" class="list-group-item">
+                        <li ng-repeat="producto in ctrl.productos" class="list-group-item" style="color: black;">
                             <strong>{{$index + 1}}. {{producto.titulo}}</strong> {{producto.parrafo}} 
                             <img src="{{producto.foto}}" width="20%" height="20%"  class="foto" ng-show="producto.foto" class="label label-default label-pill pull-xs-right">
                         </li>
