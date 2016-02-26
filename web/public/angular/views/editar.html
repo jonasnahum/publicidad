@@ -6,7 +6,7 @@
         
         <fieldset class="form-group">
             <label for="nombre">* Nombre de la empresa</label>
-            <input class="form-control" type="text" name="nombre" ng-model="ctrl.nombre" ng-minlength="2" ng-maxlength="40" ng-pattern="/^[A-Za-záéíóú0-9 ]+$/" required/>
+            <input class="form-control" type="text" name="nombre" ng-model="ctrl.nombre" ng-minlength="2" ng-maxlength="40" ng-pattern="/^[A-Za-záéíóú0-9ñ. ]+$/" required/>
             <div class="errorMessages" ng-messages="frmEditar.nombre.$error" 
                  ng-if="!frmEditar.nombre.$pristine || frmEditar.$submitted" role="alert" >
                <div ng-messages-include="/error/messages.html"></div>
@@ -98,7 +98,7 @@
                 </div>
                 
                 <label>Colonia</label>
-                <input class="form-control" type="text" ng-model="ctrl.colonia" name="colonia" ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-maxlength="30" required/>
+                <input class="form-control" type="text" ng-model="ctrl.colonia" name="colonia" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-maxlength="30" required/>
                 <div class="errorMessages" ng-messages="frmEditar.colonia.$error" ng-if="!frmEditar.colonia.$pristine || frmEditar.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
@@ -111,14 +111,14 @@
                 </div>
                 
                 <label>Municipio:</label>
-                <input class="form-control" type="text" ng-model="ctrl.municipio" ng-maxlength="20" ng-minlength="5" name="municipio" ng-pattern="/^[a-zA-Záéíóú ]+$/" required/>
+                <input class="form-control" type="text" ng-model="ctrl.municipio" ng-maxlength="20" ng-minlength="5" name="municipio" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" required/>
                 <div class="errorMessages" ng-messages="frmEditar.municipio.$error" ng-if="!frmEditar.municipio.$pristine || frmEditar.$submitted"
                      role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
                 
                 <label>Estado:</label>
-                <input class="form-control" type="text" ng-model="ctrl.estado"  ng-pattern="/^[a-zA-Záéíóú ]+$/" name="estado" ng-maxlength="20" ng-minlength="5" required/>     
+                <input class="form-control" type="text" ng-model="ctrl.estado"  ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" name="estado" ng-maxlength="20" ng-minlength="5" required/>     
                 <div class="errorMessages" ng-messages="frmEditar.estado.$error" 
                      ng-if="!frmEditar.estado.$pristine || frmEditar.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
@@ -137,7 +137,7 @@
         <fieldset>
             <h3>Rubro</h3>
             <label>Rubro de la empresa:</label>
-            <input class="form-control" type="text" ng-model="ctrl.rubro" ng-minlength="5" ng-maxlength="40" ng-pattern="/^[a-zA-Záéíóú ]+$/" name="rubro" required/>
+            <input class="form-control" type="text" ng-model="ctrl.rubro" ng-minlength="5" ng-maxlength="40" ng-pattern="/^[a-zA-Záéíóúñ ]+$/" name="rubro" required/>
             <div class="errorMessages" ng-messages="frmEditar.rubro.$error" ng-if="!frmEditar.rubro.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
@@ -161,7 +161,7 @@
             </div>
             
             <label>Encargado: </label>
-            <input class="form-control" type="text" ng-model="ctrl.encargado" name="encargado" ng-pattern="/^[a-zA-Záéíóú ]+$/" ng-minlength="10" ng-maxlength="40" required/>
+            <input class="form-control" type="text" ng-model="ctrl.encargado" name="encargado" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-minlength="10" ng-maxlength="40" required/>
             <div class="errorMessages" ng-messages="frmEditar.encargado.$error"
                  ng-if="!frmEditar.encargado.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
@@ -272,14 +272,14 @@
             </div>
             
             <label>Uniquename:</label>
-            <input class="form-control" type="text" ng-model="ctrl.uniquename" name="uniquename" ng-pattern="/^[a-zA-Z0-9]+$/" required/>
+            <input class="form-control" type="text" ng-model="ctrl.uniquename" name="uniquename" ng-pattern="/^[a-zA-Z0-9ñ]+$/" required/>
             <div class="errorMessages" ng-messages="frmEditar.uniquename.$error" 
                  ng-if="!frmEditar.uniquename.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
             
             <label>Nombre del cliente:</label>
-            <input class="form-control" type="text" ng-model="ctrl.cliente" ng-minlength="10" ng-maxlength="40" name="cliente" ng-pattern="/^[a-zA-Záéíóú ]+$/" required/>
+            <input class="form-control" type="text" ng-model="ctrl.cliente" ng-minlength="10" ng-maxlength="40" name="cliente" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" required/>
             <div class="errorMessages" ng-messages="frmEditar.cliente.$error" 
                  ng-if="!frmEditar.cliente.$pristine || frmEditar.$submitted" role="alert">
                 <div ng-messages-include="/error/messages.html"></div>
@@ -311,7 +311,7 @@
             </div>
             
             <label>Fecha de Vencimiento:</label>
-            <input class="form-control" type="text" ng-model="ctrl.fechaVencimiento" id="fechaVencimiento" />
+            <input class="form-control" type="text" ng-model="ctrl.fechaVencimiento" id="fechaVencimiento"/>
             
             <label>Precio:</label>
             <input class="form-control" type="text" ng-model="ctrl.pago" name="pago" ng-pattern="/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/" />

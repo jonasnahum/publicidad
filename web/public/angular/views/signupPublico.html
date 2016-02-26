@@ -6,14 +6,14 @@
 
         <br />
         <label>*Nombre del cliente</label> 
-        <input class="form-control" type="text" ng-model="ctrl.cliente" name="cliente" ng-minlength="10" ng-maxlength="40" required ng-pattern="/^[a-zA-Záéíóú ]+$/" style="width:30%;"/>
+        <input class="form-control" type="text" ng-model="ctrl.cliente" name="cliente" ng-minlength="10" ng-maxlength="40" required ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" style="width:30%;"/>
         <div class="errorMessages" ng-messages="frmSignup.cliente.$error" 
              ng-if="!frmSignup.cliente.$pristine || frmSignup.$submitted" role="alert">
             <div ng-messages-include="/error/messages.html"></div>
         </div>
 
         <label>*Uniquename </label><small class="text-muted">  Agregue un nombre (en minúsculas y sin espacios intermedios) para crear su dirección de internet (URL)</small>
-        <input class="form-control" type="text" ng-model="ctrl.uniquename" name="uniquename" ng-pattern="/^[a-zA-Z0-9]+$/" required style="width:30%;"/>
+        <input class="form-control" type="text" ng-model="ctrl.uniquename" name="uniquename" ng-pattern="/^[a-zA-Z0-9ñ]+$/" required style="width:30%;"/>
         <div class="errorMessages" ng-messages="frmSignup.uniquename.$error" 
              ng-if="!frmSignup.uniquename.$pristine || frmSignup.$submitted" role="alert">
             <div ng-messages-include="/error/messages.html"></div>
