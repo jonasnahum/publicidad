@@ -23,8 +23,8 @@
             this.signupPublicoProxy.getAll();
         };
         
-        UsuariosProxy.prototype.delete = function(){
-            this.signupPublicoProxy.delete(id);
+        UsuariosProxy.prototype.delete = function(id, success){
+            this.signupPublicoProxy.delete(id, success);
         };
         
         return new UsuariosProxy();
