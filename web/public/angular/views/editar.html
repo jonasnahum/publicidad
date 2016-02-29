@@ -2,323 +2,321 @@
 
 <div ng-controller="EditarFormularioController as ctrl" class="container">
     <form name="frmEditar" ng-submit="frmEditar.$valid && ctrl.editar()" novalidate>
-        <h2>Empresa</h2>
         
-        <fieldset class="form-group">
-            <label for="nombre">* Nombre de la empresa</label>
-            <input class="form-control" type="text" name="nombre" ng-model="ctrl.nombre" ng-minlength="2" ng-maxlength="40" ng-pattern="/^[A-Za-záéíóú0-9ñ. ]+$/" required/>
-            <div class="errorMessages" ng-messages="frmEditar.nombre.$error" 
-                 ng-if="!frmEditar.nombre.$pristine || frmEditar.$submitted" role="alert" >
-               <div ng-messages-include="/error/messages.html"></div>
-            </div>
-        </fieldset>
-        <br />
+        <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">Empresa</div>
+            <div class="panel-body">
+                <label for="nombre">* Nombre de la empresa</label>
+                <input class="form-control" type="text" name="nombre" ng-model="ctrl.nombre" ng-minlength="2" ng-maxlength="40" ng-pattern="/^[A-Za-záéíóú0-9ñ. ]+$/" required/>
+                <div class="errorMessages" ng-messages="frmEditar.nombre.$error" 
+                     ng-if="!frmEditar.nombre.$pristine || frmEditar.$submitted" role="alert" >
+                   <div ng-messages-include="/error/messages.html"></div>
+                </div>
+                <br />
+                <label>Seleccione un color de fondo y otro color de texto para su página :</label>
+                <br />
+                <div class="row">
+                    <div class="col-lg-6">
+                        Fondo
+                        <label>
+                            <input class="form-control" type="color" ng-model="ctrl.colorBackground"/><small class="text-muted">{{ctrl.colorBackground || " No hay color seleccionado"}}</small>
+                        </label>
+                    </div>
+                    <div class="col-lg-6">
+                        Texto
+                        <label>
+                            <input class="form-control" type="color" ng-model="ctrl.colorText"/><small class="text-muted">{{ctrl.colorText || " No hay color seleccionado"}}</small>
+                        </label>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-lg-6">
+                        Logotipo:
+                        <br />
+                        <label>
+                            <input class="form-control" type="text" name="logotipo" ng-model="ctrl.logotipo" style="align: left;"/>
+                            <div>
+                                <img src="{{ctrl.logotipo}}" width="50%" height="50%" alt="No file selected">
+                            </div>
+                            <a href ng-click="ctrl.quitarLogo()" role="button">Quitar logo</a>
+                        </label>
+                    </div>
+                    <div class="col-lg-6">
+                        Foto:
+                        <br />
+                        <label>
+                            <input class="form-control" type="text" name="foto" ng-model="ctrl.foto"/>
+                            <div>
+                                <img src="{{ctrl.foto}}" width="50%" height="50%" alt="No file selected">
+                            </div>
+                            <a href ng-click="ctrl.quitarFoto()" role="button">Quitar foto</a>
+                        </label>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <label>Texto introductorio:</label>
+                <textarea class="form-cntrol" rows="4" cols="50" ng-model="ctrl.textoIntro" name="textoIntro" ng-maxlength="360"></textarea>
+                <div class="errorMessages" ng-messages="frmEditar.textoIntro.$error" 
+                     ng-if="!frmEditar.textoIntro.$pristine || frmEditar.$submitted"
+                     role="alert" >
+                   <div ng-messages-include="/error/messages.html"></div>
+                </div>        
+            </div><!--Panel-body-->
+        </div>
         
-        <label>Seleccione un color de fondo y otro color de texto para su página :</label>
-        <br />
-        <div class="row">
-            <div class="col-lg-6">
-                Fondo
-                <label>
-                    <input class="form-control" type="color" ng-model="ctrl.colorBackground"/><small class="text-muted">{{ctrl.colorBackground || " No hay color seleccionado"}}</small>
-                </label>
-            </div>
-            <div class="col-lg-6">
-                Texto
-                <label>
-                    <input class="form-control" type="color" ng-model="ctrl.colorText"/><small class="text-muted">{{ctrl.colorText || " No hay color seleccionado"}}</small>
-                </label>
+        
+        <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">Dirección</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6" id="dir">
+                        <label>Número</label>
+                        <input class="form-control" type="text" ng-model="ctrl.numero" name="numero" ng-maxlength="5"/>
+                        <div class="errorMessages" ng-messages="frmEditar.numero.$error" ng-if="!frmEditar.numero.$pristine || frmEditar.$submitted" role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
+                        </div>
+
+                        <label>Número interior</label>
+                        <input class="form-control" type="text" ng-model="ctrl.numeroInt" name="numeroInt" ng-maxlength="5"/>
+                        <div class="errorMessages" ng-messages="frmEditar.numeroInt.$error" ng-if="!frmEditar.numeroInt.$pristine || frmEditar.$submitted"
+                             role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
+                        </div>
+
+                        <label>Calle</label>
+                        <input class="form-control" type="text" ng-model="ctrl.calle" name="calle" ng-maxlength="40" required/>
+                        <div class="errorMessages" ng-messages="frmEditar.calle.$error" ng-if="!frmEditar.calle.$pristine || frmEditar.$submitted" role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
+                        </div>
+
+                        <label>Colonia</label>
+                        <input class="form-control" type="text" ng-model="ctrl.colonia" name="colonia" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-maxlength="30" required/>
+                        <div class="errorMessages" ng-messages="frmEditar.colonia.$error" ng-if="!frmEditar.colonia.$pristine || frmEditar.$submitted" role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
+                        </div>
+
+                        <label>C.P.</label>
+                        <input class="form-control" type="text" ng-model="ctrl.cp" name="cp" ng-pattern="/^[0-9]+$/" ng-minlength="5" ng-maxlength="5" required/>
+                        <div class="errorMessages" ng-messages="frmEditar.cp.$error" 
+                             ng-if="!frmEditar.cp.$pristine || frmEditar.$submitted" role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
+                        </div>
+
+                        <label>Municipio:</label>
+                        <input class="form-control" type="text" ng-model="ctrl.municipio" ng-maxlength="20" ng-minlength="5" name="municipio" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" required/>
+                        <div class="errorMessages" ng-messages="frmEditar.municipio.$error" ng-if="!frmEditar.municipio.$pristine || frmEditar.$submitted"
+                             role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
+                        </div>
+
+                        <label>Estado:</label>
+                        <input class="form-control" type="text" ng-model="ctrl.estado"  ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" name="estado" ng-maxlength="20" ng-minlength="5" required/>     
+                        <div class="errorMessages" ng-messages="frmEditar.estado.$error" 
+                             ng-if="!frmEditar.estado.$pristine || frmEditar.$submitted" role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="dir">
+                        <label>Mapa:</label>
+                        <div id="googleMap" style="width:500px;height:380px;"></div>
+                        <br />
+                        <a href ng-click="ctrl.borrarMarker()" role="button" class="btn btn-default">Borrar marcador</a>
+                    </div>
+                </div>
             </div>
         </div>
-            <br />
-            <br />
-            <br />
-            
-        <div class="row">
-            <div class="col-lg-6">
-                Logotipo:
-                <br />
-                <label>
-                    <input class="form-control" type="text" name="logotipo" ng-model="ctrl.logotipo" style="align: left;"/>
-                    <div>
-                        <img src="{{ctrl.logotipo}}" width="50%" height="50%" alt="No file selected">
-                    </div>
-                    <a href ng-click="ctrl.quitarLogo()" role="button">Quitar logo</a>
-                </label>
-            </div>
-            <div class="col-lg-6">
-                Foto:
-                <br />
-                <label>
-                    <input class="form-control" type="text" name="foto" ng-model="ctrl.foto"/>
-                    <div>
-                        <img src="{{ctrl.foto}}" width="50%" height="50%" alt="No file selected">
-                    </div>
-                    <a href ng-click="ctrl.quitarFoto()" role="button">Quitar foto</a>
-                </label>
-            </div>
-        </div>
-        <br />
-        <br />
-        
-        
-        <fieldset class="form-group">
-            <label>Texto introductorio:</label>
-            <textarea class="form-cntrol" rows="4" cols="50" ng-model="ctrl.textoIntro" name="textoIntro" ng-maxlength="360"></textarea>
-            <div class="errorMessages" ng-messages="frmEditar.textoIntro.$error" 
-                 ng-if="!frmEditar.textoIntro.$pristine || frmEditar.$submitted"
-                 role="alert" >
-               <div ng-messages-include="/error/messages.html"></div>
-            </div>
-        </fieldset>
-        <br />
-        <br />
-        
-        <div class="row">
-            <h3>Dirección</h3>
-            <div class="col-md-6" id="dir">
-                
-                <label>Número</label>
-                <input class="form-control" type="text" ng-model="ctrl.numero" name="numero" ng-maxlength="5"/>
-                <div class="errorMessages" ng-messages="frmEditar.numero.$error" ng-if="!frmEditar.numero.$pristine || frmEditar.$submitted" role="alert">
+                    
+        <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">Rubro</div>
+            <div class="panel-body">
+                <label>Rubro de la empresa:</label>
+                <input class="form-control" type="text" ng-model="ctrl.rubro" ng-minlength="5" ng-maxlength="40" ng-pattern="/^[a-zA-Záéíóúñ ]+$/" name="rubro" required/>
+                <div class="errorMessages" ng-messages="frmEditar.rubro.$error" ng-if="!frmEditar.rubro.$pristine || frmEditar.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
-                
-                <label>Número interior</label>
-                <input class="form-control" type="text" ng-model="ctrl.numeroInt" name="numeroInt" ng-maxlength="5"/>
-                <div class="errorMessages" ng-messages="frmEditar.numeroInt.$error" ng-if="!frmEditar.numeroInt.$pristine || frmEditar.$submitted"
+            </div>
+        </div>
+        
+        <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">Descripción</div>
+            <div class="panel-body">
+                <label>Descripción</label>
+                <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.descripcion" name="descripcion" ng-maxlength="180"></textarea>
+                <div class="errorMessages" ng-messages="frmEditar.descripcion.$error" 
+                     ng-if="!frmEditar.descripcion.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
+
+                <label>Horario de atención:</label>
+                <input class="form-control" type="text" ng-model="ctrl.horario" name="horario" ng-maxlength="100" required/>
+                <div class="errorMessages" ng-messages="frmEditar.horario.$error" 
+                     ng-if="!frmEditar.horario.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
+
+                <label>Encargado: </label>
+                <input class="form-control" type="text" ng-model="ctrl.encargado" name="encargado" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-minlength="10" ng-maxlength="40" required/>
+                <div class="errorMessages" ng-messages="frmEditar.encargado.$error"
+                     ng-if="!frmEditar.encargado.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
+
+                <label>* Teléfono de la empresa</label>
+                <input class="form-control" type="text" ng-model="ctrl.tel" name="tel" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/" required/>
+                <div class="errorMessages" ng-messages="frmEditar.tel.$error" 
+                     ng-if="!frmEditar.tel.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
+
+                <label>* Email de la empresa</label>
+                <input class="form-control" type="email" ng-model="ctrl.email" name="email" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/" required/>
+                <div class="errorMessages" ng-messages="frmEditar.email.$error" 
+                     ng-if="!frmEditar.email.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
+
+                <label>Whatsapp:</label>
+                <input class="form-control" type="text" ng-model="ctrl.whats" name="whats"/>
+
+                <label>Facebook ("https://www.facebook.com/") :</label>
+                <input class="form-control" type="text" ng-model="ctrl.face" ng-maxlength="20" name="face"/>
+
+                <label>flickr ("http://flickr.com/") :</label>
+                <input class="form-control" type="text" ng-model="ctrl.flickr" name="flickr"/>
+
+                <label>Link1</label>
+                link1 : <input class="form-control" type="text" ng-model="ctrl.link1" name="link1"/>
+
+                <label>Link2</label>
+                link2 : <input class="form-control" type="text" ng-model="ctrl.link2" name="link2"/>
+            </div>
+        </div>
+        
+        <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">Producto (Máximo 10 productos)</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Título del producto</label>
+                        <input class="form-control" type="text" ng-model="ctrl.producto.titulo" ng-maxlength="80" name="titulo"/>
+                        <div class="errorMessages" ng-messages="frmEditar.titulo.$error" 
+                        ng-if="!frmEditar.titulo.$pristine || frmEditar.$submitted" role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
+                        </div>
+
+                        <label>Descripción del producto</label>
+                        <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.producto.parrafo"
+                        ng-maxlength="160" name="parrafo"></textarea>
+                        <div class="errorMessages" ng-messages="frmEditar.parrafo.$error" 
+                        ng-if="!frmEditar.parrafo.$pristine || frmEditar.$submitted" role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
+                        </div>
+
+                        <label>Foto del producto o servicio: </label>
+                        <input class="form-control" type="text" ng-model="ctrl.producto.foto" name="foto"/>
+                        <div>
+                            <img src="{{ctrl.producto.foto}}" width="30%"
+                                 height="30%" alt="No file selected">
+                        </div>
+
+                        <a href ng-click="ctrl.agregarProducto()" type="button" class="btn btn-success btn-sm">Agregar producto</a>
+                    </div>
+                    <div class="col-md-6">
+                        Productos Agregados: 
+                        <ol class="list-group">
+                            <li ng-repeat="producto in ctrl.productos"  class="list-group-item">
+                                <strong>{{$index + 1}}. {{producto.titulo}}</strong> {{producto.parrafo}}
+                                <img src="{{producto.foto}}" width="20%" height="20%"  class="foto" ng-show="producto.foto" class="label label-default label-pill pull-xs-right">
+                            </li>
+                        </ol>
+
+                        <label>Número del producto a remover:</label>
+                        <input class="form-control" type="text" ng-model="ctrl.remover"/>
+                        <br />
+                        <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-danger btn-sm">Remover producto</a>
+                        <br />
+                        <a href ng-click="ctrl.borrarProductos()" type="button" class="btn btn-danger btn-sm">Borrar todos los productos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+            <div class="panel-heading">Nota o comentario:</div>
+            <div class="panel-body">
+                <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.nota" ng-maxlength="180" name="nota"></textarea>
+                <div class="errorMessages" ng-messages="frmEditar.nota.$error" 
+                     ng-if="!frmEditar.nota.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+            <div class="panel-heading">Información del cliente</div>
+            <div class="panel-body">
+                <label>Núm. de contrato: </label>
+                <input class="form-control" type="text" ng-model="ctrl.noContrato"ng-pattern="/^[0-9]+$/" name="noContrato" />
+                <div class="errorMessages" ng-messages="frmEditar.noContrato.$error" 
+                     ng-if="!frmEditar.noContrato.$pristine || frmEditar.$submitted"
                      role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
-                
-                <label>Calle</label>
-                <input class="form-control" type="text" ng-model="ctrl.calle" name="calle" ng-maxlength="40" required/>
-                <div class="errorMessages" ng-messages="frmEditar.calle.$error" ng-if="!frmEditar.calle.$pristine || frmEditar.$submitted" role="alert">
+
+                <label>Uniquename:</label>
+                <input class="form-control" type="text" ng-model="ctrl.uniquename" name="uniquename" ng-pattern="/^[a-zA-Z0-9ñ]+$/" required/>
+                <div class="errorMessages" ng-messages="frmEditar.uniquename.$error" 
+                     ng-if="!frmEditar.uniquename.$pristine || frmEditar.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
-                
-                <label>Colonia</label>
-                <input class="form-control" type="text" ng-model="ctrl.colonia" name="colonia" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-maxlength="30" required/>
-                <div class="errorMessages" ng-messages="frmEditar.colonia.$error" ng-if="!frmEditar.colonia.$pristine || frmEditar.$submitted" role="alert">
+
+                <label>Nombre del cliente:</label>
+                <input class="form-control" type="text" ng-model="ctrl.cliente" ng-minlength="10" ng-maxlength="40" name="cliente" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" required/>
+                <div class="errorMessages" ng-messages="frmEditar.cliente.$error" 
+                     ng-if="!frmEditar.cliente.$pristine || frmEditar.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
-                
-                <label>C.P.</label>
-                <input class="form-control" type="text" ng-model="ctrl.cp" name="cp" ng-pattern="/^[0-9]+$/" ng-minlength="5" ng-maxlength="5" required/>
-                <div class="errorMessages" ng-messages="frmEditar.cp.$error" 
-                     ng-if="!frmEditar.cp.$pristine || frmEditar.$submitted" role="alert">
+
+                <label>Teléfono:</label>
+                <input class="form-control" type="text" ng-model="ctrl.telCliente" name="telCliente" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/" required/>
+                <div class="errorMessages" ng-messages="frmEditar.telCliente.$error" ng-if="!frmEditar.telCliente.$pristine || frmEditar.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
-                
-                <label>Municipio:</label>
-                <input class="form-control" type="text" ng-model="ctrl.municipio" ng-maxlength="20" ng-minlength="5" name="municipio" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" required/>
-                <div class="errorMessages" ng-messages="frmEditar.municipio.$error" ng-if="!frmEditar.municipio.$pristine || frmEditar.$submitted"
+
+                <label>Correo:</label>
+                <input class="form-control" type="email" ng-model="ctrl.correoCliente" name="correo" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/"/>
+                <div class="errorMessages" ng-messages="frmEditar.correo.$error" ng-if="!frmEditar.correo.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
+
+                <label>Password:</label>
+                <input class="form-control" type="text" ng-model="ctrl.password" name="password" required/>
+                <div class="errorMessages" ng-messages="frmEditar.correo.$error" ng-if="!frmEditar.correo.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
+
+                <label>Fecha de Contrato:</label>
+                <input class="form-control" type="text" ng-model="ctrl.fechaContrato" id="fechaContrato" name="fechaContrato" required />
+                <div class="errorMessages" ng-messages="frmEditar.fechaContrato.$error" ng-if="!frmEditar.fechaContrato.$pristine || frmEditar.$submitted"
                      role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
-                
-                <label>Estado:</label>
-                <input class="form-control" type="text" ng-model="ctrl.estado"  ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" name="estado" ng-maxlength="20" ng-minlength="5" required/>     
-                <div class="errorMessages" ng-messages="frmEditar.estado.$error" 
-                     ng-if="!frmEditar.estado.$pristine || frmEditar.$submitted" role="alert">
+
+                <label>Fecha de Vencimiento:</label>
+                <input class="form-control" type="text" ng-model="ctrl.fechaVencimiento" id="fechaVencimiento"/>
+
+                <label>Precio:</label>
+                <input class="form-control" type="text" ng-model="ctrl.pago" name="pago" ng-pattern="/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/" />
+                <div class="errorMessages" ng-messages="frmEditar.pago.$error" ng-if="!frmEditar.pago.$pristine || frmEditar.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
             </div>
-            <div class="col-md-6" id="dir">
-                <label>Mapa:</label>
-                <div id="googleMap" style="width:500px;height:380px;"></div>
-                <br />
-                <a href ng-click="ctrl.borrarMarker()" role="button" class="btn btn-default">Borrar marcador</a>
-            </div>
         </div>
-        <br />
-        <br />
-        
-        <fieldset>
-            <h3>Rubro</h3>
-            <label>Rubro de la empresa:</label>
-            <input class="form-control" type="text" ng-model="ctrl.rubro" ng-minlength="5" ng-maxlength="40" ng-pattern="/^[a-zA-Záéíóúñ ]+$/" name="rubro" required/>
-            <div class="errorMessages" ng-messages="frmEditar.rubro.$error" ng-if="!frmEditar.rubro.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-        </fieldset>
-        <br />
-        <br />
-        
-        <fieldset class="form-group">
-            <label>Descripción</label>
-            <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.descripcion" name="descripcion" ng-maxlength="180"></textarea>
-            <div class="errorMessages" ng-messages="frmEditar.descripcion.$error" 
-                 ng-if="!frmEditar.descripcion.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>Horario de atención:</label>
-            <input class="form-control" type="text" ng-model="ctrl.horario" name="horario" ng-maxlength="100" required/>
-            <div class="errorMessages" ng-messages="frmEditar.horario.$error" 
-                 ng-if="!frmEditar.horario.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>Encargado: </label>
-            <input class="form-control" type="text" ng-model="ctrl.encargado" name="encargado" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-minlength="10" ng-maxlength="40" required/>
-            <div class="errorMessages" ng-messages="frmEditar.encargado.$error"
-                 ng-if="!frmEditar.encargado.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>* Teléfono de la empresa</label>
-            <input class="form-control" type="text" ng-model="ctrl.tel" name="tel" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/" required/>
-            <div class="errorMessages" ng-messages="frmEditar.tel.$error" 
-                 ng-if="!frmEditar.tel.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>* Email de la empresa</label>
-            <input class="form-control" type="email" ng-model="ctrl.email" name="email" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/" required/>
-            <div class="errorMessages" ng-messages="frmEditar.email.$error" 
-                 ng-if="!frmEditar.email.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>Whatsapp:</label>
-            <input class="form-control" type="text" ng-model="ctrl.whats" name="whats"/>
-            
-            <label>Facebook ("https://www.facebook.com/") :</label>
-            <input class="form-control" type="text" ng-model="ctrl.face" ng-maxlength="20" name="face"/>
-            
-            <label>flickr ("http://flickr.com/") :</label>
-            <input class="form-control" type="text" ng-model="ctrl.flickr" name="flickr"/>
-            
-            <label>Link1</label>
-            link1 : <input class="form-control" type="text" ng-model="ctrl.link1" name="link1"/>
-            
-            <label>Link2</label>
-            link2 : <input class="form-control" type="text" ng-model="ctrl.link2" name="link2"/>
-            
-        </fieldset>
-        <br />
-        <br />
-        
-        
-        <fieldset>
-            <h3>Producto</h3>
-            (Máximo 10 productos)
-            <div class="row">
-                <div class="col-md-6">
-                    <label>Título del producto</label>
-                    <input class="form-control" type="text" ng-model="ctrl.producto.titulo" ng-maxlength="80" name="titulo"/>
-                    <div class="errorMessages" ng-messages="frmEditar.titulo.$error" 
-                    ng-if="!frmEditar.titulo.$pristine || frmEditar.$submitted" role="alert">
-                        <div ng-messages-include="/error/messages.html"></div>
-                    </div>
-                    
-                    <label>Descripción del producto</label>
-                    <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.producto.parrafo"
-                    ng-maxlength="160" name="parrafo"></textarea>
-                    <div class="errorMessages" ng-messages="frmEditar.parrafo.$error" 
-                    ng-if="!frmEditar.parrafo.$pristine || frmEditar.$submitted" role="alert">
-                        <div ng-messages-include="/error/messages.html"></div>
-                    </div>
-                    
-                    <label>Foto del producto o servicio: </label>
-                    <input class="form-control" type="text" ng-model="ctrl.producto.foto" name="foto"/>
-                    <div>
-                        <img src="{{ctrl.producto.foto}}" width="30%"
-                             height="30%" alt="No file selected">
-                    </div>
-                    
-                    <a href ng-click="ctrl.agregarProducto()" type="button" class="btn btn-success btn-sm">Agregar producto</a>
-                </div>
-                <div class="col-md-6">
-                    Productos Agregados: 
-                    <ol class="list-group">
-                        <li ng-repeat="producto in ctrl.productos"  class="list-group-item">
-                            <strong>{{$index + 1}}. {{producto.titulo}}</strong> {{producto.parrafo}}
-                            <img src="{{producto.foto}}" width="20%" height="20%"  class="foto" ng-show="producto.foto" class="label label-default label-pill pull-xs-right">
-                        </li>
-                    </ol>
-                    
-                    <label>Número del producto a remover:</label>
-                    <input class="form-control" type="text" ng-model="ctrl.remover"/>
-                    <br />
-                    <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-danger btn-sm">Remover producto</a>
-                    <br />
-                    <a href ng-click="ctrl.borrarProductos()" type="button" class="btn btn-danger btn-sm">Borrar todos los productos</a>
-                </div>
-            </div>
-        </fieldset>
-        <br />
-        <br />
-        
-        
-        <label>Nota o comentario:</label> 
-        <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.nota" ng-maxlength="180" name="nota"></textarea>
-        <div class="errorMessages" ng-messages="frmEditar.nota.$error" 
-             ng-if="!frmEditar.nota.$pristine || frmEditar.$submitted" role="alert">
-            <div ng-messages-include="/error/messages.html"></div>
-        </div>
-        <br />
-        <br />
-        
-        <fieldset class="form-group">
-            <h3>Informacion del cliente</h3>
-            <label>Núm. de contrato: </label>
-            <input class="form-control" type="text" ng-model="ctrl.noContrato"ng-pattern="/^[0-9]+$/" name="noContrato" />
-            <div class="errorMessages" ng-messages="frmEditar.noContrato.$error" 
-                 ng-if="!frmEditar.noContrato.$pristine || frmEditar.$submitted"
-                 role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>Uniquename:</label>
-            <input class="form-control" type="text" ng-model="ctrl.uniquename" name="uniquename" ng-pattern="/^[a-zA-Z0-9ñ]+$/" required/>
-            <div class="errorMessages" ng-messages="frmEditar.uniquename.$error" 
-                 ng-if="!frmEditar.uniquename.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>Nombre del cliente:</label>
-            <input class="form-control" type="text" ng-model="ctrl.cliente" ng-minlength="10" ng-maxlength="40" name="cliente" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" required/>
-            <div class="errorMessages" ng-messages="frmEditar.cliente.$error" 
-                 ng-if="!frmEditar.cliente.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>Teléfono:</label>
-            <input class="form-control" type="text" ng-model="ctrl.telCliente" name="telCliente" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/" required/>
-            <div class="errorMessages" ng-messages="frmEditar.telCliente.$error" ng-if="!frmEditar.telCliente.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>Correo:</label>
-            <input class="form-control" type="email" ng-model="ctrl.correoCliente" name="correo" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/"/>
-            <div class="errorMessages" ng-messages="frmEditar.correo.$error" ng-if="!frmEditar.correo.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>Password:</label>
-            <input class="form-control" type="text" ng-model="ctrl.password" name="password" required/>
-            <div class="errorMessages" ng-messages="frmEditar.correo.$error" ng-if="!frmEditar.correo.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>Fecha de Contrato:</label>
-            <input class="form-control" type="text" ng-model="ctrl.fechaContrato" id="fechaContrato" name="fechaContrato" required />
-            <div class="errorMessages" ng-messages="frmEditar.fechaContrato.$error" ng-if="!frmEditar.fechaContrato.$pristine || frmEditar.$submitted"
-                 role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-            
-            <label>Fecha de Vencimiento:</label>
-            <input class="form-control" type="text" ng-model="ctrl.fechaVencimiento" id="fechaVencimiento"/>
-            
-            <label>Precio:</label>
-            <input class="form-control" type="text" ng-model="ctrl.pago" name="pago" ng-pattern="/^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/" />
-            <div class="errorMessages" ng-messages="frmEditar.pago.$error" ng-if="!frmEditar.pago.$pristine || frmEditar.$submitted" role="alert">
-                <div ng-messages-include="/error/messages.html"></div>
-            </div>
-        </fieldset>
         
         <button type="submit" class="btn btn-success btn-lg">Editar</button>
         <br />

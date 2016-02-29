@@ -1,5 +1,5 @@
 <div ng-controller="VerController as ctrl" class="container">
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
         <div class="panel-heading">Informacion del cliente</div>
         <div class="panel-body">
             <label>Num. de contrato:</label> {{ctrl.noContrato}}
@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
         <div class="panel-heading">
             <h3 class="panel-title">Empresa</h3>
         </div>
@@ -46,7 +46,7 @@
         </div>
     </div>
     
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
         <div class="panel-heading">
             <h3 class="panel-title">Direccion</h3>
         </div>
@@ -75,7 +75,7 @@
         </div>
     </div>
     
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
         <div class="panel-heading">
             <h3 class="panel-title">Rubro</h3>
         </div>
@@ -84,7 +84,7 @@
         </div>
     </div>
     
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
         <div class="panel-heading">
             <h3 class="panel-title">Empresa</h3>
         </div>
@@ -108,12 +108,10 @@
             <label>Link2:</label> <a ng-href=" {{ctrl.link2}}/">{{ctrl.link2}}</a>
             <br />
             <label>Email:</label> {{ctrl.email}}
-            <br />
-            <label>Nota:</label> {{ctrl.nota}}
         </div>
     </div>
     
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
         <div class="panel-heading">
             <h3 class="panel-title">Productos</h3>
         </div>
@@ -126,6 +124,14 @@
             </ol>
         </div>
     </div>
+    
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">Nota</div>
+        <div class="panel-body">
+            {{ctrl.nota}}
+        </div>
+    </div>
+    
     
     <a href="#/privado/todos">Ir a todos</a>
 </div>
