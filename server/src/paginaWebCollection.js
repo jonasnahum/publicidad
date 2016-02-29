@@ -17,7 +17,7 @@ var paginaWebSchema = mongoose.Schema({
     horario: { type: String, required: true,  maxlength: 100 }, 
     encargado: validation.validateCampo(true,String,5,40,"validateNombre"),
     tel: validation.validateCampo(true,String,5,15,"validateTel"),
-    face: { type: String, maxlength: 20},
+    face: { type: String },
     flickr : { type: String },
     whats : { type: String },
     link1 : { type: String },

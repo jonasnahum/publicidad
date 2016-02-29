@@ -145,16 +145,16 @@
                                 <i class="fa fa-whatsapp" style="font-size:30px;"></i> {{ctrl.whats}}
                             </li>
                             <li ng-if="ctrl.face">
-                                <i class="fa fa-facebook-official" style="font-size:30px"></i><a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};" ng-href="https://www.facebook.com/{{ctrl.face}}/"> {{ctrl.face}}</a>
+                                <i class="fa fa-facebook-official" style="font-size:30px"></i><a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};" ng-href="{{ctrl.face}}"> Facebook </a>
                             </li>
                             <li ng-if="ctrl.flickr">
-                                <i class="fa fa-flickr" style="font-size:30px"></i><a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" http://flickr.com/{{ctrl.flickr}}/"> {{ctrl.flickr}}</a>
+                                <i class="fa fa-flickr" style="font-size:30px"></i><a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};" ng-href="{{ctrl.flickr}}"> Flickr </a>
                             </li>
                             <li>
-                                <a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" {{ctrl.link1}}/"> {{ctrl.link1}}</a>
+                                <a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" {{ctrl.link1}}"> {{ctrl.link1}}</a>
                             </li>
                             <li>
-                                <a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" {{ctrl.link2}}/"> {{ctrl.link2}}</a>
+                                <a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};"ng-href=" {{ctrl.link2}}"> {{ctrl.link2}}</a>
                             </li>
                         </ul>
                     <br>
