@@ -262,7 +262,12 @@
                     </div>
                     
                     <label>Foto del producto</label><small >(Dirección URL).</small>
-                    <input class="form-control" type="text" ng-model="ctrl.producto.foto" name="foto" pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"/>
+                    <input class="form-control" type="text" ng-model="ctrl.producto.foto" name="productoFoto" pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"/>
+                    error{{frmNuevo.productoFoto.$error}} ctrl.productoFoto{{ctrl.producto.foto}}
+                    <div class="errorMessages" ng-messages="frmNuevo.productoFoto.$error" 
+                     ng-if="!frmNuevo.productoFoto.$pristine || frmNuevo.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
                     
                     
                     
