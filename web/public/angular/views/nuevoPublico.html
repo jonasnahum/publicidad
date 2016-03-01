@@ -205,7 +205,11 @@
             
             <h4>Agregue algunos links a sus redes sociales</h4>
             <label>Whatsapp</label>
-            <input class="form-control" type="text" ng-model="ctrl.whats" name="whats" style="width:60%;"/>
+            <input class="form-control" type="text" ng-model="ctrl.whats" name="whats" style="width:60%;" ng-minlength="10" ng-maxlength="10" ng-pattern="/^[0-9]+$/"/>
+            <div class="errorMessages" ng-messages="frmNuevo.whats.$error" ng-if="!frmNuevo.whats.$pristine || frmNuevo.$submitted" role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+
             
             <label>Facebook : <small>escriba la dirección completa (URL), ejemplo: https://www.facebook.com/paginasweburuapan/</small></label>
             <input class="form-control" type="text" ng-model="ctrl.face" name="face" style="width:60%;" pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"/>

@@ -179,7 +179,10 @@
                 </div>
 
                 <label>Whatsapp:</label>
-                <input class="form-control" type="text" ng-model="ctrl.whats" name="whats"/>
+                <input class="form-control" type="text" ng-model="ctrl.whats" name="whats" ng-minlength="10" ng-maxlength="10" ng-pattern="/^[0-9]+$/"/>
+                <div class="errorMessages" ng-messages="frmEditar.whats.$error" ng-if="!frmEditar.whats.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
 
                 <label>Facebook :</label>
                 <input class="form-control" type="text" ng-model="ctrl.face" ng-maxlength="20" name="face"/>
