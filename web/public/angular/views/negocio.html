@@ -58,8 +58,7 @@
                 <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
                 <br /><br />
                 <div class="row">
-                    <li ng-repeat="producto in ctrl.productos" style="font-size: 20px; 
-    margin-left: 50px; " class="list-unstyled">
+                    <li ng-repeat="producto in ctrl.productos" style="font-size: 20px; margin-left: 50px;" class="list-unstyled">
                         <strong>{{producto.titulo}}</strong> 
                         <p>{{producto.parrafo}}</p>
                     </li>
@@ -83,7 +82,7 @@
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-info" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
-                    <h2><strong>Contacto</strong></h2> 
+                    <h2 style="text-align: center;"><strong>Contacto</strong></h2> 
                     <br /><br />
                     <div class="col-md-12" ng-controller="EmailFormController as emCtl">
                         <h3>Enviar Mensage</h3> <br /><br />
