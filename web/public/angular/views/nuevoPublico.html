@@ -42,7 +42,7 @@
                 Logotipo <small>(Fondo transparente)</small>
                 <br/>
                 <label> 
-                    <input class="form-control" type="text" ng-model="ctrl.logotipo" name="logotipo" style="align: left;" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"/>
+                    <input class="form-control" type="text" ng-model="ctrl.logotipo" name="logotipo" style="align: left;" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
                     <div class="errorMessages" ng-messages="frmNuevo.logotipo.$error" 
                      ng-if="!frmNuevo.logotipo.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
@@ -57,7 +57,7 @@
                 Imágen o foto de portada
                 <br />
                 <label>
-                    <input class="form-control" type="text" ng-model="ctrl.foto" name="foto" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"/>
+                    <input class="form-control" type="text" ng-model="ctrl.foto" name="foto" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
                     <div class="errorMessages" ng-messages="frmNuevo.foto.$error" 
                      ng-if="!frmNuevo.foto.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
@@ -212,28 +212,28 @@
 
             
             <label>Facebook : <small>escriba la dirección completa (URL), ejemplo: https://www.facebook.com/paginasweburuapan/</small></label>
-            <input class="form-control" type="text" ng-model="ctrl.face" name="face" style="width:60%;" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"/>
+            <input class="form-control" type="text" ng-model="ctrl.face" name="face" style="width:60%;" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
                     <div class="errorMessages" ng-messages="frmNuevo.face.$error" 
                      ng-if="!frmNuevo.face.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                     </div>
             
             <label>Flickr :</label>
-            <input class="form-control" type="text" ng-model="ctrl.flickr" name="flickr" style="width:60%;" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"/>
+            <input class="form-control" type="text" ng-model="ctrl.flickr" name="flickr" style="width:60%;" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
                     <div class="errorMessages" ng-messages="frmNuevo.flickr.$error" 
                      ng-if="!frmNuevo.flickr.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                     </div>
             
             <label>Link1 :</label>
-            <input class="form-control" type="text" ng-model="ctrl.link1" name="link1" style="width:60%;"  ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"/>
+            <input class="form-control" type="text" ng-model="ctrl.link1" name="link1" style="width:60%;"  ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
                     <div class="errorMessages" ng-messages="frmNuevo.link1.$error" 
                      ng-if="!frmNuevo.link1.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                     </div>
         
             <label>Link2 :</label>
-            <input class="form-control" type="text" ng-model="ctrl.link2" name="link2" style="width:60%;"  ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"/>
+            <input class="form-control" type="text" ng-model="ctrl.link2" name="link2" style="width:60%;"  ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
                     <div class="errorMessages" ng-messages="frmNuevo.link2.$error" 
                      ng-if="!frmNuevo.link2.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
@@ -266,7 +266,7 @@
                     </div>
                     
                     <label>Foto del producto</label><small >(Dirección URL).</small>
-                    <input class="form-control" type="text" ng-model="ctrl.producto.foto" name="productoFoto"  ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/"/>
+                    <input class="form-control" type="text" ng-model="ctrl.producto.foto" name="productoFoto"  ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
                     <div class="errorMessages" ng-messages="frmNuevo.productoFoto.$error" 
                      ng-if="!frmNuevo.productoFoto.$pristine || frmNuevo.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
