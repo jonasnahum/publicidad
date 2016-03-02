@@ -36,7 +36,10 @@
                         Logotipo:
                         <br />
                         <label>
-                            <input class="form-control" type="text" name="logotipo" ng-model="ctrl.logotipo" style="align: left;"/>
+                            <input class="form-control" type="text" name="logotipo" ng-model="ctrl.logotipo" style="align: left;" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                            <div class="errorMessages" ng-messages="frmEditar.logotipo.$error" ng-if="!frmEditar.logotipo.$pristine || frmEditar.$submitted" role="alert">
+                                <div ng-messages-include="/error/messages.html"></div>
+                            </div>
                             <div>
                                 <img src="{{ctrl.logotipo}}" width="50%" height="50%" alt="No file selected">
                             </div>
@@ -47,7 +50,10 @@
                         Foto:
                         <br />
                         <label>
-                            <input class="form-control" type="text" name="foto" ng-model="ctrl.foto"/>
+                            <input class="form-control" type="text" name="foto" ng-model="ctrl.foto" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                            <div class="errorMessages" ng-messages="frmEditar.foto.$error" ng-if="!frmEditar.foto.$pristine || frmEditar.$submitted" role="alert">
+                                <div ng-messages-include="/error/messages.html"></div>
+                            </div>
                             <div>
                                 <img src="{{ctrl.foto}}" width="50%" height="50%" alt="No file selected">
                             </div>
@@ -185,16 +191,32 @@
                 </div>
 
                 <label>Facebook :</label>
-                <input class="form-control" type="text" ng-model="ctrl.face" ng-maxlength="20" name="face"/>
+                <input class="form-control" type="text" ng-model="ctrl.face" name="face" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                <div class="errorMessages" ng-messages="frmEditar.face.$error" 
+                     ng-if="!frmEditar.face.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
 
                 <label>flickr :</label>
-                <input class="form-control" type="text" ng-model="ctrl.flickr" name="flickr"/>
+                <input class="form-control" type="text" ng-model="ctrl.flickr" name="flickr" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                <div class="errorMessages" ng-messages="frmEditar.flickr.$error" 
+                     ng-if="!frmEditar.flickr.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
 
                 <label>Link1</label>
-                link1 : <input class="form-control" type="text" ng-model="ctrl.link1" name="link1"/>
+                link1 : <input class="form-control" type="text" ng-model="ctrl.link1" name="link1" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                <div class="errorMessages" ng-messages="frmEditar.link1.$error" 
+                     ng-if="!frmEditar.link1.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
 
                 <label>Link2</label>
-                link2 : <input class="form-control" type="text" ng-model="ctrl.link2" name="link2"/>
+                link2 : <input class="form-control" type="text" ng-model="ctrl.link2" name="link2" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                <div class="errorMessages" ng-messages="frmEditar.link2.$error" 
+                     ng-if="!frmEditar.link2.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
             </div>
         </div>
         
@@ -219,11 +241,16 @@
                         </div>
 
                         <label>Foto del producto o servicio: </label>
-                        <input class="form-control" type="text" ng-model="ctrl.producto.foto" name="foto"/>
-                        <div>
+                        <input class="form-control" type="text" ng-model="ctrl.producto.foto" name="productoFoto" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                        <!--div>
                             <img src="{{ctrl.producto.foto}}" width="30%"
                                  height="30%" alt="No file selected">
+                        </div-->
+                        <div class="errorMessages" ng-messages="frmEditar.productoFoto.$error" 
+                         ng-if="!frmEditar.productoFoto.$pristine || frmEditar.$submitted" role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
                         </div>
+
 
                         <a href ng-click="ctrl.agregarProducto()" type="button" class="btn btn-success btn-sm">Agregar producto</a>
                     </div>
