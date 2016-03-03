@@ -7,7 +7,6 @@ var UsuariosApi = (function() {
         this.jwt = jwt.module;
     };
 
-    // curl http://localhost:3000/usuario/api/
     UsuariosApi.prototype.getAll = function(req, res, next) {
         var that = this;
         
@@ -16,11 +15,10 @@ var UsuariosApi = (function() {
             res.json(usuarios);
         });
     };
-        //curl -i -H "Content-Type: application/json" -d '{"cliente":"Maria Jones","uniquename":"jones","telCliente":"234567","noContrato":"02","fechaRegistro":"2015-11-10","fechaVencimiento":"2015/01/09","pago":"10","email":"jones@gmail.com","password":"4321"}' http://localhost:3000/usuario/api/
+    
     UsuariosApi.prototype.save = function(req, res, next) {
         var that = this;        
         var usuario = that.usuarioFactory.get();   
-        
         for (var property in req.body){
             usuario[property] = req.body[property];
         }
@@ -30,7 +28,7 @@ var UsuariosApi = (function() {
             res.json(usuario);
         });
     };
-    ////curl http://localhost:3000/usuario/api/56cb5f98859069ee22019620
+
     UsuariosApi.prototype.getOne = function(req, res, next) {
         var that = this;
         that.models.usuario.findById(req.params.id, function(err, usuario) {
@@ -38,13 +36,11 @@ var UsuariosApi = (function() {
             res.json(usuario);
         });
     };
-    //curl -X PUT -i -H "Content-Type: application/json" -d '{"cliente":"Lupita Jones","uniquename":"Lupita","telCliente":"12345","noContrato":"02","fechaRegistro":"2015-11-10","fechaVencimiento":"2015/01/09","pago":"1100","email":"jones@gmail.com","password":"4321"}' http://localhost:3000/usuario/api/ 5646467e83540be61605d680
+    
     UsuariosApi.prototype.update = function(req, res, next) {
         var that = this;
-        
         that.models.usuario.findById(req.params.id, function(err, usuario) {
             if(err)  return console.log(err);
-            
             for (var property in req.body){
                 usuario[property] = req.body[property];
             }
@@ -54,16 +50,15 @@ var UsuariosApi = (function() {
             });   
         });
     };
-    //curl -X "DELETE" http://localhost:3000/usuario/api/5646400628346fef1513c651
+    
     UsuariosApi.prototype.delete = function(req, res, next) {
         var that = this;
-        
         that.models.usuario.findByIdAndRemove(req.params.id, function(err, usuario) {
             if(err) return next(err);
             res.json({status: "ok"});
         });
     };
-    //curl -X "DELETE" http://localhost:3000/usuario/api/peligro/deleteAll
+
     UsuariosApi.prototype.deleteAll = function(req, res, next) {
         var that = this;
         that.models.usuario.remove({}, function(err, usuario) {

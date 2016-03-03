@@ -8,13 +8,14 @@ module.exports = (function() {
              
         router.post('/', usuariosApi.save.bind(usuariosApi));
         
-        router.get('/'/*, tokenMiddleware.validate.bind(tokenMiddleware)*/, usuariosApi.getAll.bind(usuariosApi));
+        router.get('/', tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.getAll.bind(usuariosApi));
         
         router.get('/:id', tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.getOne.bind(usuariosApi));
         
         router.put('/:id', tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.update.bind(usuariosApi));
         
-        router.delete('/:id'/*, tokenMiddleware.validate.bind(tokenMiddleware)*/, usuariosApi.delete.bind(usuariosApi));
+        router.delete('/:id'/ tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.delete.bind(usuariosApi));
+        
         router.delete('/peligro/deleteAll', usuariosApi.deleteAll.bind(usuariosApi));
     };
     

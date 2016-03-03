@@ -11,6 +11,8 @@ module.exports = (function() {
         router.post('/signup', adminApi.save.bind(adminApi));
         
         router.get('/', adminApi.getAll.bind(adminApi));
+        
+        router.delete('/:id', adminApi.delete.bind(adminApi));
         router.delete('/borrarTodosPeligro', adminApi.deleteAll.bind(adminApi));
         
     };

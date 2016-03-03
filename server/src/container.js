@@ -24,20 +24,17 @@ var UsuarioController = require("./usuarioController");
 UsuarioController.$inject = ["express", "usuarioApi", "tokenMiddleware"];
 var AdminController = require("./adminController");
 AdminController.$inject = ["express", "adminApi", "tokenMiddleware"];
-
-
 var CorreoController = require("./correoController");
 CorreoController.$inject = ["express", "correoApi"];
 
 var Copy = require("./copy");
+
 var PaginaWebApi = require("./paginaWebApi");
 PaginaWebApi.$inject = ["models", "paginaWebFactory", "copy"];
 var UsuarioApi = require("./usuarioApi");
 UsuarioApi.$inject = ["models", "usuarioFactory", "moment", "jwt"];
 var AdminApi = require("./adminApi");
 AdminApi.$inject = ["models", "adminFactory", "moment", "jwt"];
-
-
 var CorreoApi = require("./correoApi");
 CorreoApi.$inject = ["nodemailer"];
 

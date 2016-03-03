@@ -1,8 +1,7 @@
 var Copy = (function() {
     var Copy = function() {
     };
-    Copy.prototype.copyBodyToEmpresa = function(body, empresa){
-        console.log("entŕo a copy");
+    Copy.prototype.copyBodyToPagina = function(body, empresa){
         var empresa = empresa;
         empresa.nombre = body.nombre;
         empresa.logotipo = body.logotipo;
@@ -37,6 +36,20 @@ var Copy = (function() {
             rubro: body.rubro
         };        
         return empresa;
+    };
+    Copy.prototype.copyBodyToUsuario = function(body, usuario){
+        var usuario = usuario;
+        usuario.noContrato = body.noContrato;
+        usuario.uniquename = body.uniquename;
+        usuario.cliente = body.cliente;
+        usuario.telCliente = body.telCliente;
+        usuario.email = body.correoCliente;
+        usuario.fechaRegistro = body.fechaContrato;
+        usuario.fechaVencimiento = body.fechaVencimiento;
+        usuario.password = body.password;
+        usuario.pago = body.pago;
+
+        return usuario;
     };
 
     return Copy;
