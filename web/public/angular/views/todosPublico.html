@@ -70,8 +70,7 @@
             </div><!-- /.row -->
             
          
-            <ul dir-paginate="pagina in ctrl.paginas | filter:ctrl.searchText | itemsPerPage: 4">
-                <!--p ng-model="ctrl.requestedPageNumber" ng-hide="true"> {{currentPage}}</p-->
+            <ul dir-paginate="pagina in ctrl.paginas | filter:ctrl.searchText | itemsPerPage: 10">
                 <hr class="featurette-divider">
                 <div class="row featurette">
                     <div class="col-md-7">
