@@ -6,6 +6,7 @@
             this.privatePages = ['/privado/todos', '/privado/nuevo', '/privado/editar', '/privado/ver'];
             this.url = "";
         };
+        
         RouteChecker.prototype.isPrivate = function () {
             this.url = $location.path();
             

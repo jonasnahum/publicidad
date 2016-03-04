@@ -5,6 +5,7 @@
         
         var ProductosClass = function() {
         };
+        
         ProductosClass.prototype.removerProducto = function(arr, producto){
             var sonDiferentes = function sonDiferentes (element, index, array) {
                 return index !== producto-1;

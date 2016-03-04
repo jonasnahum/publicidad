@@ -9,7 +9,6 @@
         
         ctrl.getOne = function (id) {
             paginasProxy.getOne(id, function(data){
-                //console.dir(data);
                 var obj = modelInstance.getObjFromSubdocument(data);
                 ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                 

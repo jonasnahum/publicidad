@@ -49,42 +49,40 @@
 <br />
 <br />
 <br />
-      
 
-    
-        <div ng-controller="TodosPublicoController as ctrl">
-            <div class="row">
-                <div class="col-lg-6">
-                    <a type="button" class="btn btn-success btn-sm" aria-label="Left Align" ng-href="#/publico/signup">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Crear mi página web</span>
-                    </a>
-                </div><!-- /.col-lg-6 -->
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Buscar negocio"  ng-model="ctrl.searchText">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Buscar</button>
-                        </span>
-                    </div><!-- /input-group -->
-                </div><!-- /.col-lg-6 -->
-            </div><!-- /.row -->
-            
-         
-            <ul dir-paginate="pagina in ctrl.paginas | filter:ctrl.searchText | itemsPerPage: 4">
-                <!--p ng-model="ctrl.requestedPageNumber" ng-hide="true"> {{currentPage}}</p-->
-                <hr class="featurette-divider">
-                <div class="row featurette">
-                    <div class="col-md-7">
-                        <h2 class="featurette-heading"><a ng-href="#/{{pagina._usuario.uniquename}}">{{ pagina.nombre }}.
-                        </a></h2>
-                        <p class="text-muted">{{ pagina.descripcion }}</p>
-                    </div>
-                    <div class="col-md-5">
-                        <img class="featurette-image img-responsive center-block" src="{{pagina.logotipo}}">
-                    </div>
-                </div>        
-            </ul>
-        </div>
+
+<div ng-controller="TodosPublicoController as ctrl">
+    <div class="row">
+        <div class="col-lg-6">
+            <a type="button" class="btn btn-success btn-sm" aria-label="Left Align" ng-href="#/publico/signup">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true">Crear mi página web</span>
+            </a>
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar negocio"  ng-model="ctrl.searchText">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Buscar</button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+
+
+    <ul dir-paginate="pagina in ctrl.paginas | filter:ctrl.searchText | itemsPerPage: 10">
+        <hr class="featurette-divider">
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading"><a ng-href="#/{{pagina._usuario.uniquename}}">{{ pagina.nombre }}.
+                </a></h2>
+                <p class="text-muted">{{ pagina.descripcion }}</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive center-block" src="{{pagina.logotipo}}">
+            </div>
+        </div>        
+    </ul>
+</div>
 
     
 

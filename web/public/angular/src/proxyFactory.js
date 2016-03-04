@@ -48,6 +48,7 @@
                 data: model
             }).success(success).error(that.error);
         };
+
         //admins
         Proxy.prototype.save = function(model, success) {
             var that = this;
@@ -57,10 +58,7 @@
                 data: model
             }).success(success).error(that.error);
         };
-        
-        
-        
-        
+                
         Proxy.prototype.getOne = function(id, success) {
             var that = this;
             $http({
@@ -69,9 +67,6 @@
             }).success(success).error(that.error);
         };
         
-
-        
-
         Proxy.prototype.delete = function(id, success) {
             var that = this;
             $http({
@@ -80,9 +75,6 @@
             }).success(success).error(that.error);       
         };
         
-
-        
-
         Proxy.prototype.update = function(id, model, success) {
             var that = this;
             $http({

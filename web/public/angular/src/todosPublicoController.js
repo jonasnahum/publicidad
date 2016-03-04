@@ -1,6 +1,6 @@
 (function() {
     var app = angular.module('app');
-    app.controller('TodosPublicoController', ['$http', '$location', 'paginasProxy', 'tokenStorage', function($http, $location, paginasProxy, tokenStorage) {
+    app.controller('TodosPublicoController', ['$http', '$location', 'paginasProxy', function($http, $location, paginasProxy) {
         var ctrl = this;
         ctrl.paginas = [];
         ctrl.searchText = "";
