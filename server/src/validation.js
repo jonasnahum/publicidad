@@ -59,9 +59,9 @@ var Validation = (function() {
             case "validateEmail":
                 return [this.email];
                 break;
-            case "validateProductos":
-                return [this.productos];
-                break;
+            //case "validateProductos":
+            //    return [this.productos];
+            //    break;
             case "validateColonia":
                 return [this.letrasEspaciosAcentos];
                 break;
