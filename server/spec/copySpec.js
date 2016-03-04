@@ -1,3 +1,4 @@
+// para correr las pruebas, se corre en la consola jasmine-node spec/
 describe("Copy Test", function() {
     it("copy body to página", function(done){
         var copy = require("./../src/copy");
@@ -71,5 +72,40 @@ describe("Copy Test", function() {
         expect(actual).toEqual(expected);
         done();
     });
-    
+    it("copy body to usuario", function(done){
+        var copy = require("./../src/copy");
+        usuarioVacio = {};
+        body = {
+            noContrato: "1",
+            uniquename: "jonatoles",
+            cliente: "jonasnahum",
+            telCliente: "4521265547",
+            correoCliente: "jonasnahum@gmail.com",
+            fechaContrato: "",
+            fechaVencimiento: "",
+            password: "el gemelo",
+            pago: 2,
+            propiedadExtra: 123,
+            propiedadExtra1: 123,
+            propiedadExtra2: 123,
+            propiedadExtra3: 123,
+            propiedadExtra4: 123
+        };
+        expected = { 
+            noContrato: '1',
+            uniquename: 'jonatoles',
+            cliente: 'jonasnahum',
+            telCliente: '4521265547',
+            email: 'jonasnahum@gmail.com',//copy cambia de nombre estas propiedades.
+            fechaRegistro: '',
+            fechaVencimiento: '',
+            password: 'el gemelo',
+            pago: 2 
+        }
+
+         
+        var actual = copy.copyBodyToUsuario(body, usuarioVacio);
+        expect(actual).toEqual(expected);
+        done();
+    });
 });
