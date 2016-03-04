@@ -14,6 +14,7 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "intravenous": "^0.1.4-beta",
+    "jasmine-node": "^1.14.5",
     "jwt-simple": "^0.4.0",
     "kerberos": "~0.0.17",
     "moment": "^2.10.6",

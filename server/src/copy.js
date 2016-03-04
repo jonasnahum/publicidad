@@ -1,29 +1,29 @@
 var Copy = (function() {
     var Copy = function() {
     };
-    Copy.prototype.copyBodyToPagina = function(body, empresa){
-        var empresa = empresa;
-        empresa.nombre = body.nombre;
-        empresa.logotipo = body.logotipo;
-        empresa.foto = body.foto;
-        empresa.colorBackground = body.colorBackground;
-        empresa.colorText = body.colorText;
-        empresa.textoIntro = body.textoIntro;
-        empresa.lat = body.lat;
-        empresa.long = body.long;
-        empresa.descripcion = body.descripcion;
-        empresa.horario = body.horario;
-        empresa.encargado = body.encargado;
-        empresa.tel = body.tel;
-        empresa.face = body.face;
-        empresa.flickr = body.flickr;
-        empresa.whats = body.whats;
-        empresa.link1 = body.link1;
-        empresa.link2 = body.link2;
-        empresa.email = body.email;
-        empresa.productos = body.productos;
-        empresa.nota = body.nota;
-        empresa.direccion={
+    Copy.prototype.copyBodyToPagina = function(body, pagina){
+        var pagina = pagina;
+        pagina.nombre = body.nombre;
+        pagina.logotipo = body.logotipo;
+        pagina.foto = body.foto;
+        pagina.colorBackground = body.colorBackground;
+        pagina.colorText = body.colorText;
+        pagina.textoIntro = body.textoIntro;
+        pagina.lat = body.lat;
+        pagina.long = body.long;
+        pagina.descripcion = body.descripcion;
+        pagina.horario = body.horario;
+        pagina.encargado = body.encargado;
+        pagina.tel = body.tel;
+        pagina.face = body.face;
+        pagina.flickr = body.flickr;
+        pagina.whats = body.whats;
+        pagina.link1 = body.link1;
+        pagina.link2 = body.link2;
+        pagina.email = body.email;
+        pagina.productos = body.productos;
+        pagina.nota = body.nota;
+        pagina.direccion={
             numero: body.numero,
             numeroInt: body.numeroInt,
             calle: body.calle,
@@ -32,10 +32,10 @@ var Copy = (function() {
             municipio: body.municipio,
             estado: body.estado
         };
-        empresa.rubro={
+        pagina.rubro={
             rubro: body.rubro
         };        
-        return empresa;
+        return pagina;
     };
     Copy.prototype.copyBodyToUsuario = function(body, usuario){
         var usuario = usuario;
