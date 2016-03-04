@@ -3,7 +3,6 @@
     
     app.controller('SignupController', ['adminsProxy', '$location', function(proxy, $location) {
         var ctrl = this;
-        
         ctrl.email = '';
         ctrl.password = '';
         

@@ -1,30 +1,10 @@
 (function() {
     var app = angular.module('app');
-    arrDep = ['$routeParams','$location', 'mapFactory', 'productosFactory', 'paginasProxy', 'tokenStorage', 'usuariosProxy']; 
-    arrDep.push(function($route, $location, mapFactory, productosFactory, paginasProxy, tokenStorage, usuariosProxy) {
+    arrDep = ['$routeParams','$location', 'mapFactory', 'productosFactory', 'paginasProxy', 'usuariosProxy']; 
+    arrDep.push(function($route, $location, mapFactory, productosFactory, paginasProxy, usuariosProxy) {
         
         var ctrl = this;
-        ctrl.nombre = undefined;
-        ctrl.colorBackground = undefined;
-        ctrl.colorText = undefined;
-        ctrl.logotipo = undefined;
-        ctrl.foto = undefined;
-        ctrl.textoIntro = undefined;
-        ctrl.descripcion = undefined;
-        ctrl.horario = undefined;
-        ctrl.encargado = undefined;
-        ctrl.tel = undefined;
-        ctrl.face = undefined;
-        ctrl.flickr = undefined;
-        ctrl.whats = undefined;
-        ctrl.link1 = undefined;
-        ctrl.link2 = undefined;
-        
-        ctrl.email = undefined;
         ctrl.productos = [];
-        ctrl.nota = undefined;
-        //direccion 
-        //rubro
         
         //Map Function
         var mapa = mapFactory();
@@ -62,7 +42,7 @@
                 $location.path('/');
             });
         };
-                //Server Call
+        //Server Call
         ctrl.noGuardar = function() {
             ctrl.userId = $route.id;
             usuariosProxy.delete(ctrl.userId, function(data, status, headers, config){

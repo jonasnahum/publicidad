@@ -3,7 +3,6 @@
     app.controller('TodosController', ['$http', '$location', 'paginasProxy', 'tokenStorage', function($http, $location, paginasProxy, tokenStorage) {
         var ctrl = this;
         ctrl.searchText = "";
-        
         ctrl.empresas = [];
         ctrl.emailUsuario = "";
         
@@ -14,7 +13,6 @@
             });
         };
         ctrl.getAll();
-        
         ctrl.delete = function (id) {
             paginasProxy.delete(id,function(){
                $location.path('/privado/todos');

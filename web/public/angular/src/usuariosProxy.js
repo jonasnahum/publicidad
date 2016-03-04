@@ -5,6 +5,7 @@
         var UsuariosProxy = function() {                   
             this.signupPublicoProxy = proxyFactory(constants.server + '/usuario/api/');
         };
+        
         UsuariosProxy.prototype.signupPublico = function(model, success){
             this.signupPublicoProxy.signupPublico(model, success);
         };
