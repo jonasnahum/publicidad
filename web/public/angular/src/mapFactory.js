@@ -1,7 +1,7 @@
 (function() {
     var app = angular.module('app');
     
-    app.factory('mapFactory', ['$location', function($location) {//singleton.
+    app.factory('mapFactory', [function() {//singleton.
         
         var MapClass = function(latitud,longitud) {
             this.map = undefined;
@@ -67,7 +67,6 @@
             that.clearOverlays();
             that.markersArray = [];
         };
-
         MapClass.prototype.getLat = function () {
             var that = this;
             return that.lat;

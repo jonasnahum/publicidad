@@ -1,8 +1,8 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$routeParams', '$location', 'mapFactory', 'modelFactory', 'paginasProxy'];
+    var depArr = ['$routeParams', 'mapFactory', 'modelFactory', 'paginasProxy'];
     
-    depArr.push(function($route, $location, mapFactory, modelFactory, paginasProxy) {
+    depArr.push(function($route, mapFactory, modelFactory, paginasProxy) {
         var ctrl = this; 
         ctrl.empresaId= $route.id;
         var modelInstance = modelFactory();
