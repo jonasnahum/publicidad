@@ -1,16 +1,12 @@
 var UsuariosApi = (function() {
-    var UsuariosApi = function(models, usuarioFactory, moment, jwt) {
+    var UsuariosApi = function(models, usuarioFactory) {
         this.models = models;
         this.usuarioFactory = usuarioFactory;
-        
-        this.moment = moment.module;
-        this.jwt = jwt.module;
     };
 
     UsuariosApi.prototype.getAll = function(req, res, next) {
-        var that = this;
-        
-        that.models.usuario.find({}, function(err, usuarios) {
+        var that = this;    
+        that.models.usuario.find(function(err, usuarios) {
             if(err)  return console.log(err);
             res.json(usuarios);
         });
