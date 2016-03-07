@@ -24,6 +24,9 @@
                 obj.whats = data.whats;
                 obj.link1 = data.link1;
                 obj.link2 = data.link2;
+                obj.link3 = data.link3;
+                obj.link4 = data.link4;
+                obj.link5 = data.link5;
                 obj.email = data.email;
                 obj.productos = data.productos;
                 obj.nota = data.nota;
@@ -76,6 +79,9 @@
             model.whats=ctrl.whats,
             model.link1=ctrl.link1,
             model.link2=ctrl.link2,
+            model.link3=ctrl.link3,
+            model.link4=ctrl.link4,
+            model.link5=ctrl.link5,
             model.email=ctrl.email,
             model.productos=ctrl.productos,
             model.nota=ctrl.nota,
