@@ -9,15 +9,12 @@
 
                 return undefined;
             },
-
             setToken: function (data) {
                 $window.localStorage.setItem('objToken', JSON.stringify(data));
             },
-
             clearToken: function () {
                 $window.localStorage.setItem('objToken', '');
             },
-
             getAccessHeader: function() {
                 var that = this;
                 var tokenObj = that.getToken();

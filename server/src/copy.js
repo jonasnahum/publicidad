@@ -1,30 +1,32 @@
 var Copy = (function() {
     var Copy = function() {
     };
-    Copy.prototype.copyBodyToEmpresa = function(body, empresa){
-        console.log("entŕo a copy");
-        var empresa = empresa;
-        empresa.nombre = body.nombre;
-        empresa.logotipo = body.logotipo;
-        empresa.foto = body.foto;
-        empresa.colorBackground = body.colorBackground;
-        empresa.colorText = body.colorText;
-        empresa.textoIntro = body.textoIntro;
-        empresa.lat = body.lat;
-        empresa.long = body.long;
-        empresa.descripcion = body.descripcion;
-        empresa.horario = body.horario;
-        empresa.encargado = body.encargado;
-        empresa.tel = body.tel;
-        empresa.face = body.face;
-        empresa.flickr = body.flickr;
-        empresa.whats = body.whats;
-        empresa.link1 = body.link1;
-        empresa.link2 = body.link2;
-        empresa.email = body.email;
-        empresa.productos = body.productos;
-        empresa.nota = body.nota;
-        empresa.direccion={
+    Copy.prototype.copyBodyToPagina = function(body, pagina){
+        var pagina = pagina;
+        pagina.nombre = body.nombre;
+        pagina.logotipo = body.logotipo;
+        pagina.foto = body.foto;
+        pagina.colorBackground = body.colorBackground;
+        pagina.colorText = body.colorText;
+        pagina.textoIntro = body.textoIntro;
+        pagina.lat = body.lat;
+        pagina.long = body.long;
+        pagina.descripcion = body.descripcion;
+        pagina.horario = body.horario;
+        pagina.encargado = body.encargado;
+        pagina.tel = body.tel;
+        pagina.face = body.face;
+        pagina.flickr = body.flickr;
+        pagina.whats = body.whats;
+        pagina.link1 = body.link1;
+        pagina.link2 = body.link2;
+        pagina.link3 = body.link3;
+        pagina.link4 = body.link4;
+        pagina.link5 = body.link5;
+        pagina.email = body.email;
+        pagina.productos = body.productos;
+        pagina.nota = body.nota;
+        pagina.direccion={
             numero: body.numero,
             numeroInt: body.numeroInt,
             calle: body.calle,
@@ -33,20 +35,24 @@ var Copy = (function() {
             municipio: body.municipio,
             estado: body.estado
         };
-        empresa.rubro={
+        pagina.rubro={
             rubro: body.rubro
-        };
-        empresa.informacion={
-            noContrato: body.noContrato,
-            uniquename: body.uniquename,
-            cliente: body.cliente,
-            telCliente: body.telCliente,
-            correoCliente: body.correoCliente,
-            fechaContrato: body.fechaContrato||Date.now(),
-            fechaVencimiento: body.fechaVencimiento||Date.now(),
-            pago: body.pago
-        };
-        return empresa;
+        };        
+        return pagina;
+    };
+    Copy.prototype.copyBodyToUsuario = function(body, usuario){
+        var usuario = usuario;
+        usuario.noContrato = body.noContrato;
+        usuario.uniquename = body.uniquename;
+        usuario.cliente = body.cliente;
+        usuario.telCliente = body.telCliente;
+        usuario.email = body.correoCliente;
+        usuario.fechaRegistro = body.fechaContrato;
+        usuario.fechaVencimiento = body.fechaVencimiento;
+        usuario.password = body.password;
+        usuario.pago = body.pago;
+
+        return usuario;
     };
 
     return Copy;

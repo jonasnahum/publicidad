@@ -1,50 +1,17 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$routeParams', '$location', 'mapFactory', 'productosFactory', 'modelFactory', 'empresasProxy'];  
-    depArr.push(function($route, $location, mapFactory, productosFactory, modelFactory, empresasProxy) {
+    var depArr = ['$routeParams', '$location', 'mapFactory', 'productosFactory', 'modelFactory', 'paginasProxy'];  
+    depArr.push(function($route, $location, mapFactory, productosFactory, modelFactory, paginasProxy) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
-        
-        ctrl.nombre = undefined;
-        ctrl.logotipo = undefined;
-        ctrl.foto = undefined;
-        ctrl.colorBackground = undefined;
-        ctrl.colorText = undefined;
-        ctrl.textoIntro = undefined;
-        ctrl.numero = undefined;
-        ctrl.numeroInt = undefined;
-        ctrl.calle = undefined;
-        ctrl.colonia = undefined;
-        ctrl.cp = undefined;
-        ctrl.municipio = undefined;
-        ctrl.estado = undefined;
-        ctrl.lat = undefined;
-        ctrl.long = undefined;
-        ctrl.rubro = undefined;
-        ctrl.descripcion = undefined;
-        ctrl.horario = undefined;
-        ctrl.encargado = undefined;
-        ctrl.tel = undefined;
-        ctrl.face = undefined;
-        ctrl.email = undefined;
-        ctrl.productos = [];
-        ctrl.nota = undefined;
-        ctrl.noContrato = undefined;
-        ctrl.uniquename = undefined;
-        ctrl.cliente = undefined;
-        ctrl.telCliente = undefined;
-        ctrl.correoCliente = undefined;
-        ctrl.fechaContrato = undefined;//date
-        ctrl.fechaVencimiento = undefined;//date
-        ctrl.pago = undefined;
-        ctrl.mapa = undefined;
+       
         var prod = productosFactory();
         var modelInstance = modelFactory();
         
 
         var getOne = function(id) {
-            empresasProxy.getOne(id, function(data, status, headers, config){
+            paginasProxy.getOne(id, function(data, status, headers, config){
                 var obj = modelInstance.getObjFromSubdocument(data);
                 ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                 
@@ -83,10 +50,11 @@
         ctrl.editar = function(){ 
             ctrl.lat = ctrl.mapa.getLat();
             ctrl.long = ctrl.mapa.getLong();
-            empresasProxy.update(ctrl.empresaId, modelInstance.getModelFromCtrl(ctrl), function(data, status, headers, config){
+            paginasProxy.update(ctrl.empresaId, modelInstance.getModelFromCtrl(ctrl), function(data, status, headers, config){
                 alert("Info enviada");
                 $location.path('/privado/todos');
             });
+            
         };
     });
     app.controller('EditarFormularioController', depArr); 

@@ -5,16 +5,16 @@
         
         $httpProvider.interceptors.push('httpInterceptor');
 //publico
-        $router.when("/", { templateUrl: "angular/views/portada.html"})
+        $router.when("/", { templateUrl: "angular/views/todosPublico.html"})
         $router.when('/signin', { templateUrl: "angular/views/signin.html" })
         $router.when('/signup', { templateUrl: "angular/views/signup.html" })
         $router.when("/:negocio", { templateUrl: "angular/views/negocio.html" })
         $router.when("/publico/about", { templateUrl: "angular/views/about.html" })
         $router.when("/publico/contact", { templateUrl: "angular/views/contact.html" })
         $router.when("/error", { templateUrl: "angular/views/error.html" })
+        $router.when("/publico/nuevo/:id", { templateUrl: "angular/views/nuevoPublico.html" })
+        $router.when("/publico/signup", { templateUrl: "angular/views/signupPublico.html" })
 //privado
-        $router.when("/privado/nuevo", 
-                     { templateUrl: "angular/views/nuevo.html"})
         $router.when("/privado/ver/:id", 
                      { templateUrl: "angular/views/ver.html"})
         $router.when("/privado/todos", 

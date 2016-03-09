@@ -1,22 +1,21 @@
 (function() {
     var app = angular.module('app');
-    app.controller('TodosController', ['$http', '$location', 'empresasProxy', 'tokenStorage', function($http, $location, empresasProxy, tokenStorage) {
+    app.controller('TodosController', ['$location', 'paginasProxy', 'tokenStorage', function($location, paginasProxy, tokenStorage) {
         var ctrl = this;
         ctrl.searchText = "";
-    
+
         ctrl.empresas = [];
         ctrl.emailUsuario = "";
         
 
         ctrl.getAll = function(){
-            empresasProxy.getAll(function(data){
+            paginasProxy.getAll(function(data){
                 ctrl.empresas=data;
             });
         };
         ctrl.getAll();
-        
         ctrl.delete = function (id) {
-            empresasProxy.delete(id,function(){
+            paginasProxy.delete(id,function(){
                $location.path('/privado/todos');
             });
         };

@@ -2,10 +2,7 @@
     var app = angular.module("app");
     
     app.factory("httpInterceptor", ['$q', '$location', 'tokenStorage', 'routeChecker', function($q, $location, tokenStorage, routeChecker) {//singleton function.
-        
-        //"/".indexOf("/paginas/privada/borrar/****") !== 0
-        //var re = //;
-        
+       
         return {
             
             // optional method
