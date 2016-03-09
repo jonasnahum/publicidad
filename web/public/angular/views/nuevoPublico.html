@@ -1,0 +1,347 @@
+
+<script type="text/javascript" src="./../../../js/datepicker.js"></script>
+
+<div ng-controller="NuevoPublicoController as ctrl" class="container" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+    <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()" role="form" novalidate>
+        <h2>Empresa</h2>
+                
+        <fieldset class="form-group">
+            <label for="nombre">* Nombre del negocio</label>
+            <input class="form-control" type="text" ng-model="ctrl.nombre" name="nombre" ng-pattern="/^[A-Za-záéíóú0-9ñ. ]+$/" required ng-minlength="2" ng-maxlength="40" style="width:30%;"> <!-- class="form-control" -->
+            <div class="errorMessages" ng-messages="frmNuevo.nombre.$error" 
+                 ng-if="!frmNuevo.nombre.$pristine || frmNuevo.$submitted" role="alert" >
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+        </fieldset>
+        <br />
+        
+        <label>Seleccione un color de fondo y otro color de texto para su página :</label>
+        <br />
+        <div class="row">
+            <div class="col-lg-6">
+                Fondo
+                <label> 
+                    <input class="form-control" type="color" ng-model="ctrl.colorBackground"/><small>{{ctrl.colorBackground || " No hay color seleccionado"}}</small>
+                </label>
+            </div>
+            <div class="col-lg-6">
+                Texto
+                <label>
+                    <input class="form-control" type="color" ng-model="ctrl.colorText"/> <small>{{ctrl.colorText || " No hay color seleccionado"}}</small>
+                </label>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        
+        <label>Ingresar la dirección URL de las imagenes:<small >Abra una imagen que este en internet, de click derecho sobre la imágen, copie la dirección de la imagen (URL) y péguela en este campo. Un ejemplo de URL es este: https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg</small> </label>
+        <br />
+        <div class="row">
+            <div class="col-lg-6">
+                Logotipo <small>(Fondo transparente)</small>
+                <br/>
+                <label> 
+                    <input class="form-control" type="text" ng-model="ctrl.logotipo" name="logotipo" style="align: left;" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                    <div class="errorMessages" ng-messages="frmNuevo.logotipo.$error" 
+                     ng-if="!frmNuevo.logotipo.$pristine || frmNuevo.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+                    <div>
+                        <img src="{{ctrl.logotipo}}" width="50%" height="50%" alt="No file selected" />
+                    </div>
+                    <a href ng-click="ctrl.quitarLogo()" role="button">Quitar logo</a>
+                </label>
+            </div>
+            <div class="col-lg-6">
+                Imágen o foto de portada
+                <br />
+                <label>
+                    <input class="form-control" type="text" ng-model="ctrl.foto" name="foto" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                    <div class="errorMessages" ng-messages="frmNuevo.foto.$error" 
+                     ng-if="!frmNuevo.foto.$pristine || frmNuevo.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+                    <div>
+                        <img src="{{ctrl.foto}}" width="50%" height="50%" alt="No file selected">
+                    </div>
+                    <a href ng-click="ctrl.quitarFoto()" role="button">Quitar foto</a>                        
+                </label>
+            </div>
+        </div>
+        <br/>
+        <br/>
+            
+        <fieldset class="form-group">
+            <label>Texto introductorio ó bienvenida de su página:</label>
+            <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.textoIntro" ng-maxlength="360" name="textoIntro" style="width:30%;"></textarea>
+            <div class="errorMessages" ng-messages="frmNuevo.textoIntro.$error" 
+             ng-if="!frmNuevo.textoIntro.$pristine || frmNuevo.$submitted"
+             role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+        </fieldset>   
+        <br />
+        <br />
+        
+        
+        <fieldset>
+            <h3>Dirección</h3>
+            <div class="row">        
+                <div class="col-md-6">
+
+                    <label>Número</label>
+                    <input class="form-control" type="text" ng-model="ctrl.numero" ng-maxlength="5" name="numero"> <div class="errorMessages" ng-messages="frmNuevo.numero.$error" 
+                         ng-if="!frmNuevo.numero.$pristine || frmNuevo.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+
+                    <label>Número interior</label>
+                    <input class="form-control" type="text" ng-model="ctrl.numeroInt" ng-maxlength="5" name="numeroInt"> 
+                    <div class="errorMessages" ng-messages="frmNuevo.numeroInt.$error" 
+                         ng-if="!frmNuevo.numeroInt.$pristine || frmNuevo.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+
+                    <label>* Calle</label>
+                    <input class="form-control" type="text"ng-model="ctrl.calle" name="calle" ng-maxlength="40" required> 
+                    <div class="errorMessages" ng-messages="frmNuevo.calle.$error" 
+                         ng-if="!frmNuevo.calle.$pristine || frmNuevo.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+
+                    <label>* Colonia</label>
+                    <input class="form-control" type="text" ng-model="ctrl.colonia" name="colonia" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-maxlength="30" required> 
+                    <div class="errorMessages" ng-messages="frmNuevo.colonia.$error" 
+                         ng-if="!frmNuevo.colonia.$pristine || frmNuevo.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+
+                    <label>* C.P.</label>
+                    <input class="form-control" type="text" ng-model="ctrl.cp" name="cp" ng-pattern="/^[0-9]+$/" ng-minlength="5" ng-maxlength="5" required> 
+                    <div class="errorMessages" ng-messages="frmNuevo.cp.$error" 
+                         ng-if="!frmNuevo.cp.$pristine || frmNuevo.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+
+                    <label>* Municipio</label>
+                    <input class="form-control" type="text" ng-model="ctrl.municipio" name="municipio" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-maxlength="20" ng-minlength="5" required/>
+                    <div class="errorMessages" ng-messages="frmNuevo.municipio.$error" 
+                         ng-if="!frmNuevo.municipio.$pristine || frmNuevo.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+
+                    <label>* Estado</label>
+                    <input class="form-control" type="text" ng-model="ctrl.estado" ng-minlength="5" ng-maxlength="20" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" name="estado" required/>
+                    <div class="errorMessages" ng-messages="frmNuevo.estado.$error" 
+                         ng-if="!frmNuevo.estado.$pristine || frmNuevo.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+
+                </div>
+                <div class="col-md-6" id="dir">
+
+                    <label>Mapa: </label>
+                    <br />
+                    <div id="googleMap" style="width:500px;height:380px;"></div>
+                    <br />
+                    <a href ng-click="ctrl.borrarMarker()" role="button" class="btn btn-default">Borrar marcador</a>
+
+                </div>
+            </div>
+        </fieldset>
+        <br />
+        <br />
+        
+        <fieldset>
+            <h3>Rubro</h3>
+            <label>* Rubro de la empresa:</label>
+            <input class="form-control" ng-model="ctrl.rubro" ng-maxlength="40" ng-minlength="5" ng-pattern="/^[a-zA-Záéíóúñ ]+$/"  name="rubro" style="width:30%;" required/>            
+            <div class="errorMessages" ng-messages="frmNuevo.rubro.$error" 
+                 ng-if="!frmNuevo.rubro.$pristine || frmNuevo.$submitted" role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+        </fieldset>
+        <br />
+        <br />
+        
+       
+        
+        <fieldset class="form-group">
+            <label>Descripción del negocio</label> <small>(Aparece junto al nombre de su negocio en nuestra lista de negocios).</small>
+            <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.descripcion" name="descripcion" ng-maxlength="180" style="width:30%;"></textarea>
+            <div class="errorMessages" ng-messages="frmNuevo.descripcion.$error" 
+             ng-if="!frmNuevo.descripcion.$pristine || frmNuevo.$submitted" role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+            
+            <label>* Horario de atención:</label>
+            <input class="form-control" type="text" ng-model="ctrl.horario" name="horario" ng-maxlength="100" style="width:30%;" required/>      
+            <div class="errorMessages" ng-messages="frmNuevo.horario.$error" 
+                 ng-if="!frmNuevo.horario.$pristine || frmNuevo.$submitted" role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+            
+            <label>* Encargado</label><small>(Contesta las dudas del cliente a través de correo, teléfono ó redes sociales).</small>
+            <input class="form-control" type="text" ng-model="ctrl.encargado" name="encargado" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-maxlength="40" ng-minlength="10" style="width:30%;" required/>      
+            <div class="errorMessages" ng-messages="frmNuevo.encargado.$error" 
+             ng-if="!frmNuevo.encargado.$pristine || frmNuevo.$submitted" role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+            
+            <label>* Teléfono de la empresa</label>
+            <input class="form-control" type="text" ng-model="ctrl.tel" name="tel" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/" style="width:30%;" required/>
+            <div class="errorMessages" ng-messages="frmNuevo.tel.$error" 
+                 ng-if="!frmNuevo.tel.$pristine || frmNuevo.$submitted" role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+            
+            <label>* Email de la empresa</label>
+            <input class="form-control" type="email" ng-model="ctrl.email" name="email" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/" style="width:30%;" required/>   
+            <div class="errorMessages" ng-messages="frmNuevo.email.$error" 
+                 ng-if="!frmNuevo.email.$pristine || frmNuevo.$submitted" role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+            <br />
+            <br />
+            
+            
+            <h4>Agregue algunos links a sus redes sociales</h4>
+            <label>Whatsapp</label>
+            <input class="form-control" type="text" ng-model="ctrl.whats" name="whats" style="width:60%;" ng-minlength="10" ng-maxlength="10" ng-pattern="/^[0-9]+$/"/>
+            <div class="errorMessages" ng-messages="frmNuevo.whats.$error" ng-if="!frmNuevo.whats.$pristine || frmNuevo.$submitted" role="alert">
+                <div ng-messages-include="/error/messages.html"></div>
+            </div>
+
+            
+            <label>Facebook : <small>escriba la dirección completa (URL), ejemplo: https://www.facebook.com/paginasweburuapan/</small></label>
+            <input class="form-control" type="text" ng-model="ctrl.face" name="face" style="width:60%;" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                    <div class="errorMessages" ng-messages="frmNuevo.face.$error" 
+                     ng-if="!frmNuevo.face.$pristine || frmNuevo.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+            
+            <label>Flickr :</label>
+            <input class="form-control" type="text" ng-model="ctrl.flickr" name="flickr" style="width:60%;" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                    <div class="errorMessages" ng-messages="frmNuevo.flickr.$error" 
+                     ng-if="!frmNuevo.flickr.$pristine || frmNuevo.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+            
+            <label>Link1 :</label>
+            <input class="form-control" type="text" ng-model="ctrl.link1" name="link1" style="width:60%;"  ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                    <div class="errorMessages" ng-messages="frmNuevo.link1.$error" 
+                     ng-if="!frmNuevo.link1.$pristine || frmNuevo.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+        
+            <label>Link2 :</label>
+            <input class="form-control" type="text" ng-model="ctrl.link2" name="link2" style="width:60%;"  ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                    <div class="errorMessages" ng-messages="frmNuevo.link2.$error" 
+                     ng-if="!frmNuevo.link2.$pristine || frmNuevo.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+            
+            <label>Link3 :</label>
+            <input class="form-control" type="text" ng-model="ctrl.link3" name="link3" style="width:60%;"  ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                    <div class="errorMessages" ng-messages="frmNuevo.link3.$error" 
+                     ng-if="!frmNuevo.link3.$pristine || frmNuevo.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+        
+            <label>Link4 :</label>
+            <input class="form-control" type="text" ng-model="ctrl.link4" name="link4" style="width:60%;"  ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                    <div class="errorMessages" ng-messages="frmNuevo.link4.$error" 
+                     ng-if="!frmNuevo.link4.$pristine || frmNuevo.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+            
+            <label>Link5 :</label>
+            <input class="form-control" type="text" ng-model="ctrl.link5" name="link5" style="width:60%;"  ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                    <div class="errorMessages" ng-messages="frmNuevo.link5.$error" 
+                     ng-if="!frmNuevo.link5.$pristine || frmNuevo.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+                    
+        </fieldset>
+        <br />
+        <br />
+        
+        
+        <fieldset>
+            <h3>Productos</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    
+                    <small >Llene los datos de un producto o servicio que usted ofrece y presione el botón "Agregar producto".</small>
+                    <br />
+                    <label>Título del producto</label>
+                    <input class="form-control" type="text" ng-model="ctrl.producto.titulo" ng-maxlength="80" name="titulo"/>
+                    <div class="errorMessages" ng-messages="frmEditar.titulo.$error" 
+                         ng-if="!frmEditar.titulo.$pristine || frmEditar.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+                    
+                    <label>Descripción del producto</label>
+                    <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.producto.parrafo" ng-maxlength="160" name="parrafo"></textarea>
+                    <div class="errorMessages" ng-messages="frmEditar.parrafo.$error" 
+                         ng-if="!frmEditar.parrafo.$pristine || frmEditar.$submitted" role="alert">
+                        <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+                    
+                    <label>Foto del producto</label><small >(Dirección URL).</small>
+                    <input class="form-control" type="text" ng-model="ctrl.producto.foto" name="productoFoto"  ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                    <div class="errorMessages" ng-messages="frmNuevo.productoFoto.$error" 
+                     ng-if="!frmNuevo.productoFoto.$pristine || frmNuevo.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                    </div>
+                    
+                    
+                    
+                    
+                    <div>
+                        <img src="{{ctrl.producto.foto}}" width="30%" height="30%" alt="No file selected">
+                    </div>
+                    
+                    <a href ng-click="ctrl.agregarProducto()" type="button" class="btn btn-success btn-sm">Agregar producto</a>
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                    Productos Agregados: 
+                    <ol class="list-group">
+                        <li ng-repeat="producto in ctrl.productos" class="list-group-item" style="color: black;">
+                            <strong>{{$index + 1}}. {{producto.titulo}}</strong> {{producto.parrafo}} 
+                            <img src="{{producto.foto}}" width="20%" height="20%"  class="foto" ng-show="producto.foto" class="label label-default label-pill pull-xs-right">
+                        </li>
+                    </ol>
+                    
+                    
+                    <label>Número del producto a borrar:</label>
+                    <input class="form-control" type="text" ng-model="ctrl.remover"/>
+                    <br />
+                    <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-danger btn-sm">Borrar producto</a>
+                    <a href ng-click="ctrl.borrarProductos()" type="button" class="btn btn-danger btn-sm">Borrar todos los productos</a>
+                    
+                </div>
+            </div>
+        </fieldset>
+        <br />
+        <br />
+        
+        
+        <label>Nota adicional ó comentario</label>
+        <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.nota" ng-maxlength="180" name="nota" style="width:30%;"></textarea>
+        <div class="errorMessages" ng-messages="frmNuevo.nota.$error" 
+             ng-if="!frmNuevo.nota.$pristine || frmNuevo.$submitted" role="alert">
+            <div ng-messages-include="/error/messages.html"></div>
+        </div>
+        <br />
+        <br />
+        
+        <button type="submit" class="btn btn-success btn-lg">Guardar mi página</button>
+        <a href ng-click="ctrl.noGuardar()" type="button" class="btn btn-danger btn-lg">No guardar y borrar todo</a>
+        <br />
+        <br />
+    </form>
+</div>

@@ -1,29 +1,10 @@
 (function() {
     var app = angular.module('app');
-    arrDep = ['$location', 'mapFactory', 'productosFactory', 'empresasProxy']; 
-    arrDep.push(function($location, mapFactory, productosFactory, empresasProxy) {
+    arrDep = ['$routeParams','$location', 'mapFactory', 'productosFactory', 'paginasProxy', 'usuariosProxy']; 
+    arrDep.push(function($route, $location, mapFactory, productosFactory, paginasProxy, usuariosProxy) {
         
         var ctrl = this;
-        ctrl.nombre = undefined;
-        ctrl.colorBackground = undefined;
-        ctrl.colorText = undefined;
-        ctrl.logotipo = undefined;
-        ctrl.foto = undefined;
-        ctrl.textoIntro = undefined;
-        ctrl.descripcion = undefined;
-        ctrl.horario = undefined;
-        ctrl.encargado = undefined;
-        ctrl.tel = undefined;
-        ctrl.face = undefined;
-        ctrl.flickr = undefined;
-        ctrl.whats = undefined;
-        ctrl.link1 = undefined;
-        ctrl.link2 = undefined;
-        
-        ctrl.email = undefined;
         ctrl.productos = [];
-        ctrl.nota = undefined;
-        
         
         //Map Function
         var mapa = mapFactory();
@@ -55,10 +36,20 @@
         ctrl.save = function() {
             ctrl.lat = mapa.getLat();
             ctrl.long = mapa.getLong();
-            empresasProxy.save(ctrl, function(data, status, headers, config){
-                $location.path('/privado/todos');
+            ctrl.userId = $route.id;
+            paginasProxy.savePublico(ctrl.userId, ctrl, function(data, status, headers, config){
+                alert("Su página web esta registrada, ahora la puede buscar en nuestra lista de negocios. Gracias.");
+                $location.path('/');
+            });
+        };
+        //Server Call
+        ctrl.noGuardar = function() {
+            ctrl.userId = $route.id;
+            usuariosProxy.delete(ctrl.userId, function(data, status, headers, config){
+                alert("Todos sus datos tanto públicos como privados han sido borrados.");
+                $location.path('/');
             });
         };  
     });
-    app.controller('NuevoController', arrDep);
+    app.controller('NuevoPublicoController', arrDep);
 })();

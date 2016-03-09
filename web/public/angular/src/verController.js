@@ -1,14 +1,14 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$routeParams', '$location', 'mapFactory', 'modelFactory', 'empresasProxy'];
+    var depArr = ['$routeParams', 'mapFactory', 'modelFactory', 'paginasProxy'];
     
-    depArr.push(function($route, $location, mapFactory, modelFactory, empresasProxy) {
+    depArr.push(function($route, mapFactory, modelFactory, paginasProxy) {
         var ctrl = this; 
         ctrl.empresaId= $route.id;
         var modelInstance = modelFactory();
         
         ctrl.getOne = function (id) {
-            empresasProxy.getOne(id, function(data){
+            paginasProxy.getOne(id, function(data){
                 var obj = modelInstance.getObjFromSubdocument(data);
                 ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                 

@@ -24,10 +24,12 @@
                 obj.whats = data.whats;
                 obj.link1 = data.link1;
                 obj.link2 = data.link2;
+                obj.link3 = data.link3;
+                obj.link4 = data.link4;
+                obj.link5 = data.link5;
                 obj.email = data.email;
                 obj.productos = data.productos;
                 obj.nota = data.nota;
-
                 obj.numero = data.direccion.numero;
                 obj.numeroInt = data.direccion.numeroInt;
                 obj.calle = data.direccion.calle;
@@ -37,15 +39,17 @@
                 obj.estado = data.direccion.estado;
 
                 obj.rubro = data.rubro.rubro;
-
-                obj.noContrato = data.informacion.noContrato;
-                obj.uniquename = data.informacion.uniquename;
-                obj.cliente = data.informacion.cliente;
-                obj.telCliente = data.informacion.telCliente;
-                obj.correoCliente = data.informacion.correoCliente;
-                obj.fechaContrato = data.informacion.fechaContrato;
-                obj.fechaVencimiento = data.informacion.fechaVencimiento;
-                obj.pago = data.informacion.pago;
+                
+                obj.userId = data._usuario._id;
+                obj.noContrato = data._usuario.noContrato;
+                obj.uniquename = data._usuario.uniquename;
+                obj.cliente = data._usuario.cliente;
+                obj.telCliente = data._usuario.telCliente;
+                obj.correoCliente = data._usuario.email;
+                obj.fechaContrato = data._usuario.fechaRegistro;
+                obj.fechaVencimiento = data._usuario.fechaVencimiento;
+                obj.pago = data._usuario.pago;
+                obj.password = data._usuario.password;
             }
             return obj;
         };
@@ -75,6 +79,9 @@
             model.whats=ctrl.whats,
             model.link1=ctrl.link1,
             model.link2=ctrl.link2,
+            model.link3=ctrl.link3,
+            model.link4=ctrl.link4,
+            model.link5=ctrl.link5,
             model.email=ctrl.email,
             model.productos=ctrl.productos,
             model.nota=ctrl.nota,
@@ -93,7 +100,9 @@
             model.correoCliente=ctrl.correoCliente,
             model.fechaContrato=ctrl.fechaContrato,    
             model.fechaVencimiento=ctrl.fechaVencimiento,    
-            model.pago=ctrl.pago
+            model.pago=ctrl.pago,
+            model.password=ctrl.password
+            model.userId=ctrl.userId
             return model;
         };
         

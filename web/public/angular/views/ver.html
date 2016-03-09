@@ -1,106 +1,144 @@
-<div ng-controller="VerController as ctrl">
-        <fieldset>
-            <h5>Informacion del cliente</h5>
+<div ng-controller="VerController as ctrl" class="container">
+    
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">Informacion del cliente</div>
+        <div class="panel-body">
+            <label>Num. de contrato:</label> {{ctrl.noContrato}}
             <br />
-            Num. de contrato: <input type="text" ng-model="ctrl.noContrato"/>
+            <label>Uniquename:</label> {{ctrl.uniquename}}
             <br />
-            Uniquename: <input type="text" ng-model="ctrl.uniquename"/>
+            <label>Nombre del cliente:</label> {{ctrl.cliente}}
             <br />
-            Nombre del cliente: <input type="text" ng-model="ctrl.cliente"/>
+            <label>Telefono:</label> {{ctrl.telCliente}}
             <br />
-            Telefono: <input type="text" ng-model="ctrl.telCliente"/>
+            <label>Correo:</label> {{ctrl.correoCliente}}
             <br />
-            Correo: <input type="email" ng-model="ctrl.correoCliente" />
-            <br />
-            Fecha de Contrato: <input type="text" ng-model="ctrl.fechaContrato" id="fechaContrato" />
+            <label>Fecha de Contrato:</label> {{ctrl.fechaContrato}}
             <br />    
-            Fecha de Vencimiento: <input type="text" ng-model="ctrl.fechaVencimiento" id="fechaVencimiento" />
+            <label>Fecha de Vencimiento:</label> {{ctrl.fechaVencimiento}}
             <br />
-            Precio: <input type="text" ng-model="ctrl.pago"/>
-        </fieldset>
-        <fieldset>
-            <h2>Empresa</h2> 
-            Nombre: <input type="text" ng-model="ctrl.nombre"/>
+            <label>Precio:</label> {{ctrl.pago}}
+        </div>
+    </div>
+
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">
+            <h3 class="panel-title">Empresa</h3>
+        </div>
+        <div class="panel-body">
+            <label>Nombre:</label> {{ctrl.nombre}}
             <br />
-            Logotipo:
-            <div>
-                <img src="{{ctrl.logotipo}}" width="50%" height="50%" alt="embedded folder icon"/>
+            <div class="row">
+                <div class="col-lg-6">
+                    <label>Logotipo:</label>
+                    <div>
+                        <img src="{{ctrl.logotipo}}" width="50%" height="50%" alt="embedded folder icon"/>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <label>Foto:</label>
+                    <div>
+                        <img src="{{ctrl.foto}}" width="50%" height="50%" alt="embedded folder icon"/>
+                    </div>
+                </div>
             </div>
-            <br/><br/>
-            Foto:
-            <div>
-                <img src="{{ctrl.foto}}" width="50%" height="50%" alt="embedded folder icon"/>
-            </div>
-            <br/>   
-            Texto introductorio:
-            <textarea rows="4" cols="50" ng-model="ctrl.textoIntro">
-            </textarea>
-            <br/><br/>
-        </fieldset>
-        <br/><br/>
-        <div class="row">
-            <div class="col-md-6" id="dir">
-                <h5>Direccion</h5>
-                <br/>
-                Numero: <input type="text" ng-model="ctrl.numero"/>
-                <br/>
-                Numero interior: <input type="text" ng-model="ctrl.numeroInt"/>
-                <br/>
-                Calle: <input type="text" ng-model="ctrl.calle"/>
-                <br/>
-                Colonia: <input type="text" ng-model="ctrl.colonia"/>
-                <br/>
-                C.P. : <input type="text" ng-model="ctrl.cp"/>
-                <br />
-                Municipio: <input type="text" ng-model="ctrl.municipio"/>
-                <br />
-                Estado: <input type="text" ng-model="ctrl.estado"/>
-                <br />
-            </div>
-            <div class="col-md-6" id="dir">
-                Mapa: 
-                <div id="googleMap" style="width:500px;height:380px;"></div>
+            <br />
+            <label>Texto introductorio:</label> {{ctrl.textoIntro}}
+        </div>
+    </div>
+    
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">
+            <h3 class="panel-title">Direccion</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6" id="dir">
+                    <label>Numero:</label> {{ctrl.numero}}
+                    <br/>
+                    <label>Numero interior:</label> {{ctrl.numeroInt}}
+                    <br/>
+                    <label>Calle:</label> {{ctrl.calle}}
+                    <br/>
+                    <label>Colonia:</label> {{ctrl.colonia}}
+                    <br/>
+                    <label>C.P. :</label> {{ctrl.cp}}
+                    <br />
+                    <label>Municipio:</label> {{ctrl.municipio}}
+                    <br />
+                    <label>Estado:</label> {{ctrl.estado}}
+                </div>
+                <div class="col-md-6" id="dir">
+                    Mapa: 
+                    <div id="googleMap" style="width:500px;height:380px;"></div>
+                </div>
             </div>
         </div>
-        <br/>
-        <fieldset>
-            <h5>Rubro</h5>
+    </div>
+    
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">
+            <h3 class="panel-title">Rubro</h3>
+        </div>
+        <div class="panel-body">
+            <label>Nombre:</label> {{ctrl.rubro}}
+        </div>
+    </div>
+    
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">
+            <h3 class="panel-title">Empresa</h3>
+        </div>
+        <div class="panel-body">
+            <label>Descripcion:</label> {{ctrl.descripcion}}
+            <br/>
+            <label>Horario:</label> {{ctrl.horario}}
+            <br/>
+            <label>Encargado:</label> {{ctrl.encargado}}
             <br />
-            Nombre: <input type="text" ng-model="ctrl.rubro"/>
-        </fieldset>
-        <br/><br/>
-        Descripcion: <textarea rows="4" cols="50" ng-model="ctrl.descripcion"></textarea>
-        <br/>
-        Horario: <input type="text" ng-model="ctrl.horario"/>
-        <br/>
-        Encargado: <input type="text" ng-model="ctrl.encargado"/>
-        <br />
-        Telefono: <input type="text" ng-model="ctrl.tel"/>
-        <br />
-        Whats: <input type="text" ng-model="ctrl.whats"/>
-        <br />
-        Facebook: <a ng-href="https://www.facebook.com/{{ctrl.face}}/">{{ctrl.face}}</a>
-        <br />
-        Flickr: <a ng-href=" http://flickr.com/{{ctrl.flickr}}/">{{ctrl.flickr}}</a>
-        <br />    
-        Link1: <a ng-href=" {{ctrl.link1}}/">{{ctrl.link1}}</a>
-        <br />    
-        Link2: <a ng-href=" {{ctrl.link2}}/">{{ctrl.link2}}</a>
-        <br />
-        Email: <input type="email" ng-model="ctrl.email"/>
-        <br/><br/>
-        <fieldset>
-            <h5>Producto</h5>
-            <ul>
-                <li ng-repeat="producto in ctrl.productos">
-                    {{producto.titulo}} <br>
-                    {{producto.parrafo}} <br>
-                    <img src="{{producto.foto}}" width="20%" height="20%"  class="foto">
+            <label>Telefono:</label> {{ctrl.tel}}
+            <br />
+            <label>Whats:</label> {{ctrl.whats}}
+            <br />
+            <label>Facebook:</label> <a ng-href="{{ctrl.face}}">{{ctrl.face}}</a>
+            <br />
+            <label>Flickr:</label> <a ng-href="{{ctrl.flickr}}">{{ctrl.flickr}}</a>
+            <br />    
+            <label>Link1:</label> <a ng-href="{{ctrl.link1}}">{{ctrl.link1}}</a>
+            <br />    
+            <label>Link2:</label> <a ng-href="{{ctrl.link2}}">{{ctrl.link2}}</a>
+            <br />    
+            <label>Link3:</label> <a ng-href="{{ctrl.link3}}">{{ctrl.link3}}</a>
+            <br />    
+            <label>Link4:</label> <a ng-href="{{ctrl.link4}}">{{ctrl.link4}}</a>
+            <br />    
+            <label>Link5:</label> <a ng-href="{{ctrl.link5}}">{{ctrl.link5}}</a>
+            <br />
+            <label>Email:</label> {{ctrl.email}}
+        </div>
+    </div>
+    
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">
+            <h3 class="panel-title">Productos</h3>
+        </div>
+        <div class="panel-body">
+            <ol class="list-group">
+                <li ng-repeat="producto in ctrl.productos"  class="list-group-item">
+                    <strong>{{$index + 1}}. {{producto.titulo}}</strong> {{producto.parrafo}}
+                    <img src="{{producto.foto}}" width="20%" height="20%"  class="foto" ng-show="producto.foto" class="label label-default label-pill pull-xs-right">
                 </li>
-            </ul>
-        </fieldset>
-        <br /><br />
-        Nota: <textarea rows="4" cols="50" ng-model="ctrl.nota"></textarea>
-        <br /><br />
-        <a href="#/privado/todos">Ir a todos</a>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">Nota</div>
+        <div class="panel-body">
+            {{ctrl.nota}}
+        </div>
+    </div>
+    
+    
+    <a href="#/privado/todos">Ir a todos</a>
 </div>

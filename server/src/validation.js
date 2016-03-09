@@ -1,8 +1,8 @@
 var Validation = (function() {
     var Validation = function() {
         this.float = {validator: /^[-+]?([0-9]*\.[0-9]+|[0-9]+)$/, msg: 'Este campo sólo número o números con decimales'};
-        this.letrasEspaciosAcentos = {validator: /^[A-Za-záéíóú ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
-        this.letrasEspaciosAcentosNumeros = {validator: /^[A-Za-záéíóú0-9 ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
+        this.letrasEspaciosAcentos = {validator: /^[A-Za-záéíóúñ. ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
+        this.letrasEspaciosAcentosNumeros = {validator: /^[A-Za-záéíóúñ.0-9 ]+$/, msg: 'Este campo sólo acepta letras y espacios'};
         this.numeros = {validator: /^[0-9]*$/, msg: 'Este campo sólo acepta numeros'};
         this.email = {validator: /^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/, msg: 'Este campo sólo acepta correos válidos'};
         /*this.productos = function(val) {
@@ -33,7 +33,7 @@ var Validation = (function() {
             return false;
         };*/
         this.uniquenameRegex = {
-            validator: /^[a-zA-Z0-9]+$/, 
+            validator: /^[a-zA-Z0-9ñ]+$/, 
             msg: 'Este campo sólo acepta números, mayúsculas y minúsculas, sin espacios ni acentos.'
         };
     };
@@ -59,9 +59,9 @@ var Validation = (function() {
             case "validateEmail":
                 return [this.email];
                 break;
-            case "validateProductos":
-                return [this.productos];
-                break;
+            //case "validateProductos":
+            //    return [this.productos];
+            //    break;
             case "validateColonia":
                 return [this.letrasEspaciosAcentos];
                 break;

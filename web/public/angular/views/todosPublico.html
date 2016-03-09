@@ -10,7 +10,7 @@
         <li data-target="#carousel" data-slide-to="2"></li>        
     </ol>
     <div class="carousel-inner">
-        <div class="item active" style="height: 300px;">
+        <div class="item active" style="height: 500px;">
             <img style="height: 300px;" src="./../../../images/content-marketing.png" alt="FirstSlide" class="img-responsive">
             <div class="carousel-caption" style="text-align: right; color: black;">
                 <h2>La mejor publicidad en tu localidad</h2>
@@ -19,17 +19,17 @@
                 <br />
             </div>
         </div>
-        <div class="item" style="height: 300px;">
+        <div class="item" style="height: 500px;">
             <img style="height: 300px;" src="./../../../images/acercate.jpg" alt="SecondSlide" class="img-responsive">
             <div class="carousel-caption" style="text-align: right; color: black;">
                 <h4>Si quieres que tu negocio aparezca en Internet</h4>
-                <h4><a href="#/about">acércate con nosotros</a>, la manera más efectiva </h4>
+                <h4><a href="#/publico/about">acércate con nosotros</a>, la manera más efectiva </h4>
                 <h4>de darte a conocer. </h4>
                 <h3>Es barato, fácil y rápido.</h3>
                 <br />
             </div>
         </div>
-        <div class="item" style="height: 300px;">
+        <div class="item" style="height: 500px;">
             <img  src="./../../../images/verdura.jpg" alt="ThirdSlide" class="img-responsive">
             <div class="carousel-caption" style=" text-align:center; color: white;">
                 <h3>Además, puedes consultar un catálogo de negocios que ofrecen una gran variedad de productos o servicios en tu localidad</h3>
@@ -49,42 +49,38 @@
 <br />
 <br />
 <br />
-      
 
-    
-        <div ng-controller="TodosPublicoController as ctrl">
-            <div class="row">
-              <div class="col-lg-6">
-              </div><!-- /.col-lg-6 -->
-              <div class="col-lg-6">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Buscar negocio"  ng-model="ctrl.searchText">
-                  <span class="input-group-btn">
+
+<div ng-controller="TodosPublicoController as ctrl">
+    <div class="row">
+        <div class="col-lg-6">
+            <a type="button" class="btn btn-success btn-lg" aria-label="Left Align" ng-href="#/publico/signup"> Crear mi página web</a>
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar negocio"  ng-model="ctrl.searchText">
+                <span class="input-group-btn">
                     <button class="btn btn-default" type="button">Buscar</button>
-                  </span>
-                </div><!-- /input-group -->
-              </div><!-- /.col-lg-6 -->
-            </div><!-- /.row -->
-            
-            
-            
-            
-            
-            
-            <ul dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 4">
-                <!--p ng-model="ctrl.requestedPageNumber" ng-hide="true"> {{currentPage}}</p-->
-                <hr class="featurette-divider">
-                <div class="row featurette">
-                    <div class="col-md-7">
-                        <h2 class="featurette-heading"><a ng-href="#/{{empresa.informacion.uniquename}}">{{ empresa.nombre }}.</a></h2>
-                        <p class="text-muted">{{ empresa.descripcion }}</p>
-                    </div>
-                    <div class="col-md-5">
-                        <img class="featurette-image img-responsive center-block"  alt="Logotipo" src="{{empresa.logotipo}}">
-                    </div>
-                </div>        
-            </ul>
-        </div>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+
+
+    <ul dir-paginate="pagina in ctrl.paginas | filter:ctrl.searchText | itemsPerPage: 10">
+        <hr class="featurette-divider">
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading"><a ng-href="#/{{pagina._usuario.uniquename}}">{{ pagina.nombre }}.
+                </a></h2>
+                <p class="text-muted">{{ pagina.descripcion }}</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive center-block" src="{{pagina.logotipo}}">
+            </div>
+        </div>        
+    </ul>
+</div>
 
     
 
@@ -94,19 +90,18 @@
     <div class="row">
         <blockquote>
             <font size="2" style="text-align: justify">
-                <p>Anuncie su negocio de la manera más sencilla, sus productos o servicios serán publicados en una página web:</p>
 
-                <p>Somos un directorio virtual de páginas web, especializado en anunciar los productos y servicios que se ofrecen en la ciudad de Uruapan Michoacan, para los clientes de esta ciudad o de otras ciudades.</p>
+                <p>Somos un directorio virtual de páginas web, especializado en anunciar los productos y servicios que se ofrecen en la ciudad de Uruapan Michoacan, para que los clientes puedan conocer mucho mejor su negocio.</p>
 
                 <p>Tenemos una página web de publicidad para su negocio que será incluída en nuestro listado de negocios.</p>
 
-                <p>Su página web tendrá más formalidad que las redes sociales, en un vistazo, sus clientes podrán leer los productos que usted ofrece y una descripción de los mismos.</p>
+                <p>En un vistazo, sus clientes podrán ver los productos o servicios que usted ofrece y una descripción de los mismos.</p>
 
-                <p>Sin embargo, le ofrecemos la opción de agregar un links a las redes sociales que usted ya tiene, ubique su domicilio en googleMap, agregue un logotipo, fotos de alta calidad y escuche a sus clientes para que en forma fácil le hagan llegar dudas o comentarios a través de un formulario virtual.</p>
+                <p>Además, le ofrecemos la opción de agregar un links a sus redes sociales  favoritas, ubique su domicilio en googleMap, agregue un logotipo, fotos de alta calidad y escuche a sus clientes para que en forma fácil le hagan llegar dudas o comentarios a través de un formulario virtual.</p>
 
                 <p>Nuestras páginas son limpias y fáciles, nos esforzamos por mantener su sitio web libre de publicidad invasiva que distrae a sus clientes, todo esto, por un bajo costo.</p>
 
-                <p>¿ Qué espera ? <a href="#/about">visítenos ahora.</a></p>
+                <p>¿ Qué espera ? <a href="#/publico/about">visítenos ahora.</a></p>
             </font>
         </blockquote>
     </div><!-- /.row -->

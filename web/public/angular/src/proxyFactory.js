@@ -6,16 +6,17 @@
         var Proxy = function(url) {
             this.url = url;
         };
-        
+
         Proxy.prototype.error = function(data, status, headers, config){
             $log.error('%s %s %s', config.method, config.url, status);
         };
-        
-        Proxy.prototype.getOne = function(id, success) {
+
+        //paginasWeb        
+        Proxy.prototype.getAll = function(success) {
             var that = this;
             $http({
-                method: "GET",
-                url: that.url + id
+                method: 'GET',
+                url: that.url
             }).success(success).error(that.error);
         };
         
@@ -28,11 +29,41 @@
             }).success(success).error(that.error);    
         };
         
-        Proxy.prototype.getAll = function(success) {
+        //guarda pagina con property _usuario
+        Proxy.prototype.savePublico = function(id, model, success) {
             var that = this;
             $http({
-                method: 'GET',
-                url: that.url
+                method: 'POST',
+                url: that.url + id,
+                data: model
+            }).success(success).error(that.error);
+        };        
+        
+        //usuarios
+        Proxy.prototype.signupPublico = function(model, success) {
+            var that = this;
+            $http({
+                method: 'POST',
+                url: that.url,
+                data: model
+            }).success(success).error(that.error);
+        };
+
+        //admins
+        Proxy.prototype.save = function(model, success) {
+            var that = this;
+            $http({
+                method: 'POST',
+                url: that.url,
+                data: model
+            }).success(success).error(that.error);
+        };
+                
+        Proxy.prototype.getOne = function(id, success) {
+            var that = this;
+            $http({
+                method: "GET",
+                url: that.url + id
             }).success(success).error(that.error);
         };
         
@@ -42,15 +73,6 @@
                 method: "DELETE",
                 url: that.url + id
             }).success(success).error(that.error);       
-        };
-        
-        Proxy.prototype.save = function(model, success) {
-            var that = this;
-            $http({
-                method: 'POST',
-                url: that.url,
-                data: model
-            }).success(success).error(that.error);
         };
         
         Proxy.prototype.update = function(id, model, success) {
