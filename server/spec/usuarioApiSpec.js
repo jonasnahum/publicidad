@@ -4,7 +4,6 @@ describe("usuarios api", function() {
         var usuarioMock = require("./usuarioMock");//un model trae todos los metodos de búsqueda en la clase no en protorype y la propiedad bd, pero no es una nueva instancia.
         var responseMock = require("./responseMock");
         var UsuarioApi = require("./../src/usuarioApi");
-        //var usuarioMock = new Um();
         var api = new UsuarioApi({usuario: usuarioMock});
         
         usuarioMock.db = [
@@ -12,6 +11,7 @@ describe("usuarios api", function() {
             {nombre: "ro", calificacion: 8}
         ];
         
+        usuarioMock.setError ("find", null);
         api.getAll(null, responseMock, null);
         expect(responseMock.value).toEqual(usuarioMock.db);
         done();

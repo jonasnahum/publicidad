@@ -11,7 +11,7 @@ Usuario.getError = function(method) {
 };
 
 Usuario.find = function(callback) {
-    callback(null, Usuario.db);    
+    callback(Usuario.errors["find"], Usuario.db);    
 };
 Usuario.findById = function(id, callback) {
     var found = undefined;

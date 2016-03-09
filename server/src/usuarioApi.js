@@ -3,14 +3,15 @@ var UsuariosApi = (function() {
         this.models = models;
         this.usuarioFactory = usuarioFactory;
     };
-
+    
     UsuariosApi.prototype.getAll = function(req, res, next) {
-        var that = this;    
-        that.models.usuario.find(function(err, usuarios) {
-            if(err)  return console.log(err);
+        var that = this;       
+        that.models.usuario.find(function (err, usuarios) {
+            if (err) return next(err);
             res.json(usuarios);
         });
     };
+    
     
     UsuariosApi.prototype.save = function(req, res, next) {
         var that = this;        
