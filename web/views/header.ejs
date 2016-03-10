@@ -1,4 +1,45 @@
-<div ng-hide="appCtrl.isPrivate()"  class="header clearfix">
+<nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-burger" role="navigation">
+    <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
+    <div class="container">
+        <div class="navbar=header">
+            <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar bar1"></span>
+                <span class="icon-bar bar2"></span>
+                <span class="icon-bar bar3"></span>
+            </button>
+            <a target="_blank" href="http://localhost:3001/" class="navbar-brand">
+                <%=title%>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right navbar-uppercase">
+                <li class="social-links">
+                    <a href="https://www.facebook.com/paginasweburuapan/">
+                        <i class="fa fa-facebook-square"></i>
+                    </a>
+                    <!--a href="www.facebook.com/paginasweb">
+                        <i class="fa fa-twitter"></i>
+                    </a-->
+                </li>
+                <li>
+                    <a href="#/" data-scroll="true">
+                        Lista de negocios
+                    </a>
+                    <a href="#/publico/about" data-scroll="true">
+                        Acerca de
+                    </a>
+                    <a href="#/publico/contact" data-scroll="true">
+                        Contacto
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!--div ng-hide="appCtrl.isPrivate()"  class="header clearfix">
     <nav>
         <ul class="nav nav-pills pull-left">
             <h3 class="text-muted"><img src="images/logoMedioFondo.png" style="width: 10%; height: 10%;"/> <%= title %></h3>
@@ -15,7 +56,7 @@
             </li>
         </ul>
     </nav>
-</div>
+</div-->
 
 <div  ng-show="appCtrl.isPrivate()" class="header clearfix">
     <nav>
