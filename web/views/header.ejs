@@ -1,43 +1,37 @@
-<nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-burger" role="navigation">
-    <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
-    <div class="container">
-        <div class="navbar=header">
-            <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar bar1"></span>
-                <span class="icon-bar bar2"></span>
-                <span class="icon-bar bar3"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
-            <a target="_blank" href="http://localhost:3001/" class="navbar-brand">
-                <%=title%>
-            </a>
+            <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
         </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right navbar-uppercase">
-                <li class="social-links">
-                    <a href="https://www.facebook.com/paginasweburuapan/">
-                        <i class="fa fa-facebook-square"></i>
-                    </a>
-                    <!--a href="www.facebook.com/paginasweb">
-                        <i class="fa fa-twitter"></i>
-                    </a-->
+        
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
                 </li>
                 <li>
-                    <a href="#/" data-scroll="true">
-                        Lista de negocios
-                    </a>
-                    <a href="#/publico/about" data-scroll="true">
-                        Acerca de
-                    </a>
-                    <a href="#/publico/contact" data-scroll="true">
-                        Contacto
-                    </a>
+                    <a class="page-scroll" href="#services">Services</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#portfolio">Portfolio</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
                 </li>
             </ul>
         </div>
+        
     </div>
 </nav>
-
 
 <!--div ng-hide="appCtrl.isPrivate()"  class="header clearfix">
     <nav>
