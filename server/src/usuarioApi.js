@@ -15,13 +15,12 @@ var UsuariosApi = (function() {
     
     UsuariosApi.prototype.save = function(req, res, next) {
         var that = this;        
-        var usuario = that.usuarioFactory.get();   
+        var usuario = that.usuarioFactory.get();
         for (var property in req.body){
             usuario[property] = req.body[property];
         }
         usuario.save(function(err, usuario){
-            if(err)  return console.log(err);
-            console.log(usuario);
+            if(err)  return next(err);
             res.json(usuario);
         });
     };
@@ -29,7 +28,7 @@ var UsuariosApi = (function() {
     UsuariosApi.prototype.getOne = function(req, res, next) {
         var that = this;
         that.models.usuario.findById(req.params.id, function(err, usuario) {
-            if(err)  return console.log(err);
+            if(err)  return next(err);
             res.json(usuario);
         });
     };
@@ -37,12 +36,12 @@ var UsuariosApi = (function() {
     UsuariosApi.prototype.update = function(req, res, next) {
         var that = this;
         that.models.usuario.findById(req.params.id, function(err, usuario) {
-            if(err)  return console.log(err);
+            if(err)  return next(err);
             for (var property in req.body){
                 usuario[property] = req.body[property];
             }
             usuario.save(function(err, usuario){
-                if(err)  return console.log(err);
+                if(err)  return next(err);
                 res.json(usuario);
             });   
         });
@@ -52,15 +51,15 @@ var UsuariosApi = (function() {
         var that = this;
         that.models.usuario.findByIdAndRemove(req.params.id, function(err, usuario) {
             if(err) return next(err);
-            res.json({status: "ok"});
+            res.json(usuario);
         });
     };
 
     UsuariosApi.prototype.deleteAll = function(req, res, next) {
         var that = this;
-        that.models.usuario.remove({}, function(err, usuario) {
+        that.models.usuario.remove({}, function(err, arrayVacío) {
             if(err) return next(err);
-            res.json({status: "all deleted"});
+            res.json(arrayVacío);
         });
     };
     

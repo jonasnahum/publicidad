@@ -11,17 +11,18 @@ var TokenMiddleware = (function() {
             (req.body && req.body.access_token) ||
             (req.query && req.query.access_token) ||
             (req.headers['x-access-token']);
-        console.log(token);
 
         if (token) {
             try {
                 var decoded = that.jwt.decode(token, 'cualquiera');
+
                 if(decoded.exp <= Date.now()) {
                     res.status(401).send('Access token has expired');
                 }
 
                 var user = that.models.usuario.find(decoded.iss);
                 req.user = user;
+                
                 return next();
             } catch (err) {
                 res.status(401).send('Invalid token');
@@ -35,3 +36,4 @@ var TokenMiddleware = (function() {
 })();
 
 module.exports = TokenMiddleware;
+
