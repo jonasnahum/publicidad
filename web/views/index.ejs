@@ -10,9 +10,9 @@
         
         <link rel='stylesheet' href='/stylesheets/style.css' /> 
     </head>
-    <body id="page-top">
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
         <!--div class="container" ng-controller="AppController as appCtrl"-->
-        <div class="container-fluid" ng-controller="AppController as appCtrl">
+        <div class="container" ng-controller="AppController as appCtrl">
             <% include header %>
             <div ng-view></div>
             <br />
