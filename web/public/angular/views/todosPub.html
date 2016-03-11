@@ -1,68 +1,95 @@
-<!-- Intro Header -->
-<header class="intro" style="padding-bottom: 11.5%;">
-    <div class="intro-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h1 class="brand-heading">Grayscale</h1>
-                    <p class="intro-text">A free, responsive, one page Bootstrap theme.<br>Created by Start Bootstrap.</p>
-                    <a href="#about" class="btn btn-circle page-scroll">
-                        <i class="fa fa-angle-double-down animated"></i>
-                    </a>
+<script src="./../../../js/pace.min.js"></script>
+<link href="./../../../stylesheets/cornerIndicator.css" rel="stylesheet" />
+<div ng-controller="TodosPublicoController as ctrl">
+    <!-- Intro Header -->
+    <header class="intro" style="padding-bottom: 11.5%;">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Páginas Web Uruapan</h1>
+                        <p class="intro-text">Crea fácilmente tu página web.</p>
+                        <a href="#buscar" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<!-- About Section -->
-<section id="about" class="container content-section text-center">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-            <h2>About Grayscale</h2>
-            <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-            <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-            <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+    <!-- Buscar Section -->
+    <section id="buscar" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-6">
+                <a type="button" class="btn btn-success btn-lg" aria-label="Left Align" ng-href="#/publico/signup"> Crear mi página web</a>
+            </div><!-- /.col-lg-6 -->
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar negocio"  ng-model="ctrl.searchText">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Buscar</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Download Section -->
-<section id="download" class="content-section text-center">
-    <div class="download-section">
-        <div class="container">
+
+    <!-- Listado Section -->
+    <section id="listado" class="container content-section text-center">
+        <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Download Grayscale</h2>
-                <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
+                <h2>Páginas registradas</h2>
+                <ul dir-paginate="pagina in ctrl.paginas | filter:ctrl.searchText | itemsPerPage: 10">
+                    <hr class="featurette-divider">
+                    <div class="row featurette">
+                        <div class="col-md-7">
+                            <h2 class="featurette-heading"><a ng-href="#/{{pagina._usuario.uniquename}}">{{ pagina.nombre }}.
+                            </a></h2>
+                            <p class="text-muted">{{ pagina.descripcion }}</p>
+                        </div>
+                        <div class="col-md-5">
+                            <img class="featurette-image img-responsive center-block" src="{{pagina.logotipo}}">
+                        </div>
+                    </div>        
+                </ul>
+            </div>
+
+            <dir-pagination-controls></dir-pagination-controls>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="quienesSomos" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>¿Quiénes somos?</h2>
+                <p>Somos un directorio virtual de páginas web, especializado en anunciar los productos y servicios que se ofrecen en la ciudad de Uruapan Michoacan, para que los clientes puedan conocer mucho mejor su negocio.</p>
+
+                    <p>Tenemos una página web de publicidad para su negocio que será incluída en nuestro listado de negocios.</p>
+
+                    <p>En un vistazo, sus clientes podrán ver los productos o servicios que usted ofrece y una descripción de los mismos.</p>
+
+                    <p>Además, le ofrecemos la opción de agregar un links a sus redes sociales  favoritas, ubique su domicilio en googleMap, agregue un logotipo, fotos de alta calidad y escuche a sus clientes para que en forma fácil le hagan llegar dudas o comentarios a través de un formulario virtual.</p>
+
+                    <p>Nuestras páginas son limpias y fáciles, nos esforzamos por mantener su sitio web libre de publicidad invasiva que distrae a sus clientes, todo esto, por un bajo costo.</p>
+
+                    <p>¿ Qué espera ? <a href="#/publico/about">visítenos ahora.</a></p>
+                <p>
+                    <a href="#/publico/about">jonasnahum@gmail.com</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://www.facebook.com/paginasweburuapan/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Contact Section -->
-<section id="contact" class="container content-section text-center">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-            <h2>Contact Start Bootstrap</h2>
-            <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
-            <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
-            </p>
-            <ul class="list-inline banner-social-buttons">
-                <li>
-                    <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                </li>
-                <li>
-                    <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                </li>
-                <li>
-                    <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
+    <!-- Map Section -->
+    <div id="map"></div>
 
-<!-- Map Section -->
-<div id="map"></div>
-
+</div>
