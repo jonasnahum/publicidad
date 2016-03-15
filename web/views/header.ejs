@@ -1,8 +1,18 @@
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" ng-hide="appCtrl.isPrivate()"><!--class="header clearfix"-->
+<!--Acomoda el titulo y el logo del navbar-->
+<style>
+    #logo {
+        position: relative;
+        top: -10px;
+        left: 0px;
+    }
+</style>
+
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" ng-hide="appCtrl.isPrivate()">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand page-scroll" href="#page-top">
-                <span class="light"> <img src="images/logoMedioFondo.png" style="width: 50px; height: 50px;"/> Páginas</span> <%= title %>
+            <a class="navbar-brand page-scroll" href="#page-top" id="logo">
+                <span class="light"><img src="images/logoMedioFondo.png" style="width: 50px; height: 50px;"/> Páginas</span> <%= title %>
             </a>
         </div>
 
@@ -13,14 +23,14 @@
                 <li class="hidden">
                     <a href="#page-top"></a>
                 </li>
-                <li><!--ng-class="appCtrl.isActive('/')?'active':''"-->
-                    <a class="page-scroll" href="#/">Lista de negocios</a>
+                <li ng-class="appCtrl.isActive('/')?'active':''">
+                    <a href="#/">Lista de negocios</a>
                 </li>
                 <li ng-class="appCtrl.isActive('/publico/about')?'active':''">
-                    <a class="page-scroll" href="#/publico/about">Acerca de</a>
+                    <a href="#/publico/about">Acerca de</a>
                 </li>
                 <li ng-class="appCtrl.isActive('/publico/contact')?'active':''">
-                    <a class="page-scroll" href="#/publico/contact">Contacto</a>
+                    <a href="#/publico/contact">Contacto</a>
                 </li>
             </ul>
         </div>
@@ -46,50 +56,26 @@
                     <a href="#page-top"></a>
                 </li>
                 <li  ng-class="appCtrl.isActive('/privado/todos')?'active':''">
-                    <a class="page-scroll" ng-href="#/privado/todos">Todos privado</a>
+                    <a ng-href="#/privado/todos">Todos privado</a>
                 </li>
-                <!--li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">
-                        Público <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ng-class="appCtrl.isActive('/')?'active':''">
-                            <a class="page-scroll" ng-href="#/">Todos público</a>
-                        </li>
-                        <li ng-class="appCtrl.isActive('#/publico/about')?'active':''">
-                            <a class="page-scroll" ng-href="#/publico/about">Acerca de</a>
-                        </li>
-                        <li ng-class="appCtrl.isActive('/publico/contact')?'active':''">
-                            <a class="page-scroll" ng-href="#/publico/contact">Contacto</a>
-                        </li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">PRIVATE</li>
-                        <li  ng-class="appCtrl.isActive('/signin')?'active':''">
-                            <a class="page-scroll" ng-href="#/signin">Signin</a>
-                        </li>
-                        <li  ng-class="appCtrl.isActive('/signup')?'active':''">
-                            <a class="page-scroll" ng-href="#/signun">Signun</a>
-                        </li>
-                    </ul>
-                </li-->
                 <li ng-class="appCtrl.isActive('/')?'active':''">
-                    <a class="page-scroll" ng-href="#/">Todos público</a>
+                    <a ng-href="#/">Todos público</a>
                 </li>
                 <li ng-class="appCtrl.isActive('#/publico/about')?'active':''">
-                    <a class="page-scroll" ng-href="#/publico/about">Acerca de</a>
+                    <a ng-href="#/publico/about">Acerca de</a>
                 </li>
                 <li ng-class="appCtrl.isActive('/publico/contact')?'active':''">
-                    <a class="page-scroll" ng-href="#/publico/contact">Contacto</a>
+                    <a ng-href="#/publico/contact">Contacto</a>
                 </li>
                 <li  ng-class="appCtrl.isActive('/signin')?'active':''">
-                    <a class="page-scroll" ng-href="#/signin">Signin</a>
+                    <a ng-href="#/signin">Signin</a>
                 </li>
                 <li  ng-class="appCtrl.isActive('/signup')?'active':''">
-                    <a class="page-scroll" ng-href="#/signun">Signun</a>
+                    <a ng-href="#/signup">Signup</a>
                 </li>
                 
                 <li>
-                    <a class="page-scroll" href ng-click="appCtrl.logout()">Logout</a>
+                    <a href ng-click="appCtrl.logout()">Logout</a>
                 </li>
             </ul>
         </div>
@@ -100,142 +86,8 @@
 
 
 
-<!--nav class="navbar navbar-custom navbar-fixed-top" role="navigation" ng-show="appCtrl.isPrivate()"><!--class="header clearfix"--______________________________>
-    <div class="container">
-        <div class="navbar-header">
-            <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar bar1"></span>
-                <span class="icon-bar bar2"></span>
-                <span class="icon-bar bar3"></span>
-            </button>
-            <a target="_blank" href="http://www.creative-tim.com?ref=presentation-page" class="navbar-brand">
-                Creative Tim
-            </a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling --___________________________>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right navbar-uppercase">
-                <!-- Hidden li included to remove active class from about link when scrolled up past about section --____________________________>
-                <li class="hidden">
-                    <a href="#page-top"></a>
-                </li>
-                <li  ng-class="appCtrl.isActive('/privado/todos')?'active':''">
-                    <a class="page-scroll" ng-href="#/privado/todos">Todos privado</a>
-                </li>
-                <li>
-                            <a href="" data-scroll="true" data-id="#whoWeAre">
-                            About
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" data-scroll="true" data-id="#workflow">
-                            What We Do
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" data-scroll="true" data-id="#projects">
-                            Famous Freebies
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" data-scroll="true" data-id="#uitools">
-                            Premium UI Tools
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" data-scroll="true" data-id="#clients">
-                            Testimonials
-                            </a>
-                        </li>
-                <!--li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">
-                        Público <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ng-class="appCtrl.isActive('/')?'active':''">
-                            <a class="page-scroll" ng-href="#/">Todos público</a>
-                        </li>
-                        <li ng-class="appCtrl.isActive('#/publico/about')?'active':''">
-                            <a class="page-scroll" ng-href="#/publico/about">Acerca de</a>
-                        </li>
-                        <li ng-class="appCtrl.isActive('/publico/contact')?'active':''">
-                            <a class="page-scroll" ng-href="#/publico/contact">Contacto</a>
-                        </li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">PRIVATE</li>
-                        <li  ng-class="appCtrl.isActive('/signin')?'active':''">
-                            <a class="page-scroll" ng-href="#/signin">Signin</a>
-                        </li>
-                        <li  ng-class="appCtrl.isActive('/signup')?'active':''">
-                            <a class="page-scroll" ng-href="#/signun">Signun</a>
-                        </li>
-                    </ul>
-                </li--___________________________________________>
-                <li>
-                    <a class="page-scroll" href ng-click="appCtrl.logout()">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav-->
-
-
-<!--nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-burger" role="navigation" ng-show="appCtrl.isPrivate()">
-            <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"--____________>
-            <div class="container">
-                <div class="navbar-header">
-                    <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar bar1"></span>
-                    <span class="icon-bar bar2"></span>
-                    <span class="icon-bar bar3"></span>
-                    </button>
-                    <a target="_blank" ng-class="appCtrl.isActive('/privado/todos')?'active':''" ng-href="#/privado/todos" class="navbar-brand">
-                    Todos privado
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse" >
-                    <ul class="nav navbar-nav navbar-right navbar-uppercase">
-                        <li ng-class="appCtrl.isActive('/')?'active':''">
-                            <a href="#/" data-scroll="true" data-id="#whoWeAre">
-                            Todos público
-                            </a>
-                        </li>
-                        <li ng-class="appCtrl.isActive('#/publico/about')?'active':''">
-                            <a ng-href="#/publico/about" data-scroll="true" data-id="#workflow">
-                            Acerca de
-                            </a>
-                        </li>
-                        <li ng-class="appCtrl.isActive('/publico/contact')?'active':''">
-                            <a ng-href="#/publico/contact" data-scroll="true" data-id="#projects">
-                            Contacto
-                            </a>
-                        </li>
-                        <li ng-class="appCtrl.isActive('/signin')?'active':''">
-                            <a  ng-href="#/signin" data-scroll="true" data-id="#uitools">
-                            Signin
-                            </a>
-                        </li>
-                        <li ng-class="appCtrl.isActive('/signup')?'active':''">
-                            <a ng-href="#/signup" data-scroll="true" data-id="#clients">
-                            Signup
-                            </a>
-                        </li>
-                        <li>
-                            <a href ng-click="appCtrl.logout()" data-scroll="true" data-id="#team">
-                            Logout
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse --_______________________________>
-            </div>
-        </nav-->
-      
-
-
+<!--*************************ANTIGUO NAVBAR***************************************************-->
 
 <!--div ng-hide="appCtrl.isPrivate()"  class="header clearfix">
     <nav>

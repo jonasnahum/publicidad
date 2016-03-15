@@ -8,8 +8,8 @@ body {
     width: 100%;
     height: 100%;
     font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #fff;
-    background-color: #000;
+    color: #000;
+    background-color: #fff;
 }
 
 html {
@@ -45,7 +45,7 @@ p {
 }
 
 a {
-    color: #42dca3;
+    color: #337AB7/*#42dca3*/;/********************TITULOS DE PRODUCTOS******************/
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -89,7 +89,7 @@ a:focus {
 }
 
 .navbar-custom a {
-    color: #fff;
+    color: #fff; /*************TEXTO NAVBAR************************/
 }
 
 .navbar-custom .nav li a {
@@ -136,7 +136,8 @@ a:focus {
     .navbar-custom.top-nav-collapse {
         padding: 0;
         border-bottom: 1px solid rgba(255,255,255,.3);
-        background: #000;
+        background: #337AB7/*rgb(35, 82, 124)*/;/******************NAVBAR**************************/
+        /*padding-bottom: 10px;***************************logo*************************************/
     }
 }
 
@@ -150,16 +151,18 @@ a:focus {
     /*background: url(./../../images/intro-bg.jpg) no-repeat bottom center scroll;*/
     /*background: url(./../../images/paletas.jpg) no-repeat bottom center scroll;*/
     /*background: url(./../../images/monumentoUpn.jpg) no-repeat bottom center scroll;*/
-    background: url(./../../images/verdura.jpg) no-repeat bottom center scroll;
+    background: url(./../../images/verdura.jpg)no-repeat bottom center scroll;
     
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
      -o-background-size: cover;
+     
 }
 
 .intro .intro-body {
+    /*padding-top: 140px;*/
     padding-top: 140px;
     display: table-cell;
     vertical-align: middle;
@@ -266,6 +269,7 @@ a:focus {
     padding-top: 100px;
 }
 
+#googleMap,
 #map {
     width: 100%;
     height: 200px;
@@ -281,6 +285,7 @@ a:focus {
         padding: 100px 0;
     }
 
+    #googleMap,
     #map {
         height: 400px;
         margin-top: 250px;
@@ -298,17 +303,17 @@ a:focus {
 }
 
 .btn-default {
-    border: 1px solid #42dca3;
-    color: #42dca3;
+    border: 1px solid #337AB7/*#42dca3*/;
+    color: #337AB7/*#42dca3*/;
     background-color: transparent;
 }
 
 .btn-default:hover,
 .btn-default:focus {
-    border: 1px solid #42dca3;
+    border: 1px solid #337AB7/*#42dca3*/;
     outline: 0;
-    color: #000;
-    background-color: #42dca3;
+    color: #fff/*#000*/;
+    background-color: #337AB7/*#42dca3*/;
 }
 
 ul.banner-social-buttons {
