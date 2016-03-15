@@ -1,8 +1,11 @@
-body {
+/*body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+body {
+	padding-top:70px;
+}
+*/
 a {
   color: #00B7FF;
 }
@@ -19,22 +22,3 @@ a {
     top: 7px;
 }
 */
-form .progress {
-    line-height: 15px;
-}
-
-.progress {
-    display: inline-block;
-    width: 100px;
-    border: 3px groove #CCC;
-}
-
-.progress div {
-    font-size: smaller;
-    background: orange;
-    width: 0;
-}
-
-body {
-	padding-top:70px;
-}
