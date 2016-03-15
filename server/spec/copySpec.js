@@ -1,5 +1,4 @@
 // para correr las pruebas, se corre en la consola jasmine-node spec/
-/*
 describe("Copy Test", function() {
     it("copy body to página", function(done){
         var copy = require("./../src/copy");
@@ -109,4 +108,4 @@ describe("Copy Test", function() {
         expect(actual).toEqual(expected);
         done();
     });
-});*/
+});

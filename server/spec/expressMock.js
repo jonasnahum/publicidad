@@ -8,6 +8,14 @@ var express = {
             express.handlerParams.next
         );
     },
+    middleware: undefined,
+    executeMiddleware:function(){
+        express.middleware(
+            express.handlerParams.req,
+            express.handlerParams.res,
+            express.handlerParams.next
+        );    
+    },
     handlerParams: {
         err: undefined,
         req: {
@@ -25,8 +33,6 @@ var express = {
             text: undefined,
             jsonValue: undefined,
             json: function(config) {
-                console.log("------------------");
-                console.log("llegó a json");
                 express.handlerParams.res.jsonValue = config;
             },
             send: function (text) {
@@ -45,6 +51,7 @@ var express = {
         Router: function() {
             var router = {//guarda en routes los parámetros que vienen del controller.
                 get: function(path, tokenMiddleware, routeHandler) {
+                    express.middleware = tokenMiddleware;
                     express.routes["get" + path] = routeHandler;
                 },
                 post: function(path, routeHandler) {

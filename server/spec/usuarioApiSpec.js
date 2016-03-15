@@ -1,4 +1,3 @@
-/*
 describe("usuarios api", function() {
     it("getAll method", function(done){
         var usuarioMock = require("./usuarioMock");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
@@ -243,4 +242,3 @@ describe("usuarios api", function() {
     });
     
 });
-*/

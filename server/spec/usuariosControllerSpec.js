@@ -1,12 +1,11 @@
 describe("Usuario Controller", function() {
-    /*it("getAll", function(done) {
+    it("getAll", function(done) {
         //se prepara api
         var usuarioMock = require("./usuarioMock");
+        usuarioMock.setError ("find", null);//para que no ejecute next en api
         usuarioMock.db = [
             {nombre: "Pedro", calificacion: 9, id: 1}
         ];
-        console.log("--------------------------------estos son los usuarios que se le mandan a usuarioApi desde spec");
-        console.log(usuarioMock.db);
         var usuarioFactory = require("./usuarioModelFactoryMock");
         var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
@@ -20,20 +19,53 @@ describe("Usuario Controller", function() {
         var express = require("./expressMock");
         var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
-        
-        express.handlerParams.req.body.access_token =  "dejenme pasar por favor soy jonas";
-        var fecha = Date.now();
-        fecha += 1000 * 60 * 60 * 24 * 3;
-        jwtMock.fecha = fecha;
-        jwtMock.usuario = {nombre: "Primer usuaro que pertenece a jwt, es el que va en el token", calificacion: 9, id: 1};
-        
 
+        //se ejecuta el middleware.
+        express.executeMiddleware();
+    
+        //se ejecuta el routehandler.
         express.http('get/');
         expect(express.handlerParams.res.jsonValue).toEqual(usuarioMock.db);
         done();
-    });*/
-    //probar que token solo haga next();
-     it("post", function(done) {
+    });
+    it("getAll error", function(done) {
+        //se prepara api
+        var usuarioMock = require("./usuarioMock");
+        usuarioMock.setError ("find", new Error("Test error from controllerSpec"));//para que ejecute next en api
+        usuarioMock.db = [
+            {nombre: "Pedro", calificacion: 9, id: 1}
+        ];
+        var usuarioFactory = require("./usuarioModelFactoryMock");
+        var UsuarioApi = require("./../src/usuarioApi");
+        var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
+        
+        //se prepara tokenMiddleware
+        var jwtMock = require("./jwtMock");
+        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
+        var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
+        
+        //se prepara controller
+        var express = require("./expressMock");
+        var UsuarioController = require("./../src/usuarioController");
+        var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
+
+        //se ejecuta el middleware.
+        express.executeMiddleware();
+    
+        //se ejecuta el routehandler.
+        express.http('get/');
+        
+        expect(express.handlerParams.err).toEqual(usuarioMock.getError("find"));
+        done();
+    });
+    
+    
+    
+    
+    
+    
+    
+    it("post", function(done) {
         //se prepara api
         var usuarioMock = require("./usuarioMock");
         var usuarioFactory = require("./usuarioModelFactoryMock");
@@ -55,12 +87,12 @@ describe("Usuario Controller", function() {
         usuarioMock.db = [];
         express.handlerParams.req.body = body;
         
-        //ejecuta el routehandler guardado en la propiedad path con su routehandler.
+        //ejecuta el routehandler guardado en la propiedad path.
         express.http('post/');
         
+        //se hace el test.
         expect(express.handlerParams.res.jsonValue).
         toEqual(usuarioMock.db [0]);
         done();
     });
-    
 });
