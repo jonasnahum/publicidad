@@ -1,4 +1,95 @@
-<div ng-hide="appCtrl.isPrivate()"  class="header clearfix">
+<!--Acomoda el titulo y el logo del navbar-->
+<style>
+    #logo {
+        position: relative;
+        top: -10px;
+        left: 0px;
+    }
+</style>
+
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" ng-hide="appCtrl.isPrivate()">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand page-scroll" href="#page-top" id="logo">
+                <span class="light"><img src="images/logoMedioFondo.png" style="width: 50px; height: 50px;"/> Páginas</span> <%= title %>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li ng-class="appCtrl.isActive('/')?'active':''">
+                    <a href="#/">Lista de negocios</a>
+                </li>
+                <li ng-class="appCtrl.isActive('/publico/about')?'active':''">
+                    <a href="#/publico/about">Acerca de</a>
+                </li>
+                <li ng-class="appCtrl.isActive('/publico/contact')?'active':''">
+                    <a href="#/publico/contact">Contacto</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" ng-show="appCtrl.isPrivate()"><!--class="header clearfix"-->
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand page-scroll" href="#page-top">
+                <span class="light">Privado</span>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li  ng-class="appCtrl.isActive('/privado/todos')?'active':''">
+                    <a ng-href="#/privado/todos">Todos privado</a>
+                </li>
+                <li ng-class="appCtrl.isActive('/')?'active':''">
+                    <a ng-href="#/">Todos público</a>
+                </li>
+                <li ng-class="appCtrl.isActive('#/publico/about')?'active':''">
+                    <a ng-href="#/publico/about">Acerca de</a>
+                </li>
+                <li ng-class="appCtrl.isActive('/publico/contact')?'active':''">
+                    <a ng-href="#/publico/contact">Contacto</a>
+                </li>
+                <li  ng-class="appCtrl.isActive('/signin')?'active':''">
+                    <a ng-href="#/signin">Signin</a>
+                </li>
+                <li  ng-class="appCtrl.isActive('/signup')?'active':''">
+                    <a ng-href="#/signup">Signup</a>
+                </li>
+                
+                <li>
+                    <a href ng-click="appCtrl.logout()">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+
+
+<!--*************************ANTIGUO NAVBAR***************************************************-->
+
+<!--div ng-hide="appCtrl.isPrivate()"  class="header clearfix">
     <nav>
         <ul class="nav nav-pills pull-left">
             <h3 class="text-muted"><img src="images/logoMedioFondo.png" style="width: 10%; height: 10%;"/> <%= title %></h3>
@@ -55,4 +146,4 @@
       </ul>
     </nav>
     <h3 class="text-muted">PRIVATE</h3>
-</div>
+</div-->

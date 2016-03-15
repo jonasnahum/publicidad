@@ -1,40 +1,50 @@
-<div ng-controller="TodosController as ctrl">
-    <h2 class="pull-right">{{ctrl.emailUsuario}}</h2>
-    <br><br><br><br>
+<!--script src="./../../../stylesheets/rubick.css"></script>
+<script src="./../../../stylesheets/stroke.css"></script>
+<script src="./../../../stylesheets/pri.css"></script>
+<script src="./../../../js/rubick_pres.js"></script>
+<script src="./../../../js/jquery.waypoints.min.js"></script>
+<script src="./../../../js/modernizr.js"></script>
+<script src="./../../../js/jquery.sharrre.js"></script-->
 
-    <div ng-show="ctrl.empresas.length > 0">
-        <label>Buscar: <input ng-model="ctrl.searchText"></label>
+<div class="container">
+    <div ng-controller="TodosController as ctrl">
+        <br><br><br><br>
+        <h2 class="pull-right">{{ctrl.emailUsuario}}</h2>
+        <br><br><br><br>
+        
+        <div ng-show="ctrl.empresas.length > 0">
+            <label>Buscar: <input ng-model="ctrl.searchText"></label>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                        <th>Fecha de Registro</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 200">
+                    <tr>
+                        <th scope="row">{{ empresa.nombre }}</th>
+                        <td>{{empresa._usuario.cliente}}</td>
+                        <td>{{empresa._usuario.email}}</td>
+                        <td>{{empresa._usuario.fechaRegistro}}</td>
+                        <td>
+                            <a ng-href="#/privado/ver/{{empresa._id}}">Ver</a>
+                            <a ng-href="#/privado/editar/{{empresa._id}}">Editar</a>
+                            <a href="#" ng-click="ctrl.delete(empresa._usuario._id)">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>    
+        <br />
+
     </div>
-    
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Usuario</th>
-                    <th>Email</th>
-                    <th>Fecha de Registro</th>
-                    <th>Opciones</th>
-                </tr>
-            </thead>
-            <tbody dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 200">
-                <tr>
-                    <th scope="row">{{ empresa.nombre }}</th>
-                    <td>{{empresa._usuario.cliente}}</td>
-                    <td>{{empresa._usuario.email}}</td>
-                    <td>{{empresa._usuario.fechaRegistro}}</td>
-                    <td>
-                        <a ng-href="#/privado/ver/{{empresa._id}}">Ver</a>
-                        <a ng-href="#/privado/editar/{{empresa._id}}">Editar</a>
-                        <a href="#" ng-click="ctrl.delete(empresa._usuario._id)">Borrar</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>    
-    <br />
-    
+    <dir-pagination-controls></dir-pagination-controls>
 </div>
-<dir-pagination-controls></dir-pagination-controls>
-
 

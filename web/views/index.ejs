@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html ng-app="app">
     <head>
-        <meta content="utf-8" http-equiv="encoding">
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-        <!--meta http-equiv="X-UA-Compatible" content="IE=edge"-->
+        <meta charset="utf-8" http-equiv="encoding">
+        <meta http-equiv="Content-Type X-UA-Compatible"  content="text/html; IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <title><%= title %></title>
         
-        <link rel='stylesheet' href='/stylesheets/style.css' /> 
     </head>
-    <body>
-        <div class="container" ng-controller="AppController as appCtrl">
-            <% include header %>
-            <div ng-view></div>
-            <br />
-            <% include footer %>
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-controller="AppController as appCtrl">
+    <!--<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+        <div class="container" ng-controller="AppController as appCtrl"-->
+    
+        <% include header %>
+        <div ng-view>
         </div>
+        <br />
+        <% include footer %>
+        <!--/div-->
         <% include scripts %>
     </body>
 </html>
