@@ -3,11 +3,14 @@ module.exports = (function() {
         this.express = express.module;
         this.usuariosApi = usuariosApi;
         this.router = this.express.Router();
-        
+        console.log("hola hola hola hola hola hola");
+        console.log(express);
+        console.log(usuariosApi);
+        console.log(tokenMiddleware);
         var router = this.router;
              
         router.post('/', usuariosApi.save.bind(usuariosApi));
-        
+
         router.get('/', tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.getAll.bind(usuariosApi));
         
         router.get('/:id', tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.getOne.bind(usuariosApi));
@@ -21,3 +24,5 @@ module.exports = (function() {
     
     return UsuariosController;
 })();
+
+

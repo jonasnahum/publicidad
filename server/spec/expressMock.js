@@ -1,6 +1,6 @@
 var express = {
     routes: {},
-    http: function(path) {
+    http: function(path) {//ejecuta lo guardado en routes, que es una función que recibe parámetros req,res y next.
         express.routes[path]
         (
             express.handlerParams.req,
@@ -11,14 +11,31 @@ var express = {
     handlerParams: {
         err: undefined,
         req: {
-            body: undefined,
-            params: undefined
+            user: undefined,
+            body: {
+                access_token: undefined
+            },
+            params: undefined,
+            query: {
+                access_token: undefined
+            }
         },
         res: {
+            numero: undefined,
+            text: undefined,
             jsonValue: undefined,
             json: function(config) {
+                console.log("------------------");
+                console.log("llegó a json");
                 express.handlerParams.res.jsonValue = config;
-            } 
+            },
+            send: function (text) {
+                express.handlerParams.res.text = text;
+            },       
+            status: function(status){
+                express.handlerParams.res.numero = status;
+                return express.handlerParams.res; 
+            }
         },
         next: function(err) {
             express.handlerParams.err = err;
@@ -26,8 +43,8 @@ var express = {
     },
     module: {
         Router: function() {
-            var router = {
-                get: function(path, routeHandler) {
+            var router = {//guarda en routes los parámetros que vienen del controller.
+                get: function(path, tokenMiddleware, routeHandler) {
                     express.routes["get" + path] = routeHandler;
                 },
                 post: function(path, routeHandler) {

@@ -5,9 +5,14 @@ var UsuariosApi = (function() {
     };
     
     UsuariosApi.prototype.getAll = function(req, res, next) {
-        var that = this;       
+        var that = this; 
         that.models.usuario.find(function (err, usuarios) {
             if (err) return next(err);
+            
+        console.log(req);
+        console.log(res);
+            console.log("estos son usuarios que recibe usuarioApi-------------------------")
+            console.log(usuarios);
             res.json(usuarios);
         });
     };
