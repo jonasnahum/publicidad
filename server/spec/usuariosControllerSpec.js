@@ -55,7 +55,7 @@ describe("Usuario Controller", function() {
         usuarioMock.db = [];
         express.handlerParams.req.body = body;
         
-        //ejecuta el routehandler guardado en la propiedad routes llamado post.
+        //ejecuta el routehandler guardado en la propiedad path con su routehandler.
         express.http('post/');
         
         expect(express.handlerParams.res.jsonValue).
