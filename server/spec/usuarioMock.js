@@ -10,7 +10,7 @@ Usuario.getError = function(method) {
     return Usuario.errors[method];
 };
 
-Usuario.find = function(callback) {
+Usuario.find = function(callback) {//puede ser parecido a remove.
     if (typeof callback == "object"){
         var found = undefined;
         for(var i = 0; i < Usuario.db.length; i++) {

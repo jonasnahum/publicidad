@@ -57,7 +57,8 @@ var express = {
                 post: function(path, routeHandler) {
                     express.routes["post" + path] = routeHandler;
                 },
-                put: function(path, routeHandler) {
+                put: function(path, tokenMiddleware,  routeHandler) {
+                    express.middleware = tokenMiddleware;
                     express.routes["put" + path] = routeHandler;
                 },
                 delete: function(path, routeHandler) {
