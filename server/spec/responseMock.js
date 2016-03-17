@@ -12,6 +12,9 @@ var response = {
     status: function(status){
         response.numero = status;
         return response; 
+    },
+    sendStatus:function(status){        
+        response.numero = status;
     }
 };
 

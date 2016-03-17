@@ -1,6 +1,7 @@
 var request = {
     body: {
-        access_token: undefined
+        access_token: undefined,
+        password: undefined
     },
     params: undefined,
     query: {

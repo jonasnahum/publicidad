@@ -23,6 +23,16 @@ Usuario.find = function(callback) {//puede ser parecido a remove.
     };
     callback(Usuario.errors["find"], Usuario.db);    
 };
+Usuario.findOne = function(obj, callback) {
+    var found = undefined;
+    for(var i = 0; i < Usuario.db.length; i++) {
+        if(Usuario.db[i].email === obj.email) {
+            found = Usuario.db[i];
+            break;
+        }
+    }
+    callback(Usuario.errors["findOne"], found);    
+};
 Usuario.findById = function(id, callback) {
     var found = undefined;
     for(var i = 0; i < Usuario.db.length; i++) {

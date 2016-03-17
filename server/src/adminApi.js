@@ -6,6 +6,22 @@ var AdminApi = (function() {
         this.moment = moment.module;
         this.jwt = jwt.module;
     };
+    //curl http://localhost:3000/admin/api/
+    AdminApi.prototype.getAll = function(req, res, next) {
+        var that = this;
+        that.models.admin.find(function(err, admins) {
+            if(err)  return next(err);
+            res.json(admins);
+        })
+    };
+    //curl http://localhost:3000/admin/api/56cb5f98859069ee22019620
+    AdminApi.prototype.getOne = function(req, res, next) {
+        var that = this;
+        that.models.admin.findById(req.params.id, function(err, admin) {
+            if(err)  return next(err);
+            res.json(admin);
+        });
+    };
     AdminApi.prototype.findByEmail = function(req, res, next) {
         var that = this;
         that.models.admin.findOne({ email: req.body.email}, function(err, administrador) {
@@ -26,6 +42,7 @@ var AdminApi = (function() {
             }*/
             if (req.body.password !== 'passunique') {
                 // incorrect password
+                console.log(req.body.password);
                 console.log("passunique mal escrito");
                 return res.sendStatus(401);
             }
@@ -60,22 +77,7 @@ var AdminApi = (function() {
             res.json(admin);
         });
     }; 
-    //curl http://localhost:3000/admin/api/
-    AdminApi.prototype.getAll = function(req, res, next) {
-        var that = this;
-        that.models.admin.find({}, function(err, admins) {
-            if(err)  return console.log(err);
-            res.json(admins);
-        });
-    }; 
-    //curl http://localhost:3000/admin/api/56cb5f98859069ee22019620
-    AdminApi.prototype.getOne = function(req, res, next) {
-        var that = this;
-        that.models.admin.findById(req.params.id, function(err, admin) {
-            if(err)  return console.log(err);
-            res.json(admin);
-        });
-    };
+
     //curl -X PUT -i -H "Content-Type: application/json" -d '{"email":"jonas@gmail.com", "password":"4321"}' http://localhost:3000/admin/api/ 5646467e83540be61605d680
     AdminApi.prototype.update = function(req, res, next) {
         var that = this;

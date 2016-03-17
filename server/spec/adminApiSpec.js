@@ -1,35 +1,119 @@
-describe("usuarios api", function() {
-    it("getAll method", function(done){
-        var usuarioMock = require("./usuarioMock");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
+
+
+describe("admin api", function() {
+        //model
+        var modelMock = require("./usuarioMock");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
+        var modelFactory = require("./usuarioModelFactoryMock");
         
-        usuarioMock.db = [
+        
+        var responseMock = require("./responseMock");
+        var requestMock = require("./requestMock");
+        
+        //api
+        var AdminApi = require("./../src/adminApi");
+        var jwt = require("./jwtMock");
+        var moment = require("./momentMock");
+        var api = new AdminApi({admin: modelMock}, modelFactory, moment, jwt);
+
+    it("getAll method admin", function(done){
+        //se arregla la base de datos
+        modelMock.db = [
             {nombre: "Jonas", calificacion: 9},
             {nombre: "ro", calificacion: 8}
         ];
         
-        usuarioMock.setError ("find", null);
+        //error
+        modelMock.setError ("find", null);
+        
+        //se ejecuta metodo.
         api.getAll(null, responseMock, null);
-        expect(responseMock.value).toEqual(usuarioMock.db);
+        
+        //test
+        expect(responseMock.value).toEqual(modelMock.db);
         done();
     });
     
-    it("getAll method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
-        
-        usuarioMock.setError ("find", new Error("GetAll method error"));
+    it("getAll method error", function(done) {    
+        modelMock.setError ("find", new Error("GetAll method error from adminapiSpec"));
         var next = function(err) {
-            expect(err).toEqual(usuarioMock.getError("find"));
+            expect(err).toEqual(modelMock.getError("find"));
             done();
         };
         api.getAll(null, responseMock, next);
     });
+    it("getOne method", function(done) {      
+        
+        modelMock.db = [
+            {nombre: "Pedro", calificacion: 8, id: 1}
+        ];
+        requestMock.params = {id: 1};
+        
+        api.getOne(requestMock, responseMock, null);
+        expect(responseMock.value).toEqual(modelMock.db[0]);
+        done();
+    });
+    it("getOne method error", function(done) { 
+        modelMock.setError("findById", new Error("Get one error grom adminapispec"));
+        
+        requestMock.params = {id: 1};
+        
+        api.getOne(requestMock, responseMock, function(err) {
+            expect(err).toEqual(modelMock.getError("findById"));
+            done();
+        });
+    });
+    it("findByEmail method error", function(done) {      
+        modelMock.setError("findOne", new Error("FindOne error from adminapispec"));
+        /*modelMock.db = [
+            {nombre: "Pedro", email: "jonasnahum@gmail.com", calificacion: 8, id: 1}
+        ];*/
+        requestMock.body.email = "jonasnahum@gmail.com";   
+        
+        api.findByEmail(requestMock, responseMock,  function(err) {
+            expect(err).toEqual(modelMock.getError("findOne"));
+            done();
+        });
+    });
+    it("findByEmail !admin", function(done) {      
+        modelMock.setError("findOne", null);
+        modelMock.db = [
+            {nombre: "Pedro", email: "jonasnahum@gmail.com", calificacion: 8, id: 1}
+        ];
+        
+        api.findByEmail(requestMock, responseMock, null);
+        expect(responseMock.numero).toEqual(401);
+        done();
+    });
+    it("findByEmail req.body.password !== passunique", function(done) {      
+        modelMock.setError("findOne", null);
+        modelMock.db = [
+            {nombre: "Pedro", email: "jonasnahum@gmail.com", calificacion: 8, id: 1}
+        ];
+        responseMock.numero = undefined;
+        requestMock.body.email = "jonasnahum@gmail.com";    
+        requestMock.body.password = "mexico";
+        
+        api.findByEmail(requestMock, responseMock, null);
+        expect(responseMock.numero).toEqual(401);
+        done();
+    });
+    it("findByEmail succesfull response", function(done) {      
+        modelMock.setError("findOne", null);
+        modelMock.db = [
+            {nombre: "Pedro", email: "jonasnahum@gmail.com", calificacion: 8, id: 1}
+        ];
+        requestMock.body.email = "jonasnahum@gmail.com";    
+        requestMock.body.password = "passunique";
+        moment.expires = "nunca";
+        
+        api.findByEmail(requestMock, responseMock, null);
+        expect(responseMock.value.token).toEqual(jwt.tokenEncodeado);
+        done();
+    });
     
+    
+    
+    /*
     it("save method", function(done) {//will trigger jasmine-node to run the test asynchronously waiting until the done() callback is called.An asynchronous test will fail after 5000 ms if done() is not called. 
         var usuarioMock = require("./usuarioMock");
         var usuarioFactory = require("./usuarioModelFactoryMock");//regresa una nueva instancia de usuarioMock, osea que tiene save en su prototype.
@@ -63,23 +147,6 @@ describe("usuarios api", function() {
         });
     });
     
-    it("getOne method", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
-        
-        usuarioMock.setError ("findById", null);
-        usuarioMock.db = [
-            {nombre: "Pedro", calificacion: 8, id: 1}
-        ];
-        requestMock.params = {id: 1};
-        
-        api.getOne(requestMock, responseMock, null);
-        expect(responseMock.value).toEqual(usuarioMock.db[0]);
-        done();
-    });
 
     it("getOne method error", function(done) {
         var usuarioMock = require("./usuarioMock");
@@ -240,5 +307,5 @@ describe("usuarios api", function() {
             done();
         }); 
     });
-    
+    */
 });
