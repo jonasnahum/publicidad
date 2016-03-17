@@ -45,7 +45,7 @@ p {
 }
 
 a {
-    color: #337AB7/*#42dca3*/;/********************TITULOS DE PRODUCTOS******************/
+    color: rgb(35, 82, 124)/*#42dca3, #337AB7*/;/********************TITULOS DE PRODUCTOS******************/
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -54,7 +54,7 @@ a {
 a:hover,
 a:focus {
     text-decoration: none;
-    color: #1d9b6c;
+    color: darkorange/*#1d9b6c*/;
 }
 
 .light {
@@ -136,7 +136,7 @@ a:focus {
     .navbar-custom.top-nav-collapse {
         padding: 0;
         border-bottom: 1px solid rgba(255,255,255,.3);
-        background: #337AB7/*rgb(35, 82, 124)*/;/******************NAVBAR**************************/
+        background: rgb(35, 82, 124)/*#337AB7*/;/******************NAVBAR**************************/
         /*padding-bottom: 10px;***************************logo*************************************/
     }
 }
@@ -151,7 +151,35 @@ a:focus {
     /*background: url(./../../images/intro-bg.jpg) no-repeat bottom center scroll;*/
     /*background: url(./../../images/paletas.jpg) no-repeat bottom center scroll;*/
     /*background: url(./../../images/monumentoUpn.jpg) no-repeat bottom center scroll;*/
+    /*background: url(./../../images/verdura.jpg)no-repeat bottom center scroll;*/
     background: url(./../../images/verdura.jpg)no-repeat bottom center scroll;
+    
+    
+    
+    /*TRY
+    #mydiv .isawesome { 
+    background-color: #B1B8BD;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+
+    /* Fallback *0000000000000/
+    background-image: url('../images/sidebar_angle.png');
+
+    /* CSS gradients *-------------------/
+    background-image: url('../images/sidebar_angle.png'), 
+                      -moz-linear-gradient(top, #ADB2B6 0%, #ABAEB3 100%);
+    background-image: url('../images/sidebar_angle.png'), 
+                      -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ADB2B6), color-stop(100%, #ABAEB3));
+    background-image: url('../images/sidebar_angle.png'), 
+                      linear-gradient(to bottom, #ADB2B6, #ABAEB3);
+
+    /* IE *-----------------/
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ADB2B6', endColorstr='#ABAEB3', GradientType=0);
+}
+    
+*/
+    
+    
     
     background-color: #000;
     -webkit-background-size: cover;
@@ -303,17 +331,17 @@ a:focus {
 }
 
 .btn-default {
-    border: 1px solid #337AB7/*#42dca3*/;
-    color: #337AB7/*#42dca3*/;
+    border: 1px solid rgb(35, 82, 124) /*#337AB7/*#42dca3*/;
+    color: rgb(35, 82, 124)/*#337AB7/*#42dca3*/;
     background-color: transparent;
 }
 
 .btn-default:hover,
 .btn-default:focus {
-    border: 1px solid #337AB7/*#42dca3*/;
+    border: 1px solid rgb(35, 82, 124)/*#337AB7/*#42dca3*/;
     outline: 0;
     color: #fff/*#000*/;
-    background-color: #337AB7/*#42dca3*/;
+    background-color: rgb(35, 82, 124)/*#337AB7/*#42dca3*/;
 }
 
 ul.banner-social-buttons {
