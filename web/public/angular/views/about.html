@@ -82,11 +82,11 @@
                 <div class="scrollblock block-info" style="color: #DDD; background-color:#23527C">
                     <!--id="foo"--><h2 id="enviarMensaje"><strong>Contacto</strong></h2> <br /><br />
                     <div class="col-md-12" ng-controller="EmailFormController as emCtl" >
-                        <h3>Enviar Mensage</h3> <br /><br />
+                        <h3>Enviar mensaje</h3> <br /><br />
                         <form name="mailForm" id="myForm" ng-submit="mailForm.$valid && emCtl.send('jonasnahum@gmail.com')" novalidate>
                             <fieldset ng-attr-disabled="{{emCtl.waiting || undefined}}">
                                 <div class="form-group">
-                                    <label>Mi Nombre</label>
+                                    <label>Mi nombre</label>
                                     <input type="text" class="form-control" name="name" placeholder="Nombre"
                                            ng-model="emCtl.name" required />    
 
@@ -96,7 +96,7 @@
                                     </div>                                    
                                 </div>
                                 <div class="form-group">
-                                    <label>Mi Correo</label>
+                                    <label>Mi correo</label>
                                     <input type="email" class="form-control" name="email" placeholder="Email"
                                            ng-model="emCtl.email" required />
                                     <div class="errorMessages" ng-messages="mailForm.email.$error" 
@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mi Teléfono</label>
+                                    <label>Mi teléfono</label>
                                     <input type="text" class="form-control" name="phone" placeholder="Teléfono"
                                            ng-model="emCtl.phone" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/"/>
                                     <div class="errorMessages" ng-messages="mailForm.phone.$error" 
@@ -114,7 +114,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mi Mensage</label>
+                                    <label>Mi mensaje</label>
                                     <textarea class="form-control" name="message" placeholder="Mensage"
                                               ng-model="emCtl.message" required ></textarea>
                                     <div class="errorMessages" ng-messages="mailForm.message.$error" 

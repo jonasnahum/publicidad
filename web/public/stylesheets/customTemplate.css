@@ -47,10 +47,15 @@ body {
 .jumbotron {
     text-align: justify;
     border-bottom: 1px solid #e5e5e5;
+    background: #e5e5e5;
+    padding-top: 10%;
 }
 .jumbotron .btn {
     padding: 14px 24px;
     font size: 21px;
+}
+#jumbotronContenido {
+    padding-left: 25%;
 }
 
 /* Supporting marketing content */
