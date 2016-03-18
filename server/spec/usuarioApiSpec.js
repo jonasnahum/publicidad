@@ -38,6 +38,7 @@ describe("usuarios api", function() {
         var UsuarioApi = require("./../src/usuarioApi");
         var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
+        usuarioMock.setError ("save", null);
         requestMock.body = {nombre: "Juan", calificacion: 8};
         
         api.save(requestMock, responseMock, null);
@@ -168,6 +169,7 @@ describe("usuarios api", function() {
         
         usuarioMock.setError("save", undefined);
         usuarioMock.setError("findById", undefined);
+        usuarioMock.setError("findByIdAndRemove", undefined);
         
         requestMock.body = {nombre: "Luis", calificacion: 2, id: 4};
         

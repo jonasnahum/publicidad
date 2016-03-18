@@ -51,6 +51,10 @@ var express = {
         Router: function() {
             var router = {//guarda en routes los parámetros que vienen del controller.
                 get: function(path, tokenMiddleware, routeHandler) {
+                    if(!routeHandler){//si no hay tercer parametro, el segundo parametro es routeHandler.
+                        express.routes["get" + path] = tokenMiddleware;
+                        return;
+                    }
                     express.middleware = tokenMiddleware;
                     express.routes["get" + path] = routeHandler;
                 },
@@ -58,6 +62,10 @@ var express = {
                     express.routes["post" + path] = routeHandler;
                 },
                 put: function(path, tokenMiddleware,  routeHandler) {
+                    if(!routeHandler){//si no hay tercer parametro, el segundo parametro es routeHandler.
+                        express.routes["get" + path] = tokenMiddleware;
+                        return;
+                    }
                     express.middleware = tokenMiddleware;
                     express.routes["put" + path] = routeHandler;
                 },

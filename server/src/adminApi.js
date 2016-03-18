@@ -42,7 +42,6 @@ var AdminApi = (function() {
             }*/
             if (req.body.password !== 'passunique') {
                 // incorrect password
-                console.log(req.body.password);
                 console.log("passunique mal escrito");
                 return res.sendStatus(401);
             }
@@ -52,12 +51,7 @@ var AdminApi = (function() {
                 iss: administrador.email,
                 exp: expires
             }, 'cualquiera');
-
-            console.log({
-                token : token,
-                expires: expires,
-                user: administrador
-            });
+            
             res.json({
                 token : token,
                 expires: expires,
@@ -73,7 +67,7 @@ var AdminApi = (function() {
             admin[property] = req.body[property];
         }
         admin.save(function(err, admin){
-            if(err)  return console.log(err);
+            if(err)  return next(err);
             res.json(admin);
         });
     }; 
@@ -82,13 +76,13 @@ var AdminApi = (function() {
     AdminApi.prototype.update = function(req, res, next) {
         var that = this;
         that.models.admin.findById(req.params.id, function(err, admin) {
-            if(err)  return console.log(err);
+            if(err)  return next(err);
             for (var property in req.body){
                 admin[property] = req.body[property];
             }
-            admin.save(function(err, usuario){
-                if(err)  return console.log(err);
-                res.json(usuario);
+            admin.save(function(err, administrador){
+                if(err)  return next(err);
+                res.json(administrador);
             });   
         });
     };
@@ -98,16 +92,16 @@ var AdminApi = (function() {
         
         that.models.admin.findByIdAndRemove(req.params.id, function(err, ad) {
             if(err) return next(err);
-            res.json({status: "ok"});
+            res.json(ad);
         });
     };
     //curl -X "DELETE" http://localhost:3000/admin/api/borrarTodosPeligro
     AdminApi.prototype.deleteAll = function(req, res, next) {
         var that = this;
         
-        that.models.admin.remove({}, function(err, admin) {
+        that.models.admin.remove({}, function(err, bd) {
             if(err) return next(err);
-            res.json({status: "deleted all"});
+            res.json(bd);
         });
     };    
     return AdminApi;

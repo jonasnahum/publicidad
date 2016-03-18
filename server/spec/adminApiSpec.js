@@ -79,7 +79,7 @@ describe("admin api", function() {
         modelMock.db = [
             {nombre: "Pedro", email: "jonasnahum@gmail.com", calificacion: 8, id: 1}
         ];
-        
+        requestMock.body = {nombre: "noesta", email: "chicho@gmail.com", calificacion: 3, id: 5};   
         api.findByEmail(requestMock, responseMock, null);
         expect(responseMock.numero).toEqual(401);
         done();
@@ -99,6 +99,7 @@ describe("admin api", function() {
     });
     it("findByEmail succesfull response", function(done) {      
         modelMock.setError("findOne", null);
+        modelMock.db = [];
         modelMock.db = [
             {nombre: "Pedro", email: "jonasnahum@gmail.com", calificacion: 8, id: 1}
         ];
@@ -108,19 +109,13 @@ describe("admin api", function() {
         
         api.findByEmail(requestMock, responseMock, null);
         expect(responseMock.value.token).toEqual(jwt.tokenEncodeado);
+        expect(responseMock.value.expires).toEqual(moment.expires);
+        expect(responseMock.value.expires).toEqual(moment.expires);
+        expect(responseMock.value.user).toEqual(modelMock.db[0]);
         done();
     });
-    
-    
-    
-    /*
+
     it("save method", function(done) {//will trigger jasmine-node to run the test asynchronously waiting until the done() callback is called.An asynchronous test will fail after 5000 ms if done() is not called. 
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");//regresa una nueva instancia de usuarioMock, osea que tiene save en su prototype.
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         requestMock.body = {nombre: "Juan", calificacion: 8};
         
@@ -131,53 +126,21 @@ describe("admin api", function() {
         done();          
     });
     
-    it("save method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
-        
-        usuarioMock.setError("save", new Error("save method error"));
-        
-        api.save(requestMock, responseMock, function(err){
-            expect(err).toEqual(usuarioMock.getError("save"));
-            done();
-        });
-    });
-    
+    it("save method error", function(done) {      
+        modelMock.setError("save", new Error("save method error from adminapispec"));
 
-    it("getOne method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
-        
-        usuarioMock.setError("findById", new Error("Get one error"));
-        
-        requestMock.params = {id: 1};
-        
-        api.getOne(requestMock, responseMock, function(err) {
-            expect(err).toEqual(usuarioMock.getError("findById"));
+        api.save(requestMock, responseMock, function(err){
+            expect(err).toEqual(modelMock.getError("save"));
             done();
         });
     });
     
     it("update method", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
-        
-        usuarioMock.setError("save", undefined);
-        usuarioMock.setError("findById", undefined);
-        usuarioMock.db = [];
+        modelMock.setError("save", undefined);
+        modelMock.setError("findById", undefined);
+        modelMock.db = [];
         requestMock.body = {nombre: "Pedro", calificacion: 8, id: 3};
-        api.save(requestMock, responseMock, null);//ya esta en propiedad bd en usuarioMock.js
+        api.save(requestMock, responseMock, null);//el body ya está en la bd.
         
         var body2 = {nombre: "Juan", calificacion: 9, id: 3}; 
         requestMock.body = body2;
@@ -190,58 +153,38 @@ describe("admin api", function() {
     });
     
     it("update, save method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
-
-        usuarioMock.setError("save", new Error("save error"));
+        modelMock.setError("save", new Error("save error from adminapispec"));
         requestMock.body = {nombre: "Pedro", calificacion: 8, id: 3};
         
-        api.save(requestMock, responseMock, function(err) {
-            expect(err).toBe(usuarioMock.getError("save"));
+        api.update(requestMock, responseMock, function(err) {
+            expect(err).toBe(modelMock.getError("save"));
             done();
         });      
         
     });
     
-    it("update, findById method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
-
-        usuarioMock.setError("findById", new Error("findById error"));
+    it("update, findbyid method error", function(done) {
+        modelMock.setError("findById", new Error("findbyid err from adminapispec"));
         requestMock.body = {nombre: "Pedro", calificacion: 8, id: 3};
-        
+    
         api.update(requestMock, responseMock, function(err) {
-            expect(err).toBe(usuarioMock.getError("findById"));
+            expect(err).toBe(modelMock.getError("findById"));
             done();
-        });         
-    });
-    
-    
-    it("delete method", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
+        });      
         
-        usuarioMock.setError("save", undefined);
-        usuarioMock.setError("findById", undefined);
+    });
+  
+    it("delete method", function(done) {
+        modelMock.setError("findByIdAndRemove", null);//se ocupa quitar el error de estos metodos.
+        modelMock.setError("findById", null);
+        modelMock.setError("save", null);
         
         requestMock.body = {nombre: "Luis", calificacion: 2, id: 4};
-        
         api.save(requestMock, responseMock, null);
-        requestMock.params = {id: 4};
         
+        requestMock.params = {id: 4};
         api.delete(requestMock, responseMock, null);
+        
         expect(responseMock.value.nombre).toBe(requestMock.body.nombre);
         expect(responseMock.value.calificacion).
         toBe(requestMock.body.calificacion);
@@ -255,33 +198,19 @@ describe("admin api", function() {
     });
     
     it("delete method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
-        
-        //usuarioMock.setError("save", undefined);
-        //usuarioMock.setError("findById", undefined);
-        usuarioMock.setError("findByIdAndRemove", new Error("findByIdAndRemove error"));
+        modelMock.setError("findByIdAndRemove", new Error("findByIdAndRemove error from adminapispec"));
         
         requestMock.params = {id: 4};
         
         api.delete(requestMock, responseMock, function(err) {
-            expect(err).toEqual(usuarioMock.getError("findByIdAndRemove"));
+            expect(err).toEqual(modelMock.getError("findByIdAndRemove"));
             done();
         }); 
     });
     
     it("delete all method", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
-        
-        usuarioMock.setError("remove", undefined);
+        modelMock.setError("remove", undefined);
+        modelMock.setError("save", undefined);
         
         requestMock.body = {nombre: "Luis", calificacion: 2, id: 4};
         api.save(requestMock, responseMock, null);
@@ -294,18 +223,13 @@ describe("admin api", function() {
     });
     
     it("delete all method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
         
-        usuarioMock.setError("remove", new Error("remove error"));
+        modelMock.setError("remove", new Error("remove error from adminapispec"));
         
         api.deleteAll(requestMock, responseMock, function(err) {
-            expect(err).toEqual(usuarioMock.getError("remove"));
+            expect(err).toEqual(modelMock.getError("remove"));
             done();
         }); 
     });
-    */
+    
 });
