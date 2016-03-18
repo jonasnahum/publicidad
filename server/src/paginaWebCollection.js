@@ -20,11 +20,7 @@ var paginaWebSchema = mongoose.Schema({
     face: { type: String },
     flickr : { type: String },
     whats : { type: String },
-    link1 : { type: String },
-    link2 : { type: String },
-    link3 : { type: String },
-    link4 : { type: String },
-    link5 : { type: String },
+    links: Array,
     email: validation.validateCampo(true,String,null,null,"validateEmail"),
     productos: Array,/*validation.validateCampo(false,Array,null,null,"validateProductos"),*/
     nota: { type: String, maxlength: 180}, 

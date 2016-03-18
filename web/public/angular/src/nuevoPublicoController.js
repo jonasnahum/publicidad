@@ -1,10 +1,11 @@
 (function() {
     var app = angular.module('app');
-    arrDep = ['$routeParams','$location', 'mapFactory', 'productosFactory', 'paginasProxy', 'usuariosProxy']; 
-    arrDep.push(function($route, $location, mapFactory, productosFactory, paginasProxy, usuariosProxy) {
+    arrDep = ['$routeParams','$location', 'mapFactory', 'productosFactory', 'paginasProxy', 'usuariosProxy', 'linkFactory']; 
+    arrDep.push(function($route, $location, mapFactory, productosFactory, paginasProxy, usuariosProxy, linkFactory) {
         
         var ctrl = this;
         ctrl.productos = [];
+        ctrl.links = [];
         
         //Map Function
         var mapa = mapFactory();
@@ -31,6 +32,16 @@
             ctrl.productos = prod.borrarProductos(ctrl.productos);
         };        
         
+        var linkObj = linkFactory();
+        ctrl.agregarLink = function() {
+            ctrl.link = linkObj.agregarLink(ctrl.links, ctrl.link);
+        };
+        ctrl.removerLink = function() {
+            ctrl.links = linkObj.removerLink(ctrl.links, ctrl.numLinkARemover);
+        };
+        ctrl.borrarLinks = function() {
+            ctrl.links = linkObj.borrarLinks(ctrl.links);
+        };
         
         //Server Call
         ctrl.save = function() {

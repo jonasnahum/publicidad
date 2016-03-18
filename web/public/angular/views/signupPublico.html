@@ -1,5 +1,94 @@
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" style="!important">
+<link rel="stylesheet" href="./../../../stylesheets/form-elements.css">
+<link rel="stylesheet" href="./../../../stylesheets/styleSignin.css">
+
+<div class="top-content" style="color: #fff; font-family: 'Roboto', sans-serif;">
+    <div class="inner-bg">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3>Registrarse</h3>
+                            <p style="font-size: 18px;">
+                                Información del cliente
+                                <br>
+                                <small style="font-size: 12px;">
+                                    La siguiente información es privada y confidencial, no aparecerá en su página web publicitaria, es para registrarlo como socio en www.weburuapan.com (Excepto uniquename).
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <form name="frmSignup" ng-submit="frmSignup.$valid && ctrl.signup()" ng-controller="SignupPublicoController as ctrl" novalidate>
+                            <div class="form-group">
+                                <label for="form-cliente">* Nombre del cliente</label><!-- class="sr-only" -->
+                                <input type="text" name="cliente" class="form-cliente form-control" id="form-cliente" ng-model="ctrl.cliente"ng-minlength="10" ng-maxlength="40" required ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" />
+                                <div class="errorMessages" ng-messages="frmSignup.cliente.$error" 
+                                     ng-if="!frmSignup.cliente.$pristine || frmSignup.$submitted" role="alert">
+                                    <div ng-messages-include="/error/messages.html"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-uniquename">* Uniquename</label><!-- class="sr-only" -->
+                                Agregue un nombre (en minúsculas y sin espacios intermedios) para crear su dirección de internet (URL).
+                                <input type="text" name="uniquename" class="form-uniquename form-control" id="form-uniquename" ng-model="ctrl.uniquename" ng-pattern="/^[a-zA-Z0-9ñ]+$/" required >
+                                <div class="errorMessages" ng-messages="frmSignup.uniquename.$error" 
+                                     ng-if="!frmSignup.uniquename.$pristine || frmSignup.$submitted" role="alert">
+                                    <div ng-messages-include="/error/messages.html"></div>
+                                </div>
+                                <label>Su URL (dirección de internet) será : http://weburuapan.com/#/{{ctrl.uniquename}}</label>
+                                <br />
+                            </div>
+                            <div class="form-group">
+                                <label for="form-telCliente">* Teléfono:</label><!-- class="sr-only" -->
+                                <input type="text" name="telCliente" class="form-telCliente form-control" id="form-telCliente" ng-model="ctrl.telCliente" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/" required/>
+                                <div class="errorMessages" ng-messages="frmSignup.telCliente.$error" 
+                                     ng-if="!frmSignup.telCliente.$pristine || frmSignup.$submitted"
+                                     role="alert">
+                                    <div ng-messages-include="/error/messages.html"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">* Email:</label><!-- class="sr-only" -->
+                                <input type="email" name="email" class="form-email form-control" id="form-email" ng-model="ctrl.email" required maxlength="60" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/"/>
+                                <div class="errorMessages" ng-messages="frmSignup.email.$error" ng-if="!frmSignup.email.$pristine || frmSignup.$submitted" role="alert" >
+                                    <div ng-messages-include="/error/messages.html"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-password">* Contraseña:</label><!-- class="sr-only" -->
+                                <input type="password" name="password" class="form-password form-control" id="form-password" ng-model="ctrl.password" required maxlength="60"/>
+                                 <div class="errorMessages" ng-messages="frmSignup.password.$error" ng-if="!frmSignup.password.$pristine || frmSignup.$submitted" role="alert" >
+                                    <div ng-messages-include="/error/messages.html"></div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn"><!--btn-success-->Continuar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 social-login">
+                    <div class="social-login-buttons">
+                        <a class="btn btn-link-2" href="#/">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<script src="./../../../js/jquery.backstretch.js"></script>
+<script src="./../../../js/scripts.js"></script>
+
+
+
+<!--div class="container">
 <h1>Registrarse</h1>
-<form name="frmSignup"  ng-submit="frmSignup.$valid && ctrl.signup()" ng-controller="SignupPublicoController as ctrl" novalidate>
+<form name="frmSignup" ng-submit="frmSignup.$valid && ctrl.signup()" ng-controller="SignupPublicoController as ctrl" novalidate>
     <div class="form-group">  
         
         <h3>Información del cliente</h3><small class="text-muted">La siguiente información es privada y confidencial, no aparecerá en su página web publicitaria, es para registrarlo como socio en www.weburuapan.com (Excepto uniquename).</small>
@@ -47,3 +136,4 @@
     <input type="submit" class="btn btn-primary btn-lg" role="button" value="Continuar" />
     <a class="btn btn-primary btn-lg" role="button" ng-href="#/">Cancelar</a>
 </form>
+</div-->
