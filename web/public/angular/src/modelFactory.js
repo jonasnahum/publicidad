@@ -22,11 +22,7 @@
                 obj.face = data.face;
                 obj.flickr = data.flickr;
                 obj.whats = data.whats;
-                obj.link1 = data.link1;
-                obj.link2 = data.link2;
-                obj.link3 = data.link3;
-                obj.link4 = data.link4;
-                obj.link5 = data.link5;
+                obj.links = data.links;
                 obj.email = data.email;
                 obj.productos = data.productos;
                 obj.nota = data.nota;

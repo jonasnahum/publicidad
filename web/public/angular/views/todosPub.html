@@ -9,7 +9,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Páginas Web Uruapan</h1>
                         <p class="intro-text">Crea fácilmente tu página web.</p>
-                        <a class="btn btn-circle page-scroll" ng-click="ctrl.scrollTo('buscar')">
+                        <a class="btn btn-circle" ng-click="ctrl.scrollTo('buscar')"><!-- page-scroll-->
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
@@ -62,7 +62,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="quienesSomos" class="container content-section text-center">
+    <section id="quienesSomos" class="container content-section text-center" ng-controller="AboutController">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>¿Quiénes somos?</h2>
@@ -76,13 +76,18 @@
 
                     <p>Nuestras páginas son limpias y fáciles, nos esforzamos por mantener su sitio web libre de publicidad invasiva que distrae a sus clientes, todo esto, por un bajo costo.</p>
 
+                    <!--p>¿ Qué espera ? <a href="#/publico/about/bienvenida">visítenos ahora.</a></p-->
                     <p>¿ Qué espera ? <a href="#/publico/about">visítenos ahora.</a></p>
-                <p>
+                <!--p>
+                    <!--a href="#/publico/about/enviarMensaje">jonasnahum@gmail.com</a--****************>
                     <a href="#/publico/about">jonasnahum@gmail.com</a>
-                </p>
+                </p-->
                 <ul class="list-inline banner-social-buttons">
                     <li>
-                        <a href="https://www.facebook.com/paginasweburuapan/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                        <a href="https://www.facebook.com/paginasweburuapan/" class="btn btn-default btn-lg" target="_blank">
+                            <i class="fa fa-facebook fa-fw"></i> 
+                            <span class="network-name">Facebook</span>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -91,6 +96,6 @@
 
     <!-- Map Section -->
     <!--div id="map"></div-->
-    <div id="googleMap"></div>
+    <div id="googleMap" style="width: 100%; height: 200px; margin-top: 100px; @media(min-width:767px) { #googleMap { height: 400px; margin-top: 250px; } }"></div>
 
 </div>

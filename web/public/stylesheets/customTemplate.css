@@ -47,10 +47,15 @@ body {
 .jumbotron {
     text-align: justify;
     border-bottom: 1px solid #e5e5e5;
+    background: #e5e5e5;
+    padding-top: 10%;
 }
 .jumbotron .btn {
     padding: 14px 24px;
     font size: 21px;
+}
+#jumbotronContenido {
+    padding-left: 25%;
 }
 
 /* Supporting marketing content */
@@ -125,4 +130,28 @@ body {
 .featurette-image {
     width: 30%;
     height: 30%;
+}
+
+/* /privado/todos */
+#privadoTodos {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+#wrapper {
+  position: relative;
+  /*width: 800px;*/
+  min-height: 400px;
+  margin: 100px auto;
+  color: #333;
+}
+
+
+/*ver.html, editar.html*/
+#ver, #editar {
+    padding-top: 6%;
 }

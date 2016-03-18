@@ -45,7 +45,7 @@ p {
 }
 
 a {
-    color: #337AB7/*#42dca3*/;/********************TITULOS DE PRODUCTOS******************/
+    color: rgb(35, 82, 124)/*#42dca3, #337AB7*/;/********************TITULOS DE PRODUCTOS******************/
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -54,7 +54,7 @@ a {
 a:hover,
 a:focus {
     text-decoration: none;
-    color: #1d9b6c;
+    color: darkorange/*#1d9b6c*/;
 }
 
 .light {
@@ -66,7 +66,7 @@ a:focus {
     border-bottom: 1px solid rgba(255,255,255,.3);
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-color: #000;
+    background-color: rgb(35, 82, 124);/*********************** #000 Navbar pequena**************************/
 }
 
 .navbar-custom .navbar-brand {
@@ -136,7 +136,7 @@ a:focus {
     .navbar-custom.top-nav-collapse {
         padding: 0;
         border-bottom: 1px solid rgba(255,255,255,.3);
-        background: #337AB7/*rgb(35, 82, 124)*/;/******************NAVBAR**************************/
+        background: rgb(35, 82, 124)/*#337AB7*/;/******************NAVBAR**************************/
         /*padding-bottom: 10px;***************************logo*************************************/
     }
 }
@@ -151,7 +151,9 @@ a:focus {
     /*background: url(./../../images/intro-bg.jpg) no-repeat bottom center scroll;*/
     /*background: url(./../../images/paletas.jpg) no-repeat bottom center scroll;*/
     /*background: url(./../../images/monumentoUpn.jpg) no-repeat bottom center scroll;*/
-    background: url(./../../images/verdura.jpg)no-repeat bottom center scroll;
+    /*background: url(./../../images/verdura.jpg)no-repeat bottom center scroll;*/
+    background: url(./../../images/centro%20upn.jpg)no-repeat bottom center scroll;
+    
     
     background-color: #000;
     -webkit-background-size: cover;
@@ -268,28 +270,31 @@ a:focus {
 .content-section {
     padding-top: 100px;
 }
-
+/* //todosPub.html
 #googleMap,
 #map {
     width: 100%;
     height: 200px;
     margin-top: 100px;
 }
+*/
 
 @media(min-width:767px) {
     .content-section {
         padding-top: 250px;
     }
 
+/*//not download-section
     .download-section {
         padding: 100px 0;
     }
-
+    
+ //todosPub.html
     #googleMap,
     #map {
         height: 400px;
         margin-top: 250px;
-    }
+    }*/
 }
 
 .btn {
@@ -303,17 +308,17 @@ a:focus {
 }
 
 .btn-default {
-    border: 1px solid #337AB7/*#42dca3*/;
-    color: #337AB7/*#42dca3*/;
+    border: 1px solid rgb(35, 82, 124) /*#337AB7/*#42dca3*/;
+    color: rgb(35, 82, 124)/*#337AB7/*#42dca3*/;
     background-color: transparent;
 }
 
 .btn-default:hover,
 .btn-default:focus {
-    border: 1px solid #337AB7/*#42dca3*/;
+    border: 1px solid rgb(35, 82, 124)/*#337AB7/*#42dca3*/;
     outline: 0;
     color: #fff/*#000*/;
-    background-color: #337AB7/*#42dca3*/;
+    background-color: rgb(35, 82, 124)/*#337AB7/*#42dca3*/;
 }
 
 ul.banner-social-buttons {
