@@ -131,3 +131,27 @@ body {
     width: 30%;
     height: 30%;
 }
+
+/* /privado/todos */
+#privadoTodos {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+#wrapper {
+  position: relative;
+  /*width: 800px;*/
+  min-height: 400px;
+  margin: 100px auto;
+  color: #333;
+}
+
+
+/*ver.html, editar.html*/
+#ver, #editar {
+    padding-top: 6%;
+}
