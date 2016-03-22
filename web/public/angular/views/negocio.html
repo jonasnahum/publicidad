@@ -138,26 +138,16 @@
                 </div>
             </div>
         </div>
-        <!--div id="containerIn">
-            <div class="row">
-                <div class="scrollblock block-redesSociales" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground|| '#23527C'}}; height:20px;">
-                    <h2 style="font-size: 40px; text-align: center;"><strong>Redes Sociales</strong></h2>
-                    <li ng-repeat="link in ctrl.links">
-                        <a target="_blank" ng-href="{{link}}">{{link}}</a>
-                    </li>
-                    <br>
-                </div>
-            </div>
-        </div-->
+        
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-redesSociales" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground|| '#23527C'}}; height:20px;">
                     <h2 style="font-size: 40px; text-align: center;"><strong>Redes Sociales</strong></h2>
-                        <ol style="list-style-type: none; line-height: 2em; position: relative; bottom: -5em;" >
-                            <li ng-if="ctrl.links" ng-repeat="link in ctrl.links">
-                                <a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};" ng-href="{{link}}">{{$index + 1}}. {{link}}</a>
-                            </li>
-                        </ol>
+                    <ol style="list-style-type: none; line-height: 2em; position: relative; bottom: -5em;" >
+                        <li ng-if="ctrl.links" ng-repeat="link in ctrl.links">
+                            <a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};" ng-href="{{link}}">{{$index + 1}}. {{link}}</a>
+                        </li>
+                    </ol>
                     <br>
                     <br>
                     <br>
