@@ -1,5 +1,5 @@
 // para correr las pruebas, se corre en la consola jasmine-node spec/
-/*describe("Copy Test", function() {
+describe("Copy Test", function() {
     it("copy body to página", function(done){
         var copy = require("./../src/copy");
         paginaVacia = {};
@@ -19,8 +19,7 @@
             face: "jonasnahum",
             flickr: "confeccionescolombia",
             whats: "4521652247",
-            link1: "algun link",
-            link2: "algun link2",
+            links: [],
             email: "jonasnahum@gmail.com",
             productos: [], 
             nota: "ninguna",
@@ -49,8 +48,7 @@
             face :"jonasnahum",
             flickr :"confeccionescolombia",
             whats : "4521652247",
-            link1 :"algun link",
-            link2 : "algun link2",
+            links : [],
             email : "jonasnahum@gmail.com",
             productos : [],
             nota : "ninguna",
@@ -108,4 +106,4 @@
         expect(actual).toEqual(expected);
         done();
     });
-});*/
+});

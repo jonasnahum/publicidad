@@ -9,24 +9,24 @@ var PaginaWebApi = (function() {
     PaginaWebApi.prototype.getAll = function(req, res, next) {
         var that = this;       
         
-        that.models.paginaWeb.find({}).populate('_usuario')
+        that.models.paginaWeb.find().populate('_usuario')
             .exec(function (err, paginas) {
-                if (err) return console.log(err);
+                if (err) return next(err);
                 return res.json(paginas);
             });   
     };
 
     PaginaWebApi.prototype.getByUniqueName = function(req, res, next) {
         var that = this;            
-        that.models.usuario.findOne({"uniquename": req.params.uniquename})    
-            .exec(function(err, usuario){
+        that.models.usuario.findOne({"uniquename": req.params.uniquename}function(err, usuario){
             if (err) return next(err);
             that.models.paginaWeb.find({"_usuario": usuario._id}).populate('_usuario')    
             .exec(function(err, negocio){
                 if (err) return console.log(err);
                 return res.json(negocio);
             });
-        });
+        })    
+        
     };
       
    PaginaWebApi.prototype.save = function(req, res, next){

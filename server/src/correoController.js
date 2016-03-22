@@ -5,7 +5,6 @@ module.exports = (function() {
         this.router = this.express.Router();
         
         var router = this.router;
-        
         router.post('/', correoApi.send.bind(correoApi));
         
     }

@@ -5,6 +5,7 @@ var CorreoApi = (function() {
     };
     CorreoApi.prototype.send = function(req, res, next){
         var that = this;
+        
         var transporter = that.nodemailer.createTransport({
             service: 'gmail',
             auth: {

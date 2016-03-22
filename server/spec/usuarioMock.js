@@ -2,6 +2,7 @@ var Usuario = function() {
 };
 Usuario.errors = [];
 Usuario.db = [];
+Usuario._path = undefined;
 
 Usuario.setError = function(method, err) {
     Usuario.errors[method] = err;
@@ -9,8 +10,18 @@ Usuario.setError = function(method, err) {
 Usuario.getError = function(method) {
     return Usuario.errors[method];
 };
+Usuario.populate = function(_path){
+    Usuario._path = _path;
+    return this;
+};
+Usuario.exec = function(callback){
+    callback(Usuario.errors["find"], Usuario.db);    
+};
 
 Usuario.find = function(callback) {//puede ser parecido a remove.
+    if (arguments[0] == null){//for populate
+        return Usuario; 
+    }
     if (typeof callback == "object"){
         var found = undefined;
         for(var i = 0; i < Usuario.db.length; i++) {
@@ -25,8 +36,14 @@ Usuario.find = function(callback) {//puede ser parecido a remove.
 };
 Usuario.findOne = function(obj, callback) {
     var found = undefined;
+    var valueOfProperty = undefined;//returns el valor de la primera propiedad
+    var nameOfProperty = undefined;
+    for(var name in obj) {
+        nameOfProperty = name;
+        valueOfProperty = obj[name];
+    }
     for(var i = 0; i < Usuario.db.length; i++) {
-        if(Usuario.db[i].email === obj.email) {
+        if(Usuario.db[i].nameOfProperty === obj.valueOfProperty) {
             found = Usuario.db[i];
             break;
         }
