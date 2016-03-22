@@ -25,9 +25,8 @@ var CorreoApi = (function() {
         };
         transporter.sendMail(mailOptions, function(error, info){
             if(error){
-                return console.log(error);
+                return next(error);
             }
-            console.log(mailOptions);
             res.json({ success: true });
         });
     };                       
