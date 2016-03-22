@@ -1,12 +1,13 @@
 (function() {
     var app = angular.module('app');
-    var depArr = ['$routeParams', '$location', 'mapFactory', 'productosFactory', 'modelFactory', 'paginasProxy'];  
-    depArr.push(function($route, $location, mapFactory, productosFactory, modelFactory, paginasProxy) {
+    var depArr = ['$routeParams', '$location', 'mapFactory', 'productosFactory', 'modelFactory', 'paginasProxy', 'linkFactory'];  
+    depArr.push(function($route, $location, mapFactory, productosFactory, modelFactory, paginasProxy, linkFactory) {
         var ctrl = this;
         
         ctrl.empresaId= $route.id;
        
         var prod = productosFactory();
+        var linkObj = linkFactory();
         var modelInstance = modelFactory();
         
 
@@ -45,6 +46,17 @@
         };
         ctrl.borrarProductos = function() {
             ctrl.productos = prod.borrarProductos(ctrl.productos);
+        };
+        
+        
+        ctrl.agregarLink = function() {
+            ctrl.link = linkObj.agregarLink(ctrl.links, ctrl.link);
+        };
+        ctrl.removerLink = function() {
+            ctrl.links = linkObj.removerLink(ctrl.links, ctrl.numLinkARemover);
+        };
+        ctrl.borrarLinks = function() {
+            ctrl.links = linkObj.borrarLinks(ctrl.links);
         };
         
         ctrl.editar = function(){ 

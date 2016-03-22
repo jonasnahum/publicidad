@@ -104,15 +104,12 @@
             <br />
             <label>Flickr:</label> <a ng-href="{{ctrl.flickr}}">{{ctrl.flickr}}</a>
             <br />    
-            <label>Link1:</label> <a ng-href="{{ctrl.link1}}">{{ctrl.link1}}</a>
-            <br />    
-            <label>Link2:</label> <a ng-href="{{ctrl.link2}}">{{ctrl.link2}}</a>
-            <br />    
-            <label>Link3:</label> <a ng-href="{{ctrl.link3}}">{{ctrl.link3}}</a>
-            <br />    
-            <label>Link4:</label> <a ng-href="{{ctrl.link4}}">{{ctrl.link4}}</a>
-            <br />    
-            <label>Link5:</label> <a ng-href="{{ctrl.link5}}">{{ctrl.link5}}</a>
+            <label>Redes sociales:</label> <a ng-href="{{ctrl.flickr}}">{{ctrl.flickr}}</a>
+            <ol>
+                <li ng-repeat="link in ctrl.links">
+                    <a href="{{link}}" target="_blank">{{link}}</a>
+                </li>
+            </ol>
             <br />
             <label>Email:</label> {{ctrl.email}}
         </div>

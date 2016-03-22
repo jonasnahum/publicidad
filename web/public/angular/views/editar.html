@@ -154,7 +154,7 @@
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
 
-                <label>Encargado: </label>
+                <label>Contacto: </label>
                 <input class="form-control" type="text" ng-model="ctrl.encargado" name="encargado" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-minlength="10" ng-maxlength="40" required/>
                 <div class="errorMessages" ng-messages="frmEditar.encargado.$error" ng-if="!frmEditar.encargado.$pristine || frmEditar.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
@@ -172,12 +172,6 @@
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
 
-                <label>Whatsapp:</label>
-                <input class="form-control" type="text" ng-model="ctrl.whats" name="whats" ng-minlength="10" ng-maxlength="10" ng-pattern="/^[0-9]+$/"/>
-                <div class="errorMessages" ng-messages="frmEditar.whats.$error" ng-if="!frmEditar.whats.$pristine || frmEditar.$submitted" role="alert">
-                    <div ng-messages-include="/error/messages.html"></div>
-                </div>
-
                 <label>Facebook :</label>
                 <input class="form-control" type="text" ng-model="ctrl.face" name="face" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
                 <div class="errorMessages" ng-messages="frmEditar.face.$error" ng-if="!frmEditar.face.$pristine || frmEditar.$submitted" role="alert">
@@ -189,37 +183,44 @@
                 <div class="errorMessages" ng-messages="frmEditar.flickr.$error" ng-if="!frmEditar.flickr.$pristine || frmEditar.$submitted" role="alert">
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
+                
+                <label>Whatsapp:</label>
+                <input class="form-control" type="text" ng-model="ctrl.whats" name="whats" ng-minlength="10" ng-maxlength="10" ng-pattern="/^[0-9]+$/"/>
+                <div class="errorMessages" ng-messages="frmEditar.whats.$error" ng-if="!frmEditar.whats.$pristine || frmEditar.$submitted" role="alert">
+                    <div ng-messages-include="/error/messages.html"></div>
+                </div>
+ 
+            </div>
+        </div>
+        
+        <div class="panel panel-default" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+        <div class="panel-heading">Redes sociales</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Links</label>
+                        <input class="form-control" type="text" ng-model="ctrl.link" name="link" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
+                        <div class="errorMessages" ng-messages="frmEditar.link.$error" ng-if="!frmEditar.link.$pristine || frmEditar.$submitted" role="alert">
+                            <div ng-messages-include="/error/messages.html"></div>
+                        </div>
 
-                <label>Link1</label>
-                link1 : <input class="form-control" type="text" ng-model="ctrl.link1" name="link1" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
-                <div class="errorMessages" ng-messages="frmEditar.link1.$error" ng-if="!frmEditar.link1.$pristine || frmEditar.$submitted" role="alert">
-                    <div ng-messages-include="/error/messages.html"></div>
-                </div>
+                        <a href ng-click="ctrl.agregarLink()" type="button" class="btn btn-success btn-sm">Agregar link</a>
+                    </div>
+                    <div class="col-md-6">
+                        Links Agregados: 
+                        <ol class="list-group">
+                            <li ng-repeat="link in ctrl.links"  class="list-group-item">
+                                <strong>{{$index + 1}}. </strong> {{link}}
+                            </li>
+                        </ol>
 
-                <label>Link2</label>
-                link2 : <input class="form-control" type="text" ng-model="ctrl.link2" name="link2" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
-                <div class="errorMessages" ng-messages="frmEditar.link2.$error" ng-if="!frmEditar.link2.$pristine || frmEditar.$submitted" role="alert">
-                    <div ng-messages-include="/error/messages.html"></div>
+                        <label>Número del link a borrar:</label>
+                        <input class="form-control" type="text" ng-model="ctrl.numLinkARemover"/>
+                        <br />
+                        <a href ng-click="ctrl.removerLink()" type="button" class="btn btn-danger btn-sm">Borrar link</a> 
+                        <a href ng-click="ctrl.borrarLinks()" type="button" class="btn btn-danger btn-sm">Borrar todos los links</a>
+                    </div>
                 </div>
-                
-                <label>Link3</label>
-                link3 : <input class="form-control" type="text" ng-model="ctrl.link3" name="link3" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
-                <div class="errorMessages" ng-messages="frmEditar.link3.$error" ng-if="!frmEditar.link3.$pristine || frmEditar.$submitted" role="alert">
-                    <div ng-messages-include="/error/messages.html"></div>
-                </div>
-                
-                <label>Link4</label>
-                link4 : <input class="form-control" type="text" ng-model="ctrl.link4" name="link4" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
-                <div class="errorMessages" ng-messages="frmEditar.link4.$error" ng-if="!frmEditar.link4.$pristine || frmEditar.$submitted" role="alert">
-                    <div ng-messages-include="/error/messages.html"></div>
-                </div>
-                
-                <label>Link5</label>
-                link5 : <input class="form-control" type="text" ng-model="ctrl.link5" name="link5" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
-                <div class="errorMessages" ng-messages="frmEditar.link5.$error" ng-if="!frmEditar.link5.$pristine || frmEditar.$submitted" role="alert">
-                    <div ng-messages-include="/error/messages.html"></div>
-                </div>
-                
             </div>
         </div>
         
@@ -265,8 +266,6 @@
                         <input class="form-control" type="text" ng-model="ctrl.remover"/>
                         <br />
                         <a href ng-click="ctrl.removerProducto()" type="button" class="btn btn-danger btn-sm">Remover producto</a>
-                        <br />
-                        <br />
                         <a href ng-click="ctrl.borrarProductos()" type="button" class="btn btn-danger btn-sm">Borrar todos los productos</a>
                     </div>
                 </div>
