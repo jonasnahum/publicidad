@@ -18,7 +18,7 @@ var PaginaWebApi = (function() {
 
     PaginaWebApi.prototype.getByUniqueName = function(req, res, next) {
         var that = this;            
-        that.models.usuario.findOne({"uniquename": req.params.uniquename}function(err, usuario){
+        that.models.usuario.findOne({"uniquename": req.params.uniquename},function(err, usuario){
             if (err) return next(err);
             that.models.paginaWeb.find({"_usuario": usuario._id}).populate('_usuario')    
             .exec(function(err, negocio){
