@@ -2,13 +2,13 @@
 <link rel="stylesheet" href="./../../../stylesheets/form-elements.css">
 <link rel="stylesheet" href="./../../../stylesheets/styleSignin.css">
 
-<div class="top-content" style="color: #fff; font-family: 'Roboto', sans-serif;">
+<div class="top-content" style="color: #fff; font-family: 'Roboto', sans-serif; background: white;">
     <div class="inner-bg">
         <div class="container">
             
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 form-box">
-                    <div class="form-top">
+                    <div class="form-top" style="background: rgb(35, 82, 124);">
                         <div class="form-top-left">
                             <h3>Registrarse</h3>
                             <p style="font-size: 18px;">
@@ -20,7 +20,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="form-bottom">
+                    <div class="form-bottom" style="background: rgb(35, 82, 124);">
                         <form name="frmSignup" ng-submit="frmSignup.$valid && ctrl.signup()" ng-controller="SignupPublicoController as ctrl" novalidate>
                             <div class="form-group">
                                 <label for="form-cliente">* Nombre del cliente</label><!-- class="sr-only" -->
@@ -64,7 +64,7 @@
                                     <div ng-messages-include="/error/messages.html"></div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn"><!--btn-success-->Continuar</button>
+                            <button type="submit" class="btn btn-success" style="background-color: #449d44">Continuar</button>
                         </form>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 social-login">
                     <div class="social-login-buttons">
-                        <a class="btn btn-link-2" href="#/">Cancelar</a>
+                        <a class="btn btn-link-2 btn-danger" href="#/">Cancelar</a>
                     </div>
                 </div>
             </div>
@@ -81,59 +81,3 @@
         </div>
     </div>
 </div>
-<script src="./../../../js/jquery.backstretch.js"></script>
-<script src="./../../../js/scripts.js"></script>
-
-
-
-<!--div class="container">
-<h1>Registrarse</h1>
-<form name="frmSignup" ng-submit="frmSignup.$valid && ctrl.signup()" ng-controller="SignupPublicoController as ctrl" novalidate>
-    <div class="form-group">  
-        
-        <h3>Información del cliente</h3><small class="text-muted">La siguiente información es privada y confidencial, no aparecerá en su página web publicitaria, es para registrarlo como socio en www.weburuapan.com (Excepto uniquename).</small>
-
-        <br />
-        <label>*Nombre del cliente</label> 
-        <input class="form-control" type="text" ng-model="ctrl.cliente" name="cliente" ng-minlength="10" ng-maxlength="40" required ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" style="width:30%;"/>
-        <div class="errorMessages" ng-messages="frmSignup.cliente.$error" 
-             ng-if="!frmSignup.cliente.$pristine || frmSignup.$submitted" role="alert">
-            <div ng-messages-include="/error/messages.html"></div>
-        </div>
-
-        <label>*Uniquename </label><small class="text-muted">  Agregue un nombre (en minúsculas y sin espacios intermedios) para crear su dirección de internet (URL)</small>
-        <input class="form-control" type="text" ng-model="ctrl.uniquename" name="uniquename" ng-pattern="/^[a-zA-Z0-9ñ]+$/" required style="width:30%;"/>
-        <div class="errorMessages" ng-messages="frmSignup.uniquename.$error" 
-             ng-if="!frmSignup.uniquename.$pristine || frmSignup.$submitted" role="alert">
-            <div ng-messages-include="/error/messages.html"></div>
-        </div>
-        <label>Su URL (dirección de internet) será : http://weburuapan.com/#/{{ctrl.uniquename}}</label>
-        <br />
-
-        <label>*Teléfono:</label>
-        <input class="form-control" type="text" ng-model="ctrl.telCliente" name="telCliente" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[0-9]+$/" required style="width:30%;"/>
-        <div class="errorMessages" ng-messages="frmSignup.telCliente.$error" 
-             ng-if="!frmSignup.telCliente.$pristine || frmSignup.$submitted"
-             role="alert">
-            <div ng-messages-include="/error/messages.html"></div>
-        </div>
-        
-        <label>*Email:</label>
-        <input class="form-control" type="email" name="email" ng-model="ctrl.email" 
-        required maxlength="60" style="width:30%;" ng-pattern="/^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/"/>
-        <div class="errorMessages" ng-messages="frmSignup.email.$error" ng-if="!frmSignup.email.$pristine || frmSignup.$submitted" role="alert" >
-            <div ng-messages-include="/error/messages.html"></div>
-        </div>
-
-        <label>*Contraseña:</label>
-        <input  class="form-control" type="password" name="password" ng-model="ctrl.password" 
-        required required maxlength="60"  style="width:30%;"/>
-        <div class="errorMessages" ng-messages="frmSignup.password.$error" ng-if="!frmSignup.password.$pristine || frmSignup.$submitted" role="alert" >
-            <div ng-messages-include="/error/messages.html"></div>
-        </div>
-    
-    </div>
-    <input type="submit" class="btn btn-primary btn-lg" role="button" value="Continuar" />
-    <a class="btn btn-primary btn-lg" role="button" ng-href="#/">Cancelar</a>
-</form>
-</div-->
