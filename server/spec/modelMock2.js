@@ -24,6 +24,28 @@ PaginaWeb.find = function(objetoBuscado) {
     PaginaWeb.objetoBuscado = objetoBuscado;
     return this;
 };
+PaginaWeb.findOne = function(obj, callback) {
+    var found = undefined;
+    var valueOfProperty = undefined;//returns el valor de la primera propiedad
+    var nameOfProperty = undefined;
+    for(var name in obj) {
+        nameOfProperty = name;
+        valueOfProperty = obj[name];
+    }
+    for(var i = 0; i < PaginaWeb.db.length; i++) {
+        if(PaginaWeb.db[i].nameOfProperty === obj.valueOfProperty) {
+            found = PaginaWeb.db[i];
+            break;
+        }
+    }
+    callback(PaginaWeb.errors["findOne"], found);    
+};
+
+
+
+
+
+
 PaginaWeb.findById = function(id, callback) {
     var found = undefined;
     for(var i = 0; i < PaginaWeb.db.length; i++) {

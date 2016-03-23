@@ -21,9 +21,9 @@ var PaginaWebApi = (function() {
         that.models.usuario.findOne({"uniquename": req.params.uniquename},function(err, usuario){
             if (err) return next(err);
             that.models.paginaWeb.find({"_usuario": usuario._id}).populate('_usuario')    
-            .exec(function(err, negocio){
-                if (err) return console.log(err);
-                return res.json(negocio);
+            .exec(function(err, pw){
+                if (err) return next(err);
+                return res.json(pw);
             });
         })    
         
