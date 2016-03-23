@@ -1,6 +1,6 @@
 <script type="text/javascript" src="./../../../js/datepicker.js"></script>
 
-<div ng-controller="NuevoPublicoController as ctrl" class="container" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}; padding-top: 8%;">
+<div ng-controller="NuevoPublicoController as ctrl" class="container" style="color: {{ctrl.colorText}}; background-color: {{ctrl.colorBackground}}; padding-top: 8%;">
     <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()" role="form" novalidate>
         <h2>Empresa</h2>
         <small><strong>NOTA: </strong>Los campos marcados con asterisco (*) son obligatorios.</small>        
