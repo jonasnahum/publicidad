@@ -14,7 +14,7 @@ var UsuariosApi = (function() {
     
     
     UsuariosApi.prototype.save = function(req, res, next) {
-        var that = this;        
+        var that = this; 
         var usuario = that.usuarioFactory.get();
         for (var property in req.body){
             usuario[property] = req.body[property];

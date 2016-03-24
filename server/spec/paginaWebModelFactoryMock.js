@@ -1,9 +1,9 @@
-var PaginaWeb = require("./paginaWebMock");
+var PaginaWeb = require("./modelMock1");
 
-var paginaWebFactory = {
+var modelFactory = {
     get: function() {
         return new PaginaWeb();
     }
 };
 
-module.exports = paginaWebFactory;
+module.exports = modelFactory;
