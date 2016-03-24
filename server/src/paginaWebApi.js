@@ -28,6 +28,16 @@ var PaginaWebApi = (function() {
         })    
         
     };
+    
+    PaginaWebApi.prototype.getOne = function(req, res, next) {
+        var that = this;  
+        that.models.paginaWeb.findOne({ _id: req.params.id })
+        .populate('_usuario')
+        .exec(function (err, pagina) {
+            if (err) return next(err);
+            res.json(pagina);
+        });
+   };
       
    PaginaWebApi.prototype.save = function(req, res, next){
         var that = this;
@@ -40,28 +50,24 @@ var PaginaWebApi = (function() {
         }); 
    };
 
-    PaginaWebApi.prototype.getOne = function(req, res, next) {
-        var that = this;  
-        that.models.paginaWeb.findOne({ _id: req.params.id })
-        .populate('_usuario')
-        .exec(function (err, pagina) {
-            if (err) return next(err);
-            res.json(pagina);
-        });
-   };
-  
    PaginaWebApi.prototype.update = function(req, res, next) {
         var that = this;
+        //uses body to find a user.
         that.models.usuario.findById(req.body.userId, function(err, usuario) {
-            if(err)  return console.log(err);
+            if(err)  return next(err);
+            //uses body to update user.
             usuario = that.copy.copyBodyToUsuario(req.body,usuario);
+            //saves user.
             usuario.save(function(err, usuario){
-                if(err)  return console.log(err);
+                if(err)  return next(err);
+                //uses params to find a saved page.
                 that.models.paginaWeb.findById(req.params.id, function (err, pagina) {
                     if(err) return next(err);
+                    //uses body to update the page
                     pagina = that.copy.copyBodyToPagina(req.body, pagina);
+                    //saves the page
                     pagina.save(function(err, pag) {
-                        if(err)return console.log(err);
+                        if(err)return next(err);
                         res.json(pag);
                     }); 
                 });
