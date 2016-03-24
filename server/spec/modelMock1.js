@@ -12,18 +12,49 @@ PaginaWeb.setError = function(method, err) {
 PaginaWeb.getError = function(method) {
     return PaginaWeb.errors[method];
 };
+
 PaginaWeb.populate = function(_path) {
     PaginaWeb._path = _path;
     return this;
 };
 PaginaWeb.exec = function(callback) {
-    callback(PaginaWeb.errors[PaginaWeb.metodoQueBusca], PaginaWeb.db);
+    callback(PaginaWeb.getError(PaginaWeb.metodoQueBusca), PaginaWeb.findByProperty());
 };
 PaginaWeb.find = function(objetoBuscado) {
     PaginaWeb.metodoQueBusca = "find";
     PaginaWeb.objetoBuscado = objetoBuscado;
     return this;
 };
+
+
+
+
+
+PaginaWeb.findByProperty = function() {
+    var obj = PaginaWeb.objetoBuscado;
+    if(obj == undefined){
+        return PaginaWeb.db;
+    }
+    var found = undefined;
+    var valueOfProperty = undefined;//returns el valor de la primera propiedad
+    var nameOfProperty = undefined;
+    for(var name in obj) {
+        nameOfProperty = name;
+        valueOfProperty = obj[name];
+    }
+    for(var i = 0; i < PaginaWeb.db.length; i++) {
+        if(PaginaWeb.db[i].nameOfProperty === obj.valueOfProperty) {
+            found = PaginaWeb.db[i];
+            break;
+        }
+    }
+    return found;
+};
+
+
+
+
+
 PaginaWeb.findById = function(id, callback) {
     var found = undefined;
     for(var i = 0; i < PaginaWeb.db.length; i++) {
