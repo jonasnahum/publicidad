@@ -12,6 +12,7 @@ a {
 
 .errorMessages {
     color: crimson;
+    font-family: 'Roboto', sans-serif;
 }
 /*
 .thumb {

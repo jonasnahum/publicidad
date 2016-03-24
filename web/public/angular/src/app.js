@@ -5,13 +5,10 @@
         
         $httpProvider.interceptors.push('httpInterceptor');
 //publico
-        //$router.when("/", { templateUrl: "angular/views/todosPublico.html"})
-        //$router.when("/", { templateUrl: "angular/views/presentacion.html"})
-        $router.when("/", { templateUrl: "angular/views/todosPub.html"})
+        $router.when("/", { templateUrl: "angular/views/todosPublico.html"})
         $router.when('/signin', { templateUrl: "angular/views/signin.html" })
         $router.when('/signup', { templateUrl: "angular/views/signup.html" })
         $router.when("/:negocio", { templateUrl: "angular/views/negocio.html" })
-        //$router.when("/publico/about/:scrollTo", { templateUrl: "angular/views/about.html" })
         $router.when("/publico/about", { templateUrl: "angular/views/about.html" })
         $router.when("/publico/contact", { templateUrl: "angular/views/contact.html" })
         $router.when("/error", { templateUrl: "angular/views/error.html" })
@@ -26,14 +23,5 @@
                      { templateUrl: "angular/views/editar.html" })
         .otherwise({ redirectTo: "/" });
     }]);
-    
-    /*
-    app.run(function($rootScope, $location, $anchorScroll, $routeParams) {
-      $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
-        $location.hash($routeParams.scrollTo);
-        $anchorScroll();  
-      });
-    })
-    */
     
 })();

@@ -172,18 +172,6 @@
                     <div ng-messages-include="/error/messages.html"></div>
                 </div>
 
-                <label>Facebook :</label>
-                <input class="form-control" type="text" ng-model="ctrl.face" name="face" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
-                <div class="errorMessages" ng-messages="frmEditar.face.$error" ng-if="!frmEditar.face.$pristine || frmEditar.$submitted" role="alert">
-                    <div ng-messages-include="/error/messages.html"></div>
-                </div>
-
-                <label>flickr :</label>
-                <input class="form-control" type="text" ng-model="ctrl.flickr" name="flickr" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
-                <div class="errorMessages" ng-messages="frmEditar.flickr.$error" ng-if="!frmEditar.flickr.$pristine || frmEditar.$submitted" role="alert">
-                    <div ng-messages-include="/error/messages.html"></div>
-                </div>
-                
                 <label>Whatsapp:</label>
                 <input class="form-control" type="text" ng-model="ctrl.whats" name="whats" ng-minlength="10" ng-maxlength="10" ng-pattern="/^[0-9]+$/"/>
                 <div class="errorMessages" ng-messages="frmEditar.whats.$error" ng-if="!frmEditar.whats.$pristine || frmEditar.$submitted" role="alert">
@@ -209,7 +197,7 @@
                     <div class="col-md-6">
                         Links Agregados: 
                         <ol class="list-group">
-                            <li ng-repeat="link in ctrl.links"  class="list-group-item">
+                            <li ng-repeat="link in ctrl.links"  class="list-group-item" style="color: black;">
                                 <strong>{{$index + 1}}. </strong> {{link}}
                             </li>
                         </ol>
@@ -256,7 +244,7 @@
                     <div class="col-md-6">
                         Productos Agregados: 
                         <ol class="list-group">
-                            <li ng-repeat="producto in ctrl.productos"  class="list-group-item">
+                            <li ng-repeat="producto in ctrl.productos"  class="list-group-item" style="color: black;">
                                 <strong>{{$index + 1}}. {{producto.titulo}}</strong> {{producto.parrafo}}
                                 <img src="{{producto.foto}}" width="20%" height="20%"  class="foto" ng-show="producto.foto" class="label label-default label-pill pull-xs-right">
                             </li>
