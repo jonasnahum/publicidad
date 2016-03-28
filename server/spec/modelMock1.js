@@ -49,7 +49,13 @@ PaginaWeb.findById = function(id, callback) {
     callback(PaginaWeb.errors["findById"], found);
 };
 
-
+PaginaWeb.findByIdAndRemove = function(id, callback) {
+    PaginaWeb.objetoBuscado = id;
+    var found = PaginaWeb.findByProperty ();
+    var index = PaginaWeb.db.indexOf(found);
+    PaginaWeb.db.splice(index, 1);
+    callback(PaginaWeb.errors["findByIdAndRemove"], found);
+};
 
 
 PaginaWeb.findByProperty = function() {
@@ -73,19 +79,6 @@ PaginaWeb.findByProperty = function() {
     return found;
 };
 
-
-
-
-
-
-PaginaWeb.findByIdAndRemove = function(id, callback) {
-    PaginaWeb.findById(id, function(err, found) {
-        if(err) return callback(err, found);
-        var index = PaginaWeb.db.indexOf(found);
-        PaginaWeb.db.splice(index, 1);
-        callback(PaginaWeb.errors["findByIdAndRemove"], found);
-    });
-};
 
 
 module.exports = PaginaWeb;

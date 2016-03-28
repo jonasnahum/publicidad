@@ -161,6 +161,7 @@ describe("usuarios api", function() {
     
     it("delete method", function(done) {
         var usuarioMock = require("./usuarioMock");
+        var usuarioMock = require("./usuarioMock");
         var usuarioFactory = require("./usuarioModelFactoryMock");
         var requestMock = require("./requestMock");
         var responseMock = require("./responseMock");
@@ -170,12 +171,11 @@ describe("usuarios api", function() {
         usuarioMock.setError("save", undefined);
         usuarioMock.setError("findById", undefined);
         usuarioMock.setError("findByIdAndRemove", undefined);
-        
+        usuarioMock.db = [];       
         requestMock.body = {nombre: "Luis", calificacion: 2, id: 4};
         
         api.save(requestMock, responseMock, null);
         requestMock.params = {id: 4};
-        
         api.delete(requestMock, responseMock, null);
         expect(responseMock.value.nombre).toBe(requestMock.body.nombre);
         expect(responseMock.value.calificacion).

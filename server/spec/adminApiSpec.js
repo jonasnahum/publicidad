@@ -178,6 +178,7 @@ describe("admin api", function() {
         modelMock.setError("findByIdAndRemove", null);//se ocupa quitar el error de estos metodos.
         modelMock.setError("findById", null);
         modelMock.setError("save", null);
+        modelMock.db = [];
         
         requestMock.body = {nombre: "Luis", calificacion: 2, id: 4};
         api.save(requestMock, responseMock, null);

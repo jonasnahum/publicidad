@@ -89,7 +89,6 @@ var AdminApi = (function() {
     //curl -X "DELETE" http://localhost:3000/admin/api/56d0808aef098b3312528ee2
     AdminApi.prototype.delete = function(req, res, next) {
         var that = this;
-        
         that.models.admin.findByIdAndRemove(req.params.id, function(err, ad) {
             if(err) return next(err);
             res.json(ad);
