@@ -68,12 +68,36 @@ Usuario.prototype.save = function(callback) {
     return callback(Usuario.errors["save"], this);
 };
 Usuario.findByIdAndRemove = function(id, callback) {
-    Usuario.findById(id, function(err, found) {
-        if(err) return callback(err, found);
-        var index = Usuario.db.indexOf(found);
-        Usuario.db.splice(index, 1);
-        callback(Usuario.errors["findByIdAndRemove"], found);
-    });
+    var objId = undefined;
+    if (typeof id == "number"){
+        objId = {id: id};
+    }else{
+        objId = id;
+    }
+    var found = Usuario.findByProperty(objId);
+    var index = Usuario.db.indexOf(found);
+    Usuario.db.splice(index, 1);
+    callback(Usuario.errors["findByIdAndRemove"], found);
+};
+
+Usuario.findByProperty = function(obj) {    
+    if(obj == undefined){
+        return Usuario.db;
+    }
+    var found = undefined;
+    var valueOfProperty = undefined;//returns el valor de la primera propiedad
+    var nameOfProperty = undefined;
+    for(var name in obj) {
+        nameOfProperty = name;
+        valueOfProperty = obj[name];
+    }
+    for(var i = 0; i < Usuario.db.length; i++) {
+        if(Usuario.db[i].nameOfProperty === obj.valueOfProperty) {
+            found = Usuario.db[i];
+            break;
+        }
+    }
+    return found;
 };
 Usuario.remove = function(obj, callback) {
     if(obj.length === undefined){
