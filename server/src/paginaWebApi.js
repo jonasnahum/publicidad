@@ -12,6 +12,8 @@ var PaginaWebApi = (function() {
         that.models.paginaWeb.find().populate('_usuario')
             .exec(function (err, paginas) {
                 if (err) return next(err);
+            console.log("paginas");
+            console.dir(paginas);
                 return res.json(paginas);
             });   
     };
@@ -80,7 +82,7 @@ var PaginaWebApi = (function() {
        //borra el usuario.
        that.models.usuario.findByIdAndRemove({ _id: req.params.id }, function(err, user) {
            if(err) return next(err);
-           that.models.paginaWeb.findByIdAndRemove({_usuario: user.id}, function(err, pag) {
+           that.models.paginaWeb.remove({_usuario: user.id}, function(err, pag) {
                if(err) return next(err);
                res.json(pag);
            });
