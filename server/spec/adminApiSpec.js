@@ -1,5 +1,4 @@
-//FUNCIONA LO QUE NO ESTA COMENTADO
-/*describe("admin api", function() {
+describe("admin api", function() {
     //model
     var modelMock = require("./modelExperimentMock.js");
     var modelFactory = require("./usuarioModelFactoryMock");
@@ -67,7 +66,7 @@
         modelMock.setError("findOne", new Error("FindOne error from adminapispec"));
         /*modelMock.db = [
             {nombre: "Pedro", email: "jonasnahum@gmail.com", calificacion: 8, id: 1}
-        ];*-----------------------------------------------------------------------------------/
+        ];*/
         requestMock.body.email = "jonasnahum@gmail.com";   
         
         api.findByEmail(requestMock, responseMock,  function(err) {
@@ -130,8 +129,7 @@
         done();          
     });
     
-    //it("save method error", function(done) {      
-    it("save method error", function() {      
+    it("save method error", function(done) {      
         modelMock.setError("save", new Error("save method error from adminapispec"));
 
         api.save(requestMock, responseMock, function(err){
@@ -140,7 +138,7 @@
         });
     });
     
-    /*it("update method", function(done) {
+    it("update method", function(done) {
         modelMock.setError("save", null);
         modelMock.setError("findById", null);
         modelMock.setError("find", null);
@@ -158,7 +156,6 @@
         expect(responseMock.value.calificacion).toBe(body2.calificacion);
         done();
     });
-    
     
     it("update, save method error", function(done) {
         modelMock.setError("save", new Error("save error from adminapispec"));
@@ -181,7 +178,6 @@
         });      
         
     });
-  
   
     it("delete method", function(done) {
         modelMock.setError("findByIdAndRemove", null);//se ocupa quitar el error de estos metodos.
@@ -206,9 +202,6 @@
         done();
         
     });
-    
-    *----------------------------------------------------------------------------------/
-    
     
     it("delete method error", function(done) {
         modelMock.setError("findByIdAndRemove", new Error("findByIdAndRemove error from adminapispec"));
@@ -246,4 +239,3 @@
     });
     
 });
-*/

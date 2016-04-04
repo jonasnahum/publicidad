@@ -21,7 +21,10 @@ PaginaWeb.exec = function(callback) {
     callback(PaginaWeb.getError(PaginaWeb.metodoQueBusca), PaginaWeb.findByProperty());
 };
 PaginaWeb.find = function(callback) {
-    if(arguments[0] == null) {//fir populate
+      PaginaWeb.metodoQueBusca = "find";
+    callback(PaginaWeb.getError(PaginaWeb.metodoQueBusca), PaginaWeb.findByProperty());
+  
+    /*if(arguments[0] == null) {//fir populate
         return PaginaWeb;
     }
     if(typeof callback == "object") {
@@ -37,6 +40,7 @@ PaginaWeb.find = function(callback) {
             return found;
     }
     callback(PaginaWeb.errors["find"], PaginaWeb.db);  
+    */
 };
 /*
 PaginaWeb.find = function(objetoBuscado) {
@@ -56,15 +60,13 @@ PaginaWeb.findOne = function(objetoBuscado) {
     return this;
 };
 */
-
-PaginaWeb.save = function(callback) {
+PaginaWeb.prototype.save = function(callback) {
     var index = PaginaWeb.db.indexOf(this);
     if(index === -1)
         PaginaWeb.db.push(this);
     
     return callback(PaginaWeb.errors["save"], this);
 };
-
 PaginaWeb.findById = function(id, callback) {
     var found = undefined;
     for(var i = 0; i < PaginaWeb.db.length; i++) {

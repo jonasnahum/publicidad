@@ -76,9 +76,9 @@ var AdminApi = (function() {
     AdminApi.prototype.update = function(req, res, next) {
         var that = this;
         that.models.admin.findById(req.params.id, function(err, admin) {
-            console.log("UPDATE ERR " + err);
-            console.log("UPDATE admin " + admin);
             if(err)  return next(err);
+            console.log("UPDATE admin ");
+            console.dir(admin);
             for (var property in req.body){
                 admin[property] = req.body[property];
             }
