@@ -1,4 +1,5 @@
-describe("Admin Controller", function() {
+//FUNCIONA
+/*describe("Admin Controller", function() {
     var modelMock = require("./usuarioMock");
     var modelFactory = require("./usuarioModelFactoryMock");
     //se prepara api
@@ -159,3 +160,5 @@ describe("Admin Controller", function() {
         done();
     });
 });
+
+*/

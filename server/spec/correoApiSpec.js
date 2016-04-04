@@ -1,4 +1,5 @@
-describe("correo api", function() {
+//FUNCIONA
+/*describe("correo api", function() {
         
         var responseMock = require("./responseMock");
         var requestMock = require("./requestMock");
@@ -31,3 +32,4 @@ describe("correo api", function() {
         });
     });
 });
+*/

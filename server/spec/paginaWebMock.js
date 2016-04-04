@@ -1,4 +1,4 @@
-var PaginaWeb = function() {
+/*var PaginaWeb = function() {
 };
 PaginaWeb.errors = [];
 PaginaWeb.db = [];
@@ -50,4 +50,4 @@ PaginaWeb.prototype.save = function(callback) {
     return callback(PaginaWeb.errors["save"], this);
 };
 
-module.exports = PaginaWeb;
+module.exports = PaginaWeb;*/

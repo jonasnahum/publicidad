@@ -1,4 +1,4 @@
-describe("Usuario Controller", function() {
+/*describe("Usuario Controller", function() {
     it("getAll", function(done) {
         //se prepara la bd.
         var usuarioMock = require("./usuarioMock");
@@ -339,3 +339,4 @@ describe("Usuario Controller", function() {
     });
 
 });
+*/

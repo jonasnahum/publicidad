@@ -1,5 +1,6 @@
+//FUNCIONA
 // para correr las pruebas, se corre en la consola jasmine-node spec/
-describe("Copy Test", function() {
+/*describe("Copy Test", function() {
     it("copy body to página", function(done){
         var copy = require("./../src/copy");
         paginaVacia = {};
@@ -107,3 +108,4 @@ describe("Copy Test", function() {
         done();
     });
 });
+*/

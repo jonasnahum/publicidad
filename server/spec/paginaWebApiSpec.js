@@ -1,4 +1,56 @@
+/*describe("paginasweb api", function() {
+    //model
+    var modelMock = require("./modelExperimentMock");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
+    var modelFactory = require("./paginaWebModelFactoryMock");
+    var usuarioFactory = require("./usuarioModelFactoryMock");
 
+
+    var responseMock = require("./responseMock");
+    var requestMock = require("./requestMock");
+    
+    //api
+    var PaginaWebApi = require("./../src/paginaWebApi");
+    var UsuarioApi = require("./../src/usuarioApi");
+
+    var copy = require("./copyMock");
+    var api = new PaginaWebApi({paginaWeb: modelMock, usuario: modelMock}, modelFactory, copy);
+
+    var usuarioMock = require("./usuarioMock");
+    var usuarioApi = new UsuarioApi({paginaWeb: modelMock, usuario: usuarioMock}, usuarioFactory);//usuariofacturi uses usuarioMOck
+    
+    it("getAll", function(done){
+        //se arregla la base de datos
+        modelMock.db = [
+            {nombre: "Jonas", calificacion: 9},
+            {nombre: "ro", calificacion: 8}
+        ];
+    
+        //error
+        modelMock.setError ("find", null);
+        //se ejecuta metodo.
+        api.getAll(null, responseMock, null);
+        
+        //test
+        expect(responseMock.value).toEqual(modelMock.db);
+        expect(modelMock._path).toEqual('_usuario');
+        done();
+    });
+    
+});
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 describe("paginasweb api", function() {
         //model
@@ -367,4 +419,4 @@ describe("paginasweb api", function() {
         expect(usuarioMock.db).toEqual([]);//borra el usuario
         done();
     });
-});
+});*/

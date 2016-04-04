@@ -12,10 +12,18 @@ var PaginaWebApi = (function() {
         that.models.paginaWeb.find().populate('_usuario')
             .exec(function (err, paginas) {
                 if (err) return next(err);
-            console.log("paginas");
-            console.dir(paginas);
+                console.log("paginas");
+                console.dir(paginas);
+                return res.json(paginas);
+            });
+        /*that.models.paginaWeb.find().populate('_usuario')
+            .exec(function (err, paginas) {
+                if (err) return next(err);
+                console.log("paginas");
+                console.dir(paginas);
                 return res.json(paginas);
             });   
+            */
     };
 
     PaginaWebApi.prototype.getByUniqueName = function(req, res, next) {
