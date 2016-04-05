@@ -143,7 +143,6 @@ describe("admin api", function() {
         modelMock.setError("findById", null);
         modelMock.setError("find", null);
         modelMock.db = [];
-        //modelMock.db = [{nombre: "Pedro", calificacion: 8, id: 3}];
         requestMock.body = {nombre: "Pedro", calificacion: 8, id: 3};
         api.save(requestMock, responseMock, null);//el body ya está en la bd.
         

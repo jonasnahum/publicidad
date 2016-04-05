@@ -1,6 +1,5 @@
-//FUNCIONA
-/*describe("Admin Controller", function() {
-    var modelMock = require("./usuarioMock");
+describe("Admin Controller", function() {
+    var modelMock = require("./modelExperimentMock");
     var modelFactory = require("./usuarioModelFactoryMock");
     //se prepara api
     var AdminApi = require("./../src/adminApi");
@@ -160,5 +159,3 @@
         done();
     });
 });
-
-*/

@@ -1,6 +1,8 @@
-/*describe("paginasweb api", function() {
+describe("paginasweb api", function() {
     //model
     var modelMock = require("./modelExperimentMock");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
+    //var modelMock2 = require("./modelExperimentMock");
+    var modelMock2 = require("./modelMock2");
     var modelFactory = require("./paginaWebModelFactoryMock");
     var usuarioFactory = require("./usuarioModelFactoryMock");
 
@@ -13,12 +15,14 @@
     var UsuarioApi = require("./../src/usuarioApi");
 
     var copy = require("./copyMock");
-    var api = new PaginaWebApi({paginaWeb: modelMock, usuario: modelMock}, modelFactory, copy);
+    var api = new PaginaWebApi({paginaWeb: modelMock, usuario: modelMock2}, modelFactory, copy);
 
     var usuarioMock = require("./usuarioMock");
-    var usuarioApi = new UsuarioApi({paginaWeb: modelMock, usuario: usuarioMock}, usuarioFactory);//usuariofacturi uses usuarioMOck
+    var usuarioApi = new UsuarioApi({paginaWeb: modelMock, usuario: usuarioMock}, usuarioFactory);//usuariofacturi uses usuarioMock
     
     it("getAll", function(done){
+        modelMock.setError("findOne", null);
+        modelMock.objetoBuscado = undefined;
         //se arregla la base de datos
         modelMock.db = [
             {nombre: "Jonas", calificacion: 9},
@@ -36,8 +40,46 @@
         done();
     });
     
+    it("getAll method error", function(done) {    
+        modelMock.setError ("find", new Error("GetAll method error from paginawebSpec"));
+        var next = function(err) {
+            expect(err).toEqual(modelMock.getError("find"));
+            done();
+        };
+        api.getAll(null, responseMock, next);
+    });
+    
+    it("gets a page for a given user.uniquename", function(done) {
+        //1.- el metodo a testear, primero busca un usuario por uniquename.
+        //2.- luego busca una página que en su propiedad _usuario tenga el id del usuario encontrado.
+        modelMock.errors = [];
+        modelMock.setError ("find", null);
+        modelMock.db = [
+            {nombreDelaPagina: "aguadelparque", _usuario: 1 }
+        ];
+        modelMock.objetoBuscado = undefined;
+        modelMock._path = undefined;
+        modelMock.metodoQueBusca = undefined;
+
+        modelMock2.errors = [];
+        modelMock2.setError ("findOne", null);
+        modelMock2.db = [];
+        modelMock2.objetoBuscado = undefined;
+        modelMock2._path = undefined;
+        modelMock2.metodoQueBusca = undefined;
+        
+        modelMock2.db = [
+            {nombre: "Pedro", uniquename: "principito", _id: 1}
+        ];
+        requestMock.params = {uniquename: "principito"};
+        
+        api.getByUniqueName(requestMock, responseMock, null);
+        expect(responseMock.value).toEqual(modelMock.db[0]);
+        expect(modelMock._path).toEqual('_usuario');
+        done();
+    });
+    
 });
-*/
 
 
 

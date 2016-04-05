@@ -1,5 +1,4 @@
-//FUNCIONA
-/*describe("correo api", function() {
+describe("correo api", function() {
         
         var responseMock = require("./responseMock");
         var requestMock = require("./requestMock");
@@ -32,4 +31,3 @@
         });
     });
 });
-*/

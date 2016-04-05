@@ -17,14 +17,39 @@ PaginaWeb.populate = function(_path) {
     PaginaWeb._path = _path;
     return this;
 };
+
 PaginaWeb.exec = function(callback) {
     callback(PaginaWeb.getError(PaginaWeb.metodoQueBusca), PaginaWeb.findByProperty());
+    //callback(PaginaWeb.errors[PaginaWeb.metodoQueBusca], PaginaWeb.db);
 };
+
+/*PaginaWeb.find = function(objetoBuscado) {
+    PaginaWeb.metodoQueBusca = "find";
+    PaginaWeb.objetoBuscado = objetoBuscado;
+    return this;
+};
+*/
 PaginaWeb.find = function(callback) {
-      PaginaWeb.metodoQueBusca = "find";
-    callback(PaginaWeb.getError(PaginaWeb.metodoQueBusca), PaginaWeb.findByProperty());
-  
-    /*if(arguments[0] == null) {//fir populate
+    PaginaWeb.metodoQueBusca = "find";
+    if(typeof callback == "object") {//fir populate
+        PaginaWeb.objetoBuscado = arguments[0];
+        return this;
+    }
+    if(typeof callback == "function") {
+        callback(PaginaWeb.errors["find"], PaginaWeb.db);  
+    }
+    if(typeof callback == "undefined") {
+        return noCallback(PaginaWeb.errors["find"], PaginaWeb.db);
+    }
+};
+
+/*
+PaginaWeb.find = function(callback) {
+    //PaginaWeb.metodoQueBusca = "find";
+    //callback(PaginaWeb.getError(PaginaWeb.metodoQueBusca), PaginaWeb.findByProperty());
+    
+    PaginaWeb.metodoQueBusca = "find";
+    if(arguments[0] == null) {//fir populate
         return PaginaWeb;
     }
     if(typeof callback == "object") {
@@ -40,8 +65,9 @@ PaginaWeb.find = function(callback) {
             return found;
     }
     callback(PaginaWeb.errors["find"], PaginaWeb.db);  
-    */
 };
+*/
+
 /*
 PaginaWeb.find = function(objetoBuscado) {
     PaginaWeb.metodoQueBusca = "find";

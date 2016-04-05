@@ -1,4 +1,5 @@
-/*var PaginaWeb = require("./modelMock1");
+//var PaginaWeb = require("./modelMock1");
+var PaginaWeb = require("./modelExperimentMock");
 
 var modelFactory = {
     get: function() {
@@ -6,4 +7,4 @@ var modelFactory = {
     }
 };
 
-module.exports = modelFactory;*/
+module.exports = modelFactory;

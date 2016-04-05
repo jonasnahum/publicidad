@@ -1,5 +1,4 @@
-//FUNCIONA
-/*describe("Correo controller Controller", function() {
+describe("Correo controller Controller", function() {
     var CorreoApi = require("./../src/correoApi");
     var nodemailerMock = require("./nodeMailerMock");
     correoApi = new CorreoApi(nodemailerMock);
@@ -47,6 +46,5 @@
         expect(express.handlerParams.err).//esta propiedad se guarda cuando se api emite res.json();
         toEqual(modelMock.getError("save"));
         done();
-    });*----------------------------------------------------------------------------------------------/
+    });*/
 });
-*/
