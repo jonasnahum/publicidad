@@ -77,10 +77,10 @@ var PaginaWebApi = (function() {
     
    PaginaWebApi.prototype.delete = function(req, res, next) {
        var that = this;
-       var userId = req.params.id;
+       //borra el usuario.
        that.models.usuario.findByIdAndRemove({ _id: req.params.id }, function(err, user) {
-           if(err) return next(err);           
-           that.models.paginaWeb.remove({_usuario: userId}, function(err, pag) {
+           if(err) return next(err);
+           that.models.paginaWeb.remove({_usuario: user.id}, function(err, pag) {
                if(err) return next(err);
                res.json(pag);
            });

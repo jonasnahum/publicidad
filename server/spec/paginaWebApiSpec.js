@@ -301,10 +301,24 @@ describe("paginasweb api", function() {
         expect(responseMock.value).toEqual(modelMock1.db[0]);
         done();
     });
-    /*
      it("with a given userid  in req.params.id, delete a page", function(done) {
-        var api = new PaginaWebApi({paginaWeb: modelMock1, usuario: usuarioMock}, modelFactory, copy);//se sobreescripe api para que use usuarioMock y no modelMOck2.
+        //se guarda un usuario con su id = 15.
+        usuarioMock.errors = [];
+        usuarioMock.db=[{
+            noContrato: "1",
+            uniquename: "maromero",
+            cliente: "el meromero",
+            telCliente: "4521652248",
+            correoCliente: "jonasnahum@gmail.com",
+            fechaContrato: Date.now(),
+            fechaVencimiento: undefined,
+            password: "holahola",
+            pago: "1500",
+            _id: 15
+        }];
+
         //se guarda una pagina
+        var api = new PaginaWebApi({paginaWeb: modelMock1, usuario: usuarioMock}, modelFactory, copy);//se sobreescripe api para que use usuarioMock y no modelMOck2.
         modelMock1.errors = [];
         modelMock1.setError ("save",null);
         modelMock1.db = [];
@@ -343,29 +357,14 @@ describe("paginasweb api", function() {
         };
         requestMock.params = {userId: 15};
         api.save(requestMock, responseMock, null);
+        var paginaGuardada = responseMock.value;
         
-        //se guarda un usuario
-        requestMock.body = {
-            noContrato: "1",
-            uniquename: "maromero",
-            cliente: "el meromero",
-            telCliente: "4521652248",
-            correoCliente: "jonasnahum@gmail.com",
-            fechaContrato: Date.now(),
-            fechaVencimiento: undefined,
-            password: "holahola",
-            pago: "1500",
-            id: 15
-        };
-        
-        usuarioApi.save(requestMock, responseMock, null);
-        
-
+        //dado un userid, el método tiene que borrar una página.
         requestMock.params = {id: 15};
-
-        api.update(requestMock, responseMock, null);
-        expect(responseMock.value).toEqual(modelMock1.db[0]);
+        api.delete(requestMock, responseMock, null);
+        expect(responseMock.value).toEqual(paginaGuardada);
+        expect(modelMock1.db).toEqual([]);//boorra la pagina
+        expect(usuarioMock.db).toEqual([]);//borra el usuario
         done();
     });
-    */
 });

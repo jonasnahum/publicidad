@@ -110,7 +110,7 @@ describe("Admin Controller", function() {
         
         express.handlerParams.req.params = {id: 2};
         express.http('delete/:id');
-        
+
         expect(express.handlerParams.res.jsonValue).toEqual(guardado);
         expect(modelMock.db.length).toBe(0); 
         done();
