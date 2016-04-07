@@ -3,6 +3,7 @@
     top: -50px;
     left: 30px;
 }
+
 .foto {
     display: block;
     margin-left: auto;
@@ -71,4 +72,32 @@
     height: 100px;
     margin-top: 0;
     left: 50%;
+}
+
+.containerIn {
+    margin: auto;
+    max-width: 800px;
+}
+
+#top {
+    padding: 40px 5%;
+}
+
+#logotipo {
+    float: left;
+    position: relative;
+    top: 5%;
+    left: 25%;
+
+}
+
+/*@media(min-width: 1200) {*/
+@media(min-width: 600) {
+    #logotipo {
+        float: none;
+        position: relative;
+        top: 5%;
+        border-left: 50%;
+    }
+
 }

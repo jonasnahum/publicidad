@@ -1,10 +1,16 @@
+<!--div class="row">
+    <h2> 
+        <img src="{{ctrl.logotipo}}" width="5%" height="5%" class="logo" id="logotipo">
+        <strong id="top" >{{ctrl.nombre}}</strong>
+    </h2>
+</div-->
 <div ng-controller="NegocioController as ctrl" >
     <div class="row-full">
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-title" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
                     <div style="position:relative; left: 230px; bottom: -80px">
-                        <img src="{{ctrl.logotipo}}" width="5%" height="5%"  style='float: left;' class="logo" > 
+                        <img src="{{ctrl.logotipo}}" width="5%" height="5%"  style='float: left;' class="logo"> 
                     </div>
                     <br />
                     <h2 style="font-size: 52px;" id="top" ><strong style="color: {{ctrl.colorText || '#DDD'}}">{{ctrl.nombre}}</strong></h2>
@@ -161,4 +167,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>                    
