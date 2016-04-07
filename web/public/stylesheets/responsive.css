@@ -1,14 +1,13 @@
 @media (min-width: 240px) and (max-width: 600px) {
     img {
-        
+           align-content:space-around;
         }
 
     h2:after {
         font-size: 10px;
     }
     #logotipo {
-        text-align: left;     
-        display: list-item;
+        text-align: left;
         margin-bottom: 100px;
     }
     /*

@@ -1,29 +1,21 @@
-<!--div class="row">
-    <h2> 
-        <img src="{{ctrl.logotipo}}" width="5%" height="5%" class="logo" id="logotipo">
-        <strong id="top" >{{ctrl.nombre}}</strong>
-    </h2>
-</div-->
 <link rel="stylesheet" media="(max-width: 640px)" href="./../../../stylesheets/responsive.css">
-<!--link rel="stylesheet" media="(min-width: 640px)" href="./../../../stylesheets/responsive.css">
-<link rel="stylesheet" media="(orientation: portrait)" href="./../../../stylesheets/responsive.css">
-<link rel="stylesheet" media="(orientation: landscape)" href="./../../../stylesheets/responsive.css"-->
 
 <div ng-controller="NegocioController as ctrl" >
     <div class="row-full">
         <div id="containerIn">
             <div class="row">
                 <div class="scrollblock block-title" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
-                    <div id="logotipo"><!-- style="position:relative; left: 230px; bottom: -80px"-->
-                        <img id="logoImg" src="{{ctrl.logotipo}}" width="20%" height="20%"><!--class="logo" style='float: left;'--> 
+                    <div class="row">
+                        <div id="logotipo">
+                            <img id="logoImg" src="{{ctrl.logotipo}}" width="20%" height="20%">
+                        </div>
+                        <br />
+                        <h2 style="font-size: 52px;" id="top" ><strong style="color: {{ctrl.colorText || '#DDD'}}">{{ctrl.nombre}}</strong></h2>
+
                     </div>
-                    <br />
-                    <h2 style="font-size: 52px;" id="top" ><strong style="color: {{ctrl.colorText || '#DDD'}}">{{ctrl.nombre}}</strong></h2>
                     <!--div class="row">
                         <h2> 
-                            <img src="{{ctrl.logotipo}}" width="5%" height="5%" class="logo" id="logotipo">
-                            <br>
-                            <br>
+                            <img src="{{ctrl.logotipo}}" width="5%" height="5%" id="logotipo">
                             <strong id="top" >{{ctrl.nombre}}</strong>
                         </h2>
                     </div-->
