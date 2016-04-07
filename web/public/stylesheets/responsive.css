@@ -1,0 +1,56 @@
+@media (min-width: 240px) and (max-width: 600px) {
+    img {
+        
+        }
+
+    h2:after {
+        font-size: 10px;
+    }
+    #logotipo {
+        text-align: left;     
+        display: list-item;
+        margin-bottom: 100px;
+    }
+    /*
+    #logoImg {
+        vertical-align: initial!important;
+    }*/
+}
+
+
+/*@media (min-width: 500px) and (max-width: 600px) {
+    h1 {
+      color: fuchsia;
+    }
+
+    .desc:after {
+      content:" In fact, it's between 500px and 600px wide.";
+    }
+}
+
+
+.orientation:after {
+  content: " Portrait";
+}
+
+
+.orientation:after {
+  content: " Landscape";
+}
+
+
+h1 {
+  color: blue;
+}
+.desc:before {
+  content: "This browser window is at least 640px wide!";
+}
+
+
+h1 {
+  color: red;
+}
+.desc:before {
+  content: "This browser window is smaller than 640px wide.";
+}
+*/
