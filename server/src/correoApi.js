@@ -9,8 +9,8 @@ var CorreoApi = (function() {
         var transporter = that.nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: process.env.EMAIL_USER || "jonasnahum@gmail.com",
-                pass: process.env.EMAIL_PASS || "jonasoctubre"
+                user: process.env.EMAIL_USER || "weburuapan@gmail.com",
+                pass: process.env.EMAIL_PASS || "monsejonasrodrigo"
             }
         });
          var html = '<p><b>Nombre:</b> ' + req.body.name +'</p>'+
@@ -26,8 +26,6 @@ var CorreoApi = (function() {
         };
         transporter.sendMail(mailOptions, function(error, info){
             if(error){
-                console.log("-------------------------------------------");
-                console.dir(error);
                 return next(error);
             }
             res.json({ success: true });
