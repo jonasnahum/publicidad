@@ -56,7 +56,7 @@
                 </label>
             </div>
             <div class="col-lg-6">
-                Imágen o foto de portada
+                Imágen o foto de portada de su página web
                 <br />
                 <label>
                     <input class="form-control" type="text" ng-model="ctrl.foto" name="foto" ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"/>
@@ -184,7 +184,7 @@
                 <div ng-messages-include="/error/messages.html"></div>
             </div>
             
-            <label>* Contacto</label> <small>(Contesta las dudas del cliente a través de correo, teléfono ó redes sociales).</small>
+            <label>* Contacto</label> <small>(Nombre de la persona que contesta las dudas del cliente).</small>
             <input class="form-control" type="text" ng-model="ctrl.encargado" name="encargado" ng-pattern="/^[a-zA-Záéíóúñ. ]+$/" ng-maxlength="40" ng-minlength="10" style="width:30%;" required/>      
             <div class="errorMessages" ng-messages="frmNuevo.encargado.$error" 
              ng-if="!frmNuevo.encargado.$pristine || frmNuevo.$submitted" role="alert">
@@ -251,27 +251,27 @@
         
         
         <fieldset>
-            <h3>Productos</h3>
+            <h3>Productos ó servicios que ofrece</h3>
             <div class="row">
                 <div class="col-md-6">
                     
-                    <small >Llene los datos de un producto o servicio que usted ofrece y presione el botón "Agregar producto".</small>
+                    <small >Llene los datos de un producto o servicio y presione el botón "Agregar producto".</small>
                     <br />
-                    <label>Título del producto</label>
+                    <label>Título del producto ó servicio</label>
                     <input class="form-control" type="text" ng-model="ctrl.producto.titulo" ng-maxlength="80" name="titulo" style="width:60%;"/>
                     <div class="errorMessages" ng-messages="frmEditar.titulo.$error" 
                          ng-if="!frmEditar.titulo.$pristine || frmEditar.$submitted" role="alert">
                         <div ng-messages-include="/error/messages.html"></div>
                     </div>
                     
-                    <label>Descripción del producto</label>
+                    <label>Descripción del producto o servicio</label>
                     <textarea class="form-control" rows="1" cols="50" ng-model="ctrl.producto.parrafo" ng-maxlength="160" name="parrafo" style="width:60%;"></textarea>
                     <div class="errorMessages" ng-messages="frmEditar.parrafo.$error" 
                          ng-if="!frmEditar.parrafo.$pristine || frmEditar.$submitted" role="alert">
                         <div ng-messages-include="/error/messages.html"></div>
                     </div>
                     
-                    <label>Foto del producto</label><small >(Dirección URL).</small>
+                    <label>Foto del producto o servicio</label><small >(Dirección URL).</small>
                     <input class="form-control" type="text" ng-model="ctrl.producto.foto" name="productoFoto"  ng-pattern="/^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/" style="width:60%;"/>
                     <div class="errorMessages" ng-messages="frmNuevo.productoFoto.$error" 
                      ng-if="!frmNuevo.productoFoto.$pristine || frmNuevo.$submitted" role="alert">

@@ -87,7 +87,7 @@ var PaginaWebApi = (function() {
         });
     }; 
     
-//curl -X "DELETE" http://localhost:3000/paginaWeb/api/soloEmpresa/56cc7ca658b9e39d1196c6b4
+//curl -X "DELETE" http://localhost:3000/paginaWeb/api/soloEmpresa/56f2cb60479d8ccf0f9a0370
    PaginaWebApi.prototype.deleteSoloEmpresa = function(req, res, next) {
        var that = this;
        that.models.paginaWeb.remove({_id: req.params.id}, function(err, pag) {

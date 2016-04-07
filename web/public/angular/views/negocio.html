@@ -2,12 +2,12 @@
     <div class="row-full">
         <div id="containerIn">
             <div class="row">
-                <div class="scrollblock block-title" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+                <div class="scrollblock block-title" style="color: {{ctrl.colorText || 'black'}}; background-color: {{ctrl.colorBackground || 'white'}}">
                     <div style="position:relative; left: 230px; bottom: -80px">
                         <img src="{{ctrl.logotipo}}" width="5%" height="5%"  style='float: left;' class="logo" > 
                     </div>
                     <br />
-                    <h2 style="font-size: 52px;" id="top" ><strong style="color: {{ctrl.colorText || '#DDD'}}">{{ctrl.nombre}}</strong></h2>
+                    <h2 style="font-size: 52px;" id="top" ><strong style="color: {{ctrl.colorText || 'black'}}">{{ctrl.nombre}}</strong></h2>
                     <br />
                     <br />
                     <img src="{{ctrl.foto}}" width="65%"
@@ -57,7 +57,7 @@
 
             
         <div id="containerIn">
-            <div class="scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
+            <div class="scrollblock block-productos" style="color: {{ctrl.colorText || 'black'}}; background-color: {{ctrl.colorBackground || 'white'}}">
                 <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
                 <br /><br />
                 <div class="row">
@@ -84,7 +84,7 @@
         
         <div id="containerIn">
             <div class="row">
-                <div class="scrollblock block-info" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
+                <div class="scrollblock block-info" style="color: {{ctrl.colorText || 'black'}}; background-color: {{ctrl.colorBackground || 'white'}}">
                     <h2 style="text-align: center;"><strong>Contacto</strong></h2> 
                     <br /><br />
                     <div class="col-md-12" ng-controller="EmailFormController as emCtl">
@@ -120,8 +120,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mi Mensage</label>
-                                    <textarea class="form-control" name="message" placeholder="Mensage"
+                                    <label>Mi Mensaje</label>
+                                    <textarea class="form-control" name="message" placeholder="Mensaje"
                                               ng-model="emCtl.message" required ></textarea>
                                     <div class="errorMessages" ng-messages="mailForm.message.$error" 
                                          ng-if="(!mailForm.message.$pristine || mailForm.$submitted)" >
@@ -141,7 +141,7 @@
         
         <div id="containerIn">
             <div class="row">
-                <div class="scrollblock block-redesSociales" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground|| '#23527C'}}; height:20px;">
+                <div class="scrollblock block-redesSociales" style="color: {{ctrl.colorText || 'black'}}; background-color: {{ctrl.colorBackground|| 'white'}}; height:20px;">
                     <h2 style="font-size: 40px; text-align: center;"><strong>Redes Sociales</strong></h2>
                     <ol style="list-style-type: none; line-height: 2em; position: relative; bottom: -5em;" >
                         <li ng-if="ctrl.links" ng-repeat="link in ctrl.links">
