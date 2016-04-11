@@ -1,55 +1,71 @@
-@media (min-width: 240px) and (max-width: 600px) {
-    img {
-           align-content:space-around;
-        }
-
-    h2:after {
-        font-size: 10px;
-    }
+h2 {
+    font-size: 52px;
+}
+/*@media (min-width: 240px) and (max-width: 544px) {/*410*/
+@media (min-width: 240px) and (max-width: 473px) {/*410*/
     #logotipo {
         text-align: left;
         margin-bottom: 100px;
+        left: 40%!important;
     }
-    /*
-    #logoImg {
-        vertical-align: initial!important;
-    }*/
+    
 }
 
-
-/*@media (min-width: 500px) and (max-width: 600px) {
-    h1 {
-      color: fuchsia;
+@media (min-width: 474px) and (max-width: 544px) {/*410*/
+    #top {
+        margin-top: 30%;
     }
-
-    .desc:after {
-      content:" In fact, it's between 500px and 600px wide.";
+    #logotipo {
+        text-align: left;
+        margin-bottom: 20px;
+        left: 40%!important;
     }
 }
 
-
-.orientation:after {
-  content: " Portrait";
+@media (min-width: 545px) and (max-width: 640px){
+    #top {
+        margin-top: 20%;
+    }
+    #logotipo {
+        align-content: flex-start;
+        text-align: left;
+        margin-bottom: 50px;
+        left: 45% !important;
+    }
 }
 
-
-.orientation:after {
-  content: " Landscape";
+@media (min-width: 641px) and (max-width: 850px){
+    #top {
+        margin-top: 1%;/*4px*/
+        left: 50%!important;
+        font-size: 42px;
+    }
+    #logotipo {
+        margin-bottom: 1%;
+        left: -120px !important;
+    }
 }
 
+@media (min-width: 851px) and (max-width: 1024px){
+    #top {
+        margin-top: 1%;/*4px*/
+        left: 50%!important;
+        font-size: 52px;
+    }
+    #logotipo {
+        margin-bottom: 1%;
+        left: -120px !important;
+    }
+}
 
-h1 {
-  color: blue;
+@media (min-width: 1024px) {
+    #top {
+        margin-top: 0%;/*4px*/
+        left: 50%!important;
+        font-size: 52px;
+    }
+    #logotipo {
+        margin-bottom: 0%;
+        left: 3% !important;
+    }
 }
-.desc:before {
-  content: "This browser window is at least 640px wide!";
-}
-
-
-h1 {
-  color: red;
-}
-.desc:before {
-  content: "This browser window is smaller than 640px wide.";
-}
-*/

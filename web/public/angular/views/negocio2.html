@@ -1,4 +1,4 @@
-<link rel="stylesheet" media="(max-width: 640px)" href="./../../../stylesheets/responsive.css">
+<link rel="stylesheet" href="./../../../stylesheets/responsive.css">
 
 <div ng-controller="NegocioController as ctrl" >
     <div class="row-full">
@@ -7,10 +7,10 @@
                 <div class="scrollblock block-title" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground || '#23527C'}}">
                     <div class="row">
                         <div id="logotipo">
-                            <img id="logoImg" src="{{ctrl.logotipo}}" width="20%" height="20%">
+                            <img src="{{ctrl.logotipo}}" width="20%" height="20%">
                         </div>
                         <br />
-                        <h2 style="font-size: 52px;" id="top" ><strong style="color: {{ctrl.colorText || '#DDD'}}">{{ctrl.nombre}}</strong></h2>
+                        <h2 id="top" ><strong style="color: {{ctrl.colorText || '#DDD'}}">{{ctrl.nombre}}</strong></h2>
 
                     </div>
                     <!--div class="row">
