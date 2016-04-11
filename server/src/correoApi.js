@@ -1,18 +1,18 @@
-
 var CorreoApi = (function() {
     var CorreoApi = function(nodemailer) {
         this.nodemailer = nodemailer.module;
+        this.smtpTransport = nodemailer.module2;
     };
     CorreoApi.prototype.send = function(req, res, next){
         var that = this;
         
-        var transporter = that.nodemailer.createTransport({
-            service: 'hotmail',
+        var transporter = that.nodemailer.createTransport(that.smtpTransport({
+            service: 'gmail',
             auth: {
-                user: process.env.EMAIL_USER || "brizzita_delmar@hotmail.com",
-                pass: process.env.EMAIL_PASS || "casablanca74"
+                user: process.env.EMAIL_USER || "weburuapan@gmail.com",
+                pass: process.env.EMAIL_PASS || "monsejonasrodrigo"
             }
-        });
+        }));
          var html = '<p><b>Nombre:</b> ' + req.body.name +'</p>'+
                '<p><b>Email:</b> ' + req.body.email +'</p>'+
                '<p><b>Teléfono:</b> ' + req.body.phone +'</p>'+
@@ -34,4 +34,4 @@ var CorreoApi = (function() {
     return CorreoApi;
 })();
 
-module.exports = CorreoApi;
+module.exports = CorreoApi; 
