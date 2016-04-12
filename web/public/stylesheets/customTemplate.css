@@ -132,24 +132,25 @@ body {
     height: 30%;
 }
 
-/* /privado/todos */
+/*** PERMITE QUE LA IMAGEN SE EXPANDA EL 100% ***/
+/* /privado/todos, todos.html *__________________/
 #privadoTodos {
   position: fixed; 
   top: 0; 
   left: 0; 
 
-  /* Preserve aspet ratio */
+  /* Preserve aspet ratio *_________________/
   min-width: 100%;
   min-height: 100%;
 }
 #wrapper {
   position: relative;
-  /*width: 800px;*/
+  /*width: 800px;*______________/
   min-height: 400px;
   margin: 100px auto;
   color: #333;
 }
-
+*/
 
 /*ver.html, editar.html*/
 #ver, #editar {
