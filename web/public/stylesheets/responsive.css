@@ -1,16 +1,104 @@
+#googleMap {
+    width:600px;
+    height:480px;
+}
 h2 {
     font-size: 52px;
 }
-/*@media (min-width: 240px) and (max-width: 544px) {/*410*/
-@media (min-width: 240px) and (max-width: 473px) {/*410*/
+#productos {
+    font-size: 40px; 
+    text-align: center;
+}
+#productosList {
+    margin-left: 50px;
+}
+#redesSociales {
+    font-size: 40px; 
+    text-align: center;
+}
+#redesSocialesList {
+    list-style-type: none; 
+    line-height: 2em; 
+    position: relative; 
+    bottom: -5em;" 
+}
+
+@media (min-width: 240px) and (max-width: 473px) {
     #logotipo {
         text-align: left;
         margin-bottom: 100px;
         left: 40%!important;
     }
-    
+    #top {
+        margin-bottom: 0%!important;
+    }
+    #dir {
+        padding-left: 0px!important;
+    }
+    #googleMap {
+        width: 200px;
+        height: 200px;
+        left: 30px!important;
+    }
+    #productos {
+        font-size: 20px;
+        text-align: justify;
+        padding-left: -10px;
+        margin-left: -10px;
+        left: -10;
+    }
+    #productosList {
+        margin-left: 0px;
+    }
+    .gallery {
+        margin-left: -25px;
+    }
+    #redesSociales {
+        font-size: 30px;
+        text-align: justify;
+        margin-bottom: auto;
+    }
+    #redesSocialesList {
+        padding-left: 0px;
+    }
+    .block-direccion { 
+        padding-top: 50px!important; 
+        padding-bottom: 250px!important; 
+    }
+    .block-productos { 
+        padding-top: 40px!important; 
+        padding-bottom: 400px!important;
+    }
+    .block-info {
+        padding-top: 40px!important; 
+        padding-bottom: 5px!important;
+    }
+    .block-redesSociales {
+        padding-top: 40px!important; 
+        padding-bottom: 350px!important;
+    }
 }
-
+@media (min-width: 320px) and (max-width: 473px) {
+    #googleMap {
+        width: 290px;
+        height: 250px;
+        left: 30px!important;
+    }
+    .block-direccion { 
+        padding-bottom: 300px!important; 
+    }
+    #productos {
+        text-align: left;
+        font-size: 30px;
+    }
+    .block-info {
+        padding-top: 60px!important; 
+    }
+    .block-redesSociales {
+        padding-top: 50px!important; 
+        padding-bottom: 300px!important;
+    }
+}
 @media (min-width: 474px) and (max-width: 544px) {/*410*/
     #top {
         margin-top: 30%;
@@ -19,6 +107,24 @@ h2 {
         text-align: left;
         margin-bottom: 20px;
         left: 40%!important;
+    }
+    #googleMap {
+        left: 50px!important;
+    }
+    .block-direccion { 
+        padding-bottom: 600px!important; 
+    }
+    .block-productos { 
+        padding-top: 50px!important;
+        padding-bottom: 350px!important;
+    }
+    .block-info {
+        padding-top: 100px!important; 
+        padding-bottom: 100px!important;
+    }
+    .block-redesSociales {
+        padding-top: 0px!important; 
+        padding-bottom: 300px!important;
     }
 }
 
@@ -32,8 +138,35 @@ h2 {
         margin-bottom: 50px;
         left: 45% !important;
     }
+    #googleMap {
+        width: 450px;
+        /*height: 250px;*/
+        left: 20px!important;
+    }
+    .block-direccion { 
+        padding-bottom: 550px!important; 
+    }
+    .block-productos { 
+        /*padding-top: 50px!important;*/
+        padding-bottom: 450px!important;
+    }
+    .block-info {
+        padding-top: 50px!important; 
+        padding-bottom: 100px!important;
+    }
+    .block-redesSociales {
+        padding-top: 0px!important; 
+        padding-bottom: 300px!important;
+    }
 }
 
+@media (min-width: 641px) and (max-width: 767px){
+    #googleMap {
+        padding-top: 10px!important;
+        width: 500px!important;
+        height: 150px!important;
+    }    
+}
 @media (min-width: 641px) and (max-width: 850px){
     #top {
         margin-top: 1%;/*4px*/
@@ -43,6 +176,25 @@ h2 {
     #logotipo {
         margin-bottom: 1%;
         left: -120px !important;
+    }
+    #googleMap {
+        width: 300px!important;
+        height: 300px!important;
+    }
+    .block-direccion { 
+        padding-bottom: 400px!important; 
+    }
+    .block-productos { 
+        padding-top: 50px!important;
+        padding-bottom: 400px!important;
+    }
+    .block-info {
+        padding-top: 50px!important; 
+        padding-bottom: 100px!important;
+    }
+    .block-redesSociales {
+        padding-top: 0px!important; 
+        padding-bottom: 300px!important;
     }
 }
 
@@ -55,6 +207,22 @@ h2 {
     #logotipo {
         margin-bottom: 1%;
         left: -120px !important;
+    }
+    #googleMap {
+        left: 20px!important;
+        width: 400px!important;
+        height: 400px!important;
+    }
+    .block-productos { 
+        padding-bottom: 400px!important;
+    }
+    .block-info {
+        padding-top: 50px!important; 
+        padding-bottom: 100px!important;
+    }
+    .block-redesSociales {
+        padding-top: 0px!important; 
+        padding-bottom: 300px!important;
     }
 }
 
