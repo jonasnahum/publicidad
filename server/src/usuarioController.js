@@ -7,7 +7,8 @@ module.exports = (function() {
              
         router.post('/', usuariosApi.save.bind(usuariosApi));
 
-        router.get('/', tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.getAll.bind(usuariosApi));
+        //router.get('/', tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.getAll.bind(usuariosApi));
+        router.get('/', usuariosApi.getAll.bind(usuariosApi));
         
         router.get('/:id',tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.getOne.bind(usuariosApi));
         
