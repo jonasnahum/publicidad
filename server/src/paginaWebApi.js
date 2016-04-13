@@ -84,7 +84,7 @@ var PaginaWebApi = (function() {
        console.dir(that.models.usuario);
        that.models.usuario.findByIdAndRemove({ _id: req.params.id }, function(err, user) {
            if(err) return next(err);
-           that.models.paginaWeb.remove({_usuario: user._id}, function(err, pag) {
+           that.models.paginaWeb.remove({_usuario: user.id}, function(err, pag) {
                if(err) return next(err);
                res.json(pag);
            });
