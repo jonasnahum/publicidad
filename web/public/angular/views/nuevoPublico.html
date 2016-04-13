@@ -2,6 +2,7 @@
 
 <div ng-controller="NuevoPublicoController as ctrl" class="container" style="color: {{ctrl.colorText}}; background-color: {{ctrl.colorBackground}}; padding-top: 8%;">
     <form name="frmNuevo" ng-submit="frmNuevo.$valid && ctrl.save()" role="form" novalidate>
+        <div class="pull-right"  ><a href ng-click="ctrl.noGuardar()" type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Regresar a vista anterior</a></div>
         <h2>Empresa</h2>
         <small><strong>NOTA: </strong>Los campos marcados con asterisco (*) son obligatorios.</small>        
         <fieldset class="form-group">

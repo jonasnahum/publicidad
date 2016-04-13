@@ -14,7 +14,7 @@ module.exports = (function() {
         router.get('/:id',tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.getOne.bind(usuariosApi));
         
         router.put('/:id', tokenMiddleware.validate.bind(tokenMiddleware), usuariosApi.update.bind(usuariosApi));
-        
+        //curl -X "DELETE" http://api.weburuapan.com/usuario/api/57048fb0aa740b2400b5b00c
         router.delete('/:id'/*, tokenMiddleware.validate.bind(tokenMiddleware)*/, usuariosApi.delete.bind(usuariosApi));
         
         router.delete('/peligro/deleteAll', usuariosApi.deleteAll.bind(usuariosApi));
