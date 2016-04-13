@@ -64,6 +64,21 @@ PaginaWeb.findByIdAndRemove = function(id, callback) {
         callback(PaginaWeb.errors["findByIdAndRemove"], found);
     });
 };
+/*
+Usuario.findByIdAndRemove = function(id, callback) {
+    var objId = undefined;
+    if (typeof id == "number"){
+        objId = {id: id};
+    }else{
+        objId = id;
+    }
+    var found = Usuario.findByProperty(objId);
+    var index = Usuario.db.indexOf(found);
+    Usuario.db.splice(index, 1);
+    callback(Usuario.errors["findByIdAndRemove"], found);
+};
+
+*/
 PaginaWeb.prototype.save = function(callback) {
     var index = PaginaWeb.db.indexOf(this);
     if(index === -1)

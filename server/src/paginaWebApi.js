@@ -59,7 +59,7 @@ var PaginaWebApi = (function() {
         that.models.usuario.findById(req.body.userId, function(err, usuario) {
             if(err)  return next(err);
             //uses body to update user.
-            usuario = that.copy.copyBodyToUsuario(req.body,usuario);
+            usuario = that.copy.copyBodyToUsuario(req.body, usuario);
             //saves user.
             usuario.save(function(err, usuario){
                 if(err)  return next(err);
@@ -81,9 +81,10 @@ var PaginaWebApi = (function() {
    PaginaWebApi.prototype.delete = function(req, res, next) {
        var that = this;
        //borra el usuario.
+       console.dir(that.models.usuario);
        that.models.usuario.findByIdAndRemove({ _id: req.params.id }, function(err, user) {
            if(err) return next(err);
-           that.models.paginaWeb.remove({_usuario: user.id}, function(err, pag) {
+           that.models.paginaWeb.remove({_usuario: user._id}, function(err, pag) {
                if(err) return next(err);
                res.json(pag);
            });
