@@ -26,7 +26,9 @@ var CorreoApi = (function() {
         };
         transporter.sendMail(mailOptions, function(error, info){
             if(error){
-                return next(error);
+                console.log("------------------------------error en archivo correoApi metodo sendMail");
+                console.log(error);
+                return;
             }
             res.json({ success: true });
         });

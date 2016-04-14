@@ -20,7 +20,7 @@ var PaginaWebApi = (function() {
         var that = this;            
         that.models.usuario.findOne({"uniquename": req.params.uniquename},function(err, usuario){
             if (err) return next(err);
-            that.models.paginaWeb.find({"_usuario": usuario._id}).populate('_usuario')    
+            that.models.paginaWeb.find({"_usuario": usuario._id}).populate('_usuario')//_id of null    
             .exec(function(err, pw){
                 if (err) return next(err);
                 return res.json(pw);
