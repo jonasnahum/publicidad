@@ -321,7 +321,9 @@
         </div>
         <br />
         <br />
-        
+         <div ng-show="frmNuevo.$submitted && frmNuevo.$invalid">
+                                REVISE LOS CAMPOS QUE SON INCORRECTOS Y MUESTRAN TEXTO EN COLOR ROJO.
+        </div>
         <button type="submit" class="btn btn-success btn-lg">Guardar mi página</button>
         <a href ng-click="ctrl.noGuardar()" type="button" class="btn btn-danger btn-lg">No guardar y borrar todo</a>
         <br />

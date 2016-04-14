@@ -61,13 +61,9 @@
 
             
         <div id="containerIn">
-<<<<<<< HEAD
             <div class="scrollblock block-productos" style="color: {{ctrl.colorText || 'black'}}; background-color: {{ctrl.colorBackground || 'white'}}">
                 <h2 style="font-size: 40px; text-align: center;"><strong>Productos ó servicios</strong></h2>
-=======
-            <div class="scrollblock block-productos" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground}}">
-                <h2 id="productos"><strong id="productos">Productos ó servicios</strong></h2>
->>>>>>> 7454c81fb6cd32081d75de013e2eb85a6ef2f23f
+
                 <br /><br />
                 <div class="row">
                     <li ng-repeat="producto in ctrl.productos" id="productosList" class="list-unstyled">
@@ -150,15 +146,9 @@
         
         <div id="containerIn">
             <div class="row">
-<<<<<<< HEAD
                 <div class="scrollblock block-redesSociales" style="color: {{ctrl.colorText || 'black'}}; background-color: {{ctrl.colorBackground|| 'white'}}; height:20px;">
                     <h2 style="font-size: 40px; text-align: center;"><strong>Redes Sociales</strong></h2>
                     <ol style="list-style-type: none; line-height: 2em; position: relative; bottom: -5em;" >
-=======
-                <div class="scrollblock block-redesSociales" style="color: {{ctrl.colorText || '#DDD'}}; background-color: {{ctrl.colorBackground|| '#23527C'}}; height:20px;">
-                    <h2 id="redesSociales"><strong>Redes Sociales</strong></h2>
-                    <ol id="redesSocialesList" >
->>>>>>> 7454c81fb6cd32081d75de013e2eb85a6ef2f23f
                         <li ng-if="ctrl.links" ng-repeat="link in ctrl.links">
                             <a target="_blank" style="color: {{ctrl.colorText || '#DDD'}};" ng-href="{{link}}">{{$index + 1}}. {{link}}</a>
                         </li>
@@ -176,8 +166,4 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 </div>
-=======
-</div>                    
->>>>>>> 7454c81fb6cd32081d75de013e2eb85a6ef2f23f
