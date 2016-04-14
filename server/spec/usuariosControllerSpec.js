@@ -1,25 +1,30 @@
-/*describe("Usuario Controller", function() {
+describe("Usuario Controller", function() {
+    //BDD
+    var usuarioMock = require("./modelMock2");
+    //API
+    var usuarioFactory = require("./usuarioModelFactoryMock");
+    var UsuarioApi = require("./../src/usuarioApi");
+    //TOKEN MIDDLEWARE
+    var jwtMock = require("./jwtMock");
+    var TokenMiddlewareMock = require("./tokenMiddlewareMock");
+    //CONTROLLER
+    var express = require("./expressMock");
+    var UsuarioController = require("./../src/usuarioController");
+
     it("getAll", function(done) {
         //se prepara la bd.
-        var usuarioMock = require("./usuarioMock");
         usuarioMock.setError ("find", null);//para que no ejecute next en api
         usuarioMock.db = [
             {nombre: "Pedro", calificacion: 9, id: 1}
         ];
         
         //se prepara api
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         //se prepara tokenMiddleware
-        var jwtMock = require("./jwtMock");
-        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
         var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
         
         //se prepara controller
-        var express = require("./expressMock");
-        var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
 
         //se ejecuta el middleware.
@@ -34,25 +39,18 @@
     });
     it("getAll error", function(done) {
         //se prepara la bd.
-        var usuarioMock = require("./usuarioMock");
         usuarioMock.setError ("find", new Error("Test error from controllerSpec"));//para que ejecute next en api
         usuarioMock.db = [
             {nombre: "Pedro", calificacion: 9, id: 1}
         ];
         
         //se prepara api
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         //se prepara tokenMiddleware
-        var jwtMock = require("./jwtMock");
-        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
         var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
         
         //se prepara controller
-        var express = require("./expressMock");
-        var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
 
         //se ejecuta el middleware.
@@ -67,22 +65,15 @@
     });
     it("post", function(done) {
         //se prepara bd.
-        var usuarioMock = require("./usuarioMock");
         usuarioMock.db = [];
         
         //se prepara Api
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         //se prepara tokenMiddleware
-        var jwtMock = require("./jwtMock");
-        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
         var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
         
         //se prepara controller 
-        var express = require("./expressMock");
-        var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
         
         //se prepara el req.
@@ -98,26 +89,19 @@
     });
     it("post error", function(done) {
         //se prepara la bd.
-        var usuarioMock = require("./usuarioMock");
         usuarioMock.db = [];
         usuarioMock.setError ("save", new Error("Post error from controllerSpec"));//para que ejecute next en api
         
         //se prepara api
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         //se prepara tokenMiddleware
-        var jwtMock = require("./jwtMock");
-        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
         var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
         
         //se prepara el req que entra en los middleware del controller 
-        var express = require("./expressMock");
         express.handlerParams.req.body = {nombre: "Jonas para guardar", calificacion: 9, id: 2};
         
         //se prepara el controller
-        var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
         
         //ejecuta el routehandler guardado en la propiedad path.
@@ -130,23 +114,16 @@
     });
     it("getOne", function(done) {
         //se prepara la bd.
-        var usuarioMock = require("./usuarioMock");
         usuarioMock.setError ("findById", null);
         usuarioMock.db = [];
         
         //se prepara api
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         //se prepara tokenMiddleware
-        var jwtMock = require("./jwtMock");
-        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
         var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
         
-        var express = require("./expressMock");
         //se prepara el controller
-        var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
         
         //se guarda un registro
@@ -163,23 +140,16 @@
     });
     it("getOne", function(done) {
         //se prepara la bd.
-        var usuarioMock = require("./usuarioMock");
         usuarioMock.setError ("findById", new Error("GetOne error from controllerSpec"));
         usuarioMock.db = [];
         
         //se prepara api
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         //se prepara tokenMiddleware
-        var jwtMock = require("./jwtMock");
-        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
         var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
         
-        var express = require("./expressMock");
         //se prepara el controller
-        var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
         
         //se guarda un registro
@@ -196,24 +166,17 @@
     });
     it("put", function(done) {
         //se prepara la bd.
-        var usuarioMock = require("./usuarioMock");
         usuarioMock.setError ("findById", null);//update usa estos dos metodos.
         usuarioMock.setError ("save", null);
         usuarioMock.db = [];
         
         //se prepara api
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         //se prepara tokenMiddleware
-        var jwtMock = require("./jwtMock");
-        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
         var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
         
-        var express = require("./expressMock");
         //se prepara el controller
-        var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
         
         //se guarda un registro
@@ -236,23 +199,16 @@
     });
     it("delete", function(done) {
         //se prepara la bd.
-        var usuarioMock = require("./usuarioMock");
         usuarioMock.setError ("findByIdAndRemove", null);//update usa estos dos metodos.
         usuarioMock.db = [];
         
         //se prepara api
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         //se prepara tokenMiddleware
-        var jwtMock = require("./jwtMock");
-        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
         var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
         
-        var express = require("./expressMock");
         //se prepara el controller
-        var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
         
         //se guarda un registro
@@ -270,23 +226,16 @@
     });
     it("delete error", function(done) {
         //se prepara la bd.
-        var usuarioMock = require("./usuarioMock");
         usuarioMock.setError ("findByIdAndRemove",  new Error("test error"));
         usuarioMock.db = [];
         
         //se prepara api
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         //se prepara tokenMiddleware
-        var jwtMock = require("./jwtMock");
-        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
         var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
         
-        var express = require("./expressMock");
         //se prepara el controller
-        var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
         
         //se guarda un registro
@@ -303,23 +252,16 @@
     });
     it("delete All", function(done) {
         //se prepara la bd.
-        var usuarioMock = require("./usuarioMock");
         usuarioMock.setError ("findByIdAndRemove", null);//update usa estos dos metodos.
         usuarioMock.db = [];
         
         //se prepara api
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         //se prepara tokenMiddleware
-        var jwtMock = require("./jwtMock");
-        var TokenMiddlewareMock = require("./tokenMiddlewareMock");
         var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
         
-        var express = require("./expressMock");
         //se prepara el controller
-        var UsuarioController = require("./../src/usuarioController");
         var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
         
         //se guardan varios registros
@@ -337,6 +279,4 @@
         expect(usuarioMock.db.length).toBe(0); 
         done();
     });
-
 });
-*/

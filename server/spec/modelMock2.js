@@ -19,10 +19,22 @@ PaginaWeb.populate = function(_path) {
 PaginaWeb.exec = function(callback) {
     callback(PaginaWeb.errors[PaginaWeb.metodoQueBusca], PaginaWeb.db);
 };
+/*
 PaginaWeb.find = function(objetoBuscado) {
     PaginaWeb.metodoQueBusca = "find";
     PaginaWeb.objetoBuscado = objetoBuscado;
     return this;
+};
+*/
+PaginaWeb.find = function(callback) {
+    PaginaWeb.metodoQueBusca = "find";
+    if(typeof callback == "object" || typeof callback == "undefined") {//fir populate
+        PaginaWeb.objetoBuscado = arguments[0];
+        return this;
+    }
+    if(typeof callback == "function") {
+        callback(PaginaWeb.errors["find"], PaginaWeb.db);  
+    }
 };
 PaginaWeb.findOne = function(obj, callback) {
     var found = undefined;
@@ -61,10 +73,25 @@ PaginaWeb.prototype.save = function(callback) {
     var index = PaginaWeb.db.indexOf(this);
     if(index === -1)
         PaginaWeb.db.push(this);
-    
     return callback(PaginaWeb.errors["save"], this);
 };
-
+PaginaWeb.remove = function(obj, callback) {
+    var db;
+    if(obj._usuario === undefined){
+        db = PaginaWeb.db = [];
+    }
+    else{       
+        for(var i = 0; i < PaginaWeb.db.length; i++) {
+            if(PaginaWeb.db[i]._usuario === obj._usuario) {
+                db = PaginaWeb.db[i];
+                PaginaWeb.db.splice(i, 1);
+                break;
+            }
+        }
+    }        
+    callback(PaginaWeb.errors["remove"], db);
+    
+};
 PaginaWeb.findByProperty = function() {
     var obj = PaginaWeb.objetoBuscado;
     if(obj == undefined){

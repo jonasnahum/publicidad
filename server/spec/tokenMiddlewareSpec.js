@@ -1,6 +1,6 @@
-/*describe("token middleware", function() {
-    it("validate metod finds accses token", function(done){
-        var usuarioMock = require("./usuarioMock");
+describe("token middleware", function() {
+    /*it("validate metod finds accses token", function(done){
+        var usuarioMock = require("./modelMock2");
          
         var jwtMock = require("./jwtMock");
     
@@ -25,7 +25,7 @@
         });
     });
     it("validate metod finds does not have accses token", function(done){
-        var usuarioMock = require("./usuarioMock");
+        var usuarioMock = require("./modelMock2");
     
         var jwtMock = require("./jwtMock");
     
@@ -45,8 +45,9 @@
         done();    
        
     });
+    
     it("decoded.exp is less than date.now so its error and catch solves the method", function(done){
-        var usuarioMock = require("./usuarioMock");
+        var usuarioMock = require("./modelMock2");
          
         var jwtMock = require("./jwtMock");
     
@@ -67,5 +68,5 @@
         expect(responseMock.text).toEqual('Invalid token');
         done();
     });
+    */
 });
-*/

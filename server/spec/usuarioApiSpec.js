@@ -1,5 +1,5 @@
-/*describe("usuarios api", function() {
-    var usuarioMock = require("./usuarioMock");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
+describe("usuarios api", function() {
+    var usuarioMock = require("./modelMock2");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
     var responseMock = require("./responseMock");
     var UsuarioApi = require("./../src/usuarioApi");
     var api = new UsuarioApi({usuario: usuarioMock});
@@ -63,7 +63,7 @@
         expect(responseMock.value).toEqual(usuarioMock.db[0]);
         done();
     });
-
+    
     it("getOne method error", function(done) {
         usuarioMock.setError("findById", new Error("Get one error"));
         
@@ -119,14 +119,7 @@
         });         
     });
     
-    
     it("delete method", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         usuarioMock.setError("save", undefined);
@@ -151,8 +144,6 @@
     });
     
     it("delete method error", function(done) {
-        //usuarioMock.setError("save", undefined);
-        //usuarioMock.setError("findById", undefined);
         usuarioMock.setError("findByIdAndRemove", new Error("findByIdAndRemove error"));
         
         requestMock.params = {id: 4};
@@ -188,4 +179,3 @@
     });
     
 });
-*/
