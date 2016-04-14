@@ -141,22 +141,20 @@ PaginaWeb.findByProperty = function() {
 };
 
 PaginaWeb.remove = function(obj, callback) {
-    console.log(obj._usuario === undefined);
+    var db;
     if(obj._usuario === undefined){
-        PaginaWeb.db = [];
+        db = PaginaWeb.db = [];
     }
-    else{ 
+    else{       
         for(var i = 0; i < PaginaWeb.db.length; i++) {
-            console.dir(PaginaWeb.db);
             if(PaginaWeb.db[i]._usuario === obj._usuario) {
+                db = PaginaWeb.db[i];
                 PaginaWeb.db.splice(i, 1);
                 break;
             }
         }
-    }
-    console.dir(PaginaWeb.db);
-            
-    callback(PaginaWeb.errors["remove"], PaginaWeb.db);
+    }        
+    callback(PaginaWeb.errors["remove"], db);
     
 };
 

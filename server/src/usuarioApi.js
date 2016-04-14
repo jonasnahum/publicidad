@@ -19,10 +19,8 @@ var UsuariosApi = (function() {
         for (var property in req.body){
             usuario[property] = req.body[property];
         }
-        console.dir(usuario);
         usuario.save(function(err, usuario){
             if(err)  return next(err);
-            console.dir(usuario);
             res.json(usuario);
         });
     };
