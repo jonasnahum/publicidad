@@ -1,5 +1,5 @@
 describe("token middleware", function() {
-    /*it("validate metod finds accses token", function(done){
+    it("validate metod finds accses token", function(done){
         var usuarioMock = require("./modelMock2");
          
         var jwtMock = require("./jwtMock");
@@ -68,5 +68,5 @@ describe("token middleware", function() {
         expect(responseMock.text).toEqual('Invalid token');
         done();
     });
-    */
+    
 });

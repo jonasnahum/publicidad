@@ -19,16 +19,13 @@ PaginaWeb.populate = function(_path) {
 PaginaWeb.exec = function(callback) {
     callback(PaginaWeb.errors[PaginaWeb.metodoQueBusca], PaginaWeb.db);
 };
-/*
-PaginaWeb.find = function(objetoBuscado) {
-    PaginaWeb.metodoQueBusca = "find";
-    PaginaWeb.objetoBuscado = objetoBuscado;
-    return this;
-};
-*/
 PaginaWeb.find = function(callback) {
     PaginaWeb.metodoQueBusca = "find";
-    if(typeof callback == "object" || typeof callback == "undefined") {//fir populate
+    if(typeof callback == "object") {
+        PaginaWeb.objetoBuscado = arguments[0];
+        return PaginaWeb.objetoBuscado;
+    }
+    if(typeof callback == "undefined") {//fir populate
         PaginaWeb.objetoBuscado = arguments[0];
         return this;
     }
