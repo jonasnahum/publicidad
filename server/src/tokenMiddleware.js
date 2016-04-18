@@ -36,4 +36,3 @@ var TokenMiddleware = (function() {
 })();
 
 module.exports = TokenMiddleware;
-

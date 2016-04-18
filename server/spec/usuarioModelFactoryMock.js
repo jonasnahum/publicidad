@@ -1,4 +1,4 @@
-var Usuario = require("./usuarioMock");
+var Usuario = require("./modelMock2")
 
 var usuarioFactory = {
     get: function() {

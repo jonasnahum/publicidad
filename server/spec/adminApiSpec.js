@@ -1,22 +1,18 @@
-
-
 describe("admin api", function() {
-        //model
-        var modelMock = require("./usuarioMock");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
-        var modelFactory = require("./usuarioModelFactoryMock");
-        
-        
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        
-        //api
-        var AdminApi = require("./../src/adminApi");
-        var jwt = require("./jwtMock");
-        var moment = require("./momentMock");
-        var api = new AdminApi({admin: modelMock}, modelFactory, moment, jwt);
+    //model
+    var modelMock = require("./modelMock1.js");
+    var modelFactory = require("./paginaWebModelFactoryMock");
+    
+    var responseMock = require("./responseMock");
+    var requestMock = require("./requestMock");
+    
+    //api
+    var AdminApi = require("./../src/adminApi");
+    var jwt = require("./jwtMock");
+    var moment = require("./momentMock");
+    var api = new AdminApi({admin: modelMock}, modelFactory, moment, jwt);
 
     it("getAll method admin", function(done){
-        //se arregla la base de datos
         modelMock.db = [
             {nombre: "Jonas", calificacion: 9},
             {nombre: "ro", calificacion: 8}
@@ -25,15 +21,16 @@ describe("admin api", function() {
         //error
         modelMock.setError ("find", null);
         
-        //se ejecuta metodo.
+        //se ejecuta metodo
         api.getAll(null, responseMock, null);
         
         //test
         expect(responseMock.value).toEqual(modelMock.db);
+        
         done();
     });
     
-    it("getAll method error", function(done) {    
+    it("getAll method error", function(done) {
         modelMock.setError ("find", new Error("GetAll method error from adminapiSpec"));
         var next = function(err) {
             expect(err).toEqual(modelMock.getError("find"));
@@ -41,6 +38,7 @@ describe("admin api", function() {
         };
         api.getAll(null, responseMock, next);
     });
+    
     it("getOne method", function(done) {      
         
         modelMock.db = [
@@ -52,8 +50,9 @@ describe("admin api", function() {
         expect(responseMock.value).toEqual(modelMock.db[0]);
         done();
     });
+    
     it("getOne method error", function(done) { 
-        modelMock.setError("findById", new Error("Get one error grom adminapispec"));
+        modelMock.setError("findById", new Error("Get one error from adminapispec"));
         
         requestMock.params = {id: 1};
         
@@ -62,6 +61,7 @@ describe("admin api", function() {
             done();
         });
     });
+    
     it("findByEmail method error", function(done) {      
         modelMock.setError("findOne", new Error("FindOne error from adminapispec"));
         /*modelMock.db = [
@@ -74,6 +74,7 @@ describe("admin api", function() {
             done();
         });
     });
+    
     it("findByEmail !admin", function(done) {      
         modelMock.setError("findOne", null);
         modelMock.db = [
@@ -84,6 +85,7 @@ describe("admin api", function() {
         expect(responseMock.numero).toEqual(401);
         done();
     });
+    
     it("findByEmail req.body.password !== passunique", function(done) {      
         modelMock.setError("findOne", null);
         modelMock.db = [
@@ -97,6 +99,7 @@ describe("admin api", function() {
         expect(responseMock.numero).toEqual(401);
         done();
     });
+    
     it("findByEmail succesfull response", function(done) {      
         modelMock.setError("findOne", null);
         modelMock.db = [];
@@ -111,7 +114,7 @@ describe("admin api", function() {
         expect(responseMock.value.token).toEqual(jwt.tokenEncodeado);
         expect(responseMock.value.expires).toEqual(moment.expires);
         expect(responseMock.value.expires).toEqual(moment.expires);
-        expect(responseMock.value.user).toEqual(modelMock.db[0]);
+        expect(responseMock.value.user[0]).toEqual(modelMock.db[0]);
         done();
     });
 
@@ -136,8 +139,9 @@ describe("admin api", function() {
     });
     
     it("update method", function(done) {
-        modelMock.setError("save", undefined);
-        modelMock.setError("findById", undefined);
+        modelMock.setError("save", null);
+        modelMock.setError("findById", null);
+        modelMock.setError("find", null);
         modelMock.db = [];
         requestMock.body = {nombre: "Pedro", calificacion: 8, id: 3};
         api.save(requestMock, responseMock, null);//el body ya está en la bd.

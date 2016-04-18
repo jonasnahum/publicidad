@@ -1,10 +1,13 @@
 describe("usuarios api", function() {
+    var usuarioMock = require("./modelMock2");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
+    var responseMock = require("./responseMock");
+    var UsuarioApi = require("./../src/usuarioApi");
+    var api = new UsuarioApi({usuario: usuarioMock});
+    var usuarioFactory = require("./usuarioModelFactoryMock");//regresa una nueva instancia de usuarioMock, osea que tiene save en su prototype.
+    var requestMock = require("./requestMock");
+    
+    
     it("getAll method", function(done){
-        var usuarioMock = require("./usuarioMock");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
-        
         usuarioMock.db = [
             {nombre: "Jonas", calificacion: 9},
             {nombre: "ro", calificacion: 8}
@@ -17,11 +20,6 @@ describe("usuarios api", function() {
     });
     
     it("getAll method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
-        
         usuarioMock.setError ("find", new Error("GetAll method error"));
         var next = function(err) {
             expect(err).toEqual(usuarioMock.getError("find"));
@@ -31,11 +29,6 @@ describe("usuarios api", function() {
     });
     
     it("save method", function(done) {//will trigger jasmine-node to run the test asynchronously waiting until the done() callback is called.An asynchronous test will fail after 5000 ms if done() is not called. 
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");//regresa una nueva instancia de usuarioMock, osea que tiene save en su prototype.
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         usuarioMock.setError ("save", null);
@@ -49,11 +42,6 @@ describe("usuarios api", function() {
     });
     
     it("save method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         usuarioMock.setError("save", new Error("save method error"));
@@ -65,12 +53,6 @@ describe("usuarios api", function() {
     });
     
     it("getOne method", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
-        
         usuarioMock.setError ("findById", null);
         usuarioMock.db = [
             {nombre: "Pedro", calificacion: 8, id: 1}
@@ -81,14 +63,8 @@ describe("usuarios api", function() {
         expect(responseMock.value).toEqual(usuarioMock.db[0]);
         done();
     });
-
+    
     it("getOne method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
-        
         usuarioMock.setError("findById", new Error("Get one error"));
         
         requestMock.params = {id: 1};
@@ -100,11 +76,6 @@ describe("usuarios api", function() {
     });
     
     it("update method", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         usuarioMock.setError("save", undefined);
@@ -124,11 +95,6 @@ describe("usuarios api", function() {
     });
     
     it("update, save method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
 
         usuarioMock.setError("save", new Error("save error"));
@@ -142,11 +108,6 @@ describe("usuarios api", function() {
     });
     
     it("update, findById method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var responseMock = require("./responseMock");
-        var requestMock = require("./requestMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
 
         usuarioMock.setError("findById", new Error("findById error"));
@@ -158,14 +119,7 @@ describe("usuarios api", function() {
         });         
     });
     
-    
     it("delete method", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         usuarioMock.setError("save", undefined);
@@ -190,14 +144,6 @@ describe("usuarios api", function() {
     });
     
     it("delete method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
-        
-        //usuarioMock.setError("save", undefined);
-        //usuarioMock.setError("findById", undefined);
         usuarioMock.setError("findByIdAndRemove", new Error("findByIdAndRemove error"));
         
         requestMock.params = {id: 4};
@@ -209,11 +155,6 @@ describe("usuarios api", function() {
     });
     
     it("delete all method", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var usuarioFactory = require("./usuarioModelFactoryMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
         var api = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
         
         usuarioMock.setError("remove", undefined);
@@ -229,12 +170,6 @@ describe("usuarios api", function() {
     });
     
     it("delete all method error", function(done) {
-        var usuarioMock = require("./usuarioMock");
-        var requestMock = require("./requestMock");
-        var responseMock = require("./responseMock");
-        var UsuarioApi = require("./../src/usuarioApi");
-        var api = new UsuarioApi({usuario: usuarioMock});
-        
         usuarioMock.setError("remove", new Error("remove error"));
         
         api.deleteAll(requestMock, responseMock, function(err) {

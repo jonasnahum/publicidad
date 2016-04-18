@@ -20,15 +20,25 @@ PaginaWeb.populate = function(_path) {
 PaginaWeb.exec = function(callback) {
     callback(PaginaWeb.getError(PaginaWeb.metodoQueBusca), PaginaWeb.findByProperty());
 };
-PaginaWeb.find = function(objetoBuscado) {
+PaginaWeb.find = function(callback) {
     PaginaWeb.metodoQueBusca = "find";
-    PaginaWeb.objetoBuscado = objetoBuscado;
-    return this;
+    if(typeof callback == "object" || typeof callback == "undefined") {//fir populate
+        PaginaWeb.objetoBuscado = arguments[0];
+        return this;
+    }
+    if(typeof callback == "function") {
+        callback(PaginaWeb.errors["find"], PaginaWeb.db);  
+    }
 };
-PaginaWeb.findOne = function(objetoBuscado) {
+PaginaWeb.findOne = function(objetoBuscado, callback) {
     PaginaWeb.metodoQueBusca = "findOne";
-    PaginaWeb.objetoBuscado = objetoBuscado;
-    return this;
+    if(callback) {
+        callback(PaginaWeb.getError(PaginaWeb.metodoQueBusca), PaginaWeb.findByProperty());
+    }
+    else {
+        PaginaWeb.objetoBuscado = objetoBuscado;
+        return this;
+    }
 };
 PaginaWeb.prototype.save = function(callback) {
     var index = PaginaWeb.db.indexOf(this);
@@ -37,7 +47,6 @@ PaginaWeb.prototype.save = function(callback) {
     
     return callback(PaginaWeb.errors["save"], this);
 };
-
 PaginaWeb.findById = function(id, callback) {
     var found = undefined;
     for(var i = 0; i < PaginaWeb.db.length; i++) {
@@ -48,7 +57,6 @@ PaginaWeb.findById = function(id, callback) {
     }
     callback(PaginaWeb.errors["findById"], found);
 };
-
 PaginaWeb.findByIdAndRemove = function(id, callback) {
     PaginaWeb.objetoBuscado = id;
     var found = PaginaWeb.findByProperty ();
@@ -56,8 +64,6 @@ PaginaWeb.findByIdAndRemove = function(id, callback) {
     PaginaWeb.db.splice(index, 1);
     callback(PaginaWeb.errors["findByIdAndRemove"], found);
 };
-
-
 PaginaWeb.findByProperty = function() {
     var obj = PaginaWeb.objetoBuscado;
     if(obj == undefined){
@@ -78,7 +84,22 @@ PaginaWeb.findByProperty = function() {
     }
     return found;
 };
-
-
+PaginaWeb.remove = function(obj, callback) {
+    var db;
+    if(obj._usuario === undefined){
+        db = PaginaWeb.db = [];
+    }
+    else{       
+        for(var i = 0; i < PaginaWeb.db.length; i++) {
+            if(PaginaWeb.db[i]._usuario === obj._usuario) {
+                db = PaginaWeb.db[i];
+                PaginaWeb.db.splice(i, 1);
+                break;
+            }
+        }
+    }        
+    callback(PaginaWeb.errors["remove"], db);
+    
+};
 
 module.exports = PaginaWeb;
