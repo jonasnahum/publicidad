@@ -94,8 +94,8 @@ var PaginaWebApi = (function() {
    PaginaWebApi.prototype.deleteSoloEmpresa = function(req, res, next) {
        var that = this;
        that.models.paginaWeb.remove({_id: req.params.id}, function(err, pag) {
-               if(err) return next(err);
-               res.json(pag);
+           if(err) return next(err);
+           res.json(pag);
        });
     };   
     return PaginaWebApi;

@@ -138,7 +138,7 @@ describe("Usuario Controller", function() {
         toEqual(usuarioMock.db[0]);
         done();
     });
-    it("getOne", function(done) {
+    it("getOne Error", function(done) {
         //se prepara la bd.
         usuarioMock.setError ("findById", new Error("GetOne error from controllerSpec"));
         usuarioMock.db = [];
@@ -195,6 +195,30 @@ describe("Usuario Controller", function() {
         expect(usuarioMock.db[0].nombre).toBe("Rodrigo");
         expect(usuarioMock.db[0].calificacion).toBe(10);
         expect(usuarioMock.db.length).toBe(1);
+        done();
+    });
+    it("put error", function(done) {
+        usuarioMock.setError("findById", new Error("Put Error UsuariosController"));
+        //se prepara api
+        var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
+        
+        //se prepara tokenMiddleware
+        var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
+        
+        //se prepara el controller
+        var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
+        
+        //se guarda un registro
+        express.handlerParams.req.body = {nombre: "Jonas", calificacion: 9, id: 2};
+        express.http('post/');
+        
+        //se sobre escribe body y se ejecuta put, el id sigue siendo 2.
+        express.handlerParams.req.body.nombre = "Rodrigo";
+        express.handlerParams.req.body.calificacion = 10;
+        express.handlerParams.req.params = {id: 2};
+        express.http('put/:id');
+        
+        expect(express.handlerParams.err).toEqual(usuarioMock.getError("findById"));
         done();
     });
     it("delete", function(done) {
@@ -277,6 +301,33 @@ describe("Usuario Controller", function() {
         express.http('delete/peligro/deleteAll');
 
         expect(usuarioMock.db.length).toBe(0); 
+        done();
+    });
+    it("delete All", function(done) {
+        usuarioMock.setError ("findByIdAndRemove", new Error("DeleteALL usuariosController Error"));//update usa estos dos metodos.
+        
+        //se prepara api
+        var usuarioApi = new UsuarioApi({usuario: usuarioMock}, usuarioFactory);
+        
+        //se prepara tokenMiddleware
+        var tokenMiddlewareMock = new TokenMiddlewareMock({usuario: usuarioMock}, jwtMock);
+        
+        //se prepara el controller
+        var controller = new UsuarioController(express, usuarioApi, tokenMiddlewareMock);
+        
+        //se guardan varios registros
+        express.handlerParams.req.body = {nombre: "Jonas", calificacion: 9, id: 2};
+        express.http('post/');
+        express.handlerParams.req.body = {nombre: "pedro", calificacion: 10, id: 3};
+        express.http('post/');
+        express.handlerParams.req.body = {nombre: "Juan", calificacion: 6, id: 1};
+        express.http('post/');
+        
+        var arrayVacio = [];
+        
+        express.http('delete/peligro/deleteAll');
+
+        expect(express.handlerParams.err).toEqual(usuarioMock.getError("findByIdAndRemove"));
         done();
     });
 });

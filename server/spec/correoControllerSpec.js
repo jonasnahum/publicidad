@@ -31,6 +31,26 @@ describe("Correo controller Controller", function() {
         expect(nodemailerMock.mailOptions.to).toEqual(cuerpo.to);
         done();
     });
+    it("post Error", function(done) {
+        //se prepara bd.
+        nodemailerMock.setError ("send", new Error("correoControllerSpec Post Error"));//para que no ejecute next en api
+        
+        //se prepara el req.
+        var cuerpo = {
+                        name: "Jonas para guardar", 
+                        email: "pedrito@gmail.com",
+                        phone: 4521652247,
+                        message: "hola mensaje desde spec",
+                        to: "Maria mercedes"
+                     };  
+        express.handlerParams.req.body = cuerpo;      
+        
+        //ejecuta el routehandler guardado en la propiedad path.
+        express.http('post/');
+        
+        expect(express.handlerParams.err).toEqual(nodemailerMock.getError("send"));
+        done();
+    });
   /*  it("post/signup error", function(done) {
         //se prepara la bd.
         modelMock.db = [];
