@@ -1,4 +1,4 @@
-var PaginaWeb = require("./modelExperimentMock");
+var PaginaWeb = require("./modelMock1");
 
 var modelFactory = {
     get: function() {

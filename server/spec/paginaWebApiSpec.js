@@ -1,6 +1,6 @@
 describe("paginasweb api", function() {
     //model
-    var modelMock = require("./modelExperimentMock");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
+    var modelMock = require("./modelMock1");//un model trae todos los metodos de búsqueda en la clase, no en el prototype, ahí solo tiene save y la propiedad bd, pero no es una nueva instancia.
     var modelMock2 = require("./modelMock2");
     var modelFactory = require("./paginaWebModelFactoryMock");
     var usuarioFactory = require("./usuarioModelFactoryMock");

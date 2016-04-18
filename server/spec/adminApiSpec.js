@@ -1,6 +1,6 @@
 describe("admin api", function() {
     //model
-    var modelMock = require("./modelExperimentMock.js");
+    var modelMock = require("./modelMock1.js");
     var modelFactory = require("./paginaWebModelFactoryMock");
     
     var responseMock = require("./responseMock");
