@@ -77,6 +77,8 @@ var AdminApi = (function() {
         var that = this;
         that.models.admin.findById(req.params.id, function(err, admin) {
             if(err)  return next(err);
+            console.log("UPDATE admin ");
+            console.dir(admin);
             for (var property in req.body){
                 admin[property] = req.body[property];
             }
@@ -85,6 +87,7 @@ var AdminApi = (function() {
                 res.json(administrador);
             });   
         });
+        
     };
     //curl -X "DELETE" http://localhost:3000/admin/api/56d0808aef098b3312528ee2
     AdminApi.prototype.delete = function(req, res, next) {

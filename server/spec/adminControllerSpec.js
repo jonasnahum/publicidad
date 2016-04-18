@@ -1,6 +1,6 @@
 describe("Admin Controller", function() {
-    var modelMock = require("./usuarioMock");
-    var modelFactory = require("./usuarioModelFactoryMock");
+    var modelMock = require("./modelMock1");
+    var modelFactory = require("./paginaWebModelFactoryMock");
     //se prepara api
     var AdminApi = require("./../src/adminApi");
     var jwt = require("./jwtMock");

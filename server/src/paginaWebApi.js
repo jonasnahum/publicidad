@@ -8,12 +8,15 @@ var PaginaWebApi = (function() {
 
     PaginaWebApi.prototype.getAll = function(req, res, next) {
         var that = this;       
-        
+      
         that.models.paginaWeb.find().populate('_usuario')
             .exec(function (err, paginas) {
                 if (err) return next(err);
+                console.log("paginas");
+                console.dir(paginas);
                 return res.json(paginas);
             });   
+            
     };
 
     PaginaWebApi.prototype.getByUniqueName = function(req, res, next) {
@@ -56,7 +59,7 @@ var PaginaWebApi = (function() {
         that.models.usuario.findById(req.body.userId, function(err, usuario) {
             if(err)  return next(err);
             //uses body to update user.
-            usuario = that.copy.copyBodyToUsuario(req.body,usuario);
+            usuario = that.copy.copyBodyToUsuario(req.body, usuario);
             //saves user.
             usuario.save(function(err, usuario){
                 if(err)  return next(err);
@@ -80,7 +83,7 @@ var PaginaWebApi = (function() {
        //borra el usuario.
        that.models.usuario.findByIdAndRemove({ _id: req.params.id }, function(err, user) {
            if(err) return next(err);
-           that.models.paginaWeb.remove({_usuario: user.id}, function(err, pag) {
+           that.models.paginaWeb.remove({_usuario: user._id}, function(err, pag) {
                if(err) return next(err);
                res.json(pag);
            });
@@ -91,8 +94,8 @@ var PaginaWebApi = (function() {
    PaginaWebApi.prototype.deleteSoloEmpresa = function(req, res, next) {
        var that = this;
        that.models.paginaWeb.remove({_id: req.params.id}, function(err, pag) {
-               if(err) return next(err);
-               res.json(pag);
+           if(err) return next(err);
+           res.json(pag);
        });
     };   
     return PaginaWebApi;
