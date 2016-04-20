@@ -29,36 +29,6 @@
             }).success(success).error(that.error);    
         };
         
-        //guarda pagina con property _usuario
-        Proxy.prototype.savePublico = function(id, model, success) {
-            var that = this;
-            $http({
-                method: 'POST',
-                url: that.url + id,
-                data: model
-            }).success(success).error(that.error);
-        };        
-        
-        //usuarios
-        Proxy.prototype.signupPublico = function(model, success) {
-            var that = this;
-            $http({
-                method: 'POST',
-                url: that.url,
-                data: model
-            }).success(success).error(that.error);
-        };
-
-        //admins
-        Proxy.prototype.save = function(model, success) {
-            var that = this;
-            $http({
-                method: 'POST',
-                url: that.url,
-                data: model
-            }).success(success).error(that.error);
-        };
-                
         Proxy.prototype.getOne = function(id, success) {
             var that = this;
             $http({
@@ -67,12 +37,14 @@
             }).success(success).error(that.error);
         };
         
-        Proxy.prototype.delete = function(id, success) {
+        //admins
+        Proxy.prototype.save = function(model, success) {
             var that = this;
             $http({
-                method: "DELETE",
-                url: that.url + id
-            }).success(success).error(that.error);       
+                method: 'POST',
+                url: that.url,
+                data: model
+            }).success(success).error(that.error);
         };
         
         Proxy.prototype.update = function(id, model, success) {
@@ -84,6 +56,35 @@
             }).success(success).error(that.error);
         };
         
+        Proxy.prototype.delete = function(id, success) {
+            var that = this;
+            $http({
+                method: "DELETE",
+                url: that.url + id
+            }).success(success).error(that.error);       
+        };
+        
+        //usuarios
+        Proxy.prototype.signupPublico = function(model, success) {
+            var that = this;
+            $http({
+                method: 'POST',
+                url: that.url,
+                data: model
+            }).success(success).error(that.error);
+        };
+        
+        //guarda pagina con property _usuario
+        Proxy.prototype.savePublico = function(id, model, success) {
+            var that = this;
+            $http({
+                method: 'POST',
+                url: that.url + id,
+                data: model
+            }).success(success).error(that.error);
+        };        
+        
+
         return function(url) {
             return new Proxy(url);
         };
