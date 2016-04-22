@@ -1,9 +1,10 @@
 (function() {
     var app = angular.module('app');
     
-    app.factory('mapFactory', [function() {//singleton.
+    app.factory('mapFactory', ['$window',function($window) {//singleton.
         
         var MapClass = function(latitud,longitud) {
+            var google = $window.google;
             this.map = undefined;
             this.lat = latitud || undefined;//latitud || 19.4096;
             this.long = longitud || undefined;//longitud || -102.0520;
