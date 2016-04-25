@@ -22,7 +22,8 @@ module.exports = function(config) {
       'public/angular/lib/dirPagination.js',
       'public/angular/src/app.js',
       'public/angular/src/*.js',
-      'public/angular/test/*Spec.js',
+      //'public/angular/test/*Spec.js',
+      'public/angular/test/*.js',
     ],
 
 
