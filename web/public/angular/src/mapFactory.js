@@ -4,32 +4,32 @@
     app.factory('mapFactory', ['$window',function($window) {//singleton.
         
         var MapClass = function(latitud,longitud) {
-            var google = $window.google;
+            this.google = $window.google;
             this.map = undefined;
             this.lat = latitud || undefined;//latitud || 19.4096;
             this.long = longitud || undefined;//longitud || -102.0520;
-            this.myCenter=new google.maps.LatLng(this.lat || 19.4096, this.long  || -102.0520);
+            this.myCenter=new this.google.maps.LatLng(this.lat || 19.4096, this.long  || -102.0520);
             this.markersArray = [];
             this.mapOptions = this.getMapOptions(); 
-            this.document = document.getElementById("googleMap")
+            this.document = $window.document.getElementById("googleMap");
             this.map = this.getMap();
             this.eventListener = undefined;
         };
         MapClass.prototype.getMapOptions = function(){
             var that = this;
             return {
-                center:that.myCenter,
-                zoom:13,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
+                center: that.myCenter,
+                zoom: 13,
+                mapTypeId: that.google.maps.MapTypeId.ROADMAP
             };
         };
         MapClass.prototype.getMap = function(){
             var that = this;
-            return new google.maps.Map(that.document, that.mapOptions);
+            return new that.google.maps.Map(that.document, that.mapOptions);
         };
         MapClass.prototype.getEventListener = function(){
             var that = this;
-            that.eventListener = google.maps.event.addListener(that.map, 'click', function(event){ 
+            that.eventListener = that.google.maps.event.addListener(that.map, 'click', function(event){ 
                 that.manageEvent(event);
             });
         };
@@ -49,9 +49,9 @@
         MapClass.prototype.placeMarker = function (latitud,longitud) {
             var that = this;
             var myMarkerPosition = undefined;
-            myMarkerPosition = new google.maps.LatLng(latitud,longitud);
+            myMarkerPosition = new that.google.maps.LatLng(latitud,longitud);
             
-            var marker = new google.maps.Marker({
+            var marker = new that.google.maps.Marker({
                 position: myMarkerPosition,
                 map: that.map,
             });
