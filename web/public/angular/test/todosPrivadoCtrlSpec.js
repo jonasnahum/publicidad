@@ -60,12 +60,12 @@ describe("Todos Privado controller", function(){
     
     it('loads ctrl.emailUsuario on getEmail method', function() {
         //arragements
-        var controller = $controller('TodosController');
         var email = "jonasnahum@gmail.com";
         var id = 31;
         var expected = {token: '123asd', user: { email: email, _id: id }};
         //act
         tokenStorageCaptured.setToken(expected);
+        var controller = $controller('TodosController');
         //test
         expect(controller.emailUsuario).toEqual(expected.user.email);
     });

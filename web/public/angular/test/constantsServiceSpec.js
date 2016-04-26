@@ -5,9 +5,7 @@ describe('constants test', function() {
     var expected = 'http://localhost:3000';
     var facto;
     beforeEach(module('app'));
-    
-    it('create an instance', inject(function (constants) {
+    it('create an instance', inject(function (constants) {//inyecta mock debido a que esta sobreescrito en el karma.conf.js
         expect(constants.server).toEqual(expected);
     }));
-        
 });
