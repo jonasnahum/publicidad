@@ -3,12 +3,12 @@
 <div class="container" id="wrapper"--->
 <div class="container" style="margin: 100px auto;">
     
-    <div ng-controller="TodosController as ctrl">
+    <div ng-controller="TodosUsuariosController as ctrl">
         
         <h2 class="pull-right">{{ctrl.emailUsuario}}</h2>
         <br><br><br><br>
-        <a ng-href="#/privado/todos/usuarios">VER TODOS USUARIOS</a>
-        <div ng-show="ctrl.empresas.length > 0">
+        
+        <div ng-show="ctrl.usuarios.length > 0">
             <label>Buscar: <input ng-model="ctrl.searchText"></label>
         </div>
 
@@ -16,19 +16,18 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Usuario</th>
+                        <th>Cliente</th>
+                        <th>Uniquename</th>
+                        <th>TelCliente</th>
                         <th>Email</th>
-                        <th>Fecha de Registro</th>
-                        <th>Opciones</th>
                     </tr>
                 </thead>
-                <tbody dir-paginate="empresa in ctrl.empresas | filter:ctrl.searchText | itemsPerPage: 200">
+                <tbody dir-paginate="usuario in ctrl.usuarios | filter:ctrl.searchText | itemsPerPage: 200">
                     <tr>
-                        <th scope="row">{{ empresa.nombre }}</th>
-                        <td>{{empresa._usuario.cliente}}</td>
-                        <td>{{empresa._usuario.email}}</td>
-                        <td>{{empresa._usuario.fechaRegistro}}</td>
+                        <th scope="row">{{ usuario.cliente }}</th>
+                        <td>{{usuario.uniquename}}</td>
+                        <td>{{usuario.telCliente}}</td>
+                        <td>{{usuario.email}}</td>
                         <td>
                             <a ng-href="#/privado/ver/{{empresa._id}}">Ver</a>
                             <a ng-href="#/privado/editar/{{empresa._id}}">Editar</a>

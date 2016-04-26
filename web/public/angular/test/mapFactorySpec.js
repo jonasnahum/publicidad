@@ -128,4 +128,19 @@ describe('mapFactory test', function() {
         expect(mapa.clearOverlays).toHaveBeenCalled();
         expect(mapa.markersArray).toEqual([]);
     }));
+    it('getLat', inject(function (mapFactory) {
+        var latitud = parseFloat(19.412288699925995);
+        var longitud = parseFloat(-102.0718502998352);
+        var mapa = mapFactory(latitud,longitud);
+        
+        expect(mapa.getLat()).toBe(19.412288699925995);
+    }));
+    
+    it('getLong', inject(function (mapFactory) {
+        var latitud = parseFloat(19.412288699925995);
+        var longitud = parseFloat(-102.0718502998352);
+        var mapa = mapFactory(latitud,longitud);
+        
+        expect(mapa.getLong()).toBe(-102.0718502998352);
+    }));
 });
