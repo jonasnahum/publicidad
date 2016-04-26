@@ -97,16 +97,35 @@ describe('mapFactory test', function() {
         
         
     }));
-       it('place marker method', inject(function (mapFactory, $window) {
+    it('place marker method and clearoverlays method', inject(function (mapFactory, $window) {
         var latitud = parseFloat(19.412288699925995);
         var longitud = parseFloat(-102.0718502998352);
         var mapa = mapFactory(latitud,longitud);
-       
-        spyOn($window.google.maps, "Marker");
+        //está vacio markersArray
+        expect(mapa.markersArray).toEqual([]);   
+        var response = {setMap : function(algo){}};//para que sireva clearoverlys
+        //Se crea un marker cuando se llama el metodo place marker
+        spyOn($window.google.maps, "Marker").and.returnValue(response);
         mapa.placeMarker(latitud,longitud);
         expect($window.google.maps.Marker).toHaveBeenCalled();
-
-        
-        
+        //lo más importante, se guarda el marker
+        expect(mapa.markersArray[0]).toEqual(response);
+        //no se borra lo guardado para que sirva clear overlays
+        spyOn(mapa.markersArray[0],"setMap");
+        mapa.clearOverlays();
+        expect(mapa.markersArray[0].setMap).toHaveBeenCalled();
+        //se borra lo guardado.
+        mapa.markersArray = [];
+    }));
+    it('borrar marker', inject(function (mapFactory, $window) {
+        var latitud = parseFloat(19.412288699925995);
+        var longitud = parseFloat(-102.0718502998352);
+        var mapa = mapFactory(latitud,longitud);
+        spyOn(mapa,"clearOverlays");
+        mapa.borrarMarker();
+        expect(mapa.lat).toBe(undefined);
+        expect(mapa.long).toBe(undefined);
+        expect(mapa.clearOverlays).toHaveBeenCalled();
+        expect(mapa.markersArray).toEqual([]);
     }));
 });

@@ -9,7 +9,7 @@ describe("Todos Privado controller", function(){
     
     beforeEach(module('app')); 
     
-    var $controller, $httpMock, $locationCaptured, tokenStorage;
+    var $controller, $httpMock, $locationCaptured, tokenStorageCaptured;
     
     beforeEach(function() {
         constantsMock = {

@@ -50,7 +50,6 @@
             var that = this;
             var myMarkerPosition = undefined;
             myMarkerPosition = new that.google.maps.LatLng(latitud,longitud);
-            
             var marker = new that.google.maps.Marker({
                 position: myMarkerPosition,
                 map: that.map,
