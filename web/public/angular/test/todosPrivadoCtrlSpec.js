@@ -11,16 +11,6 @@ describe("Todos Privado controller", function(){
     
     var $controller, $httpMock, $locationCaptured, tokenStorageCaptured;
     
-    beforeEach(function() {
-        constantsMock = {
-            server: 'http://localhost:3000'
-        };
-        
-        module(function ($provide) {
-            $provide.value('constants', constantsMock);
-        }); 
-    });
-
     beforeEach(inject(function(_$controller_){
         $controller = _$controller_;
     }));

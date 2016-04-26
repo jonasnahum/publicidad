@@ -8,7 +8,6 @@ describe("Todos publico controller, todas las páginas", function(){
     ];
     var $controller;
     var $httpMock; 
-    var constantsMock;
     var mapFactoryMock;
     var map;
     var anchor;
@@ -16,10 +15,6 @@ describe("Todos publico controller, todas las páginas", function(){
     beforeEach(module('app'));
     
     beforeEach(function() {
-        constantsMock = {
-            server: 'http://localhost:3000'
-        };
-        
         var mapFactoryMock = function(latitud, longitud){
             return {
                 placeMarker : function(latitud, longitud){
@@ -33,7 +28,6 @@ describe("Todos publico controller, todas las páginas", function(){
         };
         
         module(function ($provide) {
-            $provide.value('constants', constantsMock);
             $provide.value('mapFactory', mapFactoryMock);
             $provide.value('$anchorScroll', $anchorScrollMock);
         }); 
