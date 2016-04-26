@@ -8,8 +8,10 @@ describe("Todos publico controller, todas las páginas", function(){
     ];
     var $controller;
     var $httpMock; 
-    var $locationCaptured;
     var constantsMock;
+    var mapFactoryMock;
+    var map;
+    var anchor;
     
     beforeEach(module('app'));
     
@@ -18,12 +20,24 @@ describe("Todos publico controller, todas las páginas", function(){
             server: 'http://localhost:3000'
         };
         
+        var mapFactoryMock = function(latitud, longitud){
+            return {
+                placeMarker : function(latitud, longitud){
+                    return {latitud, longitud}
+                }
+            }
+        };
+        
+        var $anchorScrollMock = function(){
+            return "hola me llamaron?"
+        };
+        
         module(function ($provide) {
             $provide.value('constants', constantsMock);
-        });
-
+            $provide.value('mapFactory', mapFactoryMock);
+            $provide.value('$anchorScroll', $anchorScrollMock);
+        }); 
     });
-    
     
     beforeEach(inject(function(_$controller_){
         $controller = _$controller_;
@@ -37,8 +51,10 @@ describe("Todos publico controller, todas las páginas", function(){
        */
     }));
     
-    beforeEach(inject(function($location) {
-        $locationCaptured = $location;
+    beforeEach(inject(function($location, mapFactory, $anchorScroll) {
+        locationMock = $location;
+        map = mapFactory;
+        anchor = $anchorScroll;
     }));
 
     
@@ -51,16 +67,23 @@ describe("Todos publico controller, todas las páginas", function(){
         
         expect(controller.paginas).toEqual(all);
     });
-    /*
-    it('changes location on Delete', function() {
-        var controller = $controller('TodosController');
+    it('getall method sends latitud and longitud to map', function() {
+        var controller = $controller('TodosPublicoController');    
         
-        controller.delete(id);
-        
-        $httpMock.expectDELETE(url + id);
+        $httpMock.expectGET(url);
         $httpMock.flush();
-        
-        expect($locationCaptured.path()).toBe('/');
+
+        var obj = map(1,2);
+        var actual = obj.placeMarker(1,2);
+        expect(actual).toEqual({ latitud: 1, longitud: 2 });
     });
-    */
+    it('scroll method calls', function() {
+        var controller = $controller('TodosPublicoController');    
+        
+        $httpMock.expectGET(url);
+        $httpMock.flush();
+        //act
+        controller.scrollTo(3);
+        expect(anchor()).toEqual("hola me llamaron?");
+    });
 });
