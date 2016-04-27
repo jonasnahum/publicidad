@@ -10,8 +10,8 @@
             this.signupPublicoProxy.signupPublico(model, success);
         };
         
-        UsuariosProxy.prototype.getALl = function(){
-            this.signupPublicoProxy.getAll();
+        UsuariosProxy.prototype.getAll = function(callback){
+            this.signupPublicoProxy.getAll(callback);
         };
         
         UsuariosProxy.prototype.delete = function(id, success){
