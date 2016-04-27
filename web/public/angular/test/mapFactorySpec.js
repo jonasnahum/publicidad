@@ -3,7 +3,7 @@ describe('mapFactory test', function() {
     beforeEach(module('app'));
     
     beforeEach(function() {
-        
+    /*    
         windowMock = {
             document:{
                 getElementById: function(element){
@@ -34,7 +34,7 @@ describe('mapFactory test', function() {
                 }
             }
         }
-        module(function ($provide) {
+      */  module(function ($provide) {
             $provide.value('$window', windowMock);
         });
     });
