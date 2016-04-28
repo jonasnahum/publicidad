@@ -8,7 +8,7 @@
             this.map = undefined;
             this.lat = latitud || undefined;//latitud || 19.4096;
             this.long = longitud || undefined;//longitud || -102.0520;
-            this.myCenter=new this.google.maps.LatLng(this.lat || 19.4096, this.long  || -102.0520);
+            this.myCenter=new $window.google.maps.LatLng(this.lat || 19.4096, this.long  || -102.0520);
             this.markersArray = [];
             this.mapOptions = this.getMapOptions(); 
             this.document = $window.document.getElementById("googleMap");
