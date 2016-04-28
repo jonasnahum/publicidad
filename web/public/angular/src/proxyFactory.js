@@ -64,16 +64,6 @@
             }).success(success).error(that.error);       
         };
         
-        //usuarios
-        Proxy.prototype.signupPublico = function(model, success) {
-            var that = this;
-            $http({
-                method: 'POST',
-                url: that.url,
-                data: model
-            }).success(success).error(that.error);
-        };
-        
         //guarda pagina con property _usuario
         Proxy.prototype.savePublico = function(id, model, success) {
             var that = this;
