@@ -97,13 +97,6 @@ describe("Api Proxy", function() {
         $httpMock.flush();
     });
     
-    it('signup publico hace lo mismo que save', function() {
-        $httpMock.expectPOST(url);
-        api.signupPublico(alumnos[1], function(data) {
-            expect(data).toBe(true);
-        });
-        $httpMock.flush();
-    });
         
     it('save publico guarda con id', function() {
         $httpMock.expectPOST(url + id);

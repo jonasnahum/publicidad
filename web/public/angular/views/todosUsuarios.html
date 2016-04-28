@@ -2,7 +2,7 @@
 <!--img src="./../../../images/fondotabla2.jpeg" id="privadoTodos" alt="">
 <div class="container" id="wrapper"--->
 <div class="container" style="margin: 100px auto;">
-    
+    <h1>TODOS LOS USUAROS SIN PÁGINA</h1>
     <div ng-controller="TodosUsuariosController as ctrl">
         
         <h2 class="pull-right">{{ctrl.emailUsuario}}</h2>
@@ -19,6 +19,10 @@
                         <th>Cliente</th>
                         <th>Uniquename</th>
                         <th>TelCliente</th>
+                        <th>NoContrato</th>
+                        <th>Registro</th>
+                        <th>Vencimiento</th>
+                        <th>Pago</th>
                         <th>Email</th>
                     </tr>
                 </thead>
@@ -27,11 +31,13 @@
                         <th scope="row">{{ usuario.cliente }}</th>
                         <td>{{usuario.uniquename}}</td>
                         <td>{{usuario.telCliente}}</td>
+                        <td>{{usuario.noContrato}}</td>
+                        <td>{{usuario.fechaRegistro}}</td>
+                        <td>{{usuario.fechaVencimiento}}</td>
+                        <td>{{usuario.pago}}</td>
                         <td>{{usuario.email}}</td>
                         <td>
-                            <a ng-href="#/privado/ver/{{empresa._id}}">Ver</a>
-                            <a ng-href="#/privado/editar/{{empresa._id}}">Editar</a>
-                            <a href="#" ng-click="ctrl.delete(empresa._usuario._id)">Borrar</a>
+                            <a href="#" ng-click="ctrl.delete(usuario._id)">Borrar usuario sin pagina</a>
                         </td>
                     </tr>
                 </tbody>

@@ -7,9 +7,9 @@
         };
         
         UsuariosProxy.prototype.signupPublico = function(model, success){
-            this.signupPublicoProxy.signupPublico(model, success);
+            this.signupPublicoProxy.save(model, success);
         };
-        
+    
         UsuariosProxy.prototype.getAll = function(callback){
             this.signupPublicoProxy.getAll(callback);
         };

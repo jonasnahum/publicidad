@@ -5,12 +5,13 @@
         var ctrl = this;
         ctrl.email = '';
         ctrl.password = '';
+        ctrl.callback = function(tokenObj) {
+            tokenStorage.setToken(tokenObj);
+            $location.path('/privado/todos');
+        }
         
         ctrl.signin = function() {
-            proxy.signin(ctrl, function(tokenObj) {
-                tokenStorage.setToken(tokenObj);
-                $location.path('/privado/todos');
-            });
+            proxy.signin(ctrl, ctrl.callback);
         };
         
     }]);
