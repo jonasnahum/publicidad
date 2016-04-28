@@ -2,20 +2,9 @@
 describe('adminsProxy test', function() {
     var urlSignin = 'http://localhost:3000/admin/api/signin';
     var urlSignup = 'http://localhost:3000/admin/api/signup';
-    var constantsMock;
     var $httpMock;
     
     beforeEach(module('app'));
-    beforeEach(function() {
-        constantsMock = {
-            server: 'http://localhost:3000'
-        };
-        
-        module(function ($provide) {
-            $provide.value('constants', constantsMock);
-        });
-
-    });
     beforeEach(inject(function($httpBackend) {
         $httpMock = $httpBackend;
         $httpBackend.when('POST', urlSignin).respond(true);
