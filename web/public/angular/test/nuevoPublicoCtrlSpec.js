@@ -3,7 +3,18 @@ describe("nuevo controller", function(){
     
     beforeEach(module('app')); 
     
-    var $controller, $httpMock, $locationCaptured, mapa;
+    var $controller; 
+    var $httpMock; 
+    var $locationCaptured; 
+    var mapa;
+    var prod;
+    var link;
+    
+    beforeEach(function() {
+      module(function ($provide) {//porque dice que google no existe
+            $provide.value('$window', windowMock);
+        });
+    });
 
     beforeEach(inject(function(_$controller_){
         $controller = _$controller_;
@@ -14,31 +25,87 @@ describe("nuevo controller", function(){
         $httpBackend.when('POST', url).respond(false);
     }));
     
-    beforeEach(inject(function($location, mapFactory) {
+    beforeEach(inject(function($location, mapFactory, productosFactory, linkFactory) {
         $locationCaptured = $location;
-        mapa = mapFactory
+        mapa = mapFactory();
+        prod = productosFactory();
+        link = linkFactory();
     }));
     
-    /*
     it('borrar maker', function() {
         var controller = $controller('NuevoPublicoController');
-        
-        spyOn(mapa, "borrarMaker").and.callThrough();
+        spyOn(controller, "borrarMarker");
         controller.borrarMarker();
-        
-        
-        expect(mapa.borrarMaker).toHaveBeenCalled();
+        expect(controller.borrarMarker).toHaveBeenCalled();        
     });
-    */
-    /*
+    
     it('quitar logo', function() {
         var controller = $controller('NuevoPublicoController');
         controller.logotipo = "jonas";
         controller.quitarLogo();
         expect(controller.logotipo).toBe(undefined);
     });
+    it('quitar foto', function() {
+        var controller = $controller('NuevoPublicoController');
+        controller.foto = "jonas";
+        controller.quitarFoto();
+        expect(controller.foto).toBe(undefined);
+    });
+    it('agregar producto', function() {
+        var controller = $controller('NuevoPublicoController');
+        var productos = [{texto:"hola"}];
+        var producto = 3;
+        controller.productos= productos;
+        controller.producto= producto;
+        
+        spyOn(controller, "agregarProducto").and.callThrough();
+        spyOn(prod, "agregarProducto").and.returnValue(undefined);
+       
+        controller.agregarProducto();
+        expect(controller.agregarProducto).toHaveBeenCalled();
+        expect(controller.producto).toBe(undefined);
+    });
+    it('remover producto', function() {
+        var controller = $controller('NuevoPublicoController');
+        var productos = [{texto:"hola"}];
+        var remover = 3;
+        controller.productos= productos;
+        controller.remover= remover;
+        spyOn(controller, "removerProducto");
+        controller.removerProducto();
+        expect(controller.removerProducto).toHaveBeenCalled();
+    });
+    //este esta muy bien, se hace la llamada de verdad, entonces  la instancia que está dentro del metodo regresa un valor que se refleja en la instancia a probar.
+    it('borrar productos', function() {
+        var controller = $controller('NuevoPublicoController');
+        var productos = [{texto:"hola"}];
+        controller.productos= productos;
+        spyOn(controller, "borrarProductos").and.callThrough();
+        spyOn(prod, "borrarProductos").and.returnValue([]);
+        controller.borrarProductos();
+        expect(controller.borrarProductos).toHaveBeenCalled();
+        expect(controller.productos).toEqual([]);
+    });
+     it('borrar productos', function() {
+        var controller = $controller('NuevoPublicoController');
+        var link1 = "link1";
+        var link2 = "link2";
+        var links = [link1];
+        controller.links = links;
+        controller.link = link2;
+                  
+        spyOn(controller, "agregarLink").and.callThrough();
+        spyOn(link, "agregarLink").and.returnValue(true);
+         
+        controller.agregarLink();
+        expect(controller.agregarLink).toHaveBeenCalled();
+        expect(link.agregarLink).toHaveBeenCalledWith(links,link);
+        //expect(controller.productos).toEqual([]);
+    });
 
-    */
+
+
+    
 /*    it('changes location on Save', function() {
         var controller = $controller('NuevoController');
         

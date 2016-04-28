@@ -6,10 +6,12 @@
         var ctrl = this;
         ctrl.productos = [];
         ctrl.links = [];
+        ctrl.remover = undefined;
         
         //Map Function
         var mapa = mapFactory();
         mapa.getEventListener();
+        
         ctrl.borrarMarker = function () {
             mapa.borrarMarker();
         };
@@ -22,6 +24,7 @@
         };
         
         var prod = productosFactory()
+        
         ctrl.agregarProducto = function() {
             ctrl.producto = prod.agregarProducto(ctrl.productos, ctrl.producto);
         };
