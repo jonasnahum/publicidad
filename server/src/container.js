@@ -48,7 +48,7 @@ container.register("models", models);
 container.register("express", { module: require('express') });
 container.register("mongoose", { module: require('mongoose') });
 container.register("fs", { module: require('fs') });
-container.register("nodemailer", { module: require('nodemailer'),  module2: require("nodemailer-smtp-transport") });
+container.register("nodemailer", { module: require('nodemailer'),  module2: require('nodemailer-mailgun-transport') });
 container.register("moment", { module: require('moment') });
 container.register("jwt", { module: require('jwt-simple') });
 container.register("tokenMiddleware", TokenMiddleware);

@@ -75,7 +75,7 @@ describe("nuevo controller", function(){
         controller.removerProducto();
         expect(controller.removerProducto).toHaveBeenCalled();
     });
-    //este esta muy bien, se hace la llamada de verdad, entonces  la instancia que está dentro del metodo regresa un valor que se refleja en la instancia a probar.
+    //este esta muy bien, se hace la llamada de verdad, entonces  la instancia que está dentro del metodo regresa un valor que se refleja en la instancia a probar. buscar la respuesta en spy.create.
     it('borrar productos', function() {
         var controller = $controller('NuevoPublicoController');
         var productos = [{texto:"hola"}];
@@ -86,20 +86,26 @@ describe("nuevo controller", function(){
         expect(controller.borrarProductos).toHaveBeenCalled();
         expect(controller.productos).toEqual([]);
     });
-     it('borrar productos', function() {
+     it('borrar links', function() {
         var controller = $controller('NuevoPublicoController');
         var link1 = "link1";
         var link2 = "link2";
         var links = [link1];
         controller.links = links;
         controller.link = link2;
-                  
+        
         spyOn(controller, "agregarLink").and.callThrough();
-        spyOn(link, "agregarLink").and.returnValue(true);
          
+        /*
+         spyOn(link, "agregarLink").and.callFake(function() {
+            return true;
+        });
+*/
         controller.agregarLink();
-        expect(controller.agregarLink).toHaveBeenCalled();
-        expect(link.agregarLink).toHaveBeenCalledWith(links,link);
+        
+  /*      expect(controller.agregarLink).toHaveBeenCalled();*/
+        expect(link.agregarLink).toHaveBeenCalled();
+        //expect(link.agregarLink).toHaveBeenCalledWith(links,link);
         //expect(controller.productos).toEqual([]);
     });
 
