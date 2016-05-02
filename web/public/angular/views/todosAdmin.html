@@ -1,0 +1,38 @@
+<div class="container" style="margin: 100px auto;">
+    <h1>ADMINISTRADORES</h1>
+    <div ng-controller="TodosAdminController as ctrl">
+        
+        <div ng-controller="TodosUsuariosController as ctrl">
+            <h2 class="pull-right">{{ctrl.emailUsuario}}</h2>
+        </div>
+        <br><br><br><br>
+        
+        <div ng-show="ctrl.admins.length > 0">
+            <label>Buscar: <input ng-model="ctrl.searchText"></label>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody dir-paginate="admin in ctrl.admins | filter:ctrl.searchText | itemsPerPage: 200">
+                    <tr>
+                        <th scope="row">{{ admin.email }}</th>
+                        <td>{{admin.password}}</td>
+                        <td>
+                            <a href="#" ng-click="ctrl.delete(admin._id)">Borrar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>    
+        <br />
+
+    </div>
+    <dir-pagination-controls></dir-pagination-controls>
+</div>
+

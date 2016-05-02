@@ -21,6 +21,8 @@
                      { templateUrl: "angular/views/todos.html"})
         $router.when("/privado/todos/usuarios", 
                      { templateUrl: "angular/views/todosUsuarios.html"})
+        $router.when("/privado/todos/admin", 
+                     { templateUrl: "angular/views/todosAdmin.html"})
         $router.when('/privado/editar/:id', 
                      { templateUrl: "angular/views/editar.html" })
         .otherwise({ redirectTo: "/" });

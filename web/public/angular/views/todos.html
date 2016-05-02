@@ -7,11 +7,13 @@
         
         <h2 class="pull-right">{{ctrl.emailUsuario}}</h2>
         <br><br><br><br>
-        <a ng-href="#/privado/todos/usuarios">VER TODOS USUARIOS</a>
+        
         <div ng-show="ctrl.empresas.length > 0">
             <label>Buscar: <input ng-model="ctrl.searchText"></label>
+            <a class="btn btn-default btn" type="button" ng-href="#/privado/todos/usuarios">Usuarios</a>
+            <a class="btn btn-default btn" type="button" ng-href="#/privado/todos/admin">Administradores</a>
         </div>
-
+        
         <div class="table-responsive">
             <table class="table">
                 <thead>
