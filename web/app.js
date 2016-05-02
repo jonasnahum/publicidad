@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var UglifyJS = require("uglify-js");
 
 var routes = require('./routes/index');
 
@@ -22,6 +23,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+var result = UglifyJS.minify([ "public/angular/lib/angular.js", "public/js/grayscale.js", "public/js/jquery.js", "public/js/jquery-ui.js",  ]);
+console.log(result.code);
+
 
 app.use('/', routes);
 

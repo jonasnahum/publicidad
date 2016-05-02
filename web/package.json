@@ -19,7 +19,8 @@
     "moment": "^2.11.2",
     "morgan": "~1.5.3",
     "nodemon": "^1.8.1",
-    "serve-favicon": "~2.2.1"
+    "serve-favicon": "~2.2.1",
+    "uglify-js": "^2.6.2"
   },
   "devDependencies": {
     "jasmine-core": "^2.4.1",
