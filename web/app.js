@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-var result = UglifyJS.minify([ "public/angular/lib/angular.js", "public/js/grayscale.js", "public/js/jquery.js", "public/js/jquery-ui.js",  ]);
+var result = UglifyJS.minify([ "public/angular/lib/angular.js","public/angular/lib/dirPagination.js","public/angular/lib/angular-messages.js","public/js/grayscale.js", "public/js/jquery.js", "public/js/jquery-ui.js",  ]);
 console.log(result.code);
 
 
