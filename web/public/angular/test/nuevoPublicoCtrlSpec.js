@@ -5,9 +5,13 @@ describe("nuevo controller", function(){
     
     var $controller; 
     var $httpMock; 
+    var route; 
+    
     var $locationCaptured; 
     var mapa;
     var prod;
+    var paginasProx;
+    var usuariosProx;
     var link;
     
     beforeEach(function() {
@@ -25,13 +29,27 @@ describe("nuevo controller", function(){
         $httpBackend.when('POST', url).respond(false);
     }));
     
-    beforeEach(inject(function($location, mapFactory, productosFactory, linkFactory) {
+    beforeEach(inject(function($routeParams,$location, mapFactory, productosFactory, paginasProxy, usuariosProxy,linkFactory) {
+        route = $routeParams;
         $locationCaptured = $location;
-        mapa = mapFactory();
-        prod = productosFactory();
-        link = linkFactory();
+        mapa = mapFactory;
+        prod = productosFactory;
+        paginasProx = paginasProxy;
+        usuariosProxy = usuariosProxy;
+        link = linkFactory;
     }));
-    
+     function makeController() {    
+        objectUnderTest = $controller('NuevoPublicoController', {
+            $routeParams:route,
+            $location: $locationCaptured, 
+            mapFactory: mapa, 
+            productosFactory: prod,
+            paginasProxy: paginasProx,
+            usuariosProxy: usuariosProx,
+            linkFactory: link
+        });
+    }
+    /*
     it('borrar maker', function() {
         var controller = $controller('NuevoPublicoController');
         spyOn(controller, "borrarMarker");
@@ -86,27 +104,21 @@ describe("nuevo controller", function(){
         expect(controller.borrarProductos).toHaveBeenCalled();
         expect(controller.productos).toEqual([]);
     });
+    */
      it('borrar links', function() {
-        var controller = $controller('NuevoPublicoController');
         var link1 = "link1";
         var link2 = "link2";
         var links = [link1];
-        controller.links = links;
-        controller.link = link2;
         
-        spyOn(controller, "agregarLink").and.callThrough();
-         
-        /*
-         spyOn(link, "agregarLink").and.callFake(function() {
-            return true;
-        });
-*/
+        spyOn(link, "agregarLink");
+        makeController();
         controller.agregarLink();
-        
-  /*      expect(controller.agregarLink).toHaveBeenCalled();*/
+        expect(link.agregarLink).toHaveBeenCalledWith();
+        /*
+        expect(controller.agregarLink).toHaveBeenCalled();
         expect(link.agregarLink).toHaveBeenCalled();
-        //expect(link.agregarLink).toHaveBeenCalledWith(links,link);
-        //expect(controller.productos).toEqual([]);
+        expect(link.agregarLink).toHaveBeenCalledWith(links,link);
+        expect(controller.productos).toEqual([]);*/
     });
 
 
