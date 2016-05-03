@@ -5,7 +5,7 @@ module.exports = (function() {
         this.router = this.express.Router();
         
         var router = this.router;
-
+        //curl http://api.weburuapan.com/paginaweb/api
         router.get('/', paginaWebApi.getAll.bind(paginaWebApi));
             
         router.get('/:id', paginaWebApi.getOne.bind(paginaWebApi));
@@ -17,7 +17,7 @@ module.exports = (function() {
         router.put('/:id', paginaWebApi.update.bind(paginaWebApi));
         
         router.delete('/:id', paginaWebApi.delete.bind(paginaWebApi));
-        
+        //curl -X "DELETE" http://api.weburuapan.com/paginaWeb/api/soloEmpresa/5727d6998521e52000b7b487
         router.delete('/soloEmpresa/:id', paginaWebApi.deleteSoloEmpresa.bind(paginaWebApi));
     }
     
