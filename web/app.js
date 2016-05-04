@@ -6,14 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var minifyHTML = require('express-minify-html');
+var compress = require('compression');
 
 var routes = require('./routes/index');
 
 var app = express();
 
 
-// comentario para borrar
 // view engine setup
+app.use(compress());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
