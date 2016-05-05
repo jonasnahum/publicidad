@@ -9,8 +9,5 @@ router.get('/', function(req, res, next) {
         res.send(html);
     });
 });
-router.get('/prueba', function(req, res, next) {
-    res.render('prueba', { title: 'Web Uruapan', serverInfo: serverInfo });
-});
 
 module.exports = router;
