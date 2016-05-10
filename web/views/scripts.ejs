@@ -4,10 +4,10 @@
 <!-- Stylesheets -->
 <!-- Bootstrap Core CSS -->
 <!-- Aquí estan combinados todos los  CSS para una mejor velocidad. -->
-<link rel='stylesheet' href='/minified/stylesheets.min.css' />
+<link async rel='stylesheet' href='/minified/stylesheets.min.css' />
 
 <!-- Custom Fonts  Todas las fonts-->
-<link rel='stylesheet' href='minified/todasLasFonts.min.css' />
+<link async rel='stylesheet' href='minified/todasLasFonts.min.css' />
 <!--
 <link async rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"/>
 <link async rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" type="text/css"/>
@@ -16,66 +16,62 @@
 <link async rel="stylesheet" href="assets/css/bootstrap-responsive.css"/>
 -->
 
+<!--
 <script src="js/jquery.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.easing.min.js"></script>
 <script src="js/grayscale.js"media="print" ></script>
 <script src="/js/lightbox.js"></script>
-
-<!--
-<script sync src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.js"></script>
-<script src="minified/bootstrap.min.js"></script>
-<script src="minified/grayscale.min.js"media="print" ></script>
-<script src="minified/lightbox.min.js"></script>
 -->
+<script src="minified/jquery.min.js"></script>
+<script async src="minified/jquery-ui.min.js"></script>
+<script async src="js/bootstrap.min.js"></script>
+<script async src="minified/jquery.easing.min.js"></script>
+<script async src="minified/grayscale.min.js"media="print" ></script>
+<script async src="minified/lightbox.min.js"></script>
+
+
 
 <!-- Angular archiv lib.min.js contiene todos los js de la carpteta /angular/lib/*.js -->
- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-<script src="minified/angular-route.min.js"></script>
-<script src="minified/angular-mocks.min.js"></script>
-<script src="minified/angular-messages.min.js"></script>
-<script src="minified/dirPagination.min.js"></script>
 
 
-
-
-
-
-
+<script src="angular/lib/angular.js"></script>
+<script src="angular/lib/angular-route.js"></script>
+<script src="angular/lib/angular-mocks.js"></script>
+<script src="angular/lib/angular-messages.js"></script>
+<script src="angular/lib/dirPagination.js"></script>
 <script async src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDnyLYGwwC1g_ZEqM9y29MItmPkqncqchc"  max-age=7300></script>
 
 <!-- Scripts inside Body -->
 <script src="angular/src/app.js"></script>
-<script src="angular/src/appController.js"></script>
-<script src="minified/nuevoPublicoController.min.js"></script>
-<script src="angular/src/todosController.js"></script>
-<script src="angular/src/todosUsuariosController.js"></script>
-<script src="minified/editarController.min.js"></script>
-<script src="minified/correoController.min.js"></script>
-<script src="angular/src/aboutController.js"></script>
-<script src="minified/mapFactory.min.js"></script>
-<script src="minified/modelFactory.min.js"></script>
-<script src="minified/proxyFactory.min.js"></script>
-<script src="angular/src/paginasProxy.js"></script>
-<script src="minified/httpInterceptor.min.js"></script>
-<script src="minified/tokenStorage.min.js"></script>
-<script src="angular/src/adminsProxy.js"></script>
-<script src="angular/src/signinController.js"></script>
-<script src="angular/src/signupController.js"></script>
-<script src="angular/src/signupPublicoController.js"></script>
-<script src="angular/src/todosAdminController.js"></script>
-<script src="angular/src/negocioController.js"></script>
-<script src="angular/src/constantsService.js"></script>
-<script src="angular/src/errorLogService.js"></script>
+<script async src="angular/src/appController.js"></script>
+<script async src="minified/nuevoPublicoController.min.js"></script>
+<script async src="angular/src/todosController.js"></script>
+<script async src="angular/src/todosUsuariosController.js"></script>
+<script async src="minified/editarController.min.js"></script>
+<script async src="minified/correoController.min.js"></script>
+<script async src="angular/src/aboutController.js"></script>
+<script async src="minified/mapFactory.min.js"></script>
+<script async src="minified/modelFactory.min.js"></script>
+<script async src="minified/proxyFactory.min.js"></script>
+<script async src="angular/src/paginasProxy.js"></script>
+<script async src="minified/httpInterceptor.min.js"></script>
+<script async src="minified/tokenStorage.min.js"></script>
+<script async src="angular/src/adminsProxy.js"></script>
+<script async src="angular/src/signinController.js"></script>
+<script async src="angular/src/signupController.js"></script>
+<script async src="angular/src/signupPublicoController.js"></script>
+<script async src="angular/src/todosAdminController.js"></script>
+<script async src="angular/src/negocioController.js"></script>
+<script async src="angular/src/constantsService.js"></script>
+<script async src="angular/src/errorLogService.js"></script>
 
 
 
-<script src="minified/routeChecker.min.js"></script>
-<script src="minified/verController.min.js"></script>
-<script src="minified/productosFactory.min.js"></script>
-<script src="minified/linkFactory.min.js"></script>
-<script src="minified/todosPublicoController.min.js"></script>
-<script src="minified/usuariosProxy.min.js"></script>
+<script async src="minified/routeChecker.min.js"></script>
+<script async src="minified/verController.min.js"></script>
+<script async src="minified/productosFactory.min.js"></script>
+<script async src="minified/linkFactory.min.js"></script>
+<script async src="minified/todosPublicoController.min.js"></script>
+<script async src="minified/usuariosProxy.min.js"></script>
