@@ -41,6 +41,29 @@ app.use(minifyHTML({
 
 app.use('/', routes);
 
+
+
+
+/*Leverage browser
+app.use(function(req, res, next) {
+    //res.header("ExpiresByType image/x-icon", "access plus 1 year");
+    res.header("ExpiresByType application/javascript", "access plus 1 year");
+    next();
+});
+app.use(express.static(__dirname + '/public', { maxAge: 86400000 })); //__dirname + '/public', { maxAge: oneYear }
+*/
+app.use(function(req, res, next) {
+    if (!res.getHeader('Cache-Control')) {
+        res.setHeader('Cache-Control', 'public, max-age=' + (31557600000 / 1000)); //one year?
+    } 
+});
+
+
+
+
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
