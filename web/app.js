@@ -39,11 +39,6 @@ app.use(minifyHTML({
 }));
 
 
-app.use('/', routes);
-
-
-
-
 /*Leverage browser
 app.use(function(req, res, next) {
     //res.header("ExpiresByType image/x-icon", "access plus 1 year");
@@ -52,11 +47,18 @@ app.use(function(req, res, next) {
 });
 app.use(express.static(__dirname + '/public', { maxAge: 86400000 })); //__dirname + '/public', { maxAge: oneYear }
 */
+
 app.use(function(req, res, next) {
     if (!res.getHeader('Cache-Control')) {
         res.setHeader('Cache-Control', 'public, max-age=' + (31557600000 / 1000)); //one year?
     } 
+    return next();
 });
+
+app.use('/', routes);
+
+
+
 
 
 
