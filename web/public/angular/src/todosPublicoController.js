@@ -1,6 +1,7 @@
 (function() {
     var app = angular.module('app');
-    app.controller('TodosPublicoController', ['paginasProxy', '$anchorScroll', '$location', 'mapFactory', function(paginasProxy, $anchorScroll, $location, mapFactory) {
+    //app.controller('TodosPublicoController', ['paginasProxy', '$anchorScroll', '$location', 'mapFactory', function(paginasProxy, $anchorScroll, $location, mapFactory) {
+    app.controller('TodosPublicoController', ['paginasProxy', '$anchorScroll', '$location', function(paginasProxy, $anchorScroll, $location) {
         
         var ctrl = this;
         ctrl.paginas = [];
@@ -18,10 +19,11 @@
             paginasProxy.getAll(function(data){
                 ctrl.paginas=data;
                 
-                var latitud = parseFloat(19.412288699925995);
+                /*var latitud = parseFloat(19.412288699925995);
                 var longitud = parseFloat(-102.0718502998352);
                 var mapa = mapFactory(latitud,longitud);
                 mapa.placeMarker(latitud,longitud);
+                */
             });
         };
         ctrl.getAll();  
