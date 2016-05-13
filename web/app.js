@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var minifyHTML = require('express-minify-html');
-var compress = require('compression');
 
 var routes = require('./routes/index');
 
@@ -14,7 +13,6 @@ var app = express();
 
 
 // view engine setup
-app.use(compress());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -39,33 +37,7 @@ app.use(minifyHTML({
     }
 }));
 
-
-/*Leverage browser
-app.use(function(req, res, next) {
-    //res.header("ExpiresByType image/x-icon", "access plus 1 year");
-    res.header("ExpiresByType application/javascript", "access plus 1 year");
-    next();
-});
-app.use(express.static(__dirname + '/public', { maxAge: 86400000 })); //__dirname + '/public', { maxAge: oneYear }
-*/
-
-app.use(function(req, res, next) {
-    if (!res.getHeader('Cache-Control')) {
-        res.setHeader('Cache-Control', 'public, max-age=' + (31557600000 / 1000)); //one year?
-    } 
-    return next();
-});
-
 app.use('/', routes);
-
-
-
-
-
-
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
