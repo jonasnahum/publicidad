@@ -24,26 +24,6 @@
     padding-left: 25%;
 }
 
-
-/* Featurettes
-------------------------- */
-
-.featurette-divider {
-  margin: 30px 0; /* Space out the Bootstrap <hr> more */
-}
-
-/* Thin out the marketing headings */
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -1px;
-}
-
-.featurette-image {
-    width: 30%;
-    height: 30%;
-}
-
 /*ver.html, editar.html*/
 #ver, #editar {
     padding-top: 6%;
