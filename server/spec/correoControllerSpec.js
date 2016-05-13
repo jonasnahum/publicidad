@@ -13,7 +13,7 @@ describe("Correo controller Controller", function() {
         //se prepara el req.
         var cuerpo = {
                         name: "Jonas para guardar", 
-                        email: "pedrito@gmail.com",
+                        email: "weburuapan@gmail.com",
                         phone: 4521652247,
                         message: "hola mensaje desde spec",
                         to: "Maria mercedes"
@@ -30,7 +30,8 @@ describe("Correo controller Controller", function() {
         expect(nodemailerMock.mailOptions.text).toEqual(cuerpo.message);
         expect(nodemailerMock.mailOptions.to).toEqual(cuerpo.to);
         done();
-    });
+    })
+
     it("post Error", function(done) {
         //se prepara bd.
         nodemailerMock.setError ("send", new Error("correoControllerSpec Post Error"));//para que no ejecute next en api
@@ -51,20 +52,5 @@ describe("Correo controller Controller", function() {
         expect(express.handlerParams.err).toEqual(nodemailerMock.getError("send"));
         done();
     });
-  /*  it("post/signup error", function(done) {
-        //se prepara la bd.
-        modelMock.db = [];
-        modelMock.setError ("save", new Error("Post error from adminSpec"));//para que ejecute next en api
-        
-        //se prepara el req que entra en los middleware del controller 
-        express.handlerParams.req.body = {nombre: "Jonas para guardar", calificacion: 9, id: 2};
-            
-        //ejecuta el routehandler guardado en la propiedad path.
-        express.http('post/signup');
-          
-        //se hace el test.
-        expect(express.handlerParams.err).//esta propiedad se guarda cuando se api emite res.json();
-        toEqual(modelMock.getError("save"));
-        done();
-    });*/
+
 });

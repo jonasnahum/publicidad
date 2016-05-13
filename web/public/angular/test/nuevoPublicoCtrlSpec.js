@@ -1,5 +1,5 @@
 describe("nuevo controller", function(){
-    var url = '/alumnos/api/';
+    var url = 'http://localhost:3000/paginaWeb/api/undefined';
     
     beforeEach(module('app')); 
     
@@ -24,32 +24,21 @@ describe("nuevo controller", function(){
         $controller = _$controller_;
     }));
     
+    beforeEach(inject(function($routeParams,$location, mapFactory, productosFactory, paginasProxy, usuariosProxy,linkFactory) {
+        route = $routeParams;
+        $locationCaptured = $location;
+        mapa = mapFactory;
+        prod = productosFactory();
+        paginasProx = paginasProxy;
+        usuariosProxy = usuariosProxy;
+        link = linkFactory();
+    }));
+    
     beforeEach(inject(function($httpBackend) {
         $httpMock = $httpBackend;
         $httpBackend.when('POST', url).respond(false);
     }));
     
-    beforeEach(inject(function($routeParams,$location, mapFactory, productosFactory, paginasProxy, usuariosProxy,linkFactory) {
-        route = $routeParams;
-        $locationCaptured = $location;
-        mapa = mapFactory;
-        prod = productosFactory;
-        paginasProx = paginasProxy;
-        usuariosProxy = usuariosProxy;
-        link = linkFactory;
-    }));
-     function makeController() {    
-        objectUnderTest = $controller('NuevoPublicoController', {
-            $routeParams:route,
-            $location: $locationCaptured, 
-            mapFactory: mapa, 
-            productosFactory: prod,
-            paginasProxy: paginasProx,
-            usuariosProxy: usuariosProx,
-            linkFactory: link
-        });
-    }
-    /*
     it('borrar maker', function() {
         var controller = $controller('NuevoPublicoController');
         spyOn(controller, "borrarMarker");
@@ -63,12 +52,14 @@ describe("nuevo controller", function(){
         controller.quitarLogo();
         expect(controller.logotipo).toBe(undefined);
     });
+    
     it('quitar foto', function() {
         var controller = $controller('NuevoPublicoController');
         controller.foto = "jonas";
         controller.quitarFoto();
         expect(controller.foto).toBe(undefined);
     });
+    
     it('agregar producto', function() {
         var controller = $controller('NuevoPublicoController');
         var productos = [{texto:"hola"}];
@@ -76,13 +67,12 @@ describe("nuevo controller", function(){
         controller.productos= productos;
         controller.producto= producto;
         
-        spyOn(controller, "agregarProducto").and.callThrough();
-        spyOn(prod, "agregarProducto").and.returnValue(undefined);
-       
+        spyOn(controller, "agregarProducto");
+        
         controller.agregarProducto();
         expect(controller.agregarProducto).toHaveBeenCalled();
-        expect(controller.producto).toBe(undefined);
     });
+    
     it('remover producto', function() {
         var controller = $controller('NuevoPublicoController');
         var productos = [{texto:"hola"}];
@@ -93,7 +83,8 @@ describe("nuevo controller", function(){
         controller.removerProducto();
         expect(controller.removerProducto).toHaveBeenCalled();
     });
-    //este esta muy bien, se hace la llamada de verdad, entonces  la instancia que está dentro del metodo regresa un valor que se refleja en la instancia a probar. buscar la respuesta en spy.create.
+    
+    //este es un metodo ejemplar, ver como funciona y si se puede replicar.
     it('borrar productos', function() {
         var controller = $controller('NuevoPublicoController');
         var productos = [{texto:"hola"}];
@@ -104,37 +95,39 @@ describe("nuevo controller", function(){
         expect(controller.borrarProductos).toHaveBeenCalled();
         expect(controller.productos).toEqual([]);
     });
-    */
-     it('borrar links', function() {
+    it('agregar link', function() {
         var link1 = "link1";
         var link2 = "link2";
         var links = [link1];
-        
-        spyOn(link, "agregarLink");
-        makeController();
+        var controller = $controller('NuevoPublicoController');
+        spyOn(controller, "agregarLink");
         controller.agregarLink();
-        expect(link.agregarLink).toHaveBeenCalledWith();
-        /*
         expect(controller.agregarLink).toHaveBeenCalled();
-        expect(link.agregarLink).toHaveBeenCalled();
-        expect(link.agregarLink).toHaveBeenCalledWith(links,link);
-        expect(controller.productos).toEqual([]);*/
     });
-
-
-
+    it('remover link', function() {
+        var controller = $controller('NuevoPublicoController');
+        spyOn(controller, "removerLink").and.returnValue();
+        controller.removerLink();
+        expect(controller.removerLink).toHaveBeenCalled();
+    });
+    it('borrar links', function() {
+        var controller = $controller('NuevoPublicoController');       
+        spyOn(controller, "borrarLinks");
+        controller.borrarLinks();
+        expect(controller.borrarLinks).toHaveBeenCalled();
+    });
     
-/*    it('changes location on Save', function() {
-        var controller = $controller('NuevoController');
+    it('changes location on Save', function() {
+        var controller = $controller('NuevoPublicoController');
         
-        controller.guardar();
+        controller.save();
         
         $httpMock.expectPOST(url);
         $httpMock.flush();
         
         expect($locationCaptured.path()).toBe('/');
     });
-    */
+    
 });
 
 

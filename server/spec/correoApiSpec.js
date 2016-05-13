@@ -8,7 +8,7 @@ describe("correo api", function() {
         var nodemailerMock = require("./nodeMailerMock");
         var api = new CorreoApi(nodemailerMock);
 
-    it("send method responds with json ok", function(done){
+    it("send method responds with json ", function(done){
         //error
         nodemailerMock.setError ("send", null);
         
@@ -19,6 +19,7 @@ describe("correo api", function() {
         expect(responseMock.value).toEqual({ success: true });
         done();
     });
+    
     it("send method err", function(done){
         //error
         nodemailerMock.setError ("send", new Error("error de correo desde apispec"));
@@ -30,4 +31,5 @@ describe("correo api", function() {
             done(); 
         });
     });
+    
 });
