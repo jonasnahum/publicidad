@@ -1,10 +1,8 @@
 (function() {
     var app = angular.module('app');
     var depArr = ['$location', 'mapFactory', '$anchorScroll'];
-    //var depArr = ['$location', '$anchorScroll'];
     
     depArr.push(function($location, mapFactory, $anchorScroll) {
-    //depArr.push(function($location, $anchorScroll) {
         var ctrl = this;
         
         ctrl.scrollTo = function(id) {
