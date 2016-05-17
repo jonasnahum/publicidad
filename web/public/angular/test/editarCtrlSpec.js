@@ -1,4 +1,4 @@
-describe("ver controller", function(){
+describe("editar controller", function(){
     var url = 'http://localhost:3000/paginaWeb/api/';
     var id = 10;
     var all = [
@@ -50,45 +50,64 @@ describe("ver controller", function(){
         }
     ];
     
-    beforeEach(module('app'));
+    beforeEach(module('app')); 
     
-    
-    beforeEach(function() {//de donde viende windowMock?
+
+    beforeEach(function() {
         module(function ($provide) {
-            $provide.value('$window', windowMock);
+            $provide.value('$window', windowMock);//de donde viende windowMock?
         });
     });
     
-    var $controller, $httpMock;
+    var $controller, $httpMock, $locationCaptured;
 
     beforeEach(inject(function(_$controller_){
         $controller = _$controller_;
     }));
     
-
-    
-    
-    
-    
     beforeEach(inject(function($httpBackend) {
         $httpMock = $httpBackend;
         $httpBackend.when('GET',  url + id).respond(all[0]);
+        $httpBackend.when('PUT', url + id).respond(true);
+    }));
+    
+    
+    beforeEach(inject(function($location) {
+        $locationCaptured = $location;
     }));
 
     beforeEach(inject(function($routeParams) {
         $routeParams.id = id;
     }));
 
-    it('loads pages on controller instantiation', function() {
-        var controller = $controller('VerController');    
-
+    
+    it('loads pagina on controller instantiation', function() {
+        var controller = $controller('EditarFormularioController');    
+        
+        controller.nombre = 'Rodrigo';
+        controller.id = id;
         
         $httpMock.expectGET(url + id);
-        $httpMock.flush();
+        $httpMock.flush();        
+        
         expect(controller.nombre).toEqual(all[0].nombre);
-        expect(controller.empresaId).toEqual(all[0].id);
-        expect(controller.municipio).toEqual(all[0].direccion.municipio);
-        expect(controller.telCliente).toEqual(all[0]._usuario.telCliente);
-        expect(controller.rubro).toEqual(all[0].rubro.rubro);
+        expect(controller.id).toEqual(id);
+        
     });
+    
+    it('changes location on update', function() {
+        var controller = $controller('EditarFormularioController');
+        
+        //getOne
+        $httpMock.expectGET(url + id);
+        $httpMock.flush();
+        
+        controller.editar();
+        $httpMock.expectPUT(url + id);
+        $httpMock.flush();
+        
+        expect($locationCaptured.path()).toBe('/privado/todos');
+        
+    });
+    
 });

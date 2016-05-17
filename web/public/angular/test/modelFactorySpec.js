@@ -129,7 +129,7 @@ describe('modelFactory test', function() {
         var mF = modelFactory();
         expect(mF.getObjFromSubdocument(subdocument)).toEqual(expected);
     }));
-    it('get obj from subdocument', inject(function (modelFactory) {
+    it('copy obj to control', inject(function (modelFactory) {
         var mF = modelFactory();
         var obj = {nombre:"jonas", apellido:"jimenez"};
         var ctrl = {};

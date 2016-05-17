@@ -6,24 +6,7 @@ describe('tokenStorage test', function() {
     beforeEach(inject(function(tokenStorage){
         tokenStorage = tokenStorage.clearToken();
     }));
-    /*beforeEach(function() {
-        windowMock = {
-            localStorage: {
-                obj: [],
-                getItem: function(name){
-                    return windowMock.localStorage.obj[name];
-                },
-                setItem: function(name, json) {
-                    windowMock.localStorage.obj[name] = json;
-                }
-            }
-        };
-        
-        module(function ($provide) {
-            $provide.value('$window', windowMock);
-        });
-    });
-    */
+
     it('getToken method', inject(function (tokenStorage) {
         var expected = {token: '123asd'};
         
