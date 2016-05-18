@@ -13,6 +13,9 @@ describe('app controller', function() {
                 $locationMock.saved = id;
             },
             path: function(){
+                if (arguments.length){
+                    $locationMock.uri = arguments[0];
+                }
                 return $locationMock.uri;
             }
         };
@@ -38,23 +41,34 @@ describe('app controller', function() {
         let result = ctrl.isPrivate();
         expect(result).toBe(true);
     });
-    /*
+    
     it('is private method works responds false', function(){
-        loc.uri = '/jonas';
-        let result = rCh.isPrivate();
+        let ctrl = $controller("AppController")
+        loc.uri = 'todosPublico';
+        let result = ctrl.isPrivate();
         expect(result).toBe(false);
     });
     
     it('isactive method return true', function(){
+        let ctrl = $controller("AppController")
         loc.uri = '/jonas';
-        let result = rCh.isActive('/jonas');
+        let result = ctrl.isActive('/jonas');
         expect(result).toBe(true);
     });
-    
     it('isactive method return false', function(){
+        let ctrl = $controller("AppController")
         loc.uri = '/jonas';
-        let result = rCh.isActive('/rodrigo');
+        let result = ctrl.isActive('/rodrigo');
         expect(result).toBe(false);
     });
-    */
+    it("logout returns false", function(){
+        let ctrl = $controller("AppController")
+        let result = ctrl.logout();
+        expect(result).toBe(false);
+    });
+    it("logout changes location path", function(){
+        let ctrl = $controller("AppController");
+        let result = ctrl.logout();
+        expect(loc.uri).toBe("/");
+    });
 });

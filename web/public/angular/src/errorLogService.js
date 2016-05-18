@@ -10,7 +10,6 @@
             else {
                 $log.error('error');
             }
-            
             $location.path('/error');
         }
         

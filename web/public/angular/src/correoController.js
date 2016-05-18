@@ -10,6 +10,12 @@
         model.phone = '';
         model.message = '';
         model.waiting = false;
+        model.success = function(){
+            alert('Gracias, su mensage fué enviado con éxito. Prónto nos comunicarémos con usted.');
+            model.clear();
+        };                       
+        model.errorLog = errorLog();//for test propouses
+                                               
         
                                                
         model.clear = function() {
@@ -34,10 +40,7 @@
                 complete: function() {
                     model.waiting = false;
                 }
-            }).then(function() {
-                alert('Gracias, su mensage fué enviado con éxito. Prónto nos comunicarémos con usted.');
-                model.clear();
-            }, errorLog);
+            }).then(model.success, model.errorLog);
         };
         
     }]);
