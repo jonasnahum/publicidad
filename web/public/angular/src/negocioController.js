@@ -13,9 +13,11 @@
         
         ctrl.getOne = function (name, userId) {
            paginasProxy.getByUniqueName(name, function(data){
-                var obj = modelInstance.getObjFromSubdocument(data[0]);
-                ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
                
+                var obj = modelInstance.getObjFromSubdocument(data[0]);
+      
+                ctrl = modelInstance.copyObjToCtrl(obj,ctrl);
+                   
                 var latitud = parseFloat(ctrl.lat);
                 var longitud = parseFloat(ctrl.long);
 

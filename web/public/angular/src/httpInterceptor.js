@@ -7,12 +7,10 @@
             
             // optional method
             'request': function(request) {
-                var rCh = routeChecker();
-                
-    
+                var rCh = routeChecker();    
                 if (rCh.isPrivate()) {
                     var tokenObj = tokenStorage.getToken();
-
+              
                     if (tokenObj === undefined){   
                         $location.path('/signin');    
                     }
