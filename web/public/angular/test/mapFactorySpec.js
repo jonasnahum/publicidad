@@ -1,44 +1,11 @@
 describe('mapFactory test', function() {
     
     beforeEach(module('app'));
-    
     beforeEach(function() {
-    /*    
-        windowMock = {
-            document:{
-                getElementById: function(element){
-                    return {element};
-                }
-            },
-            google : {
-                maps:{
-                    eventListener: undefined,
-                    MapTypeId: {
-                        ROADMAP: "road"
-                    },
-                    LatLng: function (lat, long){
-                        return {lat,long}
-                    },
-                    Map: function (document, mapOptions) {
-                        return {document, mapOptions};
-                    },
-                    event:{
-                        addListener: function (map, name, callback){
-                            windowMock.google.maps.eventListener={map,name,callback};
-                            return {map,name,callback}
-                        }
-                    },
-                    Marker: function(){
-                        
-                    }
-                }
-            }
-        }
-      */  module(function ($provide) {
+      module(function ($provide) {
             $provide.value('$window', windowMock);
         });
     });
-    
     it('get map options methd', inject(function (mapFactory) {
         var latitud = parseFloat(19.412288699925995);
         var longitud = parseFloat(-102.0718502998352);
