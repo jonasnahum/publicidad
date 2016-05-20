@@ -23,7 +23,7 @@ module.exports = function(config) {
       'public/angular/src/app.js',
       'public/angular/src/*.js',
       //'public/angular/test/*Spec.js',
-      'public/angular/test/*.js',
+      'public/angular/test/*.js',//para que agarre los mocks.
     ],
 
 
